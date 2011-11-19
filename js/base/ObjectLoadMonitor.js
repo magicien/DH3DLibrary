@@ -16,10 +16,12 @@ var ObjectLoadMonitor = Class.create({
     if(objs){
       this._objs = objs;
       this._objs.each( function(obj){
-        obj.onload = function(){
-          //obj.loaded = true;
-          monitor.check();
-        };
+        if(obj != null){
+          obj.onload = function(){
+            //obj.loaded = true;
+            monitor.check();
+          };
+        }
       });
     }else{
       this._objs = $A();
@@ -34,7 +36,7 @@ var ObjectLoadMonitor = Class.create({
   check: function() {
     var loaded = true;
     this._objs.each( function(obj){
-      if(!obj.loaded){
+      if(obj == null || !obj.loaded){
         loaded = false;
       }
     });

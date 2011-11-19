@@ -11,6 +11,9 @@ var KeyListener = Class.create({
   _keyState: null,
   _keyNewState: null,
 
+  _userKeyDownCallback: null,
+  _userKeyUpCallback: null,
+
   initialize: function() {
     this._keyState = $A();
     this._keyNewState = $A();
@@ -44,6 +47,10 @@ var KeyListener = Class.create({
       this._keyNewState[keyChar] = true;
     }
     this._keyState[keyChar] = true;
+
+    if(this._userKeyDownCallback){
+      this._userKeyDownCallback(event);
+    }
   },
 
   keyUpCallback: function(event) {
@@ -52,6 +59,18 @@ var KeyListener = Class.create({
     var keyChar = String.fromCharCode(event.keyCode);
 
     this._keyState[keyChar] = false;
+
+    if(this._userKeyUpCallback){
+      this._userKeyUpCallback(event);
+    }
+  },
+
+  setKeyDownCallback: function(func) {
+    this._userKeyDownCallback = func;
+  },
+
+  setKeyUpCallback: function(func) {
+    this._userKeyUpCallback = func;
   },
 
   resetKeyNewState: function() {
