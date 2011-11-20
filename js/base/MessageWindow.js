@@ -26,7 +26,13 @@ var MessageWindow = Class.create(DH2DObject, {
   _y: 140,
 
   _message: "",
+  _formattedMessage: $A(),
+  _lines: 0,
+  _lineHeight: 15,
   _messageWidth: 0,
+  _messageHeight: 0,
+  _messageNumChars: 0,
+  _maxWidth: -1,
   _offset: null,
   _screenOffset: null,
   _margin: 5,
@@ -53,7 +59,7 @@ var MessageWindow = Class.create(DH2DObject, {
   _textColor: "black",
   _font: "10px sans-serif",
   _textAlign: "start",
-  _textBaseline: "alphabetic",
+  _textBaseline: "top",
   _textShadowBlur: 0,
   _textShadowColor: "rgba(0, 0, 0, 0.0)",
   _textShadowOffsetX: 0,
@@ -76,16 +82,10 @@ var MessageWindow = Class.create(DH2DObject, {
     var padding = this._padding;
     var iconPadding = this._iconPadding;
     var vHeight = 10;
-    var textHeight = 10; // FIXME
-    var heightMax = textHeight + padding * 2;
+    var heightMax = this._messageHeight + padding * 2;
     var widthMax = this._messageWidth + padding * 2;
     var height;
     var width;
-
-    if(this._icon) {
-      widthMax  += this._icon.width  + iconPadding;
-      heightMax += this._icon.height + iconPadding;
-    }
 
     var targetX = this._x;
     var targetY = this._y;
@@ -103,26 +103,8 @@ var MessageWindow = Class.create(DH2DObject, {
         worldPos.add(worldPos, this._offset);
       }
       windowPos = this._bindedCamera.getScreenPosition(worldPos);
-      /*
-      this._x = this._bindedCanvas._canvasWidth * 0.5
-              + this._bindedCanvas._widthPerX * windowPos.x;
-      this._y = this._bindedCanvas._canvasHeight * 0.5
-              - this._bindedCanvas._widthPerX * windowPos.y;
-      */
       this._x = this._bindedCanvas._canvasWidth  * 0.5 * (1.0 + windowPos.x);
       this._y = this._bindedCanvas._canvasHeight * 0.5 * (1.0 - windowPos.y);
-      /*
-      var cw = this._bindedCanvas._canvasWidth;
-      var ch = this._bindedCanvas._canvasHeight;
-      var maxWidth;
-      if(cw > ch){
-        maxWidth = cw;
-      }else{
-        maxWidth = ch;
-      }
-      this._x = cw * 0.5 + maxWidth * 0.5 * windowPos.x;
-      this._y = ch * 0.5 - maxWidth * 0.5 * windowPos.y;
-      */
 
       if(this._screenOffset){
         this._x += this._screenOffset.x;
@@ -132,8 +114,6 @@ var MessageWindow = Class.create(DH2DObject, {
       targetY = this._y;
       var left = this._x - widthMax * 0.5;
       var right = this._x + widthMax * 0.5;
-      //var top = this._y - heightMax * 0.5;
-      //var bottom = this._y + heightMax * 0.5;
       var top = this._y - heightMax;
       var bottom = this._y;
 
@@ -170,55 +150,27 @@ var MessageWindow = Class.create(DH2DObject, {
         height = heightMax * this._time;
         width = widthMax * this._time;
       }
-      //this.drawBalloon(this._x - width * 0.5, this._y - height * 0.5, width, height);
       // FIXME
       this.drawBalloon(targetX, targetY + vHeight, this._x - width * 0.5, this._y - height, width, height);
     }else if(this._mode == this.MODE_STRING){
-      var iconTop;
-      var iconLeft;
-      var textLeft = this._x - widthMax * 0.5 + padding;
-      var text;
-
-      if(this._icon){
-        iconTop  = this._y - heightMax + padding;
-        iconLeft = textLeft;
-        textLeft += this._icon.width + iconPadding;
-      }
+      var textLen;
 
       if(this._time >= 1.0){
         this._time = 0.0;
         this._mode = this.MODE_STAY;
-        text = this._message;
+	textLen = this._messageNumChars;
       }else{
-        var textLen = Math.ceil(this._message.length * this._time);
-        text = this._message.substr(0, textLen);
+        textLen = Math.ceil(this._messageNumChars * this._time);
       }
-      //this.drawBalloon(this._x - widthMax * 0.5, this._y - heightMax * 0.5, widthMax, heightMax);
       // FIXME
       this.drawBalloon(targetX, targetY + vHeight, this._x - widthMax * 0.5, this._y - heightMax, widthMax, heightMax);
 
-      if(this._icon){
-        c.drawImage(this._icon, iconLeft, iconTop);
-      }
-      
-      this.setupTextContext();
-      c.strokeText(text, textLeft, this._y - heightMax * 0.5, widthMax);
+      this._drawIconAndText(textLen);
     }else if(this._mode == this.MODE_STAY){
-      //this.drawBalloon(this._x - widthMax * 0.5, this._y - heightMax * 0.5, widthMax, heightMax);
       // FIXME
       this.drawBalloon(targetX, targetY + vHeight, this._x - widthMax * 0.5, this._y - heightMax, widthMax, heightMax);
 
-      var textLeft = this._x - widthMax * 0.5 + padding;
-      if(this._icon){
-        var iconTop  = this._y - heightMax + padding;
-        var iconLeft = textLeft;
-        textLeft += this._icon.width + iconPadding;
-
-        c.drawImage(this._icon, iconLeft, iconTop);
-      }
-
-      this.setupTextContext();
-      c.strokeText(this._message, textLeft, this._y - heightMax * 0.5, widthMax);
+      this._drawIconAndText();
     }else if(this._mode == this.MODE_CLOSE){
       if(this._time >= 1.0){
         this._time = 0.0;
@@ -226,10 +178,63 @@ var MessageWindow = Class.create(DH2DObject, {
       }else{
         height = heightMax * (1.0 - this._time);
         width = widthMax * (1.0 - this._time);
-        //this.drawBalloon(this._x - width * 0.5, this._y - height * 0.5, width, height);
         // FIXME
         this.drawBalloon(targetX, targetY + vHeight, this._x - width * 0.5, this._y - height, width, height);
       }
+    }
+  },
+
+  _drawIconAndText: function(len) {
+    var c = this._bindedCanvas._2DContext;
+
+    var drawLen = this._messageNumChars;
+    if(0 < len && len < drawLen){
+      drawLen = len;
+    }
+
+    var widthMax = this._messageWidth + this._padding * 2;
+    var heightMax = this._messageHeight + this._padding * 2;
+    var textLeft = this._x - widthMax * 0.5 + this._padding;
+    var textTop = this._y - heightMax + this._padding;
+    var iconLeft = 0;
+    var iconTop = 0;
+    var iconLines = 0;
+    var iconTextLeft = textLeft;
+    var iconPadding = this._iconPadding;
+
+    // drawIcon
+    if(this._icon){
+      iconTop  = textTop;
+      iconLeft = textLeft;
+      iconLines = Math.ceil((this._icon.height + iconPadding) / this._lineHeight);
+      iconTextLeft += this._icon.width + iconPadding;
+
+      c.drawImage(this._icon, iconLeft, iconTop);
+    }
+
+    // drawText
+    this.setupTextContext();
+    var numChars = 0;
+    var line = 0;
+    var top = this._y - this._messageHeight - this._padding;
+    while(numChars < drawLen){
+      var str = this._formattedMessage[line];
+      var strLen = str.length;
+      if(strLen + numChars > drawLen){
+        strLen = drawLen - numChars;
+        str = str.substr(0, strLen);
+      }
+
+      var left = textLeft;
+      if(line < iconLines){
+        left = iconTextLeft;
+      }
+
+      c.strokeText(str, left, top);
+
+      numChars += strLen;
+      top += this._lineHeight;
+      line++;
     }
   },
 
@@ -320,6 +325,7 @@ var MessageWindow = Class.create(DH2DObject, {
   },
 
   open: function() {
+    this._updateMessageSize();
     this._mode = this.MODE_OPEN;
     this._time = 0.0;
   },
@@ -345,6 +351,7 @@ var MessageWindow = Class.create(DH2DObject, {
 
   setCanvas: function(canvas) {
     this._bindedCanvas = canvas;
+    this._updateMessageSize();
   },
 
   getIcon: function() {
@@ -353,6 +360,7 @@ var MessageWindow = Class.create(DH2DObject, {
 
   setIcon: function(icon) {
     this._icon = icon;
+    this._updateMessageSize();
   },
 
   getOffset: function() {
@@ -385,9 +393,107 @@ var MessageWindow = Class.create(DH2DObject, {
 
   setMessage: function(message) {
     this._message = message;
+    this._updateMessageSize();
+  },
 
-    var met = this._bindedCanvas._2DContext.measureText(message);
-    this._messageWidth = met.width;
+  getMaxWidth: function() {
+    return this._maxWidth;
+  },
+
+  setMaxWidth: function(maxWidth) {
+    this._maxWidth = maxWidth;
+    this._updateMessageSize();
+  },
+
+  _updateMessageSize: function() {
+    var iconWidth = 0;
+    var iconHeight = 0;
+
+    if(this._icon){
+      iconWidth  = this._icon.width  + this._iconPadding;
+      iconHeight = this._icon.height + this._iconPadding;
+    }
+    if(this._message == null){
+      this._messageNumChars = 0;
+      this._messageWidth  = iconWidth;
+      this._messageHeight = iconHeight;
+      return;
+    }
+    
+    var mArr = this._message.split("\n");
+    this._formattedMessage = $A();
+    var iconLines = Math.ceil(iconHeight / this._lineHeight);
+
+    var maxLineWidth = this._maxWidth - this._padding * 2;
+    if(this._maxWidth < 0){
+      maxLineWidth = 65535;
+    }
+
+    var strMaxWidth = 0;
+    var maxWidth;
+    var messageNumChars = 0;
+    var obj = this;
+    var line = 0;
+    mArr.forEach( function(str){
+      var lineStr = str;
+      while(lineStr.length > 0){
+        if(line < iconLines){
+          maxWidth = maxLineWidth - iconWidth;
+        }else{
+          maxWidth = maxLineWidth;
+        }
+        var numChars = obj._getLineChars(lineStr, maxWidth);
+	var chars = lineStr.substr(0, numChars);
+	var charsWidth = obj._bindedCanvas._2DContext.measureText(chars).width;
+	if(line < iconLines){
+	  charsWidth += iconWidth;
+        }
+	if(charsWidth > strMaxWidth){
+	  strMaxWidth = charsWidth;
+        }
+	obj._formattedMessage.push(chars);
+	lineStr = lineStr.substr(numChars);
+
+	messageNumChars += numChars;
+	line++;
+      }
+    });
+    this._messageNumChars = messageNumChars;
+    this._messageWidth = strMaxWidth;
+    this._messageHeight = line * this._lineHeight;
+    if(this._messageHeight < iconHeight){
+      this._messageHeight = iconHeight;
+    }
+  },
+
+  _getLineChars: function(str, maxWidth) {
+    var c = this._bindedCanvas._2DContext;
+    var met = c.measureText(str);
+    var strlen = str.length;
+    var strWidth = met.width;
+    if(strWidth < maxWidth){
+      return strlen;
+    }
+
+    var minLen = 0;
+    var maxLen = strlen;
+    var newLen = strlen >> 1;
+    var newMet;
+    while(minLen < maxLen - 1){
+      newMet = c.measureText(str.substr(0,newLen));
+      if(newMet.width < maxWidth){
+        minLen = newLen;
+        newLen = (newLen + maxLen) >> 1;
+      }else{
+        maxLen = newLen;
+        newLen = (newLen + minLen) >> 1;
+      }
+    }
+    if(newMet.width > maxWidth){
+      return newLen - 1;
+    }else{
+      return newLen;
+    }
   },
 
   getState: function() {
