@@ -82,13 +82,13 @@ var Renderer = Class.create({
     // FIXME:Locationのキャッシュ
     this._vertexShader.setLightData(this._light);
 
-    this._gl.bindBuffer(this._gl.ARRAY_BUFFER, dhObject.model.vertexBuffer);
+    this._gl.bindBuffer(this._gl.ARRAY_BUFFER, dhObject._model.vertexBuffer);
     this._vertexShader.bufferDynamicVertexData(dhObject);
     this._vertexShader.setAttribPointer();
 
     // renderGroup毎に描画
-    for(var i=0; i<dhObject.model.renderGroupArray.length; i++){
-      var renderGroup = dhObject.model.renderGroupArray[i];
+    for(var i=0; i<dhObject._model.renderGroupArray.length; i++){
+      var renderGroup = dhObject._model.renderGroupArray[i];
       var material = renderGroup.material;
 
       this._gl.bindBuffer(this._gl.ELEMENT_ARRAY_BUFFER, renderGroup.indexBuffer);

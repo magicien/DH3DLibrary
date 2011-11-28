@@ -377,7 +377,7 @@ var Camera = Class.create({
 
   update: function(elapsedTime) {
     if(this.bindObj){
-      var objPos = this.bindObj.position;
+      var objPos = this.bindObj._position;
       var ox = objPos.x + this.bindOffset.x;
       var oy = objPos.y + this.bindOffset.y;
       var oz = objPos.z + this.bindOffset.z;

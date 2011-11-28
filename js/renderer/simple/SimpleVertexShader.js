@@ -142,10 +142,10 @@ void main()                                             \
   },
 
   bufferDynamicVertexData: function(dhObject) {
-    if(dhObject.model.dynamicSkinOffset >= 0){
+    if(dhObject._model.dynamicSkinOffset >= 0){
       this._gl.bufferSubData(
         this._gl.ARRAY_BUFFER,
-        dhObject.model.dynamicSkinOffset * 16*4,
+        dhObject._model.dynamicSkinOffset * 16*4,
         this.getDynamicVertexData(dhObject)
       );
     }

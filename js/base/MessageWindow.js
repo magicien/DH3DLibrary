@@ -93,9 +93,9 @@ var MessageWindow = Class.create(DH2DObject, {
       var worldPos;
       var windowPos;
 
-      worldPos = new DHVector3(this._bindedObject.position);
+      worldPos = new DHVector3(this._bindedObject._position);
       if(this._bindedBone){ // FIXME
-        var bone = this._bindedObject.model.boneHash.get(this._bindedBone);
+        var bone = this._bindedObject._model.boneHash.get(this._bindedBone);
         worldPos.add(worldPos, bone.position);
       }
 

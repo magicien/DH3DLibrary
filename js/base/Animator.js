@@ -12,7 +12,7 @@ var Animator = Class.create({
   },
 
   animate: function(dhObject, elapsedTime) {
-    var model = dhObject.model;
+    var model = dhObject._model;
 
     this.updateMotion(dhObject, elapsedTime);
     

@@ -12,29 +12,29 @@ var MMDAnimator = Class.create(Animator, {
   },
 
   updateMotion: function(dhObject, elapsedTime) {
-    var model = dhObject.model;
-    var motion = dhObject.motion;
+    var model = dhObject._model;
+    var motion = dhObject._motion;
 
-    if(dhObject.animating){
-      dhObject.animationTime += elapsedTime;
-      var frameNo = dhObject.animationTime * motion.defaultFPS;
+    if(dhObject._animating){
+      dhObject._animationTime += elapsedTime;
+      var frameNo = dhObject._animationTime * motion.defaultFPS;
       if(frameNo > motion.frameLength){
-        if(dhObject.loop){
-          dhObject.animationTime -= motion.frameLength / motion.defaultFPS;
+        if(dhObject._loop){
+          dhObject._animationTime -= motion.frameLength / motion.defaultFPS;
         }else{
-          dhObject.animationTime = motion.frameLength / motion.defaultFPS;
-          dhObject.animating = false;
+          dhObject._animationTime = motion.frameLength / motion.defaultFPS;
+          dhObject._animating = false;
         }
       }
-      if(dhObject.motionBlendStep){
-        dhObject.motionBlendCount -= dhObject.motionBlendStep * motion.defaultFPS * elapsedTime;
-        if(dhObject.motionBlendCount < 0){
-          dhObject.motionBlendCount = 0;
-          dhObject.motionBlendStep = 0;
+      if(dhObject._motionBlendStep){
+        dhObject._motionBlendCount -= dhObject._motionBlendStep * motion.defaultFPS * elapsedTime;
+        if(dhObject._motionBlendCount < 0){
+          dhObject._motionBlendCount = 0;
+          dhObject._motionBlendStep = 0;
         }
       }
     }
-    dhObject.animationFrame = dhObject.animationTime * motion.defaultFPS;
+    dhObject._animationFrame = dhObject._animationTime * motion.defaultFPS;
 
     var animator = this;
     motion.motionArray.each( function(boneMotion){
@@ -59,11 +59,11 @@ var MMDAnimator = Class.create(Animator, {
   },
 
   setBone: function(dhObject, motion, bone) {
-    if(!dhObject.motionNumCache)
-      dhObject.motionNumCache = $H();
+    if(!dhObject._motionNumCache)
+      dhObject._motionNumCache = $H();
 
-    var frameNo = dhObject.motionNumCache.get(bone.name);
-    var time = dhObject.animationFrame;
+    var frameNo = dhObject._motionNumCache.get(bone.name);
+    var time = dhObject._animationFrame;
     var motionLen = motion.length;
     var key0;
     var key1;
@@ -93,7 +93,7 @@ var MMDAnimator = Class.create(Animator, {
     if(key1 >= motionLen) key1 = motionLen - 1;
 
     // cache motion number
-    dhObject.motionNumCache.set(bone.name, key0);
+    dhObject._motionNumCache.set(bone.name, key0);
 
     var motion0 = motion[key0];
     var motion1 = motion[key1];
@@ -124,9 +124,9 @@ var MMDAnimator = Class.create(Animator, {
       rot.setValue(motion0.rotate);
     }
 
-    if(dhObject.motionBlendCount){
-      pos.lerp(pos, bone.blendPosition, dhObject.motionBlendCount);
-      rot.lerp(rot, bone.blendRotation, dhObject.motionBlendCount);
+    if(dhObject._motionBlendCount){
+      pos.lerp(pos, bone.blendPosition, dhObject._motionBlendCount);
+      rot.lerp(rot, bone.blendRotation, dhObject._motionBlendCount);
     }
   },
 
@@ -160,11 +160,11 @@ var MMDAnimator = Class.create(Animator, {
   },
 
   setFace: function(dhObject, faceMotion, face) {
-    if(!dhObject.faceMotionNumCache)
-      dhObject.faceMotionNumCache = $H();
+    if(!dhObject._faceMotionNumCache)
+      dhObject._faceMotionNumCache = $H();
 
-    var frameNo = dhObject.faceMotionNumCache.get(face.name);
-    var time = dhObject.animationFrame;
+    var frameNo = dhObject._faceMotionNumCache.get(face.name);
+    var time = dhObject._animationFrame;
     var motionLen = faceMotion.length;
     var key0;
     var key1;
@@ -206,6 +206,6 @@ var MMDAnimator = Class.create(Animator, {
     }else{
       rate = motion0.factor;
     }
-    face.blendFace(dhObject.model, rate);
+    face.blendFace(dhObject._model, rate);
   },
 });

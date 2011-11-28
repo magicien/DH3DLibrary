@@ -7,40 +7,39 @@
  *
  *------------------------------------------------------------------------------*/
 var DH3DObject = Class.create({
-  model: null,
-  motion: null,
-  renderer: null,
-  animator: null,
-  eventArray: $A(), // FIXME: not use
-  motionEventArray: $A(),
+  _model: null,
+  _motion: null,
+  _renderer: null,
+  _animator: null,
+  _eventArray: $A(), // FIXME: not use
+  _motionEventArray: $A(),
 
-  animationTime: 0.0,
-  animationFrame: 0.0,
-  animating: false,
-  loop: false,
+  _animationTime: 0.0,
+  _animationFrame: 0.0,
+  _animating: false,
+  _loop: false,
 
-  force: null,
-  speed: null,
-  position: null,
-  direction: 0,
-  maxSpeed: 10.0,
+  _force: null,
+  _speed: null,
+  _position: null,
+  _direction: 0,
+  _maxSpeed: 10.0,
 
-  state: null,
+  _state: null,
 
   // motion blending
-  motionBlendCount: 0.0,
-  motionBlendStep: 0.0,
-
+  _motionBlendCount: 0.0,
+  _motionBlendStep: 0.0,
 
   initialize: function() {
-    this.position = new DHVector3(0, 0, 0);
-    this.force = new DHVector3(0, 0, 0);
-    this.speed = new DHVector3(0, 0, 0);
+    this._position = new DHVector3(0, 0, 0);
+    this._force = new DHVector3(0, 0, 0);
+    this._speed = new DHVector3(0, 0, 0);
 
-    this.motionStep = 0.0;
-    this.motionCount = 0.0;
+    this._motionStep = 0.0;
+    this._motionCount = 0.0;
 
-    this.motionEventArray = $A();
+    this._motionEventArray = $A();
   },
 
   move: function(elapsedTime) {
@@ -49,98 +48,126 @@ var DH3DObject = Class.create({
     var friction = 5.0 * elapsedTime;
 
     if(friction < 1.0){
-      this.speed.mulAdd(this.speed, this.speed, -friction);
+      this._speed.mulAdd(this._speed, this._speed, -friction);
     }else{
-      this.speed.setValue(0, 0, 0);
+      this._speed.setValue(0, 0, 0);
     }
     
-    this.speed.mulAdd(this.speed, this.force, 5.0 * elapsedTime);
-    var speedVal = this.speed.length();
-    if(speedVal > this.maxSpeed){
-      this.speed.mul(this.speed, this.maxSpeed / speedVal);
+    this._speed.mulAdd(this._speed, this._force, 5.0 * elapsedTime);
+    var speedVal = this._speed.length();
+    if(speedVal > this._maxSpeed){
+      this._speed.mul(this._speed, this._maxSpeed / speedVal);
     }
 
-    this.position.mulAdd(this.position, this.speed, elapsedTime);
-    this.model.rootBone.offset.setValue(this.position);
+    this._position.mulAdd(this._position, this._speed, elapsedTime);
+    this._model.rootBone.offset.setValue(this._position);
 
     var axis = new DHVector3(0.0, 1.0, 0.0);
-    if(this.force.z > 0.001 || this.force.z < -0.001){
-      this.direction = Math.atan(this.force.x / this.force.z);
-      if(this.force.z < 0){
-        this.direction += Math.PI;
+    if(this._force.z > 0.001 || this._force.z < -0.001){
+      this._direction = Math.atan(this._force.x / this._force.z);
+      if(this._force.z < 0){
+        this._direction += Math.PI;
       }
-    }else if(this.force.x > 0.001){
-      this.direction = Math.PI * 0.5;
-    }else if(this.force.x < -0.001){
-      this.direction = Math.PI * -0.5;
+    }else if(this._force.x > 0.001){
+      this._direction = Math.PI * 0.5;
+    }else if(this._force.x < -0.001){
+      this._direction = Math.PI * -0.5;
     }
-    this.model.rootBone.rotate.createAxis(axis, this.direction);
+    this._model.rootBone.rotate.createAxis(axis, this._direction);
   },
 
   setModel: function(model) {
-    if(this.model){
-      this.model.destroy();
+    if(this._model){
+      this._model.destroy();
     }
 
-    if(this.renderer && model.renderer != this.renderer){
-      this.model = ModelBank.getModelForRenderer(model.hashName, this.renderer);
+    if(this._renderer && model._renderer != this._renderer){
+      this._model = ModelBank.getModelForRenderer(model.hashName, this._renderer);
     }else{
-      this.model = model;
+      this._model = model;
     }
   },
 
   setMotion: function(motion) {
-    this.motion = motion;
+    this._motion = motion;
   },
 
   setMotionWithBlending: function(motion, blendCount) {
-    this.motion = motion;
-    this.motionBlendCount = 1.0;
-    this.motionBlendStep = 1.0 / blendCount;
-    this.model.rootBone.setBlendValueRecursive();
+    this._motion = motion;
+    this._motionBlendCount = 1.0;
+    this._motionBlendStep = 1.0 / blendCount;
+    this._model.rootBone.setBlendValueRecursive();
   },
 
   setRenderer: function(renderer) {
-    if(this.model && this.model.renderer != renderer){
-      this.model = ModelBank.getModelForRenderer(this.model.hashName, renderer);
+    if(this._model && this._model.renderer != renderer){
+      this._model = ModelBank.getModelForRenderer(this._model.hashName, renderer);
     }
-    this.renderer = renderer;
+    this._renderer = renderer;
+  },
+
+  setAnimating: function(animating) {
+    if(animating || animating == undefined){
+      this._animating = true;
+    }else{
+      this._animating = false;
+    }
+  },
+
+  getAnimating: function() {
+    return this._animating;
+  },
+
+  setLoop: function(loop) {
+    if(loop || loop == undefined){
+      this._loop = true;
+    }else{
+      this._loop = false;
+    }
+  },
+
+  getLoop: function() {
+    return this._loop;
   },
 
   setAnimator: function(animator) {
-    this.animator = animator;
+    this._animator = animator;
   },
 
   setAnimationTime: function(time) {
-    this.animationTime = time;
+    this._animationTime = time;
+  },
+
+  getAnimationTime: function() {
+    return this._animationTime;
   },
 
   setPosition: function(x, y, z) {
     if(x instanceof DHVector3){
-      this.position.x = x.x;
-      this.position.y = x.y;
-      this.position.z = x.z;
+      this._position.x = x.x;
+      this._position.y = x.y;
+      this._position.z = x.z;
     }else{
-      this.position.x = x;
-      this.position.y = y;
-      this.position.z = z;
+      this._position.x = x;
+      this._position.y = y;
+      this._position.z = z;
     }
   },
 
   setSpeed: function(x, y, z) {
     if(x instanceof DHVector3){
-      this.speed.x = x.x;
-      this.speed.y = x.y;
-      this.speed.z = x.z;
+      this._speed.x = x.x;
+      this._speed.y = x.y;
+      this._speed.z = x.z;
     }else{
-      this.speed.x = x;
-      this.speed.y = y;
-      this.speed.z = z;
+      this._speed.x = x;
+      this._speed.y = y;
+      this._speed.z = z;
     }
   },
 
   setRotate: function(x, y, z, w) {
-    var rot = this.model.rootBone.rotate;
+    var rot = this._model.rootBone.rotate;
     if(x instanceof DHVector4){
       rot.x = x.x;
       rot.y = x.y;
@@ -161,56 +188,51 @@ var DH3DObject = Class.create({
       y = x;
       z = x;
     }
-    var scale = this.model.rootBone.scale;
+    var scale = this._model.rootBone.scale;
     scale.x = x;
     scale.y = y;
     scale.z = z;
   },
 
   getSkinArray: function() {
-    if(this.model){
-      return this.model.getSkinArray();
+    if(this._model){
+      return this._model.getSkinArray();
     }
     return null;
   },
 
   getDynamicSkinArray: function() {
-    if(this.model){
-      return this.model.getDynamicSkinArray();
+    if(this._model){
+      return this._model.getDynamicSkinArray();
     }
     return null;
   },
 
   getNumElements: function() {
-    if(this.model){
-      return (this.model.indexArray.length / 3);
+    if(this._model){
+      return (this._model.indexArray.length / 3);
     }
     return 0;
   },
 
   // FIXME: implementation
   getTexture: function() {
-    if(this.model){
+    if(this._model){
 
     }
   },
-
-  getAnimationTime: function() {
-    return this.animationTime;
-  },
-
 
   animate: function(elapsedTime) {
-    var animationTimeBefore = this.animationTime;
-    if(this.animator){
-      this.animator.animate(this, elapsedTime);
+    var animationTimeBefore = this._animationTime;
+    if(this._animator){
+      this._animator.animate(this, elapsedTime);
     }else{
       // ボーンの行列更新のみ行う
-      this.model.rootBone.updateMatrixRecursive();
+      this._model.rootBone.updateMatrixRecursive();
     }
-    var animationTimeAfter = this.animationTime;
+    var animationTimeAfter = this._animationTime;
 
-    this.motionEventArray.each( function(me){
+    this._motionEventArray.each( function(me){
       if(animationTimeBefore < me.time && me.time <= animationTimeAfter){
         me.start();
       }
@@ -218,8 +240,8 @@ var DH3DObject = Class.create({
   },
 
   render: function() {
-    if(this.renderer)
-      this.renderer.render(this);
+    if(this._renderer)
+      this._renderer.render(this);
   },
 
   addMotionCallback: function(func, time) {
@@ -227,11 +249,11 @@ var DH3DObject = Class.create({
     motionEvent.time = time;
     motionEvent.setEventCallback(func);
 
-    this.motionEventArray.push(motionEvent);
+    this._motionEventArray.push(motionEvent);
   },
 
   removeMotionCallback: function(func, time) {
-    var arr = this.motionEventArray;
+    var arr = this._motionEventArray;
     var target = null;
     arr.each( function(me){
       if(me.time == time && me.getEventCallback() == func){
@@ -240,12 +262,12 @@ var DH3DObject = Class.create({
       }
     });
     if(target){
-      this.motionEventArray = arr.without(target);
+      this._motionEventArray = arr.without(target);
     }
   },
 
   clearMotionCallback: function() {
-    var arr = this.motionEventArray;
+    var arr = this._motionEventArray;
     arr.each( function(me){
       me.delete();
     });
