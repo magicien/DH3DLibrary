@@ -273,5 +273,29 @@ var DH3DObject = Class.create({
     });
     arr.clear();
   },
+
+  setDirection: function(direction) {
+    this._direction = direction;
+  },
+
+  getDirection: function() {
+    return this._direction;
+  },
+
+  setMaxSpeed: function(maxSpeed) {
+    this._maxSpeed = maxSpeed;
+  },
+
+  getMaxSpeed: function() {
+    return this._maxSpeed;
+  },
+
+  setState: function(state) {
+    this._state = state;
+  },
+
+  getState: function() {
+    return this._state;
+  },
 });
 
