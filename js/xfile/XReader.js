@@ -7,9 +7,13 @@
  *
  *------------------------------------------------------------------------------*/
 var XReader = Class.create(ModelReader, {
+  _model: null,
   _parentDirName: null,
 
 //  _maxEffBonesLength: 20, // FIXME: bind to vertex shader
+
+  _error: 0,
+  _loaded: false,
 
   initialize: function($super) {
     $super();
@@ -20,13 +24,54 @@ var XReader = Class.create(ModelReader, {
       return false;
     }
 
-    var text;
-    var request = Ajax.getTransport();
-    request.open('GET', url, false);
-    request.overrideMimeType('text/plain; charset=shift_jis');
-    request.send(null);
-    text = request.responseText;
+    var obj = this;
+    var onload = function(){ obj.readModelProcess(url); };
 
+    this._model = new XModel();
+    this._textReader = new TextReader(url, 'sjis', onload);
+
+    return this._model;
+  },
+
+  readModelFromFile: function(file) {
+    if(file.name.substr(-2) != ".x"){
+      alert("filename_error: " + file.name);
+      return false;
+    }
+
+    var obj = this;
+    var onload = function(){ obj.readModelProcess(url); };
+
+    this._model = XModel();
+    this._textReader = new TextReader(file, 'sjis', onload);
+
+    return this._model;
+  },
+
+  readModelProcess: function(url) {
+    this.readModelSub(url);
+
+    if(this._error){
+      if(this._model.onerror){
+        this._model.onerror();
+      }
+    }
+
+    if(this._loaded){
+      this._model.loaded = true;
+      if(this._model.onload){
+        this._model.onload();
+      }
+    }
+
+    if(this._error || this._loaded){
+      if(this._model.onloadend){
+        this._model.onloadend();
+      }
+    }
+  },
+
+  readModelSub: function(url){
     this._parentDirName = (new String(url)).gsub(/\/[^\/]*$/, "/");
     if(url == this._parentDirName){
       this._parentDirName = "./";
@@ -34,27 +79,14 @@ var XReader = Class.create(ModelReader, {
 
     var parser = new XParser();
     parser.setParentDirName(this._parentDirName);
-    var model = parser.parse(text);
+    parser.setModel(this._model);
+    parser.parse(this._textReader.getText());
 
-    this._model = model;
-    // FIXME: error handling
     if(model == null){
-    /*
-      if(this._model.onerror){
-        this._model.onerror();
-      }
-    */
+      this._error = 1;
     }else{
-      this._model.loaded = true;
-      if(this._model.onload){
-        this._model.onload();
-      }
+      this._loaded = true;
     }
-    if(this._model.onloadend){
-      this._model.onloadend();
-    }
-
-    return model;
   },
 });
 

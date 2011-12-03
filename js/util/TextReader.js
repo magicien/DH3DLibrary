@@ -1,25 +1,27 @@
 /*--------------------------------------------------------------------------------
- * DH3DLibrary BinaryReader.js v0.1.0
+ * DH3DLibrary TextReader.js v0.1.0
  * Copyright (c) 2010-2011 DarkHorse
  *
  * DH3DLibrary is freely distributable under the terms of an MIT-style license.
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
  *
  *------------------------------------------------------------------------------*/
-var BinaryReader = Class.create({
+var TextReader = Class.create({
   url: '',
-  bigEndian: false,
   encoding: 'utf-8',
   position: 0,
   eof: true,
-  parser: null,
+  //parser: null,
   data: null,
   onloadFunc: null,
 
-  initialize: function(url, bigEndian, encoding, onload) {
-    this.bigEndian = bigEndian;
+  initialize: function(url, encoding, onload) {
     this.encoding = encoding;
     this.onloadFunc = onload;
+
+    if(encoding == "sjis"){
+      this._encoding = "shift_jis";
+    }
 
     var obj = this;
     if(url instanceof File){
@@ -28,11 +30,11 @@ var BinaryReader = Class.create({
       reader.onloadend = function(){
         obj._onload(reader.result);
       };
-      reader.readAsBinaryString(url);
+      reader.readAsText(url, this._encoding);
     }else{
       this.url = url;
 
-      new BinaryRequest(url, {
+      new TextRequest(url, this._encoding, {
         method: 'GET',
         onComplete: function(response) {
           obj._onload(response.responseText);
@@ -41,25 +43,23 @@ var BinaryReader = Class.create({
     }
   },
 
-  _onload: function(binData) {
+  _onload: function(textData) {
     this.position = 0;
-    this.eof = true;
 
-    var binStream = $A();
-    for(i=0; i<binData.length; i++){
-      binStream[i] = binData.charCodeAt(i) & 0xff;
-    }
-    this.data = binStream;
-
+    this.data = textData;
     this.eof = false;
     
-    this.parser = new BinaryParser(this.bigEndian, true);
-
     if(this.onloadFunc){
       this.onloadFunc();
     }
   },
 
+  getText: function() {
+    return this.data;
+  },
+
+  // FIXME: implementation
+/*
   hasBytesAvailable: function() {
     return !this.eof;
   },
@@ -175,6 +175,7 @@ var BinaryReader = Class.create({
 
     return value;
   },
+  */
 });
 
 

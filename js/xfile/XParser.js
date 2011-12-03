@@ -26,9 +26,15 @@ var XParser = Class.create({
     this._parentDirName = dirName;
   },
 
+  setModel: function(obj) {
+    this._obj = obj;
+  },
+
   parse: function(text){
     this._text = text;
-    this._obj = new XModel();
+    if(!this._obj){
+      this._obj = new XModel();
+    }
     this._offset = 0;
     this._err = 0;
 
@@ -387,16 +393,6 @@ var XParser = Class.create({
     if(id == null){
       return null;
     }
-    /*
-    switch(id.charCodeAt(0)){
-      case 116:
-        alert("template!");
-        break;
-      default:
-        alert("unknown type:" + id);
-        break;
-    }
-    }*/
     switch(id){
       case "template":
         return this.Template(parent);
@@ -670,25 +666,6 @@ var XParser = Class.create({
     this.getLeftBrace();
     var name = this.getFilename();
     name = name.replace("\\\\", "/");
-    /*
-    alert("before escape: " + name);
-    var escapeString = '';
-    for(var i=0; i<name.length; i++){
-      var code = name.charCodeAt(i);
-      if(code < 16){
-        escapeString += '%0' + code.toString(16);
-      }else if(code < 256){
-        escapeString += '%' + code.toString(16);
-      }else{
-        var c1 = code % 256;
-        var c2 = Math.floor(code / 256);
-        escapeString += '%' + c1.toString(16) + '%' + c2.toString(16);
-      }
-    }
-    alert("after escape: " + escapeString);
-    name = UnescapeSJIS(escapeString);
-    alert("texture path: " + this._parentDirName + name);
-    */
     this.getRightBrace();
 
     var texture = TextureBank.getTexture(this._parentDirName + name);

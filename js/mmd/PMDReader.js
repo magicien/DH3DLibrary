@@ -53,17 +53,6 @@ var PMDReader = Class.create(ModelReader, {
   readModelProcess: function(url) {
     var result = this.readModelSub(url);
 
-/*
-    if(!result){
-      if(this._returnModel.onerror){
-        this._returnModel.onerror();
-      }
-    }else{
-      if(this._returnModel.onload){
-        this._returnModel.onload();
-      }
-    }
-*/
     if(!result){
       if(this._model.onerror){
         this._model.onerror();
@@ -84,7 +73,6 @@ var PMDReader = Class.create(ModelReader, {
     if(url == this._parentDirName){
       this._parentDirName = "./";
     }
-    //this._model = new PMDModel();
 
     var result = this.readHeader();
     if(!result){
