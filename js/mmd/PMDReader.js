@@ -206,9 +206,21 @@ var PMDReader = Class.create(ModelReader, {
       materialObj.toonIndex = this._binaryReader.readUnsignedByte();
       materialObj.edge = this._binaryReader.readUnsignedByte();
       materialObj.indexCount = this._binaryReader.readUnsignedInt();
-      materialObj.textureFileName = this._parentDirName + this._binaryReader.readString(20);
+
+      var textureFile = this._binaryReader.readString(20);
+      var sphereFile = "";
+      if(fileName.indexOf("*")){
+        var names = fileName.split("*");
+        textureFile = names[0];
+        sphereFile = names[1];
+      }
+      materialObj.textureFileName = this._parentDirName + textureFile;
+      materialObj.sphereFileName = this._parentDirName + sphereFile;
       if(materialObj.textureFileName != this._parentDirName){
         materialObj.texture = TextureBank.getTexture(materialObj.textureFileName);
+      }
+      if(materialObj.sphereFileName != this._parentDirName){
+        materialObj.sphere = TextureBank.getTexture(materialObj.sphereFileName);
       }
 
       this._model.materialArray[i] = materialObj;

@@ -14,9 +14,11 @@ var Material = Class.create({
   toonIndex: 0,
   edge: 0,
   textureFileName: '',
+  sphereFileName: '',
 
   texture: null,
   texture_repeat: true,
+  sphere: null,
 
   _ambientCache: null,
   _diffuseCache: null,
