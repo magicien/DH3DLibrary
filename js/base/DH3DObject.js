@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------
- * DH3DLibrary DH3DObject.js v0.1.0
- * Copyright (c) 2010-2011 DarkHorse
+ * DH3DLibrary DH3DObject.js v0.2.0
+ * Copyright (c) 2010-2012 DarkHorse
  *
  * DH3DLibrary is freely distributable under the terms of an MIT-style license.
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
@@ -13,6 +13,8 @@ var DH3DObject = Class.create({
   _animator: null,
   _eventArray: $A(), // FIXME: not use
   _motionEventArray: $A(),
+
+  _moveCallbacks: null,
 
   _animationTime: 0.0,
   _animationFrame: 0.0,
@@ -31,6 +33,10 @@ var DH3DObject = Class.create({
   _motionBlendCount: 0.0,
   _motionBlendStep: 0.0,
 
+  _autoDirection: false,
+  _mirror: false,
+  _reflectionMode: false,
+
   initialize: function() {
     this._position = new DHVector3(0, 0, 0);
     this._force = new DHVector3(0, 0, 0);
@@ -40,12 +46,32 @@ var DH3DObject = Class.create({
     this._motionCount = 0.0;
 
     this._motionEventArray = $A();
+    this._moveCallbacks = $A();
+  },
+
+  addMoveCallback: function(func){
+    if(typeof(func) != "function"){
+      return -1;
+    }
+
+    this._moveCallbacks.push(func);
+    return 0;
+  },
+
+  removeMoveCallback: function(func){
+    var i = this._moveCallbacks.indexOf(func);
+    if(i < 0){
+      return -1;
+    }
+
+    this._moveCallbacks.splice(i, 1);
+    return 0;
   },
 
   move: function(elapsedTime) {
     // FIXME: params
     var gravity = new DHVector3(0, -9.8, 0);
-    var friction = 5.0 * elapsedTime;
+    var friction = 10.0 * elapsedTime;
 
     if(friction < 1.0){
       this._speed.mulAdd(this._speed, this._speed, -friction);
@@ -60,20 +86,28 @@ var DH3DObject = Class.create({
     }
 
     this._position.mulAdd(this._position, this._speed, elapsedTime);
+
+    var myObj = this;
+    this._moveCallbacks.each( function(func){
+      func(myObj, elapsedTime);
+    });
+
     this._model.rootBone.offset.setValue(this._position);
 
-    var axis = new DHVector3(0.0, 1.0, 0.0);
-    if(this._force.z > 0.001 || this._force.z < -0.001){
-      this._direction = Math.atan(this._force.x / this._force.z);
-      if(this._force.z < 0){
-        this._direction += Math.PI;
+    if(this._autoDirection){
+      var axis = new DHVector3(0.0, 1.0, 0.0);
+      if(this._force.z > 0.001 || this._force.z < -0.001){
+        this._direction = Math.atan(this._force.x / this._force.z);
+        if(this._force.z < 0){
+          this._direction += Math.PI;
+        }
+      }else if(this._force.x > 0.001){
+        this._direction = Math.PI * 0.5;
+      }else if(this._force.x < -0.001){
+        this._direction = Math.PI * -0.5;
       }
-    }else if(this._force.x > 0.001){
-      this._direction = Math.PI * 0.5;
-    }else if(this._force.x < -0.001){
-      this._direction = Math.PI * -0.5;
+      this._model.rootBone.rotate.createAxis(axis, this._direction);
     }
-    this._model.rootBone.rotate.createAxis(axis, this._direction);
   },
 
   setModel: function(model) {
@@ -81,7 +115,7 @@ var DH3DObject = Class.create({
       this._model.destroy();
     }
 
-    if(this._renderer && model._renderer != this._renderer){
+    if(this._renderer && model.renderer != this._renderer){
       this._model = ModelBank.getModelForRenderer(model.hashName, this._renderer);
     }else{
       this._model = model;
@@ -183,6 +217,10 @@ var DH3DObject = Class.create({
     }
   },
 
+  setRotateAxis: function(axis, rotAngle) {
+    this._model.rootBone.rotate.createAxis(axis, rotAngle);
+  },
+
   setScale: function(x, y, z) {
     if(y == null && z == null){
       y = x;
@@ -192,6 +230,40 @@ var DH3DObject = Class.create({
     scale.x = x;
     scale.y = y;
     scale.z = z;
+  },
+
+  setAutoDirection: function(autoDirection) {
+    if(autoDirection || autoDirection == undefined){
+      this._autoDirection = true;
+    }else{
+      this._autoDirection = false;
+    }
+  },
+
+  getAutoDirection: function() {
+    return this._autoDirection;
+  },
+
+  setMirror: function(flag) {
+    this._mirror = flag;
+  },
+
+  getMirror: function() {
+    return this._mirror;
+  },
+
+  setReflectionMode: function(flag) {
+    this._reflectionMode = flag;
+  },
+
+  getReflectionMode: function() {
+    return this._reflectionMode;
+  },
+
+  updateMaterial: function() {
+    this._model.materialArray.each( function(mat){
+      mat.clearCache();
+    });
   },
 
   getSkinArray: function() {
@@ -232,9 +304,12 @@ var DH3DObject = Class.create({
     }
     var animationTimeAfter = this._animationTime;
 
+    var obj = this;
     this._motionEventArray.each( function(me){
       if(animationTimeBefore < me.time && me.time <= animationTimeAfter){
-        me.start();
+        if(!me.state || me.state == obj._state){
+          me.start();
+        }
       }
     });
   },
@@ -244,19 +319,27 @@ var DH3DObject = Class.create({
       this._renderer.render(this);
   },
 
-  addMotionCallback: function(func, time) {
+  renderMirror: function(reflectionObjectArray) {
+    if(this._renderer){
+      this._renderer.renderMirror(this, reflectionObjectArray);
+    }
+  },
+
+  addMotionCallback: function(func, time, state) {
     var motionEvent = new DHEvent();
     motionEvent.time = time;
+    motionEvent.state = state;
     motionEvent.setEventCallback(func);
 
     this._motionEventArray.push(motionEvent);
   },
 
-  removeMotionCallback: function(func, time) {
+  removeMotionCallback: function(func, time, state) {
     var arr = this._motionEventArray;
     var target = null;
     arr.each( function(me){
-      if(me.time == time && me.getEventCallback() == func){
+      if(me.time == time && me.state == state
+         && me.getEventCallback() == func){
         target = me;
         me.delete();
       }

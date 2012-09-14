@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------
- * DH3DLibrary PMDReader.js v0.1.0
- * Copyright (c) 2010-2011 DarkHorse
+ * DH3DLibrary PMDReader.js v0.2.0
+ * Copyright (c) 2010-2012 DarkHorse
  *
  * DH3DLibrary is freely distributable under the terms of an MIT-style license.
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
@@ -203,14 +203,15 @@ var PMDReader = Class.create(ModelReader, {
         this._binaryReader.readFloat(),
         1.0
       );
+      materialObj.emission = new DHVector4(0,0,0,0);
       materialObj.toonIndex = this._binaryReader.readUnsignedByte();
       materialObj.edge = this._binaryReader.readUnsignedByte();
       materialObj.indexCount = this._binaryReader.readUnsignedInt();
 
       var textureFile = this._binaryReader.readString(20);
       var sphereFile = "";
-      if(fileName.indexOf("*")){
-        var names = fileName.split("*");
+      if(textureFile.indexOf("*") >= 0){
+        var names = textureFile.split("*");
         textureFile = names[0];
         sphereFile = names[1];
       }

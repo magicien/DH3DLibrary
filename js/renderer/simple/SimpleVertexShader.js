@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------
- * DH3DLibrary SimpleVertexShader.js v0.1.0
- * Copyright (c) 2010-2011 DarkHorse
+ * DH3DLibrary SimpleVertexShader.js v0.2.0
+ * Copyright (c) 2010-2012 DarkHorse
  *
  * DH3DLibrary is freely distributable under the terms of an MIT-style license.
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
@@ -11,15 +11,14 @@ var SimpleVertexShader = Class.create(VertexShader, {
 
   _program: 
 "                                                       \
-#ifdef GL_ES \n\
 precision mediump float; \n\
-#endif \n\
 //const int maxEffBones = 4;                           \n \
 //const int maxEffBonesLength = 20;                    \n \
                                                         \
 uniform mat4 cameraProjectionViewMatrix;                \
 uniform vec3 cameraPosition;                            \
 //uniform mat3 cameraNormalMatrix;                     \n \
+uniform vec4 clipPlane;                                 \
                                                         \
 uniform int lType;                                      \
 uniform vec3 lPosition;                                 \
@@ -31,9 +30,8 @@ uniform vec4 mAmbient;                                  \
 uniform vec4 mDiffuse;                                  \
 uniform vec4 mSpecular;                                 \
 uniform float mShininess;                               \
-                                                        \
-uniform bool enableTexture;                             \
-uniform bool infoLabel;                                 \
+uniform vec4 mEmission;                                 \
+uniform float mAlpha;                                   \
                                                         \
 uniform mat4 effBones[20];                              \
                                                         \
@@ -45,6 +43,7 @@ attribute vec4 effBoneIndex;                            \
 attribute vec4 effBoneWeight;                           \
                                                         \
 varying vec2 v_TexCoord;                                \
+varying float v_clipDist;                               \
                                                         \
 varying vec4 v_FrontColor; \n \
 \
@@ -84,18 +83,17 @@ void main()                                             \
   }                                                     \
   diffuse = dot(lightVec, normal);                      \
                                                         \n \
-//  gl_FrontColor = lAmbient * mAmbient;                  \n \
-  v_FrontColor = lAmbient * mAmbient;                  \n \
+  v_FrontColor = lAmbient * mAmbient;                   \n \
   if(diffuse > 0.0){                                    \n \
     vec3 halfway = normalize(lightVec + viewVec);       \n \
     float specular = pow(max(dot(normal, halfway), 0.0), mShininess);   \
-    //gl_FrontColor += lSpecular * mSpecular * specular;  \n \
-    v_FrontColor += lSpecular * mSpecular * specular;  \n \
-    //gl_FrontColor += lDiffuse  * mDiffuse  * diffuse;   \n \
-    v_FrontColor += lDiffuse  * mDiffuse  * diffuse;   \n \
+    v_FrontColor += lSpecular * mSpecular * specular;   \n \
+    v_FrontColor += lDiffuse  * mDiffuse  * diffuse;    \n \
   }                                                     \n \
-  //gl_FrontColor.a = 1.0;                                \n \
-  v_FrontColor.a = 1.0;                                \n \
+  v_FrontColor += mEmission;                            \n \
+  // v_FrontColor.a = 1.0;                                 \n \
+  v_FrontColor.a = mAlpha;                              \n \
+  v_clipDist = dot(position.xyz, clipPlane.xyz) + clipPlane.w; \
                                                         \
   v_TexCoord = vUV;                                     \
                                                         \
@@ -113,6 +111,10 @@ void main()                                             \
   _mDiffuseLoc: null,
   _mSpecularLoc: null,
   _mShininessLoc: null,
+  _mEmissionLoc: null,
+  _mAlphaLoc: null,
+
+  _clipPlaneLoc: null,
 
   initialize: function($super, context) {
     $super(context);
@@ -138,6 +140,10 @@ void main()                                             \
     this._mDiffuseLoc   = this._gl.getUniformLocation(programObject, "mDiffuse");
     this._mSpecularLoc  = this._gl.getUniformLocation(programObject, "mSpecular");
     this._mShininessLoc = this._gl.getUniformLocation(programObject, "mShininess");
+    this._mEmissionLoc  = this._gl.getUniformLocation(programObject, "mEmission");
+    this._mAlphaLoc     = this._gl.getUniformLocation(programObject, "mAlpha");
+
+    this._clipPlaneLoc  = this._gl.getUniformLocation(programObject, "clipPlane");
     //checkGLError(this._gl, "bindAttribute2");
   },
 
@@ -191,8 +197,13 @@ void main()                                             \
     this._gl.uniform4fv(this._mDiffuseLoc,   material.getDiffuse()  );
     this._gl.uniform4fv(this._mSpecularLoc,  material.getSpecular() );
     this._gl.uniform1f (this._mShininessLoc, material.getShininess());
+    this._gl.uniform4fv(this._mEmissionLoc,  material.getEmission() );
+    this._gl.uniform1f (this._mAlphaLoc,     material.getAlpha()    );
   },
 
+  setClipPlane: function(vec4) {
+    this._gl.uniform4fv(this._clipPlaneLoc,  vec4.getWebGLFloatArray());
+  },
 
   getVertexData: function(dhObject) {
     var skinArray = dhObject.getSkinArray();

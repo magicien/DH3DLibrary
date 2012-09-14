@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------
- * DH3DLibrary TextureBank.js v0.1.0
- * Copyright (c) 2010-2011 DarkHorse
+ * DH3DLibrary TextureBank.js v0.2.0
+ * Copyright (c) 2010-2012 DarkHorse
  *
  * DH3DLibrary is freely distributable under the terms of an MIT-style license.
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
@@ -18,8 +18,32 @@ var TextureBank = Class.create({
     this._gl = gl;
   },
 
+  getTextureID: function(canvas) {
+    if(!(canvas instanceof HTMLCanvasElement)){
+      return "";
+    }
+    if(!canvas._textureID){
+      var radix = 16;
+      var length = 20;
+      var id = "_";
+      for(var i=0; i<length; i++){
+        var n = Math.floor(Math.random() * radix);
+        id += n.toString(radix);
+      }
+      canvas._textureID = id;
+    }
+    return "CANVAS:" + canvas._textureID;
+  },
+
   getTexture: function(textureName){
-    var texture = this._textures.get(textureName);
+    var key;
+    if(textureName instanceof HTMLCanvasElement){
+      key = this.getTextureID(textureName);
+    }else{
+      key = textureName;
+    }
+    var texture = this._textures.get(key);
+
     if(texture == null){
       texture = this._gl.createTexture();
       var orgImage = new Image();
@@ -49,13 +73,18 @@ var TextureBank = Class.create({
         //myAlert("error:" + gl.getError());
       };
 
-      orgImage.onload = function(){
-        gl.checkGLError("before image.onload");
-        texImage = obj._createTextureImage(orgImage, texCallback);
+      if(textureName instanceof HTMLCanvasElement){
+        texImage = textureName;
+        texCallback();
+      }else{
+        orgImage.onload = function(){
+          gl.checkGLError("before image.onload");
+          texImage = obj._createTextureImage(orgImage, texCallback);
+        }
+        orgImage.src = textureName;
       }
-      orgImage.src = textureName;
 
-      this._textures.set(textureName, texture);
+      this._textures.set(key, texture);
     }
     return texture;
   },

@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------
- * DH3DLibrary XReader.js v0.1.0
- * Copyright (c) 2010-2011 DarkHorse
+ * DH3DLibrary XReader.js v0.2.0
+ * Copyright (c) 2010-2012 DarkHorse
  *
  * DH3DLibrary is freely distributable under the terms of an MIT-style license.
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
@@ -80,7 +80,7 @@ var XReader = Class.create(ModelReader, {
     var parser = new XParser();
     parser.setParentDirName(this._parentDirName);
     parser.setModel(this._model);
-    parser.parse(this._textReader.getText());
+    var model = parser.parse(this._textReader.getText());
 
     if(model == null){
       this._error = 1;

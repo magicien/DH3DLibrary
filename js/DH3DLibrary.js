@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------
- * DH3DLibrary DH3DLibrary.js v0.1.0
- * Copyright (c) 2010-2011 DarkHorse
+ * DH3DLibrary DH3DLibrary.js v0.2.0
+ * Copyright (c) 2010-2012 DarkHorse
  *
  * DH3DLibrary is freely distributable under the terms of an MIT-style license.
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
@@ -104,5 +104,6 @@ DH3DLibrary.loadPackage("base");
 DH3DLibrary.loadPackage("util");
 DH3DLibrary.loadPackage("mmd");
 DH3DLibrary.loadPackage("xfile");
+DH3DLibrary.loadPackage("obj");
 DH3DLibrary.loadPackage("renderer/simple");
 

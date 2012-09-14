@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------
- * DH3DLibrary Camera.js v0.1.0
- * Copyright (c) 2010-2011 DarkHorse
+ * DH3DLibrary Camera.js v0.2.0
+ * Copyright (c) 2010-2012 DarkHorse
  *
  * DH3DLibrary is freely distributable under the terms of an MIT-style license.
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
@@ -50,6 +50,14 @@ var Camera = Class.create({
 
   rotate: function(angle, x, y, z) {
     this.viewMat.rotate(this.viewMat, angle, x, y, z);
+  },
+
+  scale: function(x, y, z) {
+    this.viewMat.scale(this.viewMat, x, y, z);
+  },
+
+  scaleProjection: function(x, y, z) {
+    this.projMat.scale(this.projMat, x, y, z);
   },
 
   lookat: function(eyeX, eyeY, eyeZ, centerX, centerY, centerZ, upX, upY, upZ) {

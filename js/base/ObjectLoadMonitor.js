@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------
- * DH3DLibrary ObjectLoadMonitor.js v0.1.0
- * Copyright (c) 2010-2011 DarkHorse
+ * DH3DLibrary ObjectLoadMonitor.js v0.2.0
+ * Copyright (c) 2010-2012 DarkHorse
  *
  * DH3DLibrary is freely distributable under the terms of an MIT-style license.
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
@@ -36,7 +36,11 @@ var ObjectLoadMonitor = Class.create({
   check: function() {
     var loaded = true;
     this._objs.each( function(obj){
-      if(obj == null || !obj.loaded){
+      if(obj instanceof Image){
+        if(!obj.complete){
+          loaded = false;
+        }
+      }else if(obj == null || !obj.loaded){
         loaded = false;
       }
     });

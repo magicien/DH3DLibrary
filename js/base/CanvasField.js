@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------
- * DH3DLibrary CanvasField.js v0.1.0
- * Copyright (c) 2010-2011 DarkHorse
+ * DH3DLibrary CanvasField.js v0.2.0
+ * Copyright (c) 2010-2012 DarkHorse
  *
  * DH3DLibrary is freely distributable under the terms of an MIT-style license.
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
@@ -38,20 +38,23 @@ var CanvasField = Class.create({
   _frameCallback: null,
 
   _objs: null,
+  _alphaObjs: null,
+  _refObjs: null,
+  _mirrorOn: false,
 
   initialize: function(canvasElement) {
     this._canvas = canvasElement;
     try{
-      this._gl = this._canvas.getContext('webkit-3d');
+      this._gl = this._canvas.getContext('webkit-3d', {stencil: true});
     }catch(e){}
     try{
       if(!this._gl){
-        this._gl = this._canvas.getContext('moz-webgl');
+        this._gl = this._canvas.getContext('moz-webgl', {stencil: true});
       }
     }catch(e){}
     try{
       if(!this._gl){
-        this._gl = this._canvas.getContext('experimental-webgl');
+        this._gl = this._canvas.getContext('experimental-webgl', {stencil: true});
       }
     }catch(e){}
 
@@ -74,6 +77,8 @@ var CanvasField = Class.create({
     TextureBank.setContext(this._gl);
 
     this._objs = $A();
+    this._alphaObjs = $A();
+    this._refObjs = $A();
 
     this._modelBank = ModelBank;
     this._motionBank = MotionBank;
@@ -93,12 +98,29 @@ var CanvasField = Class.create({
     return this._gl;
   },
 
-  addObject: function(obj) {
-    this._objs.push(obj);
+  get2DContext: function() {
+    return this._2DContext;
+  },
+
+  //addObject: function(obj, alpha, notReflection) {
+  addObject: function(obj, alpha, notReflection) {
+    // FIXME: auto detection of alpha object
+    if(alpha){
+      this._alphaObjs.push(obj);
+    }else{
+      this._objs.push(obj);
+    }
+    //this._objs.push(obj);
+
+    if(!notReflection && (obj instanceof DH3DObject)){
+      this._refObjs.push(obj);
+    }
   },
 
   removeObject: function(obj) {
     this._objs = this._objs.without(obj);
+    this._alphaObjs = this._alphaObjs.without(obj);
+    this._refObjs = this._refObjs.without(obj);
   },
 
   start: function() {
@@ -162,16 +184,66 @@ var CanvasField = Class.create({
     this._objs.each( function(obj){
       obj.move(elapsedTime);
     });
+    this._alphaObjs.each( function(obj){
+      obj.move(elapsedTime);
+    });
+    // FIXME: z-sort of alpha objects
 
     this._cameras.each(function(camera){ camera.update(elapsedTime); });
 
     this._2DContext.clearRect(0, 0, this._canvasWidth, this._canvasHeight);
-    this._gl.clear(this._gl.COLOR_BUFFER_BIT | this._gl.DEPTH_BUFFER_BIT);
+    this._gl.clear(this._gl.COLOR_BUFFER_BIT | this._gl.DEPTH_BUFFER_BIT | this._gl.STENCIL_BUFFER_BIT);
 
-    this._objs.each( function(obj){
-      obj.animate(elapsedTime);
-      obj.render();
-    });
+    if(this._mirrorOn){
+      // render with mirror effect
+      // FIXME: multipass
+
+      // draw without mirror
+      this._objs.each( function(obj){
+        obj.animate(elapsedTime);
+
+        // FIXME
+        if(obj._renderer){
+          var gl = obj._renderer._gl;
+          obj._renderer.enableStencil();
+          gl.stencilOp(gl.KEEP, gl.KEEP, gl.REPLACE);
+          if(obj._mirror){
+            // fill 16 to mirror area
+            gl.stencilFunc(gl.ALWAYS, 16, obj._renderer._stencilMask);
+          }else{
+            // fill 0 to not mirror area
+            gl.stencilFunc(gl.ALWAYS,  0, obj._renderer._stencilMask);
+          }
+        }
+        obj.render();
+      });
+
+      // update stencil buffer
+      var refObjs = this._refObjs;
+      this._objs.each( function(obj){
+        if(obj._mirror){
+          // FIXME
+          obj._renderer.enableStencil();
+          obj.renderMirror(refObjs);
+        }
+      });
+
+      this._alphaObjs.each( function(obj){
+        obj._renderer.disableStencil();
+        obj.animate(elapsedTime);
+        obj.render();
+      });
+    }else{
+      // render without mirror effect
+      this._objs.each( function(obj){
+        obj.animate(elapsedTime);
+        obj.render();
+      });
+      this._alphaObjs.each( function(obj){
+        obj.animate(elapsedTime);
+        obj.render();
+      });
+    }
 
     this._gl.flush();
   },
@@ -207,6 +279,9 @@ var CanvasField = Class.create({
   },
 
   checkGLError: function(message) {
+    // FIXME
+    return;
+
     var err = this._gl.getError();
     if(err){
       this.log(message + ":" + err);
@@ -218,7 +293,8 @@ var CanvasField = Class.create({
   },
 
   setCamera: function(camera) {
-    this._cameras.push(camera);
+    //this._cameras.push(camera);
+    this._cameras.clear().push(camera);
   },
 
   getLights: function() {
@@ -226,7 +302,16 @@ var CanvasField = Class.create({
   },
 
   setLights: function(light) {
-    this._lights.push(light);
+    //this._lights.push(light);
+    this._lights.clear().push(light);
+  },
+
+  enableMirror: function() {
+    this._mirrorOn = true;
+  },
+
+  disableMirror: function() {
+    this._mirrorOn = false;
   },
 
   getLogger: function() {

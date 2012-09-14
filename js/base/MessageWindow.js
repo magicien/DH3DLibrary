@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------------
- * DH3DLibrary MessageWindow.js v0.1.0
- * Copyright (c) 2010-2011 DarkHorse
+ * DH3DLibrary MessageWindow.js v0.2.0
+ * Copyright (c) 2010-2012 DarkHorse
  *
  * DH3DLibrary is freely distributable under the terms of an MIT-style license.
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
@@ -90,13 +90,16 @@ var MessageWindow = Class.create(DH2DObject, {
     var targetX = this._x;
     var targetY = this._y;
     if(this._bindedObject && this._bindedCamera){
-      var worldPos;
+      var worldPos = new DHVector3();
       var windowPos;
 
-      worldPos = new DHVector3(this._bindedObject._position);
       if(this._bindedBone){ // FIXME
         var bone = this._bindedObject._model.boneHash.get(this._bindedBone);
-        worldPos.add(worldPos, bone.position);
+        worldPos.x = bone.localMatrix.m41;
+        worldPos.y = bone.localMatrix.m42;
+        worldPos.z = bone.localMatrix.m43;
+      }else{
+        worldPos.setValue(this._bindedObject._position);
       }
 
       if(this._offset){
@@ -230,7 +233,8 @@ var MessageWindow = Class.create(DH2DObject, {
         left = iconTextLeft;
       }
 
-      c.strokeText(str, left, top);
+      //c.strokeText(str, left, top);
+      c.fillText(str, left, top);
 
       numChars += strLen;
       top += this._lineHeight;
@@ -246,7 +250,7 @@ var MessageWindow = Class.create(DH2DObject, {
     c.textAlign     = this._textAlign;
     c.textBaseline  = this._textBaseline;
 
-    c.shadowBlue    = this._textShadowBlur;
+    c.shadowBlur    = this._textShadowBlur;
     c.shadowColor   = this._textShadowColor;
     c.shadowOffsetX = this._textShadowOffsetX;
     c.shadowOffsetY = this._textShadowOffsetY;
