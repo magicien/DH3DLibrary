@@ -246,7 +246,7 @@ var MessageWindow = Class.create(DH2DObject, {
     var c = this._bindedCanvas._2DContext;
 
     c.font          = this._font;
-    c.strokeStyle   = this._textColor;
+    c.fillStyle     = this._textColor;
     c.textAlign     = this._textAlign;
     c.textBaseline  = this._textBaseline;
 

@@ -36,7 +36,17 @@ var ObjectLoadMonitor = Class.create({
   check: function() {
     var loaded = true;
     this._objs.each( function(obj){
-      if(obj instanceof Image){
+      var isImage = false;
+      try{
+        if(obj instanceof HTMLImageElement){
+          isImage = true;
+        }
+      }catch(e){
+        if(obj instanceof Image){
+          isImage = true;
+        }
+      }
+      if(isImage){
         if(!obj.complete){
           loaded = false;
         }
