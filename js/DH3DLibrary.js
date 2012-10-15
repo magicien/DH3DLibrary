@@ -6,30 +6,35 @@
  * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
  *
  *------------------------------------------------------------------------------*/
+(function() {
+
+// check whether prototype.js exists
+	
+var REQUIRED_PROTOTYPE = '1.7';
+
+function convertVersionString(versionString) {
+  var v = versionString.replace(/_.*|\./g, '');
+  v = parseInt(v + '0'.times(4-v.length));
+  return versionString.indexOf('_') > -1 ? v-1 : v;
+}
+
+if((typeof Prototype=='undefined') ||
+   (typeof Element == 'undefined') ||
+   (typeof Element.Methods=='undefined') ||
+   (convertVersionString(Prototype.Version) <
+    convertVersionString(REQUIRED_PROTOTYPE)))
+   throw("DH3DLibrary requires the Prototype JavaScript framework >= " + 
+	   REQUIRED_PROTOTYPE);
+
+//----------------------------------------
 
 var DH3DLibrary = Class.create({
   Version: '0.1.0',
-  REQUIRED_PROTOTYPE: '1.7',
 
   basePath: '',
   loadedFiles: $A(),
 
   initialize: function() {
-    function convertVersionString(versionString) {
-      var v = versionString.replace(/_.*|\./g, '');
-      v = parseInt(v + '0'.times(4-v.length));
-      return versionString.indexOf('_') > -1 ? v-1 : v;
-    }
-
-    if((typeof Prototype=='undefined') ||
-       (typeof Element == 'undefined') ||
-       (typeof Element.Methods=='undefined') ||
-       (convertVersionString(Prototype.Version) <
-        convertVersionString(this.REQUIRED_PROTOTYPE)))
-       throw("DH3DLibrary requires the Prototype JavaScript framework >= " +
-        DH3DLibrary.REQUIRED_PROTOTYPE);
-
-
     var js = /DH3DLibrary\.js(\?.*)?$/;
     this.basePath = $$('head script[src]').find(function(s) {
       return s.src.match(js);
@@ -98,12 +103,13 @@ var DH3DLibrary = Class.create({
   }
 });
 
-var DH3DLibrary = new DH3DLibrary();
+var DH3DLibrary = this.DH3DLibrary = new DH3DLibrary();
 
 DH3DLibrary.loadPackage("base");
 DH3DLibrary.loadPackage("util");
 DH3DLibrary.loadPackage("mmd");
 DH3DLibrary.loadPackage("xfile");
-DH3DLibrary.loadPackage("obj");
 DH3DLibrary.loadPackage("renderer/simple");
+
+}).call(this);
 
