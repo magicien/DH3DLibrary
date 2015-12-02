@@ -4,8 +4,8 @@
   "description": "JavaScript Library for WebGL, MMD",
   "main": "index.js",
   "scripts": {
-    "build": "grunt build",
-    "lint": "grunt lint"
+    "build": "gulp build",
+    "lint": "gulp lint"
   },
   "repository": {
     "type": "git",
