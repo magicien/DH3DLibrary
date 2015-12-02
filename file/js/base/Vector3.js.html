@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/base/Vector3.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+</head>
+<body class="layout-container">
+
+<header>
+  <a href="./">Home</a>
+  <a href="identifiers.html">Identifier</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/magicien/DH3DLibrary.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div data-ice="classWrap">
+  <h2>Class</h2>
+  <ul>
+    
+  <li data-ice="classDoc"><span><a href="class/js/util/AjaxRequest.js~AjaxRequest.html">AjaxRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/BinaryReader.js~BinaryReader.html">BinaryReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/BinaryRequest.js~BinaryRequest.html">BinaryRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Bone.js~Bone.html">Bone</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Camera.js~Camera.html">Camera</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraAnimator.js~CameraAnimator.html">CameraAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraKeyFrame.js~CameraKeyFrame.html">CameraKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotion.js~CameraMotion.html">CameraMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionBank.js~CameraMotionBank.html">CameraMotionBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionReader.js~CameraMotionReader.html">CameraMotionReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CanvasField.js~CanvasField.html">CanvasField</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Constraint.js~Constraint.html">Constraint</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DH2DObject.js~DH2DObject.html">DH2DObject</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html">DH3DObject</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DHAudio.js~DHAudio.html">DHAudio</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DHEvent.js~DHEvent.html">DHEvent</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/Face.js~Face.html">Face</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/FaceMotion.js~FaceMotion.html">FaceMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/FaceVertex.js~FaceVertex.html">FaceVertex</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/FragmentShader.js~FragmentShader.html">FragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/FrameBuffer.js~FrameBuffer.html">FrameBuffer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/IK.js~IK.html">IK</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/IKFrame.js~IKFrame.html">IKFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/KeyFrame.js~KeyFrame.html">KeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/KeyListener.js~KeyListener.html">KeyListener</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Light.js~Light.html">Light</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/LightKeyFrame.js~LightKeyFrame.html">LightKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/MMDAnimator.js~MMDAnimator.html">MMDAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/MMDCameraAnimator.js~MMDCameraAnimator.html">MMDCameraAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Material.js~Material.html">Material</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Matrix.js~Matrix.html">Matrix</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html">MessageWindow</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Model.js~Model.html">Model</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ModelBank.js~ModelBank.html">ModelBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ModelReader.js~ModelReader.html">ModelReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MotionBank.js~MotionBank.html">MotionBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MotionReader.js~MotionReader.html">MotionReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/MtlParser.js~MtlParser.html">MtlParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjMaterial.js~ObjMaterial.html">ObjMaterial</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjModel.js~ObjModel.html">ObjModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjParser.js~ObjParser.html">ObjParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjReader.js~ObjReader.html">ObjReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ObjectLoadMonitor.js~ObjectLoadMonitor.html">ObjectLoadMonitor</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/PMDModel.js~PMDModel.html">PMDModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/PMDReader.js~PMDReader.html">PMDReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/RenderGroup.js~RenderGroup.html">RenderGroup</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/RigidBody.js~RigidBody.html">RigidBody</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ShaderBank.js~ShaderBank.html">ShaderBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ShadowKeyFrame.js~ShadowKeyFrame.html">ShadowKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleFragmentShader.js~SimpleFragmentShader.html">SimpleFragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleRenderer.js~SimpleRenderer.html">SimpleRenderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleVertexShader.js~SimpleVertexShader.html">SimpleVertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Skin.js~Skin.html">Skin</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/TextReader.js~TextReader.html">TextReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/TextRequest.js~TextRequest.html">TextRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/TextureBank.js~TextureBank.html">TextureBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/TextureUV.js~TextureUV.html">TextureUV</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonFragmentShader.js~ToonFragmentShader.html">ToonFragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonRenderer.js~ToonRenderer.html">ToonRenderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonVertexShader.js~ToonVertexShader.html">ToonVertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraMotion.js~VMDCameraMotion.html">VMDCameraMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraReader.js~VMDCameraReader.html">VMDCameraReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDMotion.js~VMDMotion.html">VMDMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDReader.js~VMDReader.html">VMDReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/VertexShader.js~VertexShader.html">VertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XModel.js~XModel.html">XModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XParser.js~XParser.html">XParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XReader.js~XReader.html">XReader</a></span></li>
+</ul>
+</div>
+
+
+
+<div data-ice="functionWrap">
+  <h2><a href="function/">Function</a></h2>
+  <ul>
+    
+  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-BinaryParser">BinaryParser</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeEUCJP">EscapeEUCJP</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS7">EscapeJIS7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS8">EscapeJIS8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeSJIS">EscapeSJIS</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF16LE">EscapeUTF16LE</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF7">EscapeUTF7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF8">EscapeUTF8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUnicode">EscapeUnicode</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-GetEscapeCodeType">GetEscapeCodeType</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-ObjectAssign">ObjectAssign</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeEUCJP">UnescapeEUCJP</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS7">UnescapeJIS7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS8">UnescapeJIS8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeSJIS">UnescapeSJIS</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF16LE">UnescapeUTF16LE</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF7">UnescapeUTF7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF8">UnescapeUTF8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUnicode">UnescapeUnicode</a></span></li>
+</ul>
+</div>
+
+<div data-ice="variableWrap">
+  <h2><a href="variable/">Variable</a></h2>
+  <ul>
+    
+  <li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT11280">JCT11280</a></span></li>
+<li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT8836">JCT8836</a></span></li>
+</ul>
+</div>
+
+
+
+
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/base/Vector3.js</h1>
+<pre class="source-code line-number"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;
+
+/**
+ * 3 params vector class
+ * @access public
+ */
+export default class Vector3 {
+  // public properties without accessor
+  // float x
+  // float y
+  // float z
+
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   * @params {float} x - x value, default is 0.0
+   * @params {float} y - y value, default is 0.0
+   * @params {float} z - z value, default is 0.0
+   */
+  constructor(x = 0.0, y = 0.0, z = 0.0) {
+    this.setValue(x, y, z)
+  }
+
+  clone() {
+    return new Vector3(this.x, this.y, this.z)
+  }
+
+  /**
+   * set vector value
+   * @access public
+   * @param {float|Vector3} x - x value, or Vector3 object to copy.
+   *        if first param is Vector3, second/third params are ignored.
+   * @param {float} y - y value, default is 0.0
+   * @param {float} z - z value, default is 0.0
+   * @returns {void}
+   * @example
+   * var v1 = new Vector3(1.0, 2.0, 3.0)
+   * var v2 = new Vector3()
+   * var v2.setValue(v1)
+   * // v2 is {x:1.0, y:2.0, z:3.0}
+   */
+  setValue(x, y = 0.0, z = 0.0) {
+    if((x instanceof Vector3) || (x instanceof Object &amp;&amp; x.z != null)){
+      this.x = x.x
+      this.y = x.y
+      this.z = x.z
+    }else{
+      this.x = x
+      this.y = y
+      this.z = z
+    }
+  }
+
+  /**
+   * add 2 vectors. result is set to this matrix.
+   * @access public
+   * @param {Vector3} vec1 -
+   * @param {Vector3} vec2 -
+   * @returns {void}
+   */
+  add(vec1, vec2) {
+    this.x = vec1.x + vec2.x
+    this.y = vec1.y + vec2.y
+    this.z = vec1.z + vec2.z
+  }
+
+  /**
+   *
+   * @access public
+   * @param {Vector3} vec1 -
+   * @param {Vector3} vec2 -
+   * @returns {void}
+   */
+  sub(vec1, vec2) {
+    this.x = vec1.x - vec2.x
+    this.y = vec1.y - vec2.y
+    this.z = vec1.z - vec2.z
+  }
+  
+  /**
+   *
+   * @access public
+   * @param {Vector3} vec1 -
+   * @param {float} rate -
+   * @returns {void}
+   */
+  mul(vec1, rate) {
+    this.x = vec1.x * rate
+    this.y = vec1.y * rate
+    this.z = vec1.z * rate
+  }
+
+  /**
+   *
+   * @access public
+   * @param {Vector3} vec1 -
+   * @param {Vector3} vec2 -
+   * @param {float} rate -
+   * @returns {void}
+   */
+  mulAdd(vec1, vec2, rate) {
+    this.x = vec1.x + vec2.x * rate
+    this.y = vec1.y + vec2.y * rate
+    this.z = vec1.z + vec2.z * rate
+  }
+
+  /**
+   *
+   * @access public
+   * @param {Vector3} src - optional
+   * @returns {void}
+   */
+  normalize(src = this) {
+    const square = 1.0 / Math.sqrt(src.x * src.x + src.y * src.y + src.z * src.z)
+
+    this.x = src.x * square
+    this.y = src.y * square
+    this.z = src.z * square
+  }
+
+  /**
+   *
+   * @access public
+   * @param {Vector3} vec -
+   * @returns {float} result of dot
+   */
+  dot(vec) {
+    return this.x * vec.x + this.y * vec.y + this.z * vec.z
+  }
+
+  /**
+   *
+   * @access public
+   * @param {Vector3} vec1 -
+   * @param {Vector3} vec2 -
+   * @returns {void} 
+   */
+  cross(vec1, vec2) {
+    const rx = vec1.y * vec2.z - vec1.z * vec2.y
+    const ry = vec1.z * vec2.x - vec1.x * vec2.z
+    const rz = vec1.x * vec2.y - vec1.y * vec2.x
+    this.x = rx
+    this.y = ry
+    this.z = rz
+  }
+
+  /**
+   *
+   * @access public
+   * @param {Vector3} vec1 -
+   * @param {Vector3} vec2 -
+   * @param {float} rate -
+   * @returns {void} 
+   */
+  lerp(vec1, vec2, rate) {
+    this.x = vec1.x + rate * (vec2.x - vec1.x)
+    this.y = vec1.y + rate * (vec2.y - vec1.y)
+    this.z = vec1.z + rate * (vec2.z - vec1.z)
+  }
+
+  /**
+   *
+   * @access public
+   * @param {Vector3} vec -
+   * @param {Matrix} matrix -
+   * @returns {void} 
+   */
+  transform(vec, matrix){
+    const rx = vec.x * matrix.m11 + vec.y * matrix.m21 + vec.z * matrix.m31 + matrix.m41
+    const ry = vec.x * matrix.m12 + vec.y * matrix.m22 + vec.z * matrix.m32 + matrix.m42
+    const rz = vec.x * matrix.m13 + vec.y * matrix.m23 + vec.z * matrix.m33 + matrix.m43
+
+    this.x = rx
+    this.y = ry
+    this.z = rz
+  }
+
+  /**
+   *
+   * @access public
+   * @param {Vector3} vec -
+   * @param {Matrix} matrix -
+   * @returns {void} 
+   */
+  rotate(vec, matrix){
+    const rx = vec.x * matrix.m11 + vec.y * matrix.m21 + vec.z * matrix.m31
+    const ry = vec.x * matrix.m12 + vec.y * matrix.m22 + vec.z * matrix.m32
+    const rz = vec.x * matrix.m13 + vec.y * matrix.m23 + vec.z * matrix.m33
+
+    this.x = rx
+    this.y = ry
+    this.z = rz
+  }
+
+  /**
+   *
+   * @access public
+   * @param {Vector4} quat -
+   * @returns {void} 
+   */
+  quaternionToEuler(quat) {
+    const x2 = quat.x + quat.x
+    const y2 = quat.y + quat.y
+    const z2 = quat.z + quat.z
+    const xz2 = quat.x * z2
+    const wy2 = quat.w * y2
+    let temp = -(xz2 - wy2)
+
+    if(temp &gt;= 1.0){
+      temp = 1.0
+    }else if(temp &lt;= -1.0){
+      temp = -1.0
+    }
+
+    const yRadian = Math.sin(temp)
+    const xx2 = quat.x * x2
+    const xy2 = quat.x * y2
+    const zz2 = quat.z * z2
+    const wz2 = quat.w * z2
+
+    if(yRadian &lt; Math.PI * 0.5){
+      if(yRadian &gt; -Math.PI * 0.5){
+        const yz2 = quat.y * z2
+        const wx2 = quat.w * x2
+        const yy2 = quat.y * y2
+        this.x = Math.atan2(yz2 + wx2, 1.0 - (xx2 + yy2))
+        this.y = yRadian
+        this.z = Math.atan2(xy2 + wz2, 1.0 - (xx2 + zz2))
+      }else{
+        this.x = -Math.atan2(xy2 - wz2, 1.0 - (xx2 + zz2))
+        this.y = yRadian
+        this.z = 0
+      }
+    }else{
+      this.x = Math.atan2(xy2 - wz2, 1.0 - (xx2 + zz2))
+      this.y = yRadian
+      this.z = 0
+    }
+  }
+
+  /**
+   *
+   * @access public
+   * @param {Vector4} quat -
+   * @returns {float} length of vector
+   */
+  length() {
+    return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z)
+  }
+
+  /**
+   * get Float32Array format of vector value
+   * @access public
+   * @returns {Float32Array} vector value
+   */
+  getWebGLFloatArray() {
+    return new Float32Array([
+      this.x, this.y, this.z
+    ])
+  }
+}
+
+</code></pre>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.2.1)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

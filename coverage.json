@@ -1,0 +1,311 @@
+{
+  "coverage": "33.94%",
+  "expectCount": 813,
+  "actualCount": 276,
+  "files": {
+    "js/util/AjaxRequest.js": {
+      "expectCount": 6,
+      "actualCount": 2
+    },
+    "js/base/Animator.js": {
+      "expectCount": 4,
+      "actualCount": 4
+    },
+    "js/util/BinaryParser.js": {
+      "expectCount": 1,
+      "actualCount": 0
+    },
+    "js/util/BinaryReader.js": {
+      "expectCount": 23,
+      "actualCount": 2
+    },
+    "js/util/BinaryRequest.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "js/base/Bone.js": {
+      "expectCount": 31,
+      "actualCount": 31
+    },
+    "js/base/Camera.js": {
+      "expectCount": 41,
+      "actualCount": 41
+    },
+    "js/base/CameraAnimator.js": {
+      "expectCount": 4,
+      "actualCount": 4
+    },
+    "js/base/CameraKeyFrame.js": {
+      "expectCount": 9,
+      "actualCount": 2
+    },
+    "js/base/CameraMotion.js": {
+      "expectCount": 11,
+      "actualCount": 4
+    },
+    "js/base/CameraMotionBank.js": {
+      "expectCount": 7,
+      "actualCount": 7
+    },
+    "js/base/CameraMotionReader.js": {
+      "expectCount": 4,
+      "actualCount": 2
+    },
+    "js/base/CanvasField.js": {
+      "expectCount": 26,
+      "actualCount": 2
+    },
+    "js/base/Constraint.js": {
+      "expectCount": 13,
+      "actualCount": 2
+    },
+    "js/base/DH2DObject.js": {
+      "expectCount": 5,
+      "actualCount": 2
+    },
+    "js/base/DH3DObject.js": {
+      "expectCount": 47,
+      "actualCount": 4
+    },
+    "js/base/DHAudio.js": {
+      "expectCount": 12,
+      "actualCount": 2
+    },
+    "js/base/DHEvent.js": {
+      "expectCount": 6,
+      "actualCount": 2
+    },
+    "js/util/ecl.js": {
+      "expectCount": 19,
+      "actualCount": 0
+    },
+    "js/mmd/Face.js": {
+      "expectCount": 9,
+      "actualCount": 2
+    },
+    "js/mmd/FaceMotion.js": {
+      "expectCount": 4,
+      "actualCount": 2
+    },
+    "js/mmd/FaceVertex.js": {
+      "expectCount": 4,
+      "actualCount": 2
+    },
+    "js/base/FragmentShader.js": {
+      "expectCount": 7,
+      "actualCount": 2
+    },
+    "js/base/FrameBuffer.js": {
+      "expectCount": 4,
+      "actualCount": 2
+    },
+    "js/base/IK.js": {
+      "expectCount": 13,
+      "actualCount": 2
+    },
+    "js/mmd/IKFrame.js": {
+      "expectCount": 7,
+      "actualCount": 2
+    },
+    "js/base/KeyFrame.js": {
+      "expectCount": 6,
+      "actualCount": 2
+    },
+    "js/base/KeyListener.js": {
+      "expectCount": 13,
+      "actualCount": 2
+    },
+    "js/base/Light.js": {
+      "expectCount": 18,
+      "actualCount": 2
+    },
+    "js/base/LightKeyFrame.js": {
+      "expectCount": 5,
+      "actualCount": 2
+    },
+    "js/mmd/MMDAnimator.js": {
+      "expectCount": 6,
+      "actualCount": 2
+    },
+    "js/mmd/MMDCameraAnimator.js": {
+      "expectCount": 7,
+      "actualCount": 2
+    },
+    "js/base/Material.js": {
+      "expectCount": 24,
+      "actualCount": 2
+    },
+    "js/base/Matrix.js": {
+      "expectCount": 33,
+      "actualCount": 32
+    },
+    "js/base/MessageWindow.js": {
+      "expectCount": 23,
+      "actualCount": 2
+    },
+    "js/base/Model.js": {
+      "expectCount": 27,
+      "actualCount": 2
+    },
+    "js/base/ModelBank.js": {
+      "expectCount": 8,
+      "actualCount": 2
+    },
+    "js/base/ModelReader.js": {
+      "expectCount": 4,
+      "actualCount": 4
+    },
+    "js/base/Motion.js": {
+      "expectCount": 11,
+      "actualCount": 2
+    },
+    "js/base/MotionBank.js": {
+      "expectCount": 7,
+      "actualCount": 2
+    },
+    "js/base/MotionReader.js": {
+      "expectCount": 4,
+      "actualCount": 2
+    },
+    "js/obj/MtlParser.js": {
+      "expectCount": 9,
+      "actualCount": 2
+    },
+    "js/obj/ObjMaterial.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "js/obj/ObjModel.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "js/obj/ObjParser.js": {
+      "expectCount": 9,
+      "actualCount": 2
+    },
+    "js/obj/ObjReader.js": {
+      "expectCount": 8,
+      "actualCount": 2
+    },
+    "js/etc/ObjectAssign.js": {
+      "expectCount": 1,
+      "actualCount": 0
+    },
+    "js/base/ObjectLoadMonitor.js": {
+      "expectCount": 5,
+      "actualCount": 2
+    },
+    "js/mmd/PMDModel.js": {
+      "expectCount": 19,
+      "actualCount": 2
+    },
+    "js/mmd/PMDReader.js": {
+      "expectCount": 22,
+      "actualCount": 2
+    },
+    "js/base/RenderGroup.js": {
+      "expectCount": 12,
+      "actualCount": 2
+    },
+    "js/base/Renderer.js": {
+      "expectCount": 13,
+      "actualCount": 2
+    },
+    "js/base/RigidBody.js": {
+      "expectCount": 18,
+      "actualCount": 2
+    },
+    "js/base/ShaderBank.js": {
+      "expectCount": 5,
+      "actualCount": 2
+    },
+    "js/base/ShadowKeyFrame.js": {
+      "expectCount": 5,
+      "actualCount": 2
+    },
+    "js/renderer/simple/SimpleFragmentShader.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "js/renderer/simple/SimpleRenderer.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "js/renderer/simple/SimpleVertexShader.js": {
+      "expectCount": 11,
+      "actualCount": 2
+    },
+    "js/base/Skin.js": {
+      "expectCount": 15,
+      "actualCount": 2
+    },
+    "js/util/TextReader.js": {
+      "expectCount": 9,
+      "actualCount": 2
+    },
+    "js/util/TextRequest.js": {
+      "expectCount": 4,
+      "actualCount": 2
+    },
+    "js/base/TextureBank.js": {
+      "expectCount": 5,
+      "actualCount": 2
+    },
+    "js/base/TextureUV.js": {
+      "expectCount": 5,
+      "actualCount": 2
+    },
+    "js/renderer/toon/ToonFragmentShader.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "js/renderer/toon/ToonRenderer.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "js/renderer/toon/ToonVertexShader.js": {
+      "expectCount": 11,
+      "actualCount": 2
+    },
+    "js/mmd/VMDCameraMotion.js": {
+      "expectCount": 4,
+      "actualCount": 2
+    },
+    "js/mmd/VMDCameraReader.js": {
+      "expectCount": 9,
+      "actualCount": 2
+    },
+    "js/mmd/VMDMotion.js": {
+      "expectCount": 7,
+      "actualCount": 2
+    },
+    "js/mmd/VMDReader.js": {
+      "expectCount": 13,
+      "actualCount": 2
+    },
+    "js/base/Vector3.js": {
+      "expectCount": 20,
+      "actualCount": 16
+    },
+    "js/base/Vector4.js": {
+      "expectCount": 19,
+      "actualCount": 2
+    },
+    "js/base/VertexShader.js": {
+      "expectCount": 12,
+      "actualCount": 2
+    },
+    "js/xfile/XModel.js": {
+      "expectCount": 2,
+      "actualCount": 2
+    },
+    "js/xfile/XParser.js": {
+      "expectCount": 8,
+      "actualCount": 5
+    },
+    "js/xfile/XReader.js": {
+      "expectCount": 6,
+      "actualCount": 2
+    }
+  }
+}
