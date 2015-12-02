@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/mmd/PMDReader.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+</head>
+<body class="layout-container">
+
+<header>
+  <a href="./">Home</a>
+  <a href="identifiers.html">Identifier</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/magicien/DH3DLibrary.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div data-ice="classWrap">
+  <h2>Class</h2>
+  <ul>
+    
+  <li data-ice="classDoc"><span><a href="class/js/util/AjaxRequest.js~AjaxRequest.html">AjaxRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/BinaryReader.js~BinaryReader.html">BinaryReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/BinaryRequest.js~BinaryRequest.html">BinaryRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Bone.js~Bone.html">Bone</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Camera.js~Camera.html">Camera</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraAnimator.js~CameraAnimator.html">CameraAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraKeyFrame.js~CameraKeyFrame.html">CameraKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotion.js~CameraMotion.html">CameraMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionBank.js~CameraMotionBank.html">CameraMotionBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionReader.js~CameraMotionReader.html">CameraMotionReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CanvasField.js~CanvasField.html">CanvasField</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Constraint.js~Constraint.html">Constraint</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DH2DObject.js~DH2DObject.html">DH2DObject</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html">DH3DObject</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DHAudio.js~DHAudio.html">DHAudio</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DHEvent.js~DHEvent.html">DHEvent</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/Face.js~Face.html">Face</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/FaceMotion.js~FaceMotion.html">FaceMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/FaceVertex.js~FaceVertex.html">FaceVertex</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/FragmentShader.js~FragmentShader.html">FragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/FrameBuffer.js~FrameBuffer.html">FrameBuffer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/IK.js~IK.html">IK</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/IKFrame.js~IKFrame.html">IKFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/KeyFrame.js~KeyFrame.html">KeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/KeyListener.js~KeyListener.html">KeyListener</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Light.js~Light.html">Light</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/LightKeyFrame.js~LightKeyFrame.html">LightKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/MMDAnimator.js~MMDAnimator.html">MMDAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/MMDCameraAnimator.js~MMDCameraAnimator.html">MMDCameraAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Material.js~Material.html">Material</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Matrix.js~Matrix.html">Matrix</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html">MessageWindow</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Model.js~Model.html">Model</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ModelBank.js~ModelBank.html">ModelBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ModelReader.js~ModelReader.html">ModelReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MotionBank.js~MotionBank.html">MotionBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MotionReader.js~MotionReader.html">MotionReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/MtlParser.js~MtlParser.html">MtlParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjMaterial.js~ObjMaterial.html">ObjMaterial</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjModel.js~ObjModel.html">ObjModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjParser.js~ObjParser.html">ObjParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjReader.js~ObjReader.html">ObjReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ObjectLoadMonitor.js~ObjectLoadMonitor.html">ObjectLoadMonitor</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/PMDModel.js~PMDModel.html">PMDModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/PMDReader.js~PMDReader.html">PMDReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/RenderGroup.js~RenderGroup.html">RenderGroup</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/RigidBody.js~RigidBody.html">RigidBody</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ShaderBank.js~ShaderBank.html">ShaderBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ShadowKeyFrame.js~ShadowKeyFrame.html">ShadowKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleFragmentShader.js~SimpleFragmentShader.html">SimpleFragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleRenderer.js~SimpleRenderer.html">SimpleRenderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleVertexShader.js~SimpleVertexShader.html">SimpleVertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Skin.js~Skin.html">Skin</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/TextReader.js~TextReader.html">TextReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/TextRequest.js~TextRequest.html">TextRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/TextureBank.js~TextureBank.html">TextureBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/TextureUV.js~TextureUV.html">TextureUV</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonFragmentShader.js~ToonFragmentShader.html">ToonFragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonRenderer.js~ToonRenderer.html">ToonRenderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonVertexShader.js~ToonVertexShader.html">ToonVertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraMotion.js~VMDCameraMotion.html">VMDCameraMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraReader.js~VMDCameraReader.html">VMDCameraReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDMotion.js~VMDMotion.html">VMDMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDReader.js~VMDReader.html">VMDReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/VertexShader.js~VertexShader.html">VertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XModel.js~XModel.html">XModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XParser.js~XParser.html">XParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XReader.js~XReader.html">XReader</a></span></li>
+</ul>
+</div>
+
+
+
+<div data-ice="functionWrap">
+  <h2><a href="function/">Function</a></h2>
+  <ul>
+    
+  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-BinaryParser">BinaryParser</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeEUCJP">EscapeEUCJP</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS7">EscapeJIS7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS8">EscapeJIS8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeSJIS">EscapeSJIS</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF16LE">EscapeUTF16LE</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF7">EscapeUTF7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF8">EscapeUTF8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUnicode">EscapeUnicode</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-GetEscapeCodeType">GetEscapeCodeType</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-ObjectAssign">ObjectAssign</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeEUCJP">UnescapeEUCJP</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS7">UnescapeJIS7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS8">UnescapeJIS8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeSJIS">UnescapeSJIS</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF16LE">UnescapeUTF16LE</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF7">UnescapeUTF7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF8">UnescapeUTF8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUnicode">UnescapeUnicode</a></span></li>
+</ul>
+</div>
+
+<div data-ice="variableWrap">
+  <h2><a href="variable/">Variable</a></h2>
+  <ul>
+    
+  <li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT11280">JCT11280</a></span></li>
+<li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT8836">JCT8836</a></span></li>
+</ul>
+</div>
+
+
+
+
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/mmd/PMDReader.js</h1>
+<pre class="source-code line-number"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;
+
+import ModelReader from &apos;../base/ModelReader&apos;
+import BinaryReader from &apos;../util/BinaryReader&apos;
+import Bone from &apos;../base/Bone&apos;
+import Constraint from &apos;../base/Constraint&apos;
+import Vector3 from &apos;../base/Vector3&apos;
+import Vector4 from &apos;../base/Vector4&apos;
+import Face from &apos;./Face&apos;
+import FaceVertex from &apos;./FaceVertex&apos;
+import IK from &apos;../base/IK&apos;
+import Material from &apos;../base/Material&apos;
+import PMDModel from &apos;./PMDModel&apos;
+import RenderGroup from &apos;../base/RenderGroup&apos;
+import RigidBody from &apos;../base/RigidBody&apos;
+import Skin from &apos;../base/Skin&apos;
+import TextureUV from &apos;../base/TextureUV&apos;
+import TextureBank from &apos;../base/TextureBank&apos;
+import ModelBank from &apos;../base/ModelBank&apos;
+
+import ObjectAssign from &apos;../etc/ObjectAssign&apos;
+
+/**
+ * PMDReader class
+ * @access public
+ */
+export default class PMDReader extends ModelReader {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    super()
+    this._binaryReader = null
+
+    this._model = null
+    this._parentDirName = null
+
+    this._maxEffBonesLength = 20 // FIXME: bind to vertex shader
+
+    this._leftKneeName = String.fromCharCode(0x5DE6, 0x3072, 0x3056)  // &#x300C;&#x5DE6;&#x3072;&#x3056;&#x300D;
+    this._rightKneeName = String.fromCharCode(0x53F3, 0x3072, 0x3056) // &#x300C;&#x53F3;&#x3072;&#x3056;&#x300D;
+
+    this._toonFileName = null
+
+    this._toonFileName = []
+    for(let i=0; i&lt;9; i++){
+      this._toonFileName[i] = &apos;toon0&apos; + (i+1) + &apos;.bmp&apos;
+    }
+    this._toonFileName[9] = &apos;toon10.bmp&apos;
+  }
+
+  readModel(url){
+    if(url.substr(-4) !== &apos;.pmd&apos;){
+      return false
+    }
+
+    const obj = this
+    const onload = () =&gt; { obj.readModelProcess(url) }
+
+    this._model = new PMDModel()
+    this._binaryReader = new BinaryReader(url, false, &apos;sjis&apos;, onload)
+
+    return this._model
+  }
+
+  readModelFromFile(file) {
+    if(file.name.substr(-4) !== &apos;.pmd&apos;){
+      console.log(&apos;filename_error: &apos; + file.name)
+      return false
+    }
+
+    const obj = this
+    const onload = () =&gt; { obj.readModelProcess(null) }
+
+    this._model = PMDModel()
+    this._binaryReader = new BinaryReader(file, false, &apos;sjis&apos;, onload)
+
+    return this._model
+  }
+
+  readModelProcess(url) {
+    const result = this.readModelSub(url)
+
+    if(!result){
+      if(this._model.onerror){
+        this._model.onerror()
+      }
+    }else{
+      this._model.loaded = true
+      if(this._model.onload){
+        this._model.onload()
+      }
+    }
+    if(this._model.onloadend){
+      this._model.onloadend()
+    }
+  }
+
+  readModelSub(url){
+    //this._parentDirName = (new String(url)).gsub(/\/[^\/]*$/, &apos;/&apos;)
+    this._parentDirName = url.replace(/\/[^\/]*$/, &apos;/&apos;)
+    if(url === this._parentDirName){
+      this._parentDirName = &apos;./&apos;
+    }
+
+    const result = this.readHeader()
+    if(!result){
+      return false
+    }
+
+    this.readVertex()
+    this.readIndex()
+    this.readMaterial()
+    this.readBone()
+    this.updateVertexBone()
+    this.readIK()
+    this.readFace()
+    this.readFaceDisplay()
+    this.readBoneDisplayName()
+    this.readBoneDisplay()
+    this.initRenderGroup()
+
+    if(!this._binaryReader.hasBytesAvailable())
+      return this._model
+
+    this.readEnglishInfo()
+
+    if(!this._binaryReader.hasBytesAvailable())
+      return this._model
+
+    this.readToonTexture()
+
+    if(!this._binaryReader.hasBytesAvailable())
+      return this._model
+
+    this.readRigidBody()
+
+    if(!this._binaryReader.hasBytesAvailable())
+      return this._model
+
+    this.readConstraint()
+
+    return this._model
+  }
+
+  readHeader() {
+    const magic = this._binaryReader.readString(3)
+    if(magic !== &apos;Pmd&apos;){
+      //myAlert(&apos;PMD Format Error&apos;)
+      return false
+    }
+    this._model.version = this._binaryReader.readFloat()   
+    this._model.modelName = this._binaryReader.readString(20)
+    this._model.comment = this._binaryReader.readString(256)
+    //myAlert(this._model.modelName + &apos;\n&apos; + this._model.comment)
+    return true
+  }
+  
+  readVertex() {
+    const vertexCount = this._binaryReader.readUnsignedInt()
+    if(vertexCount &lt;= 0){
+      //myAlert(&apos;PMD vertexCount error.&apos;)
+    }
+
+    //myAlert(&apos;vertexCount: &apos;+vertexCount)
+
+    this._model.skinArray = []
+    for(let i=0; i&lt;vertexCount; i++){
+      this._model.skinArray[i] = new Skin()
+
+      this._model.skinArray[i].position = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+      this._model.skinArray[i].normal = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+      this._model.skinArray[i].textureUV = new TextureUV(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat()
+      )
+      this._model.skinArray[i].boneNum[0] = this._binaryReader.readUnsignedShort()
+      this._model.skinArray[i].boneNum[1] = this._binaryReader.readUnsignedShort()
+
+      this._model.skinArray[i].skinWeight[0] = this._binaryReader.readUnsignedByte() / 100.0
+      this._model.skinArray[i].skinWeight[1] = 1.0 - this._model.skinArray[i].skinWeight[0]
+      this._model.skinArray[i].skinWeight[2] = 0.0
+      this._model.skinArray[i].skinWeight[3] = 0.0
+
+      this._model.skinArray[i].edge = this._binaryReader.readUnsignedByte()
+    }
+  }
+
+  readIndex() {
+    const indexCount = this._binaryReader.readUnsignedInt()
+    //myAlert(&apos;indexCount: &apos;+indexCount)
+
+    this._model.indexArray = []
+    for(let i=0; i&lt;indexCount; i++){
+      this._model.indexArray[i] = this._binaryReader.readUnsignedShort()
+    }
+  }
+
+  readMaterial() {
+    const materialCount = this._binaryReader.readUnsignedInt()
+
+    //myAlert(&apos;materialCount: &apos;+materialCount)
+    this._model.materialArray = []
+    for(let i=0; i&lt;materialCount; i++){
+      const materialObj = new Material()
+
+      materialObj.diffuse = new Vector4(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat()
+      )
+      materialObj.shininess = this._binaryReader.readFloat()
+      materialObj.specular = new Vector4(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+        1.0
+      )
+      materialObj.ambient = new Vector4(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+        1.0
+      )
+      materialObj.emission = new Vector4(0, 0, 0, 0)
+      materialObj.toonIndex = this._binaryReader.readUnsignedByte()
+      materialObj.edge = this._binaryReader.readUnsignedByte()
+      materialObj.indexCount = this._binaryReader.readUnsignedInt()
+
+      let textureFile = this._binaryReader.readString(20)
+      let sphereFile = &apos;&apos;
+      if(textureFile.indexOf(&apos;*&apos;) &gt;= 0){
+        const names = textureFile.split(&apos;*&apos;)
+        textureFile = names[0]
+        sphereFile = names[1]
+      }
+      materialObj.textureFileName = this._parentDirName + textureFile
+      materialObj.sphereFileName = this._parentDirName + sphereFile
+      if(materialObj.textureFileName !== this._parentDirName){
+        materialObj.texture = TextureBank.getTexture(materialObj.textureFileName)
+      }
+      if(materialObj.sphereFileName !== this._parentDirName){
+        materialObj.sphere = TextureBank.getTexture(materialObj.sphereFileName)
+      }
+
+      this._model.materialArray[i] = materialObj
+    }
+  }
+
+  readBone() {
+    const boneCount = this._binaryReader.readUnsignedShort()
+    
+    //myAlert(&apos;boneCount: &apos;+boneCount)
+    this._model.boneArray = []
+    for(let i=0; i&lt;boneCount; i++){
+      const boneObj = new Bone()
+      
+      boneObj.name = this._binaryReader.readString(20)
+      boneObj.parentNo = this._binaryReader.readUnsignedShort()
+      boneObj.childNo = this._binaryReader.readUnsignedShort()
+      boneObj.type = this._binaryReader.readUnsignedByte()
+      boneObj.ikTarget = this._binaryReader.readUnsignedShort()
+      boneObj.bonePosition = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat()
+      )
+      this._model.boneArray[i] = boneObj
+      this._model.boneHash.set(boneObj.name, boneObj)
+    }
+
+    // &#x89AA;&#x30DC;&#x30FC;&#x30F3;&#x306E;&#x8A2D;&#x5B9A;
+    for(let i=0; i&lt;boneCount; i++){
+      const bone = this._model.boneArray[i]
+      if(bone.parentNo !== 0xFFFF){
+        this._model.boneArray[bone.parentNo].addChild(bone)
+      }else{
+        this._model.rootBone.addChild(bone)
+      }
+    }
+
+    // &#x521D;&#x671F;&#x5316;&#x51E6;&#x7406;
+    this._model.boneArray.forEach( (bone) =&gt; {
+      bone.initBoneData()
+    })
+  }
+
+  readIK() {
+    const boneArray = this._model.boneArray
+    const ikCount = this._binaryReader.readUnsignedShort()
+
+    for(let i=0; i&lt;ikCount; i++){
+      const ikObj = new IK()
+      const targetBoneNo = this._binaryReader.readUnsignedShort()
+      const effectBoneNo = this._binaryReader.readUnsignedShort()
+
+      ikObj.targetBone = boneArray[targetBoneNo]
+      ikObj.effectBone = boneArray[effectBoneNo]
+      const numLink = this._binaryReader.readUnsignedByte()
+      ikObj.iteration = this._binaryReader.readUnsignedShort()
+      ikObj.weight = this._binaryReader.readFloat() * Math.PI
+
+      ikObj.boneList = []
+      ikObj.minAngleList = []
+      ikObj.maxAngleList = []
+      for(let j=0; j&lt;numLink; j++){
+        const linkNo = this._binaryReader.readUnsignedShort()
+        ikObj.boneList.push(boneArray[linkNo])
+        
+        //const boneName = new String(boneArray[linkNo].name)
+        const boneName = boneArray[linkNo].name
+        if((boneArray[linkNo].name === this._leftKneeName) || (boneArray[linkNo].name === this._rightKneeName)){
+          ikObj.minAngleList[j] = new Vector3(0.003, 0.0, 0.0)
+          ikObj.maxAngleList[j] = new Vector3(Math.PI-0.003, 0.0, 0.0)
+        }
+      }
+      this._model.ikArray[i] = ikObj
+    }
+  }
+
+  readFace() {
+    const faceCount = this._binaryReader.readUnsignedShort()
+
+    this._model.faceArray = []
+    for(let i=0; i&lt;faceCount; i++){
+      const faceObj = new Face()
+
+      faceObj.name = this._binaryReader.readString(20)
+      faceObj.numVertices = this._binaryReader.readUnsignedInt()
+      faceObj.type = this._binaryReader.readUnsignedByte()
+      faceObj.vertices = []
+      for(let j=0; j&lt;faceObj.numVertices; j++){
+        const faceVertexObj = new FaceVertex()
+        faceVertexObj.index = this._binaryReader.readUnsignedInt()
+        faceVertexObj.position = new Vector3(
+          this._binaryReader.readFloat(),
+          this._binaryReader.readFloat(),
+         -this._binaryReader.readFloat()
+        )
+        faceObj.vertices[j] = faceVertexObj
+      }
+      this._model.faceArray[i] = faceObj
+      this._model.faceHash.set(faceObj.name, faceObj)
+    }
+  }
+
+  readFaceDisplay() {
+    const faceDisplayCount = this._binaryReader.readUnsignedByte()
+
+    this._model.faceDisplayArray = []
+    for(let i=0; i&lt;faceDisplayCount; i++){
+      this._model.faceDisplayArray[i] = this._binaryReader.readUnsignedShort()
+    }
+  }
+
+  readBoneDisplayName() {
+    const boneDisplayNameCount = this._binaryReader.readUnsignedByte()
+
+    this._model.boneDisplayNameArray = []
+    for(let i=0; i&lt;boneDisplayNameCount; i++){
+      this._model.boneDisplayNameArray[i] = this._binaryReader.readString(50)
+    }
+  }
+
+  readBoneDisplay() {
+    const boneDisplayCount = this._binaryReader.readUnsignedInt()
+
+    this._model.boneDisplayIndex = []
+    this._model.boneDisplayFrameIndex = []
+    for(let i=0; i&lt;boneDisplayCount; i++){
+      this._model.boneDisplayIndex[i] = this._binaryReader.readUnsignedShort()
+      this._model.boneDisplayFrameIndex[i] = this._binaryReader.readUnsignedByte()
+    }
+  }
+
+  readEnglishInfo() {
+    this._model.englishCompatibility = this._binaryReader.readUnsignedByte()
+    if(this._model.englishCompatibility){
+      // Header
+      this._model.englishName = this._binaryReader.readString(20)
+      this._model.englishComment = this._binaryReader.readString(256)
+
+      if(!this._binaryReader.hasBytesAvailable())
+        return
+
+      // Bone
+      for(let i=0; i&lt;this._model.boneArray.length; i++){
+        this._model.boneArray[i].englishName = this._binaryReader.readString(20)
+      }
+      
+      if(!this._binaryReader.hasBytesAvailable())
+        return
+
+      // Face
+      for(let i=1; i&lt;this._model.faceArray.length; i++){
+        this._model.faceArray[i].englishName = this._binaryReader.readString(20)
+      }
+
+      if(!this._binaryReader.hasBytesAvailable())
+        return
+
+      // BoneDisplayName
+      for(let i=0; i&lt;this._model.boneDisplayNameArray.length; i++){
+        this._model.boneDisplayEnglishNameArray[i] = this._binaryReader.readString(50)
+      }
+    }
+  }
+
+  readToonTexture() {
+    for(let i=0; i&lt;10; i++){
+      this._toonFileName[i] = this._binaryReader.readString(100)
+    }
+
+    //for(var i=0 i&lt;10 i++){
+    //  alert(i + &apos;:&apos; + this._toonFileName[i])
+    //}
+    // set toon file to each material
+    const obj = this
+    this._model.materialArray.forEach( (m) =&gt; {
+      if(0 &lt;= m.toonIndex &amp;&amp; m.toonIndex &lt; 10){
+        //alert(&apos;m.toonIndex = &apos; + m.toonIndex)
+        //alert(obj._toonFileName[m.toonIndex])
+        m.toonFileName = obj._parentDirName + obj._toonFileName[m.toonIndex]
+        if(m.toonFileName !== obj._parentDirName){
+          m.toon = TextureBank.getTexture(m.toonFileName)
+        }
+      }
+    })
+  }
+
+  readRigidBody() {
+    const rigidBodyCount = this._binaryReader.readUnsignedInt()
+
+    this._model.rigidBodyArray = []
+    for(let i=0; i&lt;rigidBodyCount; i++){
+      let bone = null
+      const rigidBodyObj = new RigidBody()
+
+      rigidBodyObj.name = this._binaryReader.readString(20)
+      rigidBodyObj.boneIndex = this._binaryReader.readShort()
+      rigidBodyObj.groupIndex = this._binaryReader.readUnsignedByte()
+      rigidBodyObj.groupTarget = this._binaryReader.readUnsignedShort()
+      rigidBodyObj.shapeType = this._binaryReader.readUnsignedByte()
+      rigidBodyObj.shapeW = this._binaryReader.readFloat()
+      rigidBodyObj.shapeH = this._binaryReader.readFloat()
+      rigidBodyObj.shapeD = this._binaryReader.readFloat()
+      rigidBodyObj.position = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+      rigidBodyObj.rotate = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+      rigidBodyObj.weight = this._binaryReader.readFloat()
+      rigidBodyObj.positionDim = this._binaryReader.readFloat()
+      rigidBodyObj.rotateDim = this._binaryReader.readFloat()
+      rigidBodyObj.recoil = this._binaryReader.readFloat()
+      rigidBodyObj.friction = this._binaryReader.readFloat()
+      rigidBodyObj.type = this._binaryReader.readUnsignedByte()
+
+      if(rigidBodyObj.boneIndex === -1){
+        bone = this._model.boneHash.get(&apos;&#x30BB;&#x30F3;&#x30BF;&#x30FC;&apos;)
+      }else{
+        bone = this._model.boneArray[rigidBodyObj.boneIndex]
+      }
+
+      this._model.rigidBodyArray[i] = rigidBodyObj
+    }
+  }
+
+  readConstraint() {
+    const constraintCount = this._binaryReader.readUnsignedInt()
+
+    this._model.constraintArray = []
+    for(let i=0; i&lt;constraintCount; i++){
+      const constraintObj = new Constraint()
+
+      constraintObj.name = this._binaryReader.readString(20)
+      constraintObj.bodyA = this._binaryReader.readUnsignedInt()
+      constraintObj.bodyB = this._binaryReader.readUnsignedInt()
+
+      constraintObj.position = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+
+      constraintObj.rotate = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+
+      constraintObj.constrainPos1 = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+
+      constraintObj.constrainPos2 = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+
+      constraintObj.constrainRot1 = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+
+      constraintObj.constrainRot2 = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+
+      constraintObj.springPos = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+
+      constraintObj.springRot = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+       -this._binaryReader.readFloat()
+      )
+
+      this._model.constraintArray[i] = constraintObj
+    }
+  }
+
+  updateVertexBone() {
+    const boneArray = this._model.boneArray
+    this._model.skinArray.forEach( (skinObj) =&gt; {
+      skinObj.bones[0] = boneArray[skinObj.boneNum[0]]
+      skinObj.bones[1] = boneArray[skinObj.boneNum[1]]
+    })
+  }
+
+  // &#x30DE;&#x30C6;&#x30EA;&#x30A2;&#x30EB;&#x3001;&#x5F71;&#x97FF;&#x3092;&#x4E0E;&#x3048;&#x308B;&#x30DC;&#x30FC;&#x30F3;&#x6BCE;&#x306B;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x5206;&#x3051;
+  initRenderGroup() {
+    const materials = this._model.materialArray
+    let indices = this._model.indexArray
+    let skins = this._model.skinArray
+    const boneArray = this._model.boneArray
+    let renderGroups = []
+
+    if(this._model.faceArray[0]){
+      // &#x52D5;&#x7684;&#x306B;&#x5909;&#x5316;&#x3059;&#x308B;&#x9802;&#x70B9;&#x3092;&#x9802;&#x70B9;&#x914D;&#x5217;&#x306E;&#x6700;&#x5F8C;&#x5C3E;&#x306B;&#x914D;&#x7F6E;
+      // &#xFF08;bufferSubData&#x3067;&#x4E00;&#x6C17;&#x306B;&#x8EE2;&#x9001;&#x3059;&#x308B;&#x305F;&#x3081;&#xFF09;
+
+      const faceVertices = this._model.faceArray[0].vertices
+      const dynamicSkins = []
+      const newSkins = []
+      const newIndices = []
+      const indexTranslationTable = []
+      const faceBaseIndices = []
+
+      // &#x52D5;&#x7684;&#x306A;&#x9802;&#x70B9;&#x3092;&#x5225;&#x306E;&#x914D;&#x5217;&#x306B;&#x30B3;&#x30D4;&#x30FC;
+      let dynamicSkinCount = 0
+      for(let i=0; i&lt;faceVertices.length; i++){
+        const index = faceVertices[i].index
+        faceBaseIndices[index] = 1
+        dynamicSkins[dynamicSkinCount++] = skins[index]
+      }
+
+      // &#x65B0;&#x3057;&#x3044;&#x9802;&#x70B9;&#x914D;&#x5217;&#x3068;index&#x5909;&#x63DB;&#x7528;&#x30C6;&#x30FC;&#x30D6;&#x30EB;&#x306E;&#x4F5C;&#x6210;
+      let skinCount = 0
+      let dynamicSkinIndex = skins.length - dynamicSkinCount
+      for(let i=0; i&lt;skins.length; i++){
+        if(faceBaseIndices[i]){
+          newSkins[dynamicSkinIndex] = skins[i]
+          indexTranslationTable[i] = dynamicSkinIndex 
+
+          dynamicSkinIndex++
+        }else{
+          newSkins[skinCount] = skins[i]
+          indexTranslationTable[i] = skinCount
+
+          skinCount++
+        }
+      }
+
+      // &#x5909;&#x63DB;&#x5F8C;&#x306E;index&#x3092;&#x751F;&#x6210;
+      for(let i=0; i&lt;indices.length; i++){
+        newIndices[i] = indexTranslationTable[indices[i]]
+      }
+
+      // &#x9854;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x3092;&#x4FEE;&#x6B63;
+      for(let i=0; i&lt;faceVertices.length; i++){
+        faceVertices[i].index = i
+      }
+
+      // &#x9802;&#x70B9;&#x3001;&#x30A4;&#x30F3;&#x30C7;&#x30C3;&#x30AF;&#x30B9;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x65B0;&#x3057;&#x3044;&#x3082;&#x306E;&#x306B;&#x5165;&#x308C;&#x66FF;&#x3048;
+      this._model.skinArray = newSkins
+      skins = newSkins
+
+      this._model.indexArray = newIndices
+      indices = newIndices
+
+      this._model.dynamicSkinArray = dynamicSkins
+      this._model.dynamicSkinOffset = skins.length - dynamicSkinCount
+      this._model.hasDynamicSkin = true
+    }else{
+      this._model.hasDynamicSkin = false
+    }
+
+    const uniqueIndexArray = []
+    let indexCount = 0
+    for(let i=0; i&lt;materials.length; i++){
+      const material = materials[i]
+      const myMaterialGroup = []
+      const myMaterialIndexArray = []
+      for(let j=0; j&lt;material.indexCount/3; j++){
+        const index0 = indices[indexCount++]
+        const index1 = indices[indexCount++]
+        const index2 = indices[indexCount++]
+        const skin0 = skins[index0]
+        const skin1 = skins[index1]
+        const skin2 = skins[index2]
+        let group = null
+        let groupIndex = -1
+
+        //const bones = []
+        //const boneNums = bones.concat(skin0.boneNum, skin1.boneNum, skin2.boneNum).uniq().sort((a, b) =&gt; {return a-b})
+        /*
+        const boneNums = [].concat(skin0.boneNum, skin1.boneNum, skin2.boneNum)
+                           .filter((item, pos, self) =&gt; { return self.indexOf(item) == pos })
+                           .sort((a, b) =&gt; {return a-b})
+        */
+        const set = new Set([].concat(skin0.boneNum, skin1.boneNum, skin2.boneNum))
+        const boneNums = [...set].sort((a, b) =&gt; {return a-b})
+
+        // boneNums&#x306E;&#x8981;&#x7D20;&#x304C;&#x5168;&#x3066;g.bones&#x306B;&#x542B;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;
+        // group = myMaterialGroup.find( (g, index) =&gt; {
+        myMaterialGroup.some( (g, index) =&gt; {
+          let bj=0
+          for(let bi=0; bi&lt;g.bones.length &amp;&amp; bj&lt;boneNums.length; bi++){
+            if(g.bones[bi] === boneNums[bj]){
+              bj++
+            }else if(g.bones[bi] &gt; boneNums[bj]){
+              return false
+            }
+          }
+
+          groupIndex = index
+
+          // return (bj === boneNums.length)
+          if(bj === boneNums.length){
+            group = g
+            return true
+          }
+
+          return false
+        })
+
+        if(!group){
+          // boneNums&#x306E;&#x8981;&#x7D20;&#x306E;&#x3046;&#x3061;1&#x3064;&#x3067;&#x3082;g.bones&#x306B;&#x542B;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x304B;
+          //group = myMaterialGroup.find( (g, index) =&gt; {
+          myMaterialGroup.some( (g, index) =&gt; {
+            if(g.material !== material)
+              return false
+
+            for(let bi=0, bj=0; bi&lt;g.bones.length &amp;&amp; bj&lt;boneNums.length; ){
+              if(g.bones[bi] === boneNums[bj]){
+                groupIndex = index
+                group = g
+                return true
+              }else if(g.bones[bi] &gt; boneNums[bj]){
+                bj++
+              }else{
+                bi++
+              }
+            }
+            return false
+          })
+          if(group){
+            //const newGroup = group.bones.concat(boneNums).uniq().sort( (a, b) =&gt; {return a-b} )
+            const newSet = new Set(group.bones.concat(boneNums))
+            const newGroup = [...newSet].sort((a, b) =&gt; {return a-b})
+            if(newGroup.length &lt; this._maxEffBonesLength){
+              group.bones = newGroup
+            }else{
+              // &#x5165;&#x308A;&#x304D;&#x3089;&#x306A;&#x3044;
+              group = null
+            }
+          }
+        }
+
+        if(!group){
+          // &#x914D;&#x5217;&#x306B;&#x7A7A;&#x304D;&#x304C;&#x3042;&#x308C;&#x3070;&#x3001;&#x7121;&#x7406;&#x77E2;&#x7406;&#x306D;&#x3058;&#x3053;&#x3080;
+          const maxEffBonesLength = this._maxEffBonesLength
+          myMaterialGroup.some( (g, index) =&gt; {
+            const newSet = new Set(g.bones.concat(boneNums))
+            const newGroup = [...newSet]
+            if(newGroup.length &lt; maxEffBonesLength){
+              g.bones = newGroup.sort( (a, b) =&gt; {return a-b} )
+              groupIndex = index
+              group = g
+              return true
+            }
+            return false
+          })
+        }
+
+
+        if(!group){
+          // &#x3069;&#x306E;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x306B;&#x3082;&#x5165;&#x3089;&#x306A;&#x3051;&#x308C;&#x3070;&#x3001;&#x65B0;&#x3057;&#x304F;&#x30B0;&#x30EB;&#x30FC;&#x30D7;&#x3092;&#x4F5C;&#x6210;
+          group = new RenderGroup()
+          group.bones = boneNums
+          group.material = material
+          groupIndex = myMaterialGroup.length
+          myMaterialIndexArray[groupIndex] = []
+
+          myMaterialGroup.push(group)
+        }
+
+        group.indices.push(index0)
+        group.indices.push(index1)
+        group.indices.push(index2)
+        myMaterialIndexArray[groupIndex][index0] = 1
+        myMaterialIndexArray[groupIndex][index1] = 1
+        myMaterialIndexArray[groupIndex][index2] = 1
+      } // material.index
+
+      myMaterialGroup.forEach( (g) =&gt; {
+        g.boneArray = []
+        for(let k=0; k&lt;g.bones.length; k++){
+          g.boneArray.push(boneArray[g.bones[k]])
+        }
+      })
+
+      for(let k=0; k&lt;myMaterialIndexArray.length; k++){
+        const groupIndexArray = myMaterialIndexArray[k]
+        const group = myMaterialGroup[k]
+
+        for(let l=0; l&lt;groupIndexArray.length; l++){
+          if(groupIndexArray[l]){
+            if(uniqueIndexArray[l]){
+              // need vertex copy
+              // const newSkin = Object.clone(skins[l])
+              // newSkin.boneIndex = Object.clone(newSkin.boneIndex)
+
+              //const newSkin = Object.assign(new Skin(), skins[l])
+              const newSkin = ObjectAssign(new Skin(), skins[l])
+              //newSkin.boneIndex = Object.assign([], newSkin.boneIndex)
+              newSkin.boneIndex = ObjectAssign([], newSkin.boneIndex)
+              const newSkinIndex = skins.length
+              skins.push(newSkin)
+
+              group.indices.forEach( (value, key) =&gt; {
+                if(value === l){
+                  group.indices[key] = newSkinIndex
+                }
+              })
+              newSkin.renderGroup = group
+            }else{
+              uniqueIndexArray[l] = 1
+              skins[l].renderGroup = group
+            }
+          }
+        }
+      }
+
+      renderGroups = renderGroups.concat(myMaterialGroup)
+    } // material
+    this._model.renderGroupArray = renderGroups
+
+    // boneIndex&#x306E;&#x8A2D;&#x5B9A;
+    skins.forEach( (s) =&gt; {
+      const boneIndexArray = s.renderGroup.bones
+      for(let k=0; k&lt;4; k++){ // FIXME: const value (k)
+        s.boneIndex[k] = boneIndexArray.indexOf(s.boneNum[k])
+      }
+    })
+  }
+}
+
+ModelBank.addModelReader(PMDReader)
+
+</code></pre>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.2.1)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

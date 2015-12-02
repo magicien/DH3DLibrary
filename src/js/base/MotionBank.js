@@ -1,154 +1,226 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary MotionBank.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var MotionBank = Class.create({
-  _motions: $H(),
-  _loadingMotions: $H(),
-  _motionReaders: $A(),
+'use strict'
 
-  initialize: function() {
-  },
+/**
+ * MotionBank class
+ * @access public
+ */
+export default class MotionBank {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    /** @type {Map} */
+    this._motions = new Map()
+    /** @type {Map} */
+    this._loadingMotions = new Map()
+    /** @type {Array} */
+    this._motionReaders = []
+  }
 
-  addMotionReader: function(motionReader) {
-    this._motionReaders.push(motionReader);
-  },
+  addMotionReader(motionReader) {
+    this._motionReaders.push(motionReader)
+  }
 
-  getFileID: function(file) {
+  getFileID(file) {
     if(!(file instanceof File)){
-      return "";
+      return ''
     }
-    return "FILE:" + file.name + "_" + file.size + "_" + file.lastModifiedDate;
-  },
+    //return 'FILE:' + file.name + '_' + file.size + '_' + file.lastModifiedDate
+    return `FILE:${file.name}_${file.size}_${file.lastModifiedDate}`
+  }
 
-  getMotion: function(motionFile, options) {
+  getMotion(motionFile, options) {
     if(motionFile instanceof File){
-      return this.getMotionFromFile(motionFile, options);
+      return this.getMotionFromFile(motionFile, options)
     }
 
-    var motion = this._motions.get(motionFile);
+    /*
+    let motion = this._motions.get(motionFile)
     if(motion){
-      var m = motion.clone();
+      const m = motion.clone()
       if(options && options.onload){
-        m.onload = options.onload;
+        m.onload = options.onload
       }else{
-        m.onload = undefined;
+        m.onload = null
       }
 
       if(m.loaded){
         if(m.onload){
-          m.onload();
+          m.onload()
         }
       }else{
-        var arr = this._loadingMotions.get(motionFile);
-        arr.push(m);
+        const arr = this._loadingMotions.get(motionFile)
+        arr.push(m)
       }
-      return m;
+      return m
+    }
+    */
+    const motion = this._motions.get(motionFile)
+    if(motion){
+      const m = motion.clone()
+      return Promise.resolve(m)
     }
 
-    this._motionReaders.find( function(readerClass){
-      var reader = new readerClass();
-      motion = reader.readMotion(motionFile);
+    /*
+    //this._motionReaders.find( (readerClass) => {
+    this._motionReaders.some( (readerClass) => {
+      const reader = new readerClass()
+      // FIXME: do not overwrite motion value
+      motion = reader.readMotion(motionFile)
 
       if(motion)
-        return true;
+        return true
 
-      return false;
-    });
-
-    if(motion){
-      motion.onload = function(){ MotionBank.onloadMotion(motion); };
-
-      motion.hashName = motionFile;
-      this._motions.set(motionFile, motion);
-
-      var arr = $A();
-      var m = motion.clone();
-      if(options && options.onload){
-        m.onload = options.onload;
-      }else{
-        m.onload = undefined;
+      return false
+    })
+    */
+    let promise = null
+    this._motionReaders.some((readerClass) => {
+      if(readerClass.canRead(motionFile)){
+        const reader = new readerClass()
+        promise = reader.readMotion(motionFile)
+        return true
       }
-      arr.push(m);
-      this._loadingMotions.set(motion.hashName, arr);
+      return false
+    })
 
-      return m;
-    }
-    return null;
-  },
-
-  getMotionFromFile: function(motionFile, options) {
-    var id = this.getFileID(motionFile);
-    var motion = this._motions.get(id);
+    /*
     if(motion){
-      var m = motion.clone();
+      const obj = this
+      motion.onload = () => { obj.onloadMotion(motion) }
+
+      motion.hashName = motionFile
+      this._motions.set(motionFile, motion)
+
+      const arr = []
+      const m = motion.clone()
       if(options && options.onload){
-        m.onload = options.onload;
+        m.onload = options.onload
       }else{
-        m.onload = undefined;
+        m.onload = null
+      }
+      arr.push(m)
+      this._loadingMotions.set(motion.hashName, arr)
+
+      return m
+    }
+    return null
+    */
+    if(promise){
+      return promise.then((loadedMotion) => {
+        this._motions.set(motionFile, loadedMotion)
+        return loadedMotion.clone()
+      })
+    }
+
+    return Promise.reject(`can't read file: ${motionFile}`)
+  }
+
+  getMotionFromFile(motionFile, options) {
+    const id = this.getFileID(motionFile)
+    const motion = this._motions.get(id)
+
+    /*
+    if(motion){
+      const m = motion.clone()
+      if(options && options.onload){
+        m.onload = options.onload
+      }else{
+        m.onload = null
       }
 
       if(m.loaded){
         if(m.onload){
-          m.onload();
+          m.onload()
         }
       }else{
-        var arr = this._loadingMotions.get(motionFile);
-        arr.push(m);
+        const arr = this._loadingMotions.get(motionFile)
+        arr.push(m)
       }
-      return m;
+      return m
+    }
+    */
+    if(motion){
+      const m = motion.clone()
+      return Promise.resolve(m)
     }
 
-    this._motionReaders.find( function(readerClass){
-      var reader = new readerClass();
-      motion = reader.readMotionFromFile(motionFile);
+    /*
+    //this._motionReaders.find( (readerClass) => {
+    this._motionReaders.some( (readerClass) => {
+      const reader = new readerClass()
+      // FIXME: do not overwrite motion value
+      motion = reader.readMotionFromFile(motionFile)
 
       if(motion)
-        return true;
+        return true
 
-      return false;
-    });
-
-    if(motion){
-      motion.onload = function(){ MotionBank.onloadMotion(motion); };
-
-      motion.hashName = id;
-      this._motions.set(id, motion);
-
-      var arr = $A();
-      var m = motion.clone();
-      if(options && options.onload){
-        m.onload = options.onload;
-      }else{
-        m.onload = undefined;
+      return false
+    })
+    */
+    let promise = null
+    this._motionReaders.some((readerClass) => {
+      if(readerClass.canRead(motionFile)){
+        const reader = new readerClass()
+        promise = reader.readMotionFromFile(motionFile)
+        return true
       }
-      arr.push(m);
-      this._loadingMotions.set(motion.hashName, arr);
+      return false
+    })
 
-      return m;
+    /*
+    if(motion){
+      const obj = this
+      motion.onload = () => { obj.onloadMotion(motion) }
+
+      motion.hashName = id
+      this._motions.set(id, motion)
+
+      const arr = []
+      const m = motion.clone()
+      if(options && options.onload){
+        m.onload = options.onload
+      }else{
+        m.onload = null
+      }
+      arr.push(m)
+      this._loadingMotions.set(motion.hashName, arr)
+
+      return m
     }
 
-    return null;
-  },
+    return null
+    */
+    if(promise){
+      return promise.then((loadedMotion) => {
+        this._motions.set(id, loadedMotion)
+        return loadedMotion.clone()
+      })
+    }
 
-  onloadMotion: function(motion) {
-    motion.loaded = true;
+    return Promise.reject(`can't read file: ${motionFile}`)
+  }
 
-    var arr = this._loadingMotions.get(motion.hashName);
+/*
+  onloadMotion(motion) {
+    motion.loaded = true
+
+    const arr = this._loadingMotions.get(motion.hashName)
     if(arr){
-      arr.each( function(m){
-        m.loaded = true;
+      arr.forEach( (m) => {
+        m.loaded = true
         if(m.onload){
-          m.copy(motion);
-          m.onload();
+          m.copy(motion)
+          m.onload()
         }
-      });
+      })
     }
-  },
-});
+  }
+*/
+}
 
-MotionBank = new MotionBank();
+// for singleton
+export default new MotionBank()
+

@@ -1,203 +1,210 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary Model.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var Model = Class.create({
-  renderer: null,
-  hashName: "",
-  loaded: false,
-  onload: null,
+'use strict'
 
-  // Skin
-  skinArray: $A(),
-  dynamicSkinArray: $A(),
-  dynamicSkinOffset: 0,
+import Bone from './Bone'
+import Matrix from './Matrix'
+import Vector3 from './Vector3'
+import RenderGroup from './RenderGroup'
 
-  // Index
-  indexArray: $A(),
+import ObjectAssign from '../etc/ObjectAssign'
 
-  // Material
-  materialArray: $A(),
-  // TODO: texture
-  // toonFileName: $A(),
+/**
+ * Model class
+ * @access public
+ */
+export default class Model {
+  /**
+   * constructor
+   * @access public
+   * @param {Model} model -
+   * @constructor
+   */
+  constructor(model) {
+    this.renderer = null
+    this.hashName = ''
+    this.loaded = false
+    this.onload = null
+
+    // Skin
+    this.skinArray = []
+    this.dynamicSkinArray = []
+    this.dynamicSkinOffset = 0
+
+    // Index
+    this.indexArray = []
+
+    // Material
+    this.materialArray = []
+    // TODO: texture
+    // this.toonFileName = []
   
-  // Bone
-  boneArray: $A(),
-  boneHash: $H(),
-  rootBone: null,
+    // Bone
+    this.boneArray = []
+    this.boneHash = new Map()
+    this.rootBone = null
 
-  // IK
-  ikArray: $A(),
+    // IK
+    this.ikArray = []
 
-  // RigidBody
-  rigidBodyArray: $A(),
+    // RigidBody
+    this.rigidBodyArray = []
 
-  // Constraint
-  constraintArray: $A(),
+    // Constraint
+    this.constraintArray = []
 
-  // RenderGroup
-  renderGroupArray: $A(),
+    // RenderGroup
+    this.renderGroupArray = []
 
-  // VertexBuffer
-  vertexBuffer: null,
+    // VertexBuffer
+    this.vertexBuffer = null
 
-  initialize: function(model) {
     if(model instanceof Model){
-      model.copy(this);
-      return;
+      model.copy(this)
+      return
     }
-
-    this.skinArray = $A();
-    this.dynamicSkinArray = $A();
-    this.indexArray = $A();
-    this.materialArray = $A();
-    this.boneArray = $A();
-    this.boneHash = $H();
-    this.ikArray = $A();
-    this.rigidBodyArray = $A();
-    this.constraintArray = $A();
 
     // FIXME: 処理が煩雑
-    this.rootBone = new Bone();
-    this.rootBone.bonePosition = new DHVector3(0, 0, 0);
-    this.rootBone.localMatrix = new DHMatrix();
-    this.rootBone.initBoneData();
-  },
+    this.rootBone = new Bone()
+    this.rootBone.bonePosition = new Vector3(0, 0, 0)
+    this.rootBone.localMatrix = new Matrix()
+    this.rootBone.initBoneData()
+  }
 
-  destroy: function() {
-  },
+  destroy() {
+  }
 
-  copy: function(model) {
-    this.renderer          = model.renderer;
-    this.hashName          = model.hashName;
-    this.skinArray         = model.skinArray;
-    this.dynamicSkinArray  = model.dynamicSkinArray;
-    this.dynamicSkinOffset = model.dynamicSkinOffset;
-    this.indexArray        = model.indexArray;
-    this.materialArray     = model.materialArray;
-    this.boneArray         = model.boneArray;
-    this.boneHash          = model.boneHash;
-    this.rootBone          = model.rootBone;
-    this.ikArray           = model.ikArray;
-    this.rigidBodyArray    = model.rigidBodyArray;
-    this.constraintArray   = model.constraintArray;
-    this.renderGroupArray  = model.renderGroupArray;
-    this.vertexBuffer      = model.vertexBuffer;
-  },
+  copy(model) {
+    this.renderer          = model.renderer
+    this.hashName          = model.hashName
+    this.skinArray         = model.skinArray
+    this.dynamicSkinArray  = model.dynamicSkinArray
+    this.dynamicSkinOffset = model.dynamicSkinOffset
+    this.indexArray        = model.indexArray
+    this.materialArray     = model.materialArray
+    this.boneArray         = model.boneArray
+    this.boneHash          = model.boneHash
+    this.rootBone          = model.rootBone
+    this.ikArray           = model.ikArray
+    this.rigidBodyArray    = model.rigidBodyArray
+    this.constraintArray   = model.constraintArray
+    this.renderGroupArray  = model.renderGroupArray
+    this.vertexBuffer      = model.vertexBuffer
+  }
 
-  cloneForLoading: function() {
-    var newModel = Object.clone(this);
-    return newModel;
-  },
 
-  clone: function() {
+  cloneForLoading() {
+    //const newModel = Object.assign(new this.constructor(), this)
+    const newModel = ObjectAssign(new this.constructor(), this)
+
+    return newModel
+  }
+
+  clone() {
+    const newModel = this.cloneForLoading()
+
     if(!this.loaded){
-      return this.cloneForLoading();
+      return newModel
     }
 
-    var obj = this;
-    var newModel = Object.clone(this);
+    const obj = this
 
     // clone dynamicSkinArray
-    newModel.dynamicSkinArray = $A();
-    newModel.skinArray = this.skinArray.clone();
-    this.dynamicSkinArray.each( function(skin){
-      var index = obj.skinArray.indexOf(skin);
+    newModel.dynamicSkinArray = []
+    // newModel.skinArray = this.skinArray.clone()
+    newModel.skinArray = this.skinArray.concat()
+    this.dynamicSkinArray.forEach( (skin) => {
+      const index = obj.skinArray.indexOf(skin)
       if(index >= 0){
-        newModel.skinArray[index] = skin;
+        newModel.skinArray[index] = skin
       }
-      newModel.dynamicSkinArray.push(skin);
-    });
+      newModel.dynamicSkinArray.push(skin)
+    })
 
     // clone Bone
-    newModel.boneArray = $A();
-    newModel.boneHash = $H();
+    newModel.boneArray = []
+    newModel.boneHash = new Map()
 
-    var oldRootBone = this.rootBone;
-    var oldBoneHash = this.boneHash;
+    const oldRootBone = this.rootBone
+    const oldBoneHash = this.boneHash
 
     newModel.rootBone = 
        this.cloneBoneRecursive(this.rootBone, this.boneArray,     this.boneHash,
-                                              newModel.boneArray, newModel.boneHash);
+                                              newModel.boneArray, newModel.boneHash)
 
     // clone renderGroup
-    newModel.renderGroupArray = $A();
-    this.renderGroupArray.each( function(group){
-      newModel.renderGroupArray.push(obj.cloneRenderGroup(group, newModel.boneArray));
-    });
+    newModel.renderGroupArray = []
+    this.renderGroupArray.forEach( (group) => {
+      newModel.renderGroupArray.push(obj.cloneRenderGroup(group, newModel.boneArray))
+    })
     
     // clone IK
-    newModel.ikArray = $A();
-    this.ikArray.each( function(ik){
-      newIK = ik.clone();
-      newIK.targetBone = newModel.boneHash.get(ik.targetBone.name);
-      newIK.effectBone = newModel.boneHash.get(ik.effectBone.name);
+    newModel.ikArray = []
+    this.ikArray.forEach( (ik) => {
+      const newIK = ik.clone()
+      newIK.targetBone = newModel.boneHash.get(ik.targetBone.name)
+      newIK.effectBone = newModel.boneHash.get(ik.effectBone.name)
 
-      newIK.boneList = $A();
-      ik.boneList.each( function(ikBone){
-        newIK.boneList.push(newModel.boneHash.get(ikBone.name));
-      });
-      newModel.ikArray.push(newIK);
-    });
+      newIK.boneList = []
+      ik.boneList.forEach( (ikBone) => {
+        newIK.boneList.push(newModel.boneHash.get(ikBone.name))
+      })
+      newModel.ikArray.push(newIK)
+    })
 
-    return newModel;
-  },
+    return newModel
+  }
 
-  cloneBoneRecursive: function(bone, oldArray, oldHash, newArray, newHash) {
-    var newBone = bone.clone();
+  cloneBoneRecursive(bone, oldArray, oldHash, newArray, newHash) {
+    const newBone = bone.clone()
 
-    var index = oldArray.indexOf(bone);
+    const index = oldArray.indexOf(bone)
     if(index >= 0){
-      newArray[index] = newBone;
+      newArray[index] = newBone
     }
 
-    oldHash.each( function(hash){
-      if(hash.value == bone){
-        newHash.set(hash.key, newBone);
+    oldHash.forEach( (value, key) => {
+      if(value === bone){
+        newHash.set(key, newBone)
       }
-    });
+    })
 
-    var obj = this;
-    newBone.childBoneArray = $A();
-    bone.childBoneArray.each( function(cb){
-      var newChildBone = obj.cloneBoneRecursive(cb, oldArray, oldHash, newArray, newHash);
+    const obj = this
+    newBone.childBoneArray = []
+    bone.childBoneArray.forEach( (cb) => {
+      const newChildBone = obj.cloneBoneRecursive(cb, oldArray, oldHash, newArray, newHash)
 
-      newBone.childBoneArray.push(newChildBone);
-      newChildBone.parentBone = newBone;
-    });
+      newBone.childBoneArray.push(newChildBone)
+      newChildBone.parentBone = newBone
+    })
 
-    return newBone;
-  },
+    return newBone
+  }
 
-  cloneRenderGroup: function(oldGroup, newBoneArray) {
-    var newGroup = Object.clone(oldGroup);
+  cloneRenderGroup(oldGroup, newBoneArray) {
+    //const newGroup = Object.assign(new RenderGroup(), oldGroup)
+    const newGroup = ObjectAssign(new RenderGroup(), oldGroup)
 
-    var oldBoneArray = this.boneArray;
-    newGroup.boneArray = $A();
-    oldGroup.boneArray.each( function(bone){
-      var index = oldBoneArray.indexOf(bone);
+    const oldBoneArray = this.boneArray
+    newGroup.boneArray = []
+    oldGroup.boneArray.forEach( (bone) => {
+      const index = oldBoneArray.indexOf(bone)
       if(index >= 0){
-        newGroup.boneArray.push(newBoneArray[index]);
+        newGroup.boneArray.push(newBoneArray[index])
       }else{
         // error
-        newGroup.boneArray.push(null);
+        newGroup.boneArray.push(null)
       }
-    });
+    })
 
-    return newGroup;
-  },
+    return newGroup
+  }
 
-  getSkinArray: function() {
-    return this.skinArray;
-  },
+  getSkinArray() {
+    return this.skinArray
+  }
 
-  getDynamicSkinArray: function() {
-    return this.dynamicSkinArray;
-  },
+  getDynamicSkinArray() {
+    return this.dynamicSkinArray
+  }
 
-});
+}
 

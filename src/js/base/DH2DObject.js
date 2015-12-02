@@ -1,22 +1,24 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary DH2DObject.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var DH2DObject = Class.create({
-  initialize: function() {
-  },
+'use strict'
 
-  move: function(elapsedTime) {
-  },
+/**
+ * DH2DObject basic class
+ * @access public
+ */
+export default class DH2DObject {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+  }
 
-  animate: function(elapsedTime) {
-  },
+  move(elapsedTime) {
+  }
 
-  render: function() {
-  },
-});
+  animate(elapsedTime) {
+  }
 
+  render() {
+  }
+}

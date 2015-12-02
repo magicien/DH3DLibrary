@@ -1,171 +1,445 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary VMDReader.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var VMDReader = Class.create(MotionReader, {
-  _binaryReader: null,
-  _motion: null,
+'use strict'
 
-  initialize: function($super) {
-    $super();
-  },
+import MotionReader from '../base/MotionReader'
+import BinaryReader from '../util/BinaryReader'
+import FaceMotion from './FaceMotion'
+import KeyFrame from '../base/KeyFrame'
+import CameraKeyFrame from '../base/CameraKeyFrame'
+import LightKeyFrame from '../base/LightKeyFrame'
+import ShadowKeyFrame from '../base/ShadowKeyFrame'
+import VMDMotion from './VMDMotion'
+import Vector3 from '../base/Vector3'
+import Vector4 from '../base/Vector4'
+import IKFrame from './IKFrame'
+import MotionBank from '../base/MotionBank'
 
-  readMotion: function(url) {
-    if(url.substr(-4) != ".vmd"){
-      return false;
-    }
+/**
+ * VMDReader class
+ * @access public
+ */
+export default class VMDReader extends MotionReader {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    super()
+    this._binaryReader = null
+    this._motion = null
+    this._type = 'unknown'
+  }
 
-    var obj = this;
-    var onload = function(){ obj.readMotionProcess(url); };
+  readMotion(url) {
+    if(!VMDReader.canRead(url))
+      return false
 
-    this._motion = new VMDMotion();
-    this._binaryReader = new BinaryReader(url, false, 'sjis', onload);
+    const obj = this
+    const onload = () => { obj.readMotionProcess(url) }
 
-/*
-    this._motion.frameLength = 0;
+    this._motion = new VMDMotion()
 
-    this.readHeader();
-    this.readFrames();
-    this.readFace();
-*/
-    return this._motion;
-  },
+    const promise = new BinaryReader.open(url, false, 'sjis')
+      .then((reader) => {
+        this._binaryReader = reader
+        return this.readMotionProcess(url)
+      })
+      .catch((err) => {
+        console.error(`file (${url}) open error: ${err}`)
+      })
 
-  readMotionFromFile: function(file) {
-    if(file.name.substr(-4) != ".vmd"){
-      alert("filename_error: " + file.name);
-      return false;
-    }
+    return promise
+  }
 
-    var obj = this;
-    var onload = function(){ obj.readMotionProcess(file); };
+  readMotionFromFile(file) {
+    if(!VMDReader.canRead(file))
+      return false
 
-    this._motion = new VMDMotion();
-    this._binaryReader = new BinaryReader(file, false, 'sjis', onload);
+    this._motion = new VMDMotion()
 
-    return this._motion;
-  },
+    const promise = new BinaryReader.open(file, false, 'sjis')
+      .then((reader) => {
+        this._binaryReader = reader
+        return this.readMotionProcess(null)
+      })
+      .catch((err) => {
+        console.error(`file (${file.name}) open error: ${err}`)
+      })
 
-  readMotionProcess: function(url) {
-    var result = this.readMotionSub(url);
+    return promise
+  }
+
+  readMotionProcess(url) {
+    const result = this.readMotionSub(url)
 
     if(!result){
       if(this._motion.onerror){
-        this._motion.onerror();
+        this._motion.onerror()
       }
-    }else{
-      this._motion.loaded = true;
-      if(this._motion.onload){
-        this._motion.onload();
-      }
+      return Promise.reject('read motion error')
     }
+
+    this._motion.loaded = true
+    if(this._motion.onload){
+      this._motion.onload()
+    }
+
     if(this._motion.onloadend){
-      this._motion.onloadend();
+      this._motion.onloadend()
     }
-  },
+    return Promise.resolve(this._motion)
+  }
 
-  readMotionSub: function(url){
-    this._motion.frameLength = 0;
+  readMotionSub(url){
+    this._motion.frameLength = 0
 
-    this.readHeader();
-    this.readFrames();
-    this.readFace();
+    this.readHeader()
+    this.readFrames()
+    this.readFace()
 
-    return this._motion;
-  },
+    if(!this._binaryReader.hasBytesAvailable())
+      return this._motion
 
-  readHeader: function() {
-    var header = this._binaryReader.readString(30);
-    if(header != "Vocaloid Motion Data 0002"){
-      //myAlert("VMD Format Error");
+    this.readCamera()
+    this.readLight()
+
+    if(!this._binaryReader.hasBytesAvailable())
+      return this._motion
+
+    console.log(`data length: ${this._binaryReader.data.length}`)
+    console.log(`position: ${this._binaryReader.position}`)
+    this.readShadow()
+
+    if(!this._binaryReader.hasBytesAvailable())
+      return this._motion
+
+    this.readVisibilityAndIK()
+
+    return this._motion
+  }
+
+  readHeader() {
+    const header = this._binaryReader.readString(30)
+    if(header !== 'Vocaloid Motion Data 0002'){
+      console.log(`VMD Format Error: ${header}`)
+      //myAlert('VMD Format Error')
     }
-    this._motion.name = this._binaryReader.readString(20);
-    //myAlert("motion:\n" + this._motion.name);
-  },
+    this._motion.name = this._binaryReader.readString(20)
 
-  readFrames: function() {
-    var frames = this._binaryReader.readUnsignedInt();
-    var motionArray = this._motion.motionArray;
+    console.log(this._motion.name)
+    if(this._motion.name === 'カメラ・照明'){
+      console.log('camera/light motion')
+      this._type = 'camera/light'
+    }else{
+      this._type = 'model'
+    }
+  }
 
-    //myAlert("motion frames: " + frames);
-    for(var i=0; i<frames; i++){
-      var frame = new KeyFrame();
-      var boneName = this._binaryReader.readString(15);
+  readFrames() {
+    const frames = this._binaryReader.readUnsignedInt()
+    const motionArray = this._motion.motionArray
+    const bytesPerFrame = 111
 
-      frame.frameNo = this._binaryReader.readUnsignedInt();
+    console.log(`bone frames: ${frames}`)
+
+    if(frames === 0)
+      return
+
+    if(this._type !== 'model'){
+      console.log('error: not model motion data has bone motion data')
+
+      // skip data
+      this._binaryReader.skipBytes(bytesPerFrame * frames)
+      return
+    }
+
+    for(let i=0; i<frames; i++){
+      const frame = new KeyFrame()
+      const boneName = this._binaryReader.readString(15)
+
+      frame.frameNo = this._binaryReader.readUnsignedInt()
       if(frame.frameNo > this._motion.frameLength)
-        this._motion.frameLength = frame.frameNo;
+        this._motion.frameLength = frame.frameNo
 
-      frame.position = new DHVector3(
+      frame.position = new Vector3(
         this._binaryReader.readFloat(),
         this._binaryReader.readFloat(),
        -this._binaryReader.readFloat()
-      );
+      )
 
-      frame.rotate = new DHVector4(
+      frame.rotate = new Vector4(
        -this._binaryReader.readFloat(),
        -this._binaryReader.readFloat(),
         this._binaryReader.readFloat(),
         this._binaryReader.readFloat()
-      );
-      frame.rotate.normalize(frame.rotate);
+      )
+      frame.rotate.normalize(frame.rotate)
 
-      frame.interpolation = $A();
-      for(var j=0; j<64; j++){
-        frame.interpolation[j] = this._binaryReader.readUnsignedByte();
+      frame.interpolation = []
+      for(let j=0; j<64; j++){
+        frame.interpolation[j] = this._binaryReader.readUnsignedByte()
       }
 
       if(!motionArray.get(boneName)){
-        motionArray.set(boneName, $A());
+        motionArray.set(boneName, [])
       }
-      motionArray.get(boneName).push(frame);
+      motionArray.get(boneName).push(frame)
     }
 
-    motionArray.each( function(keyFrames){
-      motionArray.set(
-        keyFrames.key,
-        keyFrames.value.sortBy( function(frame){
-          return frame.frameNo;
-        })
-      );
-    });
-  },
+    // sort each keyFrames in ascending order of frameNo
+    motionArray.forEach( (keyFrames, key) => {
+      keyFrames.sort( (a, b) => { return a.frameNo - b.frameNo } )
+    })
+  }
 
-  readFace: function() {
-    var frames = this._binaryReader.readUnsignedInt();
-    var faceMotionArray = this._motion.faceMotionArray;
+  readFace() {
+    const frames = this._binaryReader.readUnsignedInt()
+    const faceMotionArray = this._motion.faceMotionArray
+    const bytesPerFrame = 23
 
-    //myAlert("face frames: " + frames);
-    for(var i=0; i<frames; i++){
-      var faceMotion = new FaceMotion();
-      var faceName = this._binaryReader.readString(15);
+    console.log(`face frames: ${frames}`)
 
-      faceMotion.frameNo = this._binaryReader.readUnsignedInt();
+    if(frames === 0)
+      return
+
+    if(this._type !== 'model'){
+      console.log('error: not model motion data has face motion data')
+
+      // skip data
+      this._binaryReader.skipBytes(bytesPerFrame * frames)
+      return
+    }
+
+    for(let i=0; i<frames; i++){
+      const faceMotion = new FaceMotion()
+      const faceName = this._binaryReader.readString(15)
+
+      faceMotion.frameNo = this._binaryReader.readUnsignedInt()
       if(faceMotion.frameNo > this._motion.frameLength)
-        this._motion.frameLength = faceMotion.frameNo;
+        this._motion.frameLength = faceMotion.frameNo
 
-      faceMotion.factor = this._binaryReader.readFloat();
+      faceMotion.factor = this._binaryReader.readFloat()
 
       if(!faceMotionArray.get(faceName)){
-        faceMotionArray.set(faceName, $A());
+        faceMotionArray.set(faceName, [])
       }
-      faceMotionArray.get(faceName).push(faceMotion);
+      faceMotionArray.get(faceName).push(faceMotion)
     }
 
-    faceMotionArray.each( function(keyFrames, index){
-      faceMotionArray.set(
-        keyFrames.key,
-        keyFrames.value.sortBy( function(frame, index){
-          return frame.frameNo;
-        })
-      );
-    });
-  },
-});
+    // sort each keyFrames in ascending order of frameNo
+    faceMotionArray.forEach( (keyFrames, key) => {
+      keyFrames.sort( (a, b) => { return a.frameNo - b.frameNo } )
+    })
+  }
 
-MotionBank.addMotionReader(VMDReader);
+  readCamera() {
+    const frames = this._binaryReader.readUnsignedInt()
+    const motionArray = this._motion.motionArray
+    const bytesPerFrame = 61
+
+    console.log(`camera frame: ${frames}`)
+
+    if(frames === 0)
+      return
+
+    if(this._type !== 'camera/light'){
+      console.error('error: not camera motion has camera motion data')
+      // skip data
+      this._binaryReader.skipBytes(bytesPerFrame * frames)
+      return
+    }
+    this._type = 'camera'
+
+    for(let i=0; i<frames; i++){
+      const frame = new CameraKeyFrame()
+
+      frame.frameNo = this._binaryReader.readUnsignedInt()
+      if(frame.frameNo > this._motion.frameLength)
+        this._motion.frameLength = frame.frameNo
+
+      frame.distance = this._binaryReader.readFloat()
+
+      frame.position = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat()
+      )
+
+      frame.rotate = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat()
+      )
+
+      frame.interpolation = []
+      for(let j=0; j<24; j++){
+        frame.interpolation[j] = this._binaryReader.readUnsignedByte()
+      }
+
+      const angleDegree = this._binaryReader.readInt()
+      //frame.angle = Math.PI * angleDegree / 180.0
+      frame.angle = angleDegree
+
+      const perspective = this._binaryReader.readByte()
+      frame.perspective = (perspective === 0)
+
+      motionArray.push(frame)
+    }
+
+    // sort motionArray in ascending order of frameNo
+    motionArray.sort( (a, b) => {
+      return a.frameNo - b.frameNo
+    })
+  }
+
+  readLight() {
+    const frames = this._binaryReader.readUnsignedInt()
+    const motionArray = this._motion.motionArray
+    const bytesPerFrame = 28
+
+    console.log(`light frame: ${frames}`)
+
+    if(frames === 0)
+      return
+
+    if(this._type !== 'camera/light'){
+      console.error('error: not light motion has light motion data')
+
+      // skip data
+      this._binaryReader.skipBytes(bytesPerFrame * frames)
+      return
+    }
+    this._type = 'light'
+    
+    for(let i=0; i<frames; i++){
+      const frame = new LightKeyFrame()
+
+      frame.frameNo = this._binaryReader.readUnsignedInt()
+      if(frame.frameNo > this._motion.frameLength)
+        this._motion.frameLength = frame.frameNo
+
+      frame.color = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat()
+      )
+
+      frame.position = new Vector3(
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat(),
+        this._binaryReader.readFloat()
+      )
+
+      motionArray.push(frame)
+    }
+
+    // sort motionArray in ascending order of frameNo
+    motionArray.sort( (a, b) => {
+      return a.frameNo - b.frameNo
+    })
+  }
+
+  readShadow() {
+    const frames = this._binaryReader.readUnsignedInt()
+    const shadowArray = this._motion.shadowArray
+    const bytesPerFrame = 9
+
+    console.log(`shadow frame: ${frames}`)
+
+    if(frames === 0)
+      return
+
+    if(this._type !== 'model'){
+      console.error('error: not model motion has shadow data')
+
+      // skip data
+      this._binaryReader.skipBytes(bytesPerFrame * frames)
+      return
+    }
+
+    if(!this._binaryReader.hasBytesAvailable(bytesPerFrame * frames)){
+      console.error('it seems to be bad format...')
+
+      this._binaryReader.skipBytes(9 * frames)
+      return
+    }
+
+    for(let i=0; i<frames; i++){
+      const frame = new ShadowKeyFrame()
+
+      frame.frameNo = this._binaryReader.readUnsignedInt()
+      frame.mode = this._binaryReader.readUnsignedByte()
+      frame.distance = this._binaryReader.readFloat()
+
+      shadowArray.push(frame)
+    }
+
+    this._motion.shadowArray.sort( (a, b) => {
+      return a.frameNo - b.frameNo
+    })
+  }
+
+  readVisibilityAndIK() {
+    const frames = this._binaryReader.readUnsignedInt()
+    const ikArray = this._motion.ikArray
+
+    console.log(`ik frame: ${frames}`)
+
+    if(frames === 0)
+      return
+
+    if(this._type !== 'model'){
+      console.error('error: not model motion has ik data')
+      return
+    }
+
+    if(!this._binaryReader.hasBytesAvailable(9 * frames)){
+      console.error('it seems to be bad format...')
+
+      this._binaryReader.skipBytes(9 * frames)
+      return
+    }
+
+    for(let i=0; i<frames; i++){
+      const frame = new IKFrame()
+
+      frame.frameNo = this._binaryReader.readUnsignedInt()
+      frame.visible = this._binaryReader.readUnsignedByte()
+      frame.ikNum = this._binaryReader.readUnsignedInt()
+      frame.ikData = []
+
+      const ikNum = frame.ikNum
+
+      for(let j=0; j<ikNum; j++){
+        const boneName = this._binaryReader.readString(20)
+        const ikOn = this._binaryReader.readUnsignedByte()
+
+        frame.ikData.push(new Map(boneName, ikOn))
+      }
+      ikArray.push(frame)
+    }
+
+    ikArray.sort( (a, b) => {
+      return a.frameNo - b.frameNo
+    })
+  }
+}
+
+VMDReader.canRead = (file) => {
+  let ext = ''
+  if(file instanceof File){
+    ext = file.name.substr(-4)
+  }else if(typeof file === 'string' || file instanceof String){
+    ext = file.substr(-4)
+  }
+
+  if(ext === '.vmd'){
+    return true
+  }
+
+  return false
+}
+
+
+MotionBank.addMotionReader(VMDReader)
 

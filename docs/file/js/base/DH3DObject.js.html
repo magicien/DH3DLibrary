@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/base/DH3DObject.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+</head>
+<body class="layout-container">
+
+<header>
+  <a href="./">Home</a>
+  <a href="identifiers.html">Identifier</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/magicien/DH3DLibrary.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div data-ice="classWrap">
+  <h2>Class</h2>
+  <ul>
+    
+  <li data-ice="classDoc"><span><a href="class/js/util/AjaxRequest.js~AjaxRequest.html">AjaxRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/BinaryReader.js~BinaryReader.html">BinaryReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/BinaryRequest.js~BinaryRequest.html">BinaryRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Bone.js~Bone.html">Bone</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Camera.js~Camera.html">Camera</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraAnimator.js~CameraAnimator.html">CameraAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraKeyFrame.js~CameraKeyFrame.html">CameraKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotion.js~CameraMotion.html">CameraMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionBank.js~CameraMotionBank.html">CameraMotionBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionReader.js~CameraMotionReader.html">CameraMotionReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CanvasField.js~CanvasField.html">CanvasField</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Constraint.js~Constraint.html">Constraint</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DH2DObject.js~DH2DObject.html">DH2DObject</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html">DH3DObject</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DHAudio.js~DHAudio.html">DHAudio</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DHEvent.js~DHEvent.html">DHEvent</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/Face.js~Face.html">Face</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/FaceMotion.js~FaceMotion.html">FaceMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/FaceVertex.js~FaceVertex.html">FaceVertex</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/FragmentShader.js~FragmentShader.html">FragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/FrameBuffer.js~FrameBuffer.html">FrameBuffer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/IK.js~IK.html">IK</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/IKFrame.js~IKFrame.html">IKFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/KeyFrame.js~KeyFrame.html">KeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/KeyListener.js~KeyListener.html">KeyListener</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Light.js~Light.html">Light</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/LightKeyFrame.js~LightKeyFrame.html">LightKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/MMDAnimator.js~MMDAnimator.html">MMDAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/MMDCameraAnimator.js~MMDCameraAnimator.html">MMDCameraAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Material.js~Material.html">Material</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Matrix.js~Matrix.html">Matrix</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html">MessageWindow</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Model.js~Model.html">Model</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ModelBank.js~ModelBank.html">ModelBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ModelReader.js~ModelReader.html">ModelReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MotionBank.js~MotionBank.html">MotionBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MotionReader.js~MotionReader.html">MotionReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/MtlParser.js~MtlParser.html">MtlParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjMaterial.js~ObjMaterial.html">ObjMaterial</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjModel.js~ObjModel.html">ObjModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjParser.js~ObjParser.html">ObjParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjReader.js~ObjReader.html">ObjReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ObjectLoadMonitor.js~ObjectLoadMonitor.html">ObjectLoadMonitor</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/PMDModel.js~PMDModel.html">PMDModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/PMDReader.js~PMDReader.html">PMDReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/RenderGroup.js~RenderGroup.html">RenderGroup</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/RigidBody.js~RigidBody.html">RigidBody</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ShaderBank.js~ShaderBank.html">ShaderBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ShadowKeyFrame.js~ShadowKeyFrame.html">ShadowKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleFragmentShader.js~SimpleFragmentShader.html">SimpleFragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleRenderer.js~SimpleRenderer.html">SimpleRenderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleVertexShader.js~SimpleVertexShader.html">SimpleVertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Skin.js~Skin.html">Skin</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/TextReader.js~TextReader.html">TextReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/TextRequest.js~TextRequest.html">TextRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/TextureBank.js~TextureBank.html">TextureBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/TextureUV.js~TextureUV.html">TextureUV</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonFragmentShader.js~ToonFragmentShader.html">ToonFragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonRenderer.js~ToonRenderer.html">ToonRenderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonVertexShader.js~ToonVertexShader.html">ToonVertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraMotion.js~VMDCameraMotion.html">VMDCameraMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraReader.js~VMDCameraReader.html">VMDCameraReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDMotion.js~VMDMotion.html">VMDMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDReader.js~VMDReader.html">VMDReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/VertexShader.js~VertexShader.html">VertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XModel.js~XModel.html">XModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XParser.js~XParser.html">XParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XReader.js~XReader.html">XReader</a></span></li>
+</ul>
+</div>
+
+
+
+<div data-ice="functionWrap">
+  <h2><a href="function/">Function</a></h2>
+  <ul>
+    
+  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-BinaryParser">BinaryParser</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeEUCJP">EscapeEUCJP</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS7">EscapeJIS7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS8">EscapeJIS8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeSJIS">EscapeSJIS</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF16LE">EscapeUTF16LE</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF7">EscapeUTF7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF8">EscapeUTF8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUnicode">EscapeUnicode</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-GetEscapeCodeType">GetEscapeCodeType</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-ObjectAssign">ObjectAssign</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeEUCJP">UnescapeEUCJP</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS7">UnescapeJIS7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS8">UnescapeJIS8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeSJIS">UnescapeSJIS</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF16LE">UnescapeUTF16LE</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF7">UnescapeUTF7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF8">UnescapeUTF8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUnicode">UnescapeUnicode</a></span></li>
+</ul>
+</div>
+
+<div data-ice="variableWrap">
+  <h2><a href="variable/">Variable</a></h2>
+  <ul>
+    
+  <li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT11280">JCT11280</a></span></li>
+<li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT8836">JCT8836</a></span></li>
+</ul>
+</div>
+
+
+
+
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/base/DH3DObject.js</h1>
+<pre class="source-code line-number"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;
+
+import Vector3 from &apos;./Vector3&apos;
+import Vector4 from &apos;./Vector4&apos;
+import DHEvent from &apos;./DHEvent&apos;
+import ModelBank from &apos;./ModelBank&apos;
+
+/**
+ * DH3DObject basic class
+ * @access public
+ */
+export default class DH3DObject {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    this._model = null
+    this._motion = null
+    this._renderer = null
+    this._animator = null
+    this._eventArray = [] // FIXME: not use
+    this._motionEventArray = []
+
+    this._moveCallbacks = []
+
+    this._animationTime = 0.0
+    this._animationFrame = 0.0
+    this._animationSpeed = 1.0
+    this._animating = false
+    this._loop = false
+
+    this._force = new Vector3(0, 0, 0)
+    this._speed = new Vector3(0, 0, 0)
+    this._position = new Vector3(0, 0, 0)
+    this._direction = 0
+    this._maxSpeed = 10.0
+
+    this._state = null
+
+    this._motionStep = 0.0
+    this._motionCount = 0.0
+
+    // motion blending
+    this._motionBlendCount = 0.0
+    this._motionBlendStep = 0.0
+
+    this._autoDirection = false
+    this._mirror = false
+    this._reflectionMode = false
+  }
+
+  /**
+   * set callback function for each move
+   * @access public
+   * @param {function} func - callback which is called each frame
+   * @return {number} 0: success, -1: failure (func is not function)
+   */
+  addMoveCallback(func) {
+    if(typeof func !== &apos;function&apos;){
+      return -1
+    }
+
+    this._moveCallbacks.push(func)
+    return 0
+  }
+
+  /**
+   * remove callback function for each move
+   * @access public
+   * @param {function} func - callback which is called each frame
+   * @return {number} 0: success, -1: failure (func is not registered)
+   */
+  removeMoveCallback(func){
+    const i = this._moveCallbacks.indexOf(func)
+    if(i &lt; 0){
+      return -1
+    }
+
+    this._moveCallbacks.splice(i, 1)
+    return 0
+  }
+
+  move(elapsedTime) {
+    // FIXME: params
+    const gravity = new Vector3(0, -9.8, 0)
+    const friction = 10.0 * elapsedTime
+
+    if(friction &lt; 1.0){
+      this._speed.mulAdd(this._speed, this._speed, -friction)
+    }else{
+      this._speed.setValue(0, 0, 0)
+    }
+    
+    this._speed.mulAdd(this._speed, this._force, 5.0 * elapsedTime)
+    const speedVal = this._speed.length()
+    if(speedVal &gt; this._maxSpeed){
+      this._speed.mul(this._speed, this._maxSpeed / speedVal)
+    }
+
+    this._position.mulAdd(this._position, this._speed, elapsedTime)
+
+    const myObj = this
+    this._moveCallbacks.forEach( (func) =&gt; {
+      func(myObj, elapsedTime)
+    })
+
+    this._model.rootBone.offset.setValue(this._position)
+
+    if(this._autoDirection){
+      const axis = new Vector3(0.0, 1.0, 0.0)
+      if(this._force.z &gt; 0.001 || this._force.z &lt; -0.001){
+        this._direction = Math.atan(this._force.x / this._force.z)
+        if(this._force.z &lt; 0){
+          this._direction += Math.PI
+        }
+      }else if(this._force.x &gt; 0.001){
+        this._direction = Math.PI * 0.5
+      }else if(this._force.x &lt; -0.001){
+        this._direction = Math.PI * -0.5
+      }
+      this._model.rootBone.rotate.createAxis(axis, this._direction)
+    }
+  }
+
+  getModel() {
+    return this._model
+  }
+
+  setModel(model) {
+    if(this._model){
+      this._model.destroy()
+    }
+
+    if(this._renderer &amp;&amp; model.renderer !== this._renderer){
+      this._model = ModelBank.getModelForRenderer(model.hashName, this._renderer)
+    }else{
+      this._model = model
+    }
+  }
+
+  setMotion(motion) {
+    this._motion = motion
+  }
+
+  setMotionWithBlending(motion, blendCount) {
+    this._motion = motion
+    this._motionBlendCount = 1.0
+    this._motionBlendStep = 1.0 / blendCount
+    this._model.rootBone.setBlendValueRecursive()
+  }
+
+  setRenderer(renderer) {
+    if(this._model &amp;&amp; this._model.renderer !== renderer){
+      this._model = ModelBank.getModelForRenderer(this._model.hashName, renderer)
+    }
+    this._renderer = renderer
+  }
+
+  setAnimating(animating = true) {
+    if(animating){
+      this._animating = true
+    }else{
+      this._animating = false
+    }
+  }
+
+  getAnimating() {
+    return this._animating
+  }
+
+  setLoop(loop = true) {
+    if(loop){
+      this._loop = true
+    }else{
+      this._loop = false
+    }
+  }
+
+  getLoop() {
+    return this._loop
+  }
+
+  setAnimator(animator) {
+    this._animator = animator
+  }
+
+  setAnimationTime(time) {
+    this._animationTime = time
+  }
+
+  getAnimationTime() {
+    return this._animationTime
+  }
+
+  setAnimationSpeed(speed) {
+    this._animationSpeed = speed
+  }
+
+  getAnimationSpeed() {
+    return this._animationSpeed
+  }
+
+  setPosition(x, y, z) {
+    if(x instanceof Vector3){
+      this._position.x = x.x
+      this._position.y = x.y
+      this._position.z = x.z
+    }else{
+      this._position.x = x
+      this._position.y = y
+      this._position.z = z
+    }
+  }
+
+  setSpeed(x, y, z) {
+    if(x instanceof Vector3){
+      this._speed.x = x.x
+      this._speed.y = x.y
+      this._speed.z = x.z
+    }else{
+      this._speed.x = x
+      this._speed.y = y
+      this._speed.z = z
+    }
+  }
+
+  setRotate(x, y, z, w) {
+    const rot = this._model.rootBone.rotate
+    if(x instanceof Vector4){
+      rot.x = x.x
+      rot.y = x.y
+      rot.z = x.z
+      rot.w = x.w
+      rot.normalize()
+    }else{
+      rot.x = x
+      rot.y = y
+      rot.z = z
+      rot.w = w
+      rot.normalize()
+    }
+  }
+
+  setRotateAxis(axis, rotAngle) {
+    this._model.rootBone.rotate.createAxis(axis, rotAngle)
+  }
+
+  setScale(x, y, z) {
+    const scale = this._model.rootBone.scale
+    if(y == null &amp;&amp; z == null){
+      scale.x = x
+      scale.y = x
+      scale.z = x
+    }else{
+      scale.x = x
+      scale.y = y
+      scale.z = z
+    }
+  }
+
+  setAutoDirection(autoDirection = true) {
+    if(autoDirection){
+      this._autoDirection = true
+    }else{
+      this._autoDirection = false
+    }
+  }
+
+  getAutoDirection() {
+    return this._autoDirection
+  }
+
+  setMirror(flag) {
+    this._mirror = flag
+  }
+
+  getMirror() {
+    return this._mirror
+  }
+
+  setReflectionMode(flag) {
+    this._reflectionMode = flag
+  }
+
+  getReflectionMode() {
+    return this._reflectionMode
+  }
+
+  updateMaterial() {
+    this._model.materialArray.forEach( (mat) =&gt; {
+      mat.clearCache()
+    })
+  }
+
+  getSkinArray() {
+    if(this._model){
+      return this._model.getSkinArray()
+    }
+    return null
+  }
+
+  getDynamicSkinArray() {
+    if(this._model){
+      return this._model.getDynamicSkinArray()
+    }
+    return null
+  }
+
+  getNumElements() {
+    if(this._model){
+      return this._model.indexArray.length / 3
+    }
+    return 0
+  }
+
+  // FIXME: implementation
+  getTexture() {
+    if(this._model){
+      return null
+    }
+    return null
+  }
+
+  animate(elapsedTime) {
+    const animationTimeBefore = this._animationTime
+    if(this._animator){
+      this._animator.animate(this, elapsedTime)
+    }else{
+      // &#x30DC;&#x30FC;&#x30F3;&#x306E;&#x884C;&#x5217;&#x66F4;&#x65B0;&#x306E;&#x307F;&#x884C;&#x3046;
+      this._model.rootBone.updateMatrixRecursive()
+    }
+    const animationTimeAfter = this._animationTime
+
+    const obj = this
+    this._motionEventArray.forEach( (me) =&gt; {
+      if(animationTimeBefore &lt; me.time &amp;&amp; me.time &lt;= animationTimeAfter){
+        if(!me.state || me.state === obj._state){
+          me.start()
+        }
+      }
+    })
+  }
+
+  render() {
+    if(this._renderer)
+      this._renderer.render(this)
+  }
+
+  renderMirror(reflectionObjectArray) {
+    if(this._renderer){
+      this._renderer.renderMirror(this, reflectionObjectArray)
+    }
+  }
+
+  addMotionCallback(func, time, state) {
+    const motionEvent = new DHEvent()
+    motionEvent.time = time
+    motionEvent.state = state
+    motionEvent.setEventCallback(func)
+
+    this._motionEventArray.push(motionEvent)
+  }
+
+  removeMotionCallback(func, time, state) {
+    const arr = this._motionEventArray
+    let target = null
+    arr.forEach( (me) =&gt; {
+      if(me.time === time &amp;&amp; me.state === state
+         &amp;&amp; me.getEventCallback() === func){
+        target = me
+        me.delete()
+      }
+    })
+    if(target){
+      //this._motionEventArray = arr.without(target)
+      this._motionEventArray = arr.filter((ev) =&gt; { return ev !== target })
+    }
+  }
+
+  clearMotionCallback() {
+    const arr = this._motionEventArray
+    arr.forEach( (me) =&gt; {
+      me.delete()
+    })
+    arr.length = 0
+  }
+
+  setDirection(direction) {
+    this._direction = direction
+  }
+
+  getDirection() {
+    return this._direction
+  }
+
+  setMaxSpeed(maxSpeed) {
+    this._maxSpeed = maxSpeed
+  }
+
+  getMaxSpeed() {
+    return this._maxSpeed
+  }
+
+  setState(state) {
+    this._state = state
+  }
+
+  getState() {
+    return this._state
+  }
+}
+</code></pre>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.2.1)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,333 +1,504 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary XParser.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var XParser = Class.create({
-  _text: null,
-  _obj: null,
-  _parentDirName: null,
-  _indices: null,
-  _materialIndex: 0,
-  _normalArray: null,
-  _faceNormalArray: null,
+'use strict'
 
-  _offset: 0,
-  _err: 0,
+import Bone from '../base/Bone'
+import Vector3 from '../base/Vector3'
+import Vector4 from '../base/Vector4'
+import Material from '../base/Material'
+import RenderGroup from '../base/RenderGroup'
+import Skin from '../base/Skin'
+import TextureUV from '../base/TextureUV'
+import XModel from './XModel'
+import TextureBank from '../base/TextureBank'
 
-  initialize: function() {
-    this._parentDirName = './';
-  },
+import ObjectAssign from '../etc/ObjectAssign'
 
-  setParentDirName: function(dirName) {
-    this._parentDirName = dirName;
-  },
 
-  setModel: function(obj) {
-    this._obj = obj;
-  },
+// patterns
+const _integerPattern = new RegExp(/^(-|\+)?\d+;?/)
+const _floatPattern = new RegExp(/^(-|\+)?(\d)*\.(\d)*;?/)
+const _commaOrSemicolonPattern = new RegExp(/^,|;/)
+const _wordPattern = new RegExp(/^\w+/)
+const _uuidPattern = new RegExp(/^<[\w-]+>/)
+const _leftBracePattern = new RegExp(/^{/)
+const _rightBracePattern = new RegExp(/^}/)
+const _memberPattern = new RegExp(/^((array\s+\w+\s+\w+\[(\d+|\w+)\]|\w+\s+\w+)\s*;|\[[\w.]+\])/)
+const _filenamePattern = new RegExp(/^"(.*)";?/)
 
-  parse: function(text){
-    this._text = text;
+
+/**
+ * XParser class
+ * @access public
+ */
+export default class XParser {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    this._text = null
+    this._obj = null
+    this._parentDirName = null
+    this._indices = null
+    this._materialIndex = 0
+    this._normalArray = null
+    this._faceNormalArray = null
+
+    this._offset = 0
+    this._err = 0
+
+    this._parentDirName = './'
+
+    // this._skipPattern = new RegExp(/^\s+/)
+    this._partialText = ''
+    this._partialOffset = 0
+    this._partialStep = 1000
+    this._partialMinLength = 500
+    //this._partialMaxLength = 5000
+  }
+
+  /**
+   *
+   * @access public
+   * @param {String} dirName -
+   * @returns {void}
+   */
+  setParentDirName(dirName) {
+    this._parentDirName = dirName
+  }
+
+  /**
+   *
+   * @access public
+   * @param {XModel} obj -
+   * @returns {void}
+   */
+  setModel(obj) {
+    this._obj = obj
+  }
+
+  /**
+   *
+   * @access public
+   * @param {String} text -
+   * @returns {XModel} - 
+   */
+  parse(text) {
+    this._text = text
+    this._partialText = ''
+
     if(!this._obj){
-      this._obj = new XModel();
+      this._obj = new XModel()
     }
-    this._offset = 0;
-    this._err = 0;
+    this._offset = 0
+    this._partialOffset = 0
+    this._err = 0
+
+    this.addPartialText()
 
     if(!this.XFileHeader(this._obj)){
-      alert("header format error");
-      this._err = 1;
-      return null;
+      console.error('header format error')
+      this._err = 1
+      return null
     }
-    while(this.XObjectLong(this._obj)){}
+
+    while(this.XObjectLong(this._obj)){ /* nothing to do */ }
+
     if(this._err){
-      alert("obj format error:" + this._err);
-      return null;
+      console.error('xobj format error:' + this._err)
+      return null
     }
-    this.splitFaceNormals();
+    this.splitFaceNormals()
 
-    return this._obj;
-  },
+    return this._obj
+  }
 
-  moveIndex: function(len) {
-    this._text = this._text.substring(len);
-    this._offset += len;
-  },
+  /**
+   *
+   * @access private
+   * @param {number} len -
+   * @returns {void}
+   */
+  moveIndex(len) {
+    this._partialText = this._partialText.substring(len)
+    this._offset += len
+  }
 
-/*
-  skip: function() {
-    var str = this._text.match(this._skipPattern);
-    if(str != null){
-      var len = str[0].length;
-      this.moveIndex(len);
-    }
-  },
-*/
+  /**
+   *
+   * @access private
+   * @param {RegExp} pattern -
+   * @returns {String} - matched string
+   */
+  getString(pattern) {
+    this.skip()
 
-  getString: function(pattern) {
-    this.skip();
-    var str = this._text.match(pattern);
-    if(str != null){
-      this.moveIndex(str[0].length);
-      return str[0];
-    }
-    return null;
-  },
+    const str = this._partialText.match(pattern)
+    /*
+    while(str == null){
+      if(this._partialText.length > this._partialMaxLength)
+        return null
 
-  /* matching patterns */
-  _skipPattern: new RegExp(/^\s+/),
-  skip: function() {
-    var i=0;
-    var code;
-    while(1){
-      code = this._text.charCodeAt(i);
-      if(code != 32 && (code < 9 || code > 13)){
-        break;
-      }
-      i++;
-    }
-    if(i>0){
-      this.moveIndex(i);
-    }
-
-/*
-    var str = this._text.match(this._skipPattern);
-    if(str != null && str[0].length != i){
-      alert("str[0].length = " + str[0].length + "\ni = " + i + ", code = " + code + "\n" + this._text.substring(0, 10));
-    }
-    if(str != null){
-      this.moveIndex(str[0].length);
+      this.addPartialText()
+      str = this._partialText.match(pattern)
     }
     */
-  },
+    if(str == null)
+      return null
 
-  _integerPattern: new RegExp(/^(-|\+)?\d+;?/),
-  getInteger: function() {
-    var str = this.getString(this._integerPattern);
-    var val = parseInt(str);
-    return val;
-  },
+    this.moveIndex(str[0].length)
 
-  _floatPattern: new RegExp(/^(-|\+)?(\d)*\.(\d)*;?/),
-  getFloat: function() {
-    var str = this.getString(this._floatPattern);
-    var val = parseFloat(str);
-    return val;
-  },
+    if(this._partialText.length < this._partialMinLength)
+      this.addPartialText()
 
-  _commaOrSemicolonPattern: new RegExp(/^,|;/),
-  getCommaOrSemicolon: function() {
+    return str[0]
+  }
+
+  /**
+   * skip space, tab
+   * @access private
+   * @returns {void}
+   */
+  skip() {
+    /*
+    const str = this._text.match(this._skipPattern)
+    if(str != null){
+      const len = str[0].length
+      this.moveIndex(len)
+    }
+    */
+
+    let i = 0
+    let code = this._partialText.charCodeAt(i)
+
+    //  9: Horizontal Tab
+    // 10: Line Feed
+    // 11: Vertical Tab
+    // 12: New Page
+    // 13: Carriage Return
+    // 32: Space
+    while(code === 32 || (9 <= code && code <= 13)){
+      i++
+      code = this._partialText.charCodeAt(i)
+
+      if(i >= this._partialText.length){
+        this.addPartialText()
+      }
+    }
+    if(i>0){
+      this.moveIndex(i)
+    }
+  }
+
+  /**
+   *
+   * @access private
+   * @returns {void}
+   */
+  addPartialText() {
+    if(this._partialOffset >= this._text.length)
+      return
+
+    let newOffset = this._partialOffset + this._partialStep
+    if(newOffset > this._text.length){
+      newOffset = this._text.length
+    }
+
+    this._partialText += this._text.substring(this._partialOffset, newOffset)
+    this._partialOffset = newOffset
+  }
+
+  /**
+   * get integer value
+   * @access private
+   * @returns {int} -
+   */
+  getInteger() {
+    const str = this.getString(_integerPattern)
+    const val = parseInt(str, 10)
+
+    return val
+  }
+
+  /**
+   * get float value
+   * @access private
+   * @returns {float} -
+   */
+  getFloat() {
+    const str = this.getString(_floatPattern)
+    const val = parseFloat(str)
+    return val
+  }
+
+  /**
+   * skip "," or ";"
+   * @access private
+   * @returns {void} -
+   */
+  getCommaOrSemicolon() {
   /*
-    return this.getString(this._commaOrSemicolonPattern);
+    return this.getString(this._commaOrSemicolonPattern)
   */
-    var code = this._text.charCodeAt(0);
-    if(code == 44 || code == 59){
-      this.moveIndex(1);
+    const code = this._partialText.charCodeAt(0)
+    if(code === 44 || code === 59){
+      this.moveIndex(1)
     }
-  },
+  }
     
-  _wordPattern: new RegExp(/^\w+/),
-  getWord: function() {
-    return this.getString(this._wordPattern);
-  },
+  /**
+   * get string value
+   * @access private
+   * @returns {string} -
+   */
+  getWord() {
+    return this.getString(_wordPattern)
+  }
 
-  _uuidPattern: new RegExp(/^<[\w-]+>/),
-  getUUID: function() {
-    return this.getString(this._uuidPattern);
-  },
+  /**
+   * get UUID string
+   * @access private
+   * @returns {string} - UUID
+   */
+  getUUID() {
+    return this.getString(_uuidPattern)
+  }
 
-  _leftBracePattern: new RegExp(/^{/),
-  getLeftBrace: function() {
-    return this.getString(this._leftBracePattern);
-  },
+  /**
+   * get "{"
+   * @access private
+   * @returns {string} - 
+   */
+  getLeftBrace() {
+    return this.getString(_leftBracePattern)
+  }
 
-  _rightBracePattern: new RegExp(/^}/),
-  getRightBrace: function() {
-    return this.getString(this._rightBracePattern);
-  },
+  /**
+   * get "}"
+   * @access private
+   * @returns {string} - 
+   */
+  getRightBrace() {
+    return this.getString(_rightBracePattern)
+  }
 
-  _memberPattern: new RegExp(/^((array\s+\w+\s+\w+\[(\d+|\w+)\]|\w+\s+\w+)\s*;|\[[\w.]+\])/),
-  getMember: function() {
-    return this.getString(this._memberPattern);
-  },
+  /**
+   * get member string
+   * @access private
+   * @returns {string} - 
+   */
+  getMember() {
+    return this.getString(_memberPattern)
+  }
 
-  _filenamePattern: new RegExp(/^"(.*)";?/),
-  getFilename: function() {
-    var str = this.getString(this._filenamePattern);
-    return RegExp.$1;
-  },
+  /**
+   * get filename string 
+   * @access private
+   * @returns {string} - 
+   */
+  getFilename() {
+    const str = this.getString(_filenamePattern)
+    return RegExp.$1
+  }
 
-  getIntegerArray: function() {
-    var n = this.getInteger();
-    var arr = $A();
-    for(var i=0; i<n; i++){
-      arr.push(this.getInteger());
-      this.getCommaOrSemicolon();
-    }
-    return arr;
-  },
-
-  getFloatArray: function() {
-    var n = this.getInteger();
-    var arr = $A();
-    for(var i=0; i<n; i++){
+  /**
+   * get integer array
+   * @access private
+   * @returns {Array} - 
+   */
+  getIntegerArray() {
+    const n = this.getInteger()
+    const arr = []
+    for(let i=0; i<n; i++){
       arr.push(this.getInteger())
-      this.getCommaOrSemicolon();
+      this.getCommaOrSemicolon()
     }
-    return arr;
-  },
+    return arr
+  }
 
-  getVector3: function() {
-    var v = new DHVector3();
-    v.x = this.getFloat();
-    v.y = this.getFloat();
-    v.z = this.getFloat();
-    this.getCommaOrSemicolon();
+  /**
+   * get float array
+   * @access private
+   * @returns {Array} - 
+   */
+  getFloatArray() {
+    const n = this.getInteger()
+    const arr = []
+    for(let i=0; i<n; i++){
+      arr.push(this.getInteger())
+      this.getCommaOrSemicolon()
+    }
+    return arr
+  }
 
-    return v;
-  },
+  /**
+   * get Vector3 value
+   * @access private
+   * @returns {Vector3} - 
+   */
+  getVector3() {
+    const v = new Vector3()
+    v.x = this.getFloat()
+    v.y = this.getFloat()
+    v.z = this.getFloat()
+    this.getCommaOrSemicolon()
 
-  getVector4: function() {
-    var v = new DHVector4();
-    v.x = this.getFloat();
-    v.y = this.getFloat();
-    v.z = this.getFloat();
-    v.w = this.getFloat();
-    this.getCommaOrSemicolon();
+    return v
+  }
 
-    return v;
-  },
+  /**
+   * get Vector4 value
+   * @access private
+   * @returns {Vector4} - 
+   */
+  getVector4() {
+    const v = new Vector4()
+    v.x = this.getFloat()
+    v.y = this.getFloat()
+    v.z = this.getFloat()
+    v.w = this.getFloat()
+    this.getCommaOrSemicolon()
 
-  // Xファイル読み込み後に頂点をコピー
-  splitFaceNormals: function(){
-    var v = this._faceNormalArray;
-    var vnMap = $A();
-    var normals = $A();
-    var skins = this._obj.skinArray;
-    var vertexCount = skins.size();
+    return v
+  }
+
+  /**
+   * copy vertices after loading xfile
+   * @access private
+   * @returns {void}
+   */
+  splitFaceNormals() {
+    const v = this._faceNormalArray
+    const vnMap = []
+    const normals = []
+    const skins = this._obj.skinArray
+    const vertexCount = skins.length
 
     // textureCoordsの設定
     if(skins[0].textureUV == null){
-      for(var i=0; i<vertexCount; i++){
-        skins[i].textureUV = new TextureUV();
+      for(let i=0; i<vertexCount; i++){
+        skins[i].textureUV = new TextureUV()
       }
     }
 
     // 法線の設定
     if(this._faceNormalArray == null){
       // 法線が指定されていない場合、自分で計算する。
-      var ins = this._indices;
-      var numIns = ins.size();
-      var used = $A();
+      const ins = this._indices
+      const numIns = ins.length
+      const used = []
 
-      var n;
-      var n1 = new DHVector3();
-      var n2 = new DHVector3();
+      let n = null
+      const n1 = new Vector3()
+      const n2 = new Vector3()
 
-      for(var i=0; i<numIns; i++){
-        if(ins[i].size() == 4){
+      for(let i=0; i<numIns; i++){
+        if(ins[i].length === 4){
           // 四角形
-          var ii = ins[i];
-          var s = skins[ii[0]];
-          n = new DHVector3();
+          const ii = ins[i]
+          let s = skins[ii[0]]
+          n = new Vector3()
           if(used[ii[0]]){
-            s = Object.clone(s);
-            skins[skins.size()] = s;
+            //s = Object.assign(new s.constructor(), s)
+            s = ObjectAssign(new s.constructor(), s)
+            skins[skins.length] = s
           }
-          used[ii[0]] = true;
-          n1.sub(skins[ii[2]].position, skins[ii[0]].position);
-          n2.sub(skins[ii[1]].position, skins[ii[0]].position);
-          n.cross(n1, n2);
-          n.normalize();
-          s.normal = n;
+          used[ii[0]] = true
+          n1.sub(skins[ii[2]].position, skins[ii[0]].position)
+          n2.sub(skins[ii[1]].position, skins[ii[0]].position)
+          n.cross(n1, n2)
+          n.normalize()
+          s.normal = n
 
-          n = new DHVector3();
-          s = skins[ii[1]];
+          n = new Vector3()
+          s = skins[ii[1]]
           if(used[ii[1]]){
-            s = Object.clone(s);
-            skins[skins.size()] = s;
+            //s = Object.assign(new s.constructor(), s)
+            s = ObjectAssign(new s.constructor(), s)
+            skins[skins.length] = s
           }
-          used[ii[1]] = true;
-          n1.sub(skins[ii[0]].position, skins[ii[1]].position);
-          n2.sub(skins[ii[2]].position, skins[ii[1]].position);
-          n.cross(n1, n2);
-          n.normalize();
-          s.normal = n;
+          used[ii[1]] = true
+          n1.sub(skins[ii[0]].position, skins[ii[1]].position)
+          n2.sub(skins[ii[2]].position, skins[ii[1]].position)
+          n.cross(n1, n2)
+          n.normalize()
+          s.normal = n
 
-          n = new DHVector3();
-          s = skins[ii[2]];
+          n = new Vector3()
+          s = skins[ii[2]]
           if(used[ii[2]]){
-            s = Object.clone(s);
-            skins[skins.size()] = s;
+            //s = Object.assign(new s.constructor(), s)
+            s = ObjectAssign(new s.constructor(), s)
+            skins[skins.length] = s
           }
-          used[ii[2]] = true;
-          n1.sub(skins[ii[1]].position, skins[ii[2]].position);
-          n2.sub(skins[ii[0]].position, skins[ii[2]].position);
-          n.cross(n1, n2);
-          n.normalize();
-          s.normal = n;
+          used[ii[2]] = true
+          n1.sub(skins[ii[1]].position, skins[ii[2]].position)
+          n2.sub(skins[ii[0]].position, skins[ii[2]].position)
+          n.cross(n1, n2)
+          n.normalize()
+          s.normal = n
 
-          n = new DHVector3();
-          s = skins[ii[3]];
+          n = new Vector3()
+          s = skins[ii[3]]
           if(used[ii[3]]){
-            s = Object.clone(s);
-            skins[skins.size()] = s;
+            //s = Object.assign(new s.constructor(), s)
+            s = ObjectAssign(new s.constructor(), s)
+            skins[skins.length] = s
           }
           if(!(skins[ii[3]] instanceof Object)){
-            alert("skins[ii[3]] not instance!");
-            alert("i: " + i + ", ii[3]: " + ii[3]);
+            console.log('skins[ii[3]] not instance!')
+            console.log('i: ' + i + ', ii[3]: ' + ii[3])
           }
-          used[ii[3]] = true;
-          n1.sub(skins[ii[2]].position, skins[ii[3]].position);
-          n2.sub(skins[ii[0]].position, skins[ii[3]].position);
-          n.cross(n1, n2);
-          n.normalize();
-          s.normal = n;
-        }else if(ins[i].size() == 3){
+          used[ii[3]] = true
+          n1.sub(skins[ii[2]].position, skins[ii[3]].position)
+          n2.sub(skins[ii[0]].position, skins[ii[3]].position)
+          n.cross(n1, n2)
+          n.normalize()
+          s.normal = n
+        }else if(ins[i].length === 3){
           // 三角形
-          var ii = ins[i];
-          var s = skins[ii[0]];
-          n = new DHVector3();
+          const ii = ins[i]
+          let s = skins[ii[0]]
+          n = new Vector3()
           if(used[ii[0]]){
-            s = Object.clone(s);
-            skins[skins.size()] = s;
+            //s = Object.assign(new s.constructor(), s)
+            s = ObjectAssign(new s.constructor(), s)
+            skins[skins.length] = s
           }
-          used[ii[0]] = true;
-          n1.sub(skins[ii[2]].position, skins[ii[0]].position);
-          n2.sub(skins[ii[1]].position, skins[ii[0]].position);
-          n.cross(n1, n2);
-          n.normalize();
-          s.normal = n;
+          used[ii[0]] = true
+          n1.sub(skins[ii[2]].position, skins[ii[0]].position)
+          n2.sub(skins[ii[1]].position, skins[ii[0]].position)
+          n.cross(n1, n2)
+          n.normalize()
+          s.normal = n
 
-          n = new DHVector3();
-          s = skins[ii[1]];
+          n = new Vector3()
+          s = skins[ii[1]]
           if(used[ii[1]]){
-            s = Object.clone(s);
-            skins[skins.size()] = s;
+            //s = Object.assign(new s.constructor(), s)
+            s = ObjectAssign(new s.constructor(), s)
+            skins[skins.length] = s
           }
-          used[ii[1]] = true;
-          n1.sub(skins[ii[0]].position, skins[ii[1]].position);
-          n2.sub(skins[ii[2]].position, skins[ii[1]].position);
-          n.cross(n1, n2);
-          n.normalize();
-          s.normal = n;
+          used[ii[1]] = true
+          n1.sub(skins[ii[0]].position, skins[ii[1]].position)
+          n2.sub(skins[ii[2]].position, skins[ii[1]].position)
+          n.cross(n1, n2)
+          n.normalize()
+          s.normal = n
 
-          n = new DHVector3();
-          s = skins[ii[2]];
+          n = new Vector3()
+          s = skins[ii[2]]
           if(used[ii[2]]){
-            s = Object.clone(s);
-            skins[skins.size()] = s;
+            //s = Object.assign(new s.constructor(), s)
+            s = ObjectAssign(new s.constructor(), s)
+            skins[skins.length] = s
           }
-          used[ii[2]] = true;
-          n1.sub(skins[ii[1]].position, skins[ii[2]].position);
-          n2.sub(skins[ii[0]].position, skins[ii[2]].position);
-          n.cross(n1, n2);
-          n.normalize();
-          s.normal = n;
+          used[ii[2]] = true
+          n1.sub(skins[ii[1]].position, skins[ii[2]].position)
+          n2.sub(skins[ii[0]].position, skins[ii[2]].position)
+          n.cross(n1, n2)
+          n.normalize()
+          s.normal = n
 
 
         }else{
@@ -336,32 +507,34 @@ var XParser = Class.create({
       }
     }else{
       // 同じ頂点に違う法線が指定されている場合、別頂点とする。
-      for(var i=0; i<vertexCount; i++){
-        vnMap[i] = $H();
-        normals[i] = -1;
+      for(let i=0; i<vertexCount; i++){
+        vnMap[i] = new Map()
+        normals[i] = -1
       }
 
-      var vSize = v.size();
-      var ins = this._indices;
-      for(var i=0; i<vSize; i++){
-        var vi = v[i];
-        var ii = ins[i];
-        for(var j=0; j<vi.size(); j++){
-          if(normals[ii[j]] == -1){
+      const vSize = v.length
+      const ins = this._indices
+      for(let i=0; i<vSize; i++){
+        const vi = v[i]
+        const ii = ins[i]
+        for(let j=0; j<vi.length; j++){
+          if(normals[ii[j]] === -1){
             // 未登録
-            normals[ii[j]] = vi[j];
-            vnMap[ii[j]].set(vi[j], ii[j]);
-          }else if(normals[ii[j]] == vi[j]){
+            normals[ii[j]] = vi[j]
+            vnMap[ii[j]].set(vi[j], ii[j])
+          }else if(normals[ii[j]] === vi[j]){
             // 登録済み
           }else{
-            var newNo = vnMap[ii[j]].get(vi[j]);
+            let newNo = vnMap[ii[j]].get(vi[j])
             if(newNo == null){
               // 未登録
-              newNo = vnMap.size();
-              vnMap[ii[j]].set(vi[j], newNo);
-              normals[newNo] = vi[j];
-              //this._obj.skinArray[newNo] = this._obj.skinArray[ii[j]].clone();
-              this._obj.skinArray[newNo] = Object.clone(this._obj.skinArray[ii[j]]);
+              newNo = vnMap.length
+              vnMap[ii[j]].set(vi[j], newNo)
+              normals[newNo] = vi[j]
+              //this._obj.skinArray[newNo] = this._obj.skinArray[ii[j]].clone()
+              const s = this._obj.skinArray[ii[j]]
+              //this._obj.skinArray[newNo] = Object.assign(new s.constructor(), s)
+              this._obj.skinArray[newNo] = ObjectAssign(new s.constructor(), s)
             }else{
               // 登録済み
             }
@@ -369,307 +542,400 @@ var XParser = Class.create({
         }
       }
 
-      for(var i=0; i<normals.size(); i++){
-        this._obj.skinArray[i].normal = this._normalArray[normals[i]];
+      for(let i=0; i<normals.length; i++){
+        this._obj.skinArray[i].normal = this._normalArray[normals[i]]
       }
     }
-  },
+  }
 
-  XFileHeader: function(parent){
-    var text = this._text;
+  /**
+   * check header format
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {bool} - true if right header format
+   */
+  XFileHeader(parent) {
+    const text = this._partialText
     if(!text.match(/^xof (\d\d\d\d)([ \w][ \w][ \w][ \w])(\d\d\d\d)/)){
-      return false;
+      return false
     }
-    this.moveIndex(16);
+    
+    this.moveIndex(16)
 
-    this.version = RegExp.$1;
-    this.format = RegExp.$2;
-    this.floatSize = RegExp.$3;
-    return true;
-  },
+    this.version = RegExp.$1
+    this.format = RegExp.$2
+    this.floatSize = RegExp.$3
+    return true
+  }
 
-  XObjectLong: function(parent){
-    var id = this.getWord();
+  /**
+   * read Object value
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {Object} - XObject
+   */
+  XObjectLong(parent){
+    const id = this.getWord()
     if(id == null){
-      return null;
+      return null
     }
     switch(id){
-      case "template":
-        return this.Template(parent);
-      case "Header":
-        return this.Header(parent);
-      case "Mesh":
-        return this.Mesh(parent);
-      case "MeshMaterialList":
-        return this.MeshMaterialList(parent);
-      case "MeshNormals":
-        return this.MeshNormals(parent);
-      case "MeshTextureCoords":
-        return this.MeshTextureCoords(parent);
-      case "MeshVertexColors":
-        return this.MeshVertexColors(parent);
+      case 'template':
+        return this.Template(parent)
+      case 'Header':
+        return this.Header(parent)
+      case 'Mesh':
+        return this.Mesh(parent)
+      case 'MeshMaterialList':
+        return this.MeshMaterialList(parent)
+      case 'MeshNormals':
+        return this.MeshNormals(parent)
+      case 'MeshTextureCoords':
+        return this.MeshTextureCoords(parent)
+      case 'MeshVertexColors':
+        return this.MeshVertexColors(parent)
 
       default:
-        alert("unknown type:" + id);
-        break;
+        console.error('unknown type:' + id)
+        break
     }
-    return false;
-  },
+    return false
+  }
 
-  ColorRGB: function(parent) {
-    var color = new DHVector4();
-    color.x = this.getFloat();
-    color.y = this.getFloat();
-    color.z = this.getFloat();
-    color.w = 1.0;
-    this.getCommaOrSemicolon();
+  /**
+   * read ColorRGB value
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {Vector4} - ColorRGB object
+   */
+  ColorRGB(parent) {
+    const color = new Vector4()
+    color.x = this.getFloat()
+    color.y = this.getFloat()
+    color.z = this.getFloat()
+    color.w = 1.0
+    this.getCommaOrSemicolon()
 
-    return color;
-  },
+    return color
+  }
 
-  ColorRGBA: function(parent) {
-    var color = new DHVector4();
-    color.x = this.getFloat();
-    color.y = this.getFloat();
-    color.z = this.getFloat();
-    color.w = this.getFloat();
-    this.getCommaOrSemicolon();
+  /**
+   * read ColorRGBA value
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {Vector4} - ColorRGBA object
+   */
+  ColorRGBA(parent) {
+    const color = new Vector4()
+    color.x = this.getFloat()
+    color.y = this.getFloat()
+    color.z = this.getFloat()
+    color.w = this.getFloat()
+    this.getCommaOrSemicolon()
 
-    return color;
-  },
+    return color
+  }
 
-  Coords2d: function(parent) {
-    var v = new TextureUV();
-    v.u = this.getFloat();
-    v.v = this.getFloat();
-    this.getCommaOrSemicolon();
+  /**
+   * read Coords2d object
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {TextureUV} - Coords2d object
+   */
+  Coords2d(parent) {
+    const v = new TextureUV()
+    v.u = this.getFloat()
+    v.v = this.getFloat()
+    this.getCommaOrSemicolon()
 
-    return v;
-  },
+    return v
+  }
 
-  Template: function(parent) {
-    var name = this.getWord();
-    this.getLeftBrace();
-    var uuid = this.getUUID();
+  /**
+   * read Template object
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {bool} - true if right template format
+   */
+  Template(parent) {
+    const name = this.getWord()
+    this.getLeftBrace()
+    const uuid = this.getUUID()
+    let member = null
     do{
-      var member = this.getMember();
-    }while(member != null);
-    this.getRightBrace();
-    return true;
-  },
+      member = this.getMember()
+    }while(member != null)
+    this.getRightBrace()
 
-  Header: function(parent) {
-    this.getLeftBrace();
-    var major = this.getInteger();
-    var minor = this.getInteger();
-    var flags = this.getInteger();
-    this.getRightBrace();
-    return true;
-  },
+    return true
+  }
 
-  IndexedColor: function(parent) {
-    var index = this.getInteger();
-    var color = this.ColorRGBA();
-    color.index = index;
+  /**
+   * read Header object
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {bool} - true if right header format
+   */
+  Header(parent) {
+    this.getLeftBrace()
+    const major = this.getInteger()
+    const minor = this.getInteger()
+    const flags = this.getInteger()
+    this.getRightBrace()
+    return true
+  }
 
-    return color;
-  },
+  /**
+   * read IndexedColor object
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {Vector4} - ColorRGBA object
+   */
+  IndexedColor(parent) {
+    const index = this.getInteger()
+    const color = this.ColorRGBA()
+    color.index = index
 
-  Material: function(parent) {
-    this.getLeftBrace();
-    var material = new Material();
+    return color
+  }
 
-    material.ambient = this.ColorRGBA();
-    material.diffuse = material.ambient;
-    material.shininess = this.getFloat();
-    material.specular = this.ColorRGB();
-    material.emission = this.ColorRGB();
-    material.edge = 0;
-    material.texture = null;
+  /**
+   * read Material object
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {Material} - Material object
+   */
+  Material(parent) {
+    this.getLeftBrace()
+    const material = new Material()
 
-    var name = this.getWord();
-    if(name == "TextureFilename"){
-      var texture = this.TextureFilename();
+    material.ambient = this.ColorRGBA()
+    material.diffuse = material.ambient
+    material.shininess = this.getFloat()
+    material.specular = this.ColorRGB()
+    material.emission = this.ColorRGB()
+    material.edge = 0
+    material.texture = null
+
+    const name = this.getWord()
+    if(name === 'TextureFilename'){
+      const texture = this.TextureFilename()
       if(texture != null){
-        material.texture = texture;
-        //material.textureFileName = texture.fileName;
+        material.texture = texture
+        //material.textureFileName = texture.fileName
       }
     }
 
-    this.getRightBrace();
+    this.getRightBrace()
 
-    return material;
-  },
+    return material
+  }
 
-  Mesh: function(parent) {
-    this.getLeftBrace();
+  /**
+   * read Mesh object
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {bool} - 
+   */
+  Mesh(parent) {
+    this.getLeftBrace()
 
     // vertices
-    var nVertices = this.getInteger();
-    var skinArray = $A();
-    for(var i=0; i<nVertices; i++){
-      var skin = new Skin();
-      var pos = new DHVector3();
-      pos.x = this.getFloat();
-      pos.y = this.getFloat();
-      pos.z = -this.getFloat();
-      skin.position = pos;
+    const nVertices = this.getInteger()
+    const skinArray = []
+    for(let i=0; i<nVertices; i++){
+      const skin = new Skin()
+      const pos = new Vector3()
+      pos.x = this.getFloat()
+      pos.y = this.getFloat()
+      pos.z = -this.getFloat()
+      skin.position = pos
 
-      skin.boneIndex[0] = 0;
-      skin.boneIndex[1] = -1;
-      skin.boneIndex[2] = -1;
-      skin.boneIndex[3] = -1;
+      skin.boneIndex[0] = 0
+      skin.boneIndex[1] = -1
+      skin.boneIndex[2] = -1
+      skin.boneIndex[3] = -1
 
-      skin.skinWeight[0] = 1;
-      skin.skinWeight[1] = 0;
-      skin.skinWeight[2] = 0;
-      skin.skinWeight[3] = 0;
+      skin.skinWeight[0] = 1
+      skin.skinWeight[1] = 0
+      skin.skinWeight[2] = 0
+      skin.skinWeight[3] = 0
 
-      skinArray.push(skin);
+      skinArray.push(skin)
 
-      this.getCommaOrSemicolon();
+      this.getCommaOrSemicolon()
     }
-    this._obj.skinArray = skinArray;
-    this._obj.dynamicSkinOffset = -1;
+    this._obj.skinArray = skinArray
+    this._obj.dynamicSkinOffset = -1
 
     // faces
-    var nFaces = this.getInteger();
-    var faces = $A();
-    for(var i=0; i<nFaces; i++){
-      var face = this.getIntegerArray();
-      faces.push(face);
+    const nFaces = this.getInteger()
+    const faces = []
+    for(let i=0; i<nFaces; i++){
+      const face = this.getIntegerArray()
+      faces.push(face)
     }
-    this._indices = faces;
-    this.getRightBrace();
+    this._indices = faces
+    this.getRightBrace()
 
-    return true;
-  },
+    return true
+  }
 
-  MeshMaterialList: function(parent) {
-    this.getLeftBrace();
+  /**
+   * read MeshMaterial[] object
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {bool} - 
+   */
+  MeshMaterialList(parent) {
+    this.getLeftBrace()
 
     // materials
-    var nMaterials = this.getInteger();
-    this._materialIndex = 0;
+    const nMaterials = this.getInteger()
+    this._materialIndex = 0
 
-    var baseBone = new Bone();
-    var renderGroups = $A();
-    for(var i=0; i<nMaterials; i++){
-      var group = new RenderGroup();
-      group.boneArray = $A();
-      group.boneArray[0] = baseBone;
+    const baseBone = new Bone()
+    const renderGroups = []
+    for(let i=0; i<nMaterials; i++){
+      const group = new RenderGroup()
+      group.boneArray = []
+      group.boneArray[0] = baseBone
 
-      renderGroups.push(group);
+      renderGroups.push(group)
     }
-    this._obj.renderGroupArray = renderGroups;
-    this._obj.boneArray.push(baseBone);
-    this._obj.rootBone.addChild(baseBone);
+    this._obj.renderGroupArray = renderGroups
+    this._obj.boneArray.push(baseBone)
+    this._obj.rootBone.addChild(baseBone)
 
     // face materials
-    var nFaceIndices = this.getInteger();
-    var indices = this._indices;
-    for(var i=0; i<nFaceIndices; i++){
-      var index = this.getInteger();
-      this.getCommaOrSemicolon();
+    const nFaceIndices = this.getInteger()
+    const indices = this._indices
+    for(let i=0; i<nFaceIndices; i++){
+      const index = this.getInteger()
+      this.getCommaOrSemicolon()
 
-      var gind = renderGroups[index].indices;
-      var ind = indices[i];
+      const gind = renderGroups[index].indices
+      const ind = indices[i]
 
-      if(ind.size() == 3){
-        gind.push(ind[0]);
-        gind.push(ind[2]);
-        gind.push(ind[1]);
-      }else if(indices[i].size() == 4){
-        gind.push(ind[0]);
-        gind.push(ind[2]);
-        gind.push(ind[1]);
-        gind.push(ind[0]);
-        gind.push(ind[3]);
-        gind.push(ind[2]);
+      if(ind.length === 3){
+        gind.push(ind[0])
+        gind.push(ind[2])
+        gind.push(ind[1])
+      }else if(indices[i].length === 4){
+        gind.push(ind[0])
+        gind.push(ind[2])
+        gind.push(ind[1])
+        gind.push(ind[0])
+        gind.push(ind[3])
+        gind.push(ind[2])
       }else{
         // FIXME: 未対応
       }
     }
 
     // materials
-    var material = null;
-    while(1){
-      var name = this.getWord();
-      if(name == "Material"){
-        material = this.Material(parent);
+    let material = null
+    let name = this.getWord()
+    while(name === 'Material'){
+      material = this.Material(parent)
 
-        this._obj.materialArray.push(material);
-        this._obj.renderGroupArray[this._materialIndex].material = material;
-        this._materialIndex++;
-      }else{
-        break;
-      }
+      this._obj.materialArray.push(material)
+      this._obj.renderGroupArray[this._materialIndex].material = material
+      this._materialIndex++
+
+      name = this.getWord()
     }
         
-    this.getRightBrace();
+    this.getRightBrace()
 
-    return true;
-  },
+    return true
+  }
 
-  MeshNormals: function(parent) {
-    this.getLeftBrace();
-    var nNormals = this.getInteger();
+  /**
+   * read MeshNormals object
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {bool} - 
+   */
+  MeshNormals(parent) {
+    this.getLeftBrace()
+    const nNormals = this.getInteger()
     
-    this._normalArray = $A();
-    for(var i=0; i<nNormals; i++){
-      var v = this.getVector3();
-      v.z = -v.z;
-      this._normalArray.push(v);
+    this._normalArray = []
+    for(let i=0; i<nNormals; i++){
+      const v = this.getVector3()
+      v.z = -v.z
+      this._normalArray.push(v)
     }
 
-    var nFaceNormals = this.getInteger();
-    this._faceNormalArray = $A();
-    for(var i=0; i<nFaceNormals; i++){
-      var v = this.getIntegerArray();
-      this._faceNormalArray.push(v);
+    const nFaceNormals = this.getInteger()
+    this._faceNormalArray = []
+    for(let i=0; i<nFaceNormals; i++){
+      const v = this.getIntegerArray()
+      this._faceNormalArray.push(v)
     }
 
-    this.getRightBrace();
+    this.getRightBrace()
 
-    return true;
-  },
+    return true
+  }
 
-  MeshTextureCoords: function(parent) {
-    this.getLeftBrace();
+  /**
+   * read MeshTextureCoords object
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {bool} - 
+   */
+  MeshTextureCoords(parent) {
+    this.getLeftBrace()
 
-    var skins = this._obj.skinArray;
-    var nTextureCoords = this.getInteger();
-    for(var i=0; i<nTextureCoords; i++){
-      skins[i].textureUV = this.Coords2d();
+    const skins = this._obj.skinArray
+    const nTextureCoords = this.getInteger()
+    for(let i=0; i<nTextureCoords; i++){
+      skins[i].textureUV = this.Coords2d()
     }
 
-    this.getRightBrace();
+    this.getRightBrace()
 
-    return true;
-  },
+    return true
+  }
 
-  MeshVertexColors: function(parent) {
-    this.getLeftBrace();
+  /**
+   * read MeshVertexColors object
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {bool} - 
+   */
+  MeshVertexColors(parent) {
+    this.getLeftBrace()
 
-    var nVertexColors = this.getInteger();
-    for(var i=0; i<nVertexColors; i++){
-      var v = this.IndexedColor();
+    const nVertexColors = this.getInteger()
+    for(let i=0; i<nVertexColors; i++){
+      const v = this.IndexedColor()
       // FIXME: not implemented.
     }
 
-    this.getRightBrace();
+    this.getRightBrace()
 
-    return true;
-  },
+    return true
+  }
 
-  TextureFilename: function(parent) {
-    this.getLeftBrace();
-    var name = this.getFilename();
-    name = name.replace("\\\\", "/");
-    this.getRightBrace();
+  /**
+   * read TextureFilename object
+   * @access private
+   * @param {Object} parent - parent object
+   * @returns {String} - texture file name
+   */
+  TextureFilename(parent) {
+    this.getLeftBrace()
+    let name = this.getFilename()
+    name = name.replace('\\\\', '/')
+    this.getRightBrace()
 
-    var texture = TextureBank.getTexture(this._parentDirName + name);
+    const texture = TextureBank.getTexture(this._parentDirName + name)
 
-    return texture;
-  },
-});
+    return texture
+  }
+}
+
+

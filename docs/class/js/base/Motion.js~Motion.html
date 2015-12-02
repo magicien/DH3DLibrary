@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">Motion | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+</head>
+<body class="layout-container">
+
+<header>
+  <a href="./">Home</a>
+  <a href="identifiers.html">Identifier</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="git+https://github.com/magicien/DH3DLibrary.git">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div data-ice="classWrap">
+  <h2>Class</h2>
+  <ul>
+    
+  <li data-ice="classDoc"><span><a href="class/js/util/AjaxRequest.js~AjaxRequest.html">AjaxRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/BinaryReader.js~BinaryReader.html">BinaryReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/BinaryRequest.js~BinaryRequest.html">BinaryRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Bone.js~Bone.html">Bone</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Camera.js~Camera.html">Camera</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraAnimator.js~CameraAnimator.html">CameraAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraKeyFrame.js~CameraKeyFrame.html">CameraKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotion.js~CameraMotion.html">CameraMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionBank.js~CameraMotionBank.html">CameraMotionBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionReader.js~CameraMotionReader.html">CameraMotionReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/CanvasField.js~CanvasField.html">CanvasField</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Constraint.js~Constraint.html">Constraint</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DH2DObject.js~DH2DObject.html">DH2DObject</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html">DH3DObject</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DHAudio.js~DHAudio.html">DHAudio</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/DHEvent.js~DHEvent.html">DHEvent</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/Face.js~Face.html">Face</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/FaceMotion.js~FaceMotion.html">FaceMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/FaceVertex.js~FaceVertex.html">FaceVertex</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/FragmentShader.js~FragmentShader.html">FragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/FrameBuffer.js~FrameBuffer.html">FrameBuffer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/IK.js~IK.html">IK</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/IKFrame.js~IKFrame.html">IKFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/KeyFrame.js~KeyFrame.html">KeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/KeyListener.js~KeyListener.html">KeyListener</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Light.js~Light.html">Light</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/LightKeyFrame.js~LightKeyFrame.html">LightKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/MMDAnimator.js~MMDAnimator.html">MMDAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/MMDCameraAnimator.js~MMDCameraAnimator.html">MMDCameraAnimator</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Material.js~Material.html">Material</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Matrix.js~Matrix.html">Matrix</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html">MessageWindow</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Model.js~Model.html">Model</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ModelBank.js~ModelBank.html">ModelBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ModelReader.js~ModelReader.html">ModelReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MotionBank.js~MotionBank.html">MotionBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/MotionReader.js~MotionReader.html">MotionReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/MtlParser.js~MtlParser.html">MtlParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjMaterial.js~ObjMaterial.html">ObjMaterial</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjModel.js~ObjModel.html">ObjModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjParser.js~ObjParser.html">ObjParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/obj/ObjReader.js~ObjReader.html">ObjReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ObjectLoadMonitor.js~ObjectLoadMonitor.html">ObjectLoadMonitor</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/PMDModel.js~PMDModel.html">PMDModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/PMDReader.js~PMDReader.html">PMDReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/RenderGroup.js~RenderGroup.html">RenderGroup</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/RigidBody.js~RigidBody.html">RigidBody</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ShaderBank.js~ShaderBank.html">ShaderBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/ShadowKeyFrame.js~ShadowKeyFrame.html">ShadowKeyFrame</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleFragmentShader.js~SimpleFragmentShader.html">SimpleFragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleRenderer.js~SimpleRenderer.html">SimpleRenderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleVertexShader.js~SimpleVertexShader.html">SimpleVertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Skin.js~Skin.html">Skin</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/TextReader.js~TextReader.html">TextReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/util/TextRequest.js~TextRequest.html">TextRequest</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/TextureBank.js~TextureBank.html">TextureBank</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/TextureUV.js~TextureUV.html">TextureUV</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonFragmentShader.js~ToonFragmentShader.html">ToonFragmentShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonRenderer.js~ToonRenderer.html">ToonRenderer</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonVertexShader.js~ToonVertexShader.html">ToonVertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraMotion.js~VMDCameraMotion.html">VMDCameraMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraReader.js~VMDCameraReader.html">VMDCameraReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDMotion.js~VMDMotion.html">VMDMotion</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/mmd/VMDReader.js~VMDReader.html">VMDReader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/base/VertexShader.js~VertexShader.html">VertexShader</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XModel.js~XModel.html">XModel</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XParser.js~XParser.html">XParser</a></span></li>
+<li data-ice="classDoc"><span><a href="class/js/xfile/XReader.js~XReader.html">XReader</a></span></li>
+</ul>
+</div>
+
+
+
+<div data-ice="functionWrap">
+  <h2><a href="function/">Function</a></h2>
+  <ul>
+    
+  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-BinaryParser">BinaryParser</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeEUCJP">EscapeEUCJP</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS7">EscapeJIS7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS8">EscapeJIS8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeSJIS">EscapeSJIS</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF16LE">EscapeUTF16LE</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF7">EscapeUTF7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF8">EscapeUTF8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUnicode">EscapeUnicode</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-GetEscapeCodeType">GetEscapeCodeType</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-ObjectAssign">ObjectAssign</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeEUCJP">UnescapeEUCJP</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS7">UnescapeJIS7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS8">UnescapeJIS8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeSJIS">UnescapeSJIS</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF16LE">UnescapeUTF16LE</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF7">UnescapeUTF7</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF8">UnescapeUTF8</a></span></li>
+<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUnicode">UnescapeUnicode</a></span></li>
+</ul>
+</div>
+
+<div data-ice="variableWrap">
+  <h2><a href="variable/">Variable</a></h2>
+  <ul>
+    
+  <li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT11280">JCT11280</a></span></li>
+<li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT8836">JCT8836</a></span></li>
+</ul>
+</div>
+
+
+
+
+</nav>
+
+<div class="content" data-ice="content"><div class="header-notice">
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Motion from &apos;<span><a href="file/js/base/Motion.js.html#lineNumber7">dh3dlib/js/base/Motion.js</a></span>&apos;</code></pre></div>
+  <span data-ice="access">public</span>
+  <span data-ice="kind">class</span>
+  
+  
+  
+  <span data-ice="source">| <span><a href="file/js/base/Motion.js.html#lineNumber7">source</a></span></span>
+</div>
+
+<div class="self-detail detail">
+  <h1 data-ice="name">Motion</h1>
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  <div class="description" data-ice="description"><p>Motion class</p>
+</div>
+
+  
+
+  
+
+  
+
+  
+</div>
+
+
+
+<div data-ice="constructorSummary"><h2>Constructor Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Constructor</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html#instance-constructor-constructor">constructor</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>constructor</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div data-ice="memberSummary"><h2>Member Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Members</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html#instance-member-defaultFPS">defaultFPS</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html#instance-member-frameLength">frameLength</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html#instance-member-hashName">hashName</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html#instance-member-loaded">loaded</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html#instance-member-loop">loop</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html#instance-member-motionArray">motionArray</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html#instance-member-onload">onload</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div data-ice="methodSummary"><h2>Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html#instance-method-clone">clone</a></span></span><span data-ice="signature">(): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html#instance-method-copy">copy</a></span></span><span data-ice="signature">(motion: <span>*</span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+
+
+
+
+
+<div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-constructor-constructor">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">constructor</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/Motion.js.html#lineNumber13">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>constructor</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+<div data-ice="memberDetails"><h2 data-ice="title">Public Members</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-defaultFPS">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">defaultFPS</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/Motion.js.html#lineNumber22">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-frameLength">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">frameLength</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/Motion.js.html#lineNumber21">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-hashName">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">hashName</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/Motion.js.html#lineNumber14">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-loaded">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">loaded</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/Motion.js.html#lineNumber15">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-loop">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">loop</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/Motion.js.html#lineNumber23">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-motionArray">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">motionArray</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/Motion.js.html#lineNumber19">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-onload">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">onload</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/Motion.js.html#lineNumber16">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+<div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-clone">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">clone</span><span data-ice="signature">(): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/Motion.js.html#lineNumber26">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-copy">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">copy</span><span data-ice="signature">(motion: <span>*</span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/Motion.js.html#lineNumber30">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">motion</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.2.1)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

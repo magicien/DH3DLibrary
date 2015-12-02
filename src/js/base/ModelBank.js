@@ -1,186 +1,173 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary ModelBank.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var ModelBank = Class.create({
-  _models: $H(),
-  _loadingModels: $H(),
-  _modelsOfContext: $H(),
-  _modelReaders: $A(),
+'use strict'
 
-  initialize: function() {
-  },
+/**
+ * ModelBank class
+ * @access public
+ */
+export class ModelBank {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    /** @type {Map} */
+    //this._models = new Map()
+    /** @type {Map} */
+    this._loadingModels = new Map()
+    /** @type {Map} */
+    this._promises = new Map()
+    /** @type {Map} */
+    this._modelsOfContext = new Map()
+    /** @type {Array} */
+    this._modelReaders = []
+  }
 
-  addModelReader: function(modelReader) {
-    this._modelReaders.push(modelReader);
-  },
+  addModelReader(modelReader) {
+    this._modelReaders.push(modelReader)
+  }
 
-  getFileID: function(file) {
+  getFileID(file) {
     if(!(file instanceof File)){
-      return "";
+      return ''
     }
-    return "FILE:" + file.name + "_" + file.size + "_" + file.lastModifiedDate;
-  },
+    //return 'FILE:' + file.name + '_' + file.size + '_' + file.lastModifiedDate
+    return `FILE:${file.name}_${file.size}_${file.lastModifiedDate}`
+  }
 
-  getModel: function(modelFile, options) {
+  getModel(modelFile, options) {
     if(modelFile instanceof File){
-      return this.getModelFromFile(modelFile, options);
+      return this.getModelFromFile(modelFile, options)
     }
-   
-    var model = this._models.get(modelFile);
+
+    let promise = this._promises.get(modelFile)
+    if(promise){
+      return promise.then((loadedModel) => {
+        return loadedModel.clone()
+      })
+    }
+
+    let reader = null
+    this._modelReaders.some((readerClass) => {
+      if(readerClass.canRead(modelFile)){
+        reader = new readerClass()
+        return true
+      }
+      return false
+    })
+
+    if(!reader){
+      return Promise.reject(`can't read file: ${modelFile}`)
+    }
+
+    promise = reader.readModel(modelFile)
+    this._promises.set(modelFile, promise)
+
+    return promise.then((loadedModel) => {
+      return loadedModel.clone()
+    })
+    /*
+    const model = this._models.get(modelFile)
     if(model){
-      var m = model.clone();
-      if(options && options.onload) {
-        m.onload = options.onload;
-      }else{
-        m.onload = undefined;
-      }
-
-      if(m.loaded){
-        if(m.onload){
-          m.onload();
-        }
-      }else{
-        var arr = this._loadingModels.get(modelFile);
-        arr.push(m);
-      }
-      return m;
+      const m = model.clone()
+      return Promise.resolve(m)
     }
 
-    this._modelReaders.find( function(readerClass){
-      var reader = new readerClass();
-      model = reader.readModel(modelFile);
+    let promise = null
+    this._modelReaders.some((readerClass) => {
+      if(readerClass.canRead(modelFile)){
+        const reader = new readerClass()
+        promise = reader.readModel(modelFile)
+        return true
+      }
+      return false
+    })
 
-      if(model)
-        return true;
-      
-      return false;
-    });
+    if(promise){
+      return promise.then((loadedModel) => {
+        // FIXME: don't use model.hashName
+        loadedModel.hashName = modelFile
+
+        this._models.set(modelFile, loadedModel)
+        return loadedModel.clone()   
+      })
+    }
+
+    return Promise.reject(`can't read file: ${modelFile}`)
+    */
+  }
+
+  getModelFromFile(modelFile, options) {
+    const id = this.getFileID(modelFile)
+    const model = this._models.get(id)
 
     if(model){
-      model.onload = function(){ ModelBank.onloadModel(model); };
-
-      model.hashName = modelFile;
-      this._models.set(modelFile, model);
-
-      var arr = $A();
-      var m = model.clone();
-      if(options && options.onload) {
-        m.onload = options.onload;
-      }else{
-        m.onload = undefined;
-      }
-      arr.push(m);
-      this._loadingModels.set(model.hashName, arr);
-
-      return m;
-    }
-    return null;
-  },
-
-  getModelFromFile: function(modelFile, options) {
-    var id = this.getFileID(modelFile);
-    var model = this._models.get(id);
-    if(model){
-      var m = model.clone();
-      if(options && options.onload) {
-        m.onload = option.onload;
-      }else{
-        m.onload = undefined;
-      }
-
-      if(m.loaded){
-        if(m.onload){
-          m.onload();
-        }
-      }else{
-        var arr = this._loadingModels.get(modelFile);
-        arr.push(m);
-      }
-      return m;
+      const m = model.clone()
+      return Promise.resolve(m)
     }
 
-    this._modelReaders.find( function(readerClass){
-      var reader = new readerClass();
-      model = reader.readModelFromFile(modelFile);
-
-      if(model)
-        return true;
-
-      return false;
-    });
+    let promise = null
+    this._modelReaders.some((readerClass) => {
+      if(readerClass.canRead(modelFile)){
+        const reader = new readerClass()
+        promise = reader.readModelFromFile(modelFile)
+        return true
+      }
+      return false
+    })
     
-    if(model){
-      model.onload = function(){ ModelBank.onloadModel(model); };
+    if(promise){
+      return promise.then((loadedModel) => {
+        // FIXME: don't use model.hashName
+        loadedModel.hashName = id
 
-      model.hashName = id;
-      this._models.set(id, model);
+        this._models.set(id, loadedModel)
 
-      var arr = $A();
-      var m = model.clone();
-      if(options && options.onload){
-        m.onload = options.onload;
-      }else{
-        m.onload = undefined;
-      }
-      arr.push(m);
-      this._loadingModels.set(model.hashName, arr);
+        let newModel = loadedModel.clone()
 
-      return m;
+        return newModel
+      })
     }
 
-    return null;
-  },
+    return Promise.reject(`can't read file: ${modelFile}`)
+  }
 
-  onloadModel: function(model) {
-    model.loaded = true;
-
-    var arr = this._loadingModels.get(model.hashName);
-    if(arr){
-      arr.each( function(m){
-        m.loaded = true;
-        if(m.onload){
-          m.copy(model);
-          m.onload();
-        }
-      });
-    }
-  },
-
-  getModelForRenderer: function(modelFile, renderer) {
-    var models = this._modelsOfContext.get(modelFile);
+  getModelForRenderer(modelFile, renderer) {
+    let models = this._modelsOfContext.get(modelFile)
     if(!models){
-      models = $H();
-      this._modelsOfContext.set(modelFile, models);
+      models = new Map()
+      this._modelsOfContext.set(modelFile, models)
     }
-    var gl = renderer.getContext();
-    var orgModel = models.get(gl);
-    if(!orgModel){
-      orgModel = this.getModel(modelFile);
 
+    const gl = renderer.getContext()
+    const model = models.get(gl)
+    if(model){
+      return Promise.resolve(model)
+    }
+
+    const promise = this.getModel(modelFile).then((orgModel) => {
       // vertex buffer
-      orgModel.vertexBuffer = gl.createBuffer();
-      gl.bindBuffer(gl.ARRAY_BUFFER, orgModel.vertexBuffer);
-      gl.bufferData(gl.ARRAY_BUFFER, renderer.getVertexData(orgModel), gl.DYNAMIC_DRAW);
+      orgModel.vertexBuffer = gl.createBuffer()
+      gl.bindBuffer(gl.ARRAY_BUFFER, orgModel.vertexBuffer)
+      gl.bufferData(gl.ARRAY_BUFFER, renderer.getVertexData(orgModel), gl.DYNAMIC_DRAW)
 
       // index buffer
-      orgModel.renderGroupArray.each( function(group){
-        group.indexBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, group.indexBuffer);
-        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, group.getIndexData(), gl.STATIC_DRAW);
-      });
+      orgModel.renderGroupArray.forEach( (group) => {
+        group.indexBuffer = gl.createBuffer()
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, group.indexBuffer)
+        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, group.getIndexData(), gl.STATIC_DRAW)
+      })
 
-      orgModel.renderer = renderer;
-      models.set(gl, orgModel);
-    }
-    var model = orgModel.clone();
+      orgModel.renderer = renderer
+      models.set(gl, orgModel)
 
-    return model;
-  },
-});
+      return orgModel.clone()
+    })
 
-ModelBank = new ModelBank();
+    return promise
+  }
+}
+
+// for singleton
+export default new ModelBank()
+

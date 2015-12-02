@@ -1,31 +1,34 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary RigidBody.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var RigidBody = Class.create({
-  // FIXME: field name
-  name: '',
-  boneIndex: 0,
-  groupIndex: 0,
-  groupTarget: 0,
-  shapeType: 0,
-  shapeW: 0.0,
-  shapeH: 0.0,
-  shapeD: 0.0,
-  position: null,
-  rotate: null,
-  weight: 0.0,
-  positionDim: 0.0,
-  rotateDim: 0.0,
-  recoil: 0.0,
-  friction: 0.0,
-  type: 0,
+'use strict'
 
-  initialize: function() {
-  },
-});
+/**
+ * RigidBody class
+ * @access public
+ */
+export default class RigidBody {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+  // FIXME: field name
+    this.name = ''
+    this.boneIndex = 0
+    this.groupIndex = 0
+    this.groupTarget = 0
+    this.shapeType = 0
+    this.shapeW = 0.0
+    this.shapeH = 0.0
+    this.shapeD = 0.0
+    this.position = null
+    this.rotate = null
+    this.weight = 0.0
+    this.positionDim = 0.0
+    this.rotateDim = 0.0
+    this.recoil = 0.0
+    this.friction = 0.0
+    this.type = 0
+
+  }
+}
 

@@ -1,27 +1,33 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary TextureUV.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var TextureUV = Class.create({
-  u: 0.0,
-  v: 0.0,
+'use strict'
 
-  initialize: function(u, v) {
-    this.setValue(u, v);
-  },
+/**
+ * TextureUV class
+ * @access public
+ */
+export default class TextureUV {
+  /**
+   * constructor
+   * @access public
+   * @param {float} u -
+   * @param {float} v -
+   * @constructor
+   */
+  constructor(u, v) {
+    this.u = 0.0
+    this.v = 0.0
 
-  setValue: function(u, v) {
-    if((u instanceof TextureUV) || (u instanceof Object && u.v != undefined)){
-      this.u = u.u;
-      this.v = u.v;
+    this.setValue(u, v)
+  }
+
+  setValue(u, v) {
+    //if(u instanceof TextureUV || (u instanceof Object && u.v !== undefined)){
+    if(u instanceof TextureUV || u instanceof Object){
+      this.u = u.u
+      this.v = u.v || 0.0
     }else{
-      this.u = u || 0.0;
-      this.v = v || 0.0;
+      this.u = u || 0.0
+      this.v = v || 0.0
     }
-  },
+  }
 
-});
+}

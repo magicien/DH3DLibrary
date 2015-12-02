@@ -1,133 +1,136 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary TextureBank.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var TextureBank = Class.create({
-  _gl: null,
-  _textures: null,
+'use strict'
 
-  initialize: function() {
-    this._textures = $H();
-  },
+/**
+ * TextureBank class
+ * @access public
+ */
+export class TextureBank {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    /** @type {WebGLContext} */
+    this._gl = null
 
-  setContext: function(gl) {
-    this._gl = gl;
-  },
+    /** @type {Map} */
+    this._textures = new Map()
+  }
 
-  getTextureID: function(canvas) {
+  setContext(gl) {
+    this._gl = gl
+  }
+
+  getTextureID(canvas) {
     if(!(canvas instanceof HTMLCanvasElement)){
-      return "";
+      return ''
     }
     if(!canvas._textureID){
-      var radix = 16;
-      var length = 20;
-      var id = "_";
-      for(var i=0; i<length; i++){
-        var n = Math.floor(Math.random() * radix);
-        id += n.toString(radix);
-      }
-      canvas._textureID = id;
-    }
-    return "CANVAS:" + canvas._textureID;
-  },
+      const radix = 16
+      const length = 20
+      let id = '_'
 
-  getTexture: function(textureName){
-    var key;
-    if(textureName instanceof HTMLCanvasElement){
-      key = this.getTextureID(textureName);
-    }else{
-      key = textureName;
+      for(let i=0; i<length; i++){
+        const n = Math.floor(Math.random() * radix)
+        id += n.toString(radix)
+      }
+      canvas._textureID = id
     }
-    var texture = this._textures.get(key);
+    //return 'CANVAS:' + canvas._textureID
+    return `CANVAS:${canvas._textureID}`
+  }
+
+  getTexture(textureName){
+    let key = textureName
+    if(textureName instanceof HTMLCanvasElement){
+      key = this.getTextureID(textureName)
+    }
+
+    let texture = this._textures.get(key)
 
     if(texture == null){
-      texture = this._gl.createTexture();
-      var orgImage = new Image();
-      var texImage;
-      var gl = this._gl;
-      var obj = this;
+      texture = this._gl.createTexture()
+      const orgImage = new Image()
+      let texImage = null
+      const gl = this._gl
+      const obj = this
 
-      var texCallback = function(){
-        //gl.enable(gl.TEXTURE_2D);
-        gl.checkGLError("gl.TEXTURE_2D");
-        gl.bindTexture(gl.TEXTURE_2D, texture);
-        gl.checkGLError("gl.bindTexture");
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texImage);
-        gl.checkGLError("gl.texImage2D");
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-        gl.checkGLError("gl.texParameteri: MAG_FILTER");
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-        gl.checkGLError("gl.texParameteri: MIN_FILTER");
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-        gl.checkGLError("gl.texParameteri: WRAP_S");
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-        gl.checkGLError("gl.texParameteri: WRAP_T");
-        gl.generateMipmap(gl.TEXTURE_2D);
-        gl.checkGLError("gl.generateMipmap");
-        gl.bindTexture(gl.TEXTURE_2D, null);
-        gl.checkGLError("gl.bindTexture");
-        //myAlert("error:" + gl.getError());
-      };
-
-      if(textureName instanceof HTMLCanvasElement){
-        texImage = textureName;
-        texCallback();
-      }else{
-        orgImage.onload = function(){
-          gl.checkGLError("before image.onload");
-          texImage = obj._createTextureImage(orgImage, texCallback);
-        }
-        orgImage.src = textureName;
+      const texCallback = () => {
+        //gl.enable(gl.TEXTURE_2D)
+        gl.checkGLError('gl.TEXTURE_2D')
+        gl.bindTexture(gl.TEXTURE_2D, texture)
+        gl.checkGLError('gl.bindTexture')
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texImage)
+        gl.checkGLError('gl.texImage2D')
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
+        gl.checkGLError('gl.texParameteri: MAG_FILTER')
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)
+        gl.checkGLError('gl.texParameteri: MIN_FILTER')
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+        gl.checkGLError('gl.texParameteri: WRAP_S')
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+        gl.checkGLError('gl.texParameteri: WRAP_T')
+        gl.generateMipmap(gl.TEXTURE_2D)
+        gl.checkGLError('gl.generateMipmap')
+        gl.bindTexture(gl.TEXTURE_2D, null)
+        gl.checkGLError('gl.bindTexture')
+        //myAlert('error:' + gl.getError())
       }
 
-      this._textures.set(key, texture);
-    }
-    return texture;
-  },
+      if(textureName instanceof HTMLCanvasElement){
+        texImage = textureName
+        texCallback()
+      }else{
+        orgImage.onload = () => {
+          gl.checkGLError('before image.onload')
+          texImage = obj._createTextureImage(orgImage, texCallback)
+        }
+        orgImage.src = textureName
+      }
 
-  _createTextureImage: function(orgImage, callback){
+      this._textures.set(key, texture)
+    }
+    return texture
+  }
+
+  _createTextureImage(orgImage, callback){
     // adjust image width/height to powers of 2
-    var texImage = new Image();
+    const texImage = new Image()
 
-    var orgWidth = (orgImage.width >> 1);
-    var texWidth = 1;
+    let orgWidth = (orgImage.width >> 1)
+    let texWidth = 1
     while(orgWidth > 0){
-      orgWidth >>= 1;
-      texWidth <<= 1;
+      orgWidth >>= 1
+      texWidth <<= 1
     }
-    var orgHeight = (orgImage.height >> 1);
-    var texHeight = 1;
+
+    let orgHeight = (orgImage.height >> 1)
+    let texHeight = 1
     while(orgHeight > 0){
-      orgHeight >>= 1;
-      texHeight <<= 1;
+      orgHeight >>= 1
+      texHeight <<= 1
     }
 
     // create canvas
-    var texCanvas;
-    var texContext;
-    texCanvas = document.createElement('canvas');
-    texCanvas.width = texWidth;
-    texCanvas.height = texHeight;
-    texContext = texCanvas.getContext("2d");
+    const texCanvas = document.createElement('canvas')
+    texCanvas.width = texWidth
+    texCanvas.height = texHeight
+    const texContext = texCanvas.getContext('2d')
 
     // drawImage
     texContext.drawImage(orgImage, 0, 0, orgImage.width, orgImage.height,
-                                   0, 0, texWidth, texHeight);
+                                   0, 0, texWidth, texHeight)
 
     // createImage from canvas data
     if(callback){
-      texImage.onload = callback;
+      texImage.onload = callback
     }
-    texImage.src = texCanvas.toDataURL();
+    texImage.src = texCanvas.toDataURL()
 
-    return texImage;
-  },
+    return texImage
+  }
+}
 
-});
-
-TextureBank = new TextureBank();
-
+// for singleton
+export default new TextureBank()

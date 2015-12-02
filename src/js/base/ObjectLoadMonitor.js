@@ -1,72 +1,77 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary ObjectLoadMonitor.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var ObjectLoadMonitor = Class.create({
-  _objs: null,
-  _loaded: false,
-  _onload: null,
+'use strict'
 
-  initialize: function(objs, options) {
-    var monitor = this;
+/**
+ * ObjectLoadMonitor class
+ * @access public
+ */
+export default class ObjectLoadMonitor {
+  /**
+   * constructor
+   * @access public
+   * @param {Array} objs -
+   * @param {Hash} options -
+   * @constructor
+   */
+  constructor(objs, options) {
+    this._objs = null
+    this._loaded = false
+    this._onload = null
+
+    const monitor = this
     if(objs){
-      this._objs = objs;
-      this._objs.each( function(obj){
+      this._objs = objs
+      this._objs.forEach( (obj) => {
         if(obj != null){
-          obj.onload = function(){
-            //obj.loaded = true;
-            monitor.check();
-          };
+          obj.onload = () => {
+            //obj.loaded = true
+            monitor.check()
+          }
         }
-      });
+      })
     }else{
-      this._objs = $A();
+      this._objs = []
     }
 
     if(options){
-      this._onload = options.onload;
+      this._onload = options.onload
     }
-    this.check();
-  },
+    this.check()
+  }
 
-  check: function() {
-    var loaded = true;
-    this._objs.each( function(obj){
-      var isImage = false;
+  check() {
+    let loaded = true
+    this._objs.forEach( (obj) => {
+      let isImage = false
       try{
         if(obj instanceof HTMLImageElement){
-          isImage = true;
+          isImage = true
         }
       }catch(e){
         if(obj instanceof Image){
-          isImage = true;
+          isImage = true
         }
       }
       if(isImage){
         if(!obj.complete){
-          loaded = false;
+          loaded = false
         }
       }else if(obj == null || !obj.loaded){
-        loaded = false;
+        loaded = false
       }
-    });
-    this._loaded = loaded;
+    })
+    this._loaded = loaded
     if(loaded){
       if(this._onload){
-        this._onload();
+        this._onload()
       }
     }
-  },
+  }
 
 // FIXME: implementation
-  add: function(obj) {
-  },
+  add(obj) {
+  }
 
 // FIXME: implementation
-  remove: function(obj) {
-  },
-});
+  remove(obj) {
+  }
+}

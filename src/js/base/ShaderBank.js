@@ -1,49 +1,51 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary ShaderBank.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var ShaderBank = Class.create({
-  _shaders: $H(),
-  _shaderClasses: $H(),
+'use strict'
 
-  initialize: function() {
-  },
+/**
+ * ShaderBank class
+ * @access public
+ */
+export class ShaderBank {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    this._shaders = new Map()
+    this._shaderClasses = new Map()
+  }
 
-  registShader: function(shader) {
-    var shaderName = (new shader()).getName();
-    this._shaderClasses.set(shaderName, shader);
-    this._shaders.set(shaderName, $H());
-  },
+  registShader(shader) {
+    const shaderName = (new shader()).getName()
+    this._shaderClasses.set(shaderName, shader)
+    this._shaders.set(shaderName, new Map())
+  }
 
-  getShader: function(name) {
-    var shader = this._shaderClasses.get(name);
-    if(shader == undefined){
-      return null;
-    }
-    return shader;
-  },
-
-  getShaderOfContext: function(name, context) {
-    var shader = this._shaders.get(name);
+  getShader(name) {
+    const shader = this._shaderClasses.get(name)
     if(shader == null){
-      return null;
+      return null
     }
-    var instance = shader.get(context);
-    if(instance){
-      return instance;
-    }
-    var shaderClass = this._shaderClasses.get(name);
-    instance = new shaderClass(context);
-    shader.set(context, instance);
+    return shader
+  }
 
-    return instance;
-  },
-});
+  getShaderOfContext(name, context) {
+    const shader = this._shaders.get(name)
+    if(shader == null){
+      return null
+    }
+    let instance = shader.get(context)
+    if(instance){
+      return instance
+    }
+    const shaderClass = this._shaderClasses.get(name)
+    instance = new shaderClass(context)
+    shader.set(context, instance)
+
+    return instance
+  }
+}
 
 // Singleton
-ShaderBank = new ShaderBank();
+export default new ShaderBank()
 

@@ -1,182 +1,193 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary TextReader.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var TextReader = Class.create({
-  url: '',
-  encoding: 'utf-8',
-  position: 0,
-  eof: true,
-  //parser: null,
-  data: null,
-  onloadFunc: null,
+'use strict'
 
-  initialize: function(url, encoding, onload) {
-    this.encoding = encoding;
-    this.onloadFunc = onload;
+import TextRequest from './TextRequest'
 
-    if(encoding == "sjis"){
-      this._encoding = "shift_jis";
+/**
+ * TextReader class
+ * @access public
+ */
+export default class TextReader {
+  /**
+   * constructor
+   * @access public
+   * @param {string} url -
+   * @param {string} encoding -
+   * @param {function} onload -
+   * @constructor
+   */
+  constructor(url, encoding = 'utf-8', onload = null) {
+    this.url = ''
+    this.position = 0
+    this.eof = true
+    this.data = null
+
+    this.encoding = encoding
+    this.onloadFunc = onload
+
+    if(encoding === 'sjis'){
+      this.encoding = 'shift_jis'
     }
 
-    var obj = this;
+    const obj = this
     if(url instanceof File){
-      this.url = url.name;
-      var reader = new FileReader();
-      reader.onloadend = function(){
-        obj._onload(reader.result);
-      };
-      reader.readAsText(url, this._encoding);
+      this.url = url.name
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        obj._onload(reader.result)
+      }
+      reader.readAsText(url, this._encoding)
     }else{
-      this.url = url;
+      this.url = url
 
+      /*
       new TextRequest(url, this._encoding, {
         method: 'GET',
-        onComplete: function(response) {
-          obj._onload(response.responseText);
+        onComplete(response) {
+          obj._onload(response.responseText)
         },
-      });
+      })
+      */
+
+      TextRequest.getWithCharset(url, this.encoding)
+        .then((value) => { obj._onload(value) })
+        .catch((e) => { throw e })
     }
-  },
+  }
 
-  _onload: function(textData) {
-    this.position = 0;
+  _onload(textData) {
+    this.position = 0
 
-    this.data = textData;
-    this.eof = false;
+    this.data = textData
+    this.eof = false
     
     if(this.onloadFunc){
-      this.onloadFunc();
+      this.onloadFunc()
     }
-  },
+  }
 
-  getText: function() {
-    return this.data;
-  },
+  getText() {
+    return this.data
+  }
 
   // FIXME: implementation
 /*
-  hasBytesAvailable: function() {
-    return !this.eof;
-  },
+  hasBytesAvailable() {
+    return !this.eof
+  }
 
-  readData: function(length) {
+  readData(length) {
     if(this.eof){
-      return null;
+      return null
     }
-    var dataStr = String.fromCharCode.apply(String, this.data.slice(this.position, this.position + length));
+    const dataStr = String.fromCharCode.apply(String, this.data.slice(this.position, this.position + length))
 
-    this.position += length;
+    this.position += length
     if(this.position >= this.data.length){
-      this.eof = true;
+      this.eof = true
     }
 
-    return dataStr;
-  },
+    return dataStr
+  }
 
-  readInteger: function(length, signed) {
+  readInteger(length, signed) {
     if(this.eof){
-      return null;
+      return null
     }
 
-    var value = this.parser.decodeInt(this.readData(length), length * 8, signed);
+    const value = this.parser.decodeInt(this.readData(length), length * 8, signed)
 
-    return value;
-  },
+    return value
+  }
     
-  readByte: function() {
-    return this.readInteger(1, true);
-  },
+  readByte() {
+    return this.readInteger(1, true)
+  }
       
-  readUnsignedByte: function() {
-    return this.readInteger(1, false);
-  },
+  readUnsignedByte() {
+    return this.readInteger(1, false)
+  }
 
-  readShort: function() {
-    return this.readInteger(2, true);
-  },
+  readShort() {
+    return this.readInteger(2, true)
+  }
 
-  readUnsignedShort: function() {
-    return this.readInteger(2, false);
-  },
+  readUnsignedShort() {
+    return this.readInteger(2, false)
+  }
 
-  readInt: function() {
-    return this.readInteger(4, true);
-  },
+  readInt() {
+    return this.readInteger(4, true)
+  }
 
-  readUnsignedInt: function() {
-    return this.readInteger(4, false);
-  },
+  readUnsignedInt() {
+    return this.readInteger(4, false)
+  }
 
-  readFloat: function() {
+  readFloat() {
     if(this.eof){
-      return null;
+      return null
     }
-    var floatSize = 4;
-    var value = this.parser.toFloat(this.readData(floatSize));
+    const floatSize = 4
+    const value = this.parser.toFloat(this.readData(floatSize))
 
-    return value;
-  },
+    return value
+  }
 
-  readDouble: function() {
+  readDouble() {
     if(this.eof){
-      return null;
+      return null
     }
-    var doubleSize = 8;
-    var value = this.parser.toDouble(this.readData(doubleSize));
+    const doubleSize = 8
+    const value = this.parser.toDouble(this.readData(doubleSize))
 
-    return value;
-  },
+    return value
+  }
 
-  readString: function(length) {
+  readString(length) {
     if(this.eof){
-      return null;
+      return null
     }
 
-    var escapeString = '';
-    for(var i=0; i<length; i++){
-      var charCode = this.data[this.position + i];
+    const escapeString = ''
+    for(var i=0 i<length i++){
+      const charCode = this.data[this.position + i]
       if(charCode == 0){
-        break;
+        break
       }
       else if(charCode < 16){
-        escapeString += '%0' + charCode.toString(16);
+        escapeString += '%0' + charCode.toString(16)
       }else{
-        escapeString += '%' + charCode.toString(16);
+        escapeString += '%' + charCode.toString(16)
       }
     }
       
-    this.position += length; 
+    this.position += length 
     if(this.position >= this.data.length)
-      this.eof = true;
+      this.eof = true
 
-    var value;
+    const value
     if(this.encoding == 'sjis'){
-      value = UnescapeSJIS(escapeString);
+      value = UnescapeSJIS(escapeString)
     }else if(this.encoding == 'euc-jp'){
-      value = UnescapeEUCJP(escapeString);
+      value = UnescapeEUCJP(escapeString)
     }else if(this.encoding == 'jis-7'){
-      value = UnescapeJIS7(escapeString);
+      value = UnescapeJIS7(escapeString)
     }else if(this.encoding == 'jis-8'){
-      value = UnescapeJIS8(escapeString);
+      value = UnescapeJIS8(escapeString)
     }else if(this.encoding == 'unicode'){
-      value = UnescapeUnicode(escapeString);
+      value = UnescapeUnicode(escapeString)
     }else if(this.encoding == 'utf7'){
-      value = UnescapeUTF7(escapeString);
+      value = UnescapeUTF7(escapeString)
     }else if(this.encoding == 'utf-8'){
-      value = UnescapeUTF8(escapeString);
+      value = UnescapeUTF8(escapeString)
     }else if(this.encoding == 'utf-16'){
-      value = UnescapeUTF16LE(escapeString);
+      value = UnescapeUTF16LE(escapeString)
     }
 
-    return value;
-  },
+    return value
+  }
   */
-});
+}
 
 
   

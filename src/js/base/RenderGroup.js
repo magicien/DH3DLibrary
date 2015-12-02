@@ -1,47 +1,50 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary RenderGroup.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var RenderGroup = Class.create({
-  material: null,
-  boneArray: null,
-  indices: null,
-  indexBuffer: null,
+'use strict'
 
-  _indexDataCache: null,
+/**
+ * RenderGroup class
+ * @access public
+ */
+export default class RenderGroup {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    this.material = null
+    this.boneArray = null
+    this.indices = null
+    this.indexBuffer = null
+
+    this._indexDataCache = null
   
-  initialize: function() {
-    this.indices = $A();
-  },
+    this.indices = []
+  }
 
-  getBoneData: function() {
-  },
+  getBoneData() {
+  }
 
-  getIndexData: function() {
+  getIndexData() {
     if(!this._indexDataCache){
-      this._indexDataCache = new Uint16Array(this.indices);
+      this._indexDataCache = new Uint16Array(this.indices)
     }
-    return this._indexDataCache;
-  },
+    return this._indexDataCache
+  }
 
-  getAmbient: function() {
-    return this.material.getAmbient();
-  },
+  getAmbient() {
+    return this.material.getAmbient()
+  }
 
-  getDiffuse: function() {
-    return this.material.getDiffuse();
-  },
+  getDiffuse() {
+    return this.material.getDiffuse()
+  }
 
-  getSpecular: function() {
-    return this.material.getSpecular();
-  },
+  getSpecular() {
+    return this.material.getSpecular()
+  }
 
-  getShininess: function() {
-    return this.material.getShininess();
-  },
+  getShininess() {
+    return this.material.getShininess()
+  }
 
-});
+}

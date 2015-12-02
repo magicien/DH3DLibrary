@@ -1,16 +1,32 @@
-var TextRequest = Class.create(Ajax.Request, {
-  _encoding: null,
+'use strict'
 
-  initialize: function($super, url, encoding, options) {
-    this._encoding = encoding;
-    $super(url, options);
-  },
+import {AjaxRequest} from './AjaxRequest'
 
-  request: function() {
-    if(this._encoding){
-      this.transport.overrideMimeType('text/plain; charset=' + this._encoding);
-    }
-    Ajax.Request.prototype.request.apply(this, arguments);
-  },
-});
+/**
+ * TextRequest class
+ * @access public
+ */
+export class TextRequest extends AjaxRequest {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    super()
+    this.defaultOptions.mimeType = 'text/plain; charset=utf-8'
+  }
+
+  getWithCharset(url, charset, options={}) {
+    options.mimeType = 'text/plain; charset=' + charset
+    return this.get(url, options)
+  }
+
+  postWithCharset(url, charset, options={}) {
+    options.mimeType = 'text/plain; charset=' + charset
+    return this.post(url, options)
+  }
+}
+
+export default new TextRequest()
 

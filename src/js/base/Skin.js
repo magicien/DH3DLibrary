@@ -1,42 +1,49 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary Skin.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var Skin = Class.create({
-  // Vertex
-  position: null,          // vec3
-  normal: null,            // vec3
-  textureUV: null,         // vec2
+'use strict'
 
-  currentPosition: null,
-  currentNormal: null,
-  currentTextureUV: null,
+import Matrix from './Matrix'
+import Vector3 from './Vector3'
+import TextureUV from './TextureUV'
 
-  renderGroup: null,
-  boneNum: null,
-  bones: null,
-  skinWeight: null,
-  boneIndex: null,
+/**
+ * Skin class
+ * @access public
+ */
+export default class Skin {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    // Vertex
+    this.position = null          // vec3
+    this.normal = null            // vec3
+    this.textureUV = null         // vec2
 
-  // etc.
-  edge: 0,
+    this.currentPosition = null
+    this.currentNormal = null
+    this.currentTextureUV = null
 
-  tempMatrix: new DHMatrix(),
+    this.renderGroup = null
+    this.boneNum = null
+    this.bones = null
+    this.skinWeight = null
+    this.boneIndex = null
 
-  initialize: function() {
-    this.currentPosition = new DHVector3();
-    this.currentNormal = new DHVector3();
-    this.currentTextureUV = new TextureUV();
+    // etc.
+    this.edge = 0
 
-    this.bones = $A();
-    this.boneNum = $A();
-    this.skinWeight = $A();
-    this.boneIndex = $A();
-  },
-});
+    this.tempMatrix = new Matrix()
+
+    this.currentPosition = new Vector3()
+    this.currentNormal = new Vector3()
+    this.currentTextureUV = new TextureUV()
+
+    this.bones = []
+    this.boneNum = []
+    this.skinWeight = []
+    this.boneIndex = []
+  }
+}
 
 

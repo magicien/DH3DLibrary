@@ -1,28 +1,28 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary ToonRenderer.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var ToonRenderer = Class.create(Renderer, {
-  _vertexShaderName: 'ToonVertexShader',
-  _fragmentShaderName: 'ToonFragmentShader',
+'use strict'
 
-  _depthBuffer: null,
-  _depthData: null,
+import Renderer from '../../base/Renderer'
 
-  initialize: function($super, gl, camera) {
-    $super(gl, camera);
+/**
+ * ToonRenderer class
+ * @access public
+ */
+export default class ToonRenderer extends Renderer {
+  /**
+   * constructor
+   * @access public
+   * @param {WebglContextRenderer} gl -
+   * @param {Camera} camera -
+   * @constructor
+   */
+  constructor(gl, camera) {
+    super(gl, camera)
+  }
 
-    this._depthData = gl.createTexture();
-    gl.bindTexture(gl.TEXTURE_2D, this.depthData);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  get _vertexShaderName() {
+    return 'ToonVertexShader'
+  }
 
-    
-  },
-});
+  get _fragmentShaderName() {
+    return 'ToonFragmentShader'
+  }
+}

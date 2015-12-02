@@ -1,28 +1,45 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary Animator.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var Animator = Class.create({
+'use strict'
 
-  initialize: function() {
-  },
+/**
+ * Animator basic class
+ * @access public
+ */
+export default class Animator {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+  }
 
-  animate: function(dhObject, elapsedTime) {
-    var model = dhObject._model;
+  /**
+   * set object's bones position/angle at specified animation time
+   * and recalc bone/ik recursively.
+   * @access public
+   * @param {DH3DObject} dhObject - object to set bones position/angle
+   * @param {float} elapsedTime - animation time
+   * @returns {void}
+   */
+  animate(dhObject, elapsedTime) {
+    const model = dhObject.getModel()
 
-    this.updateMotion(dhObject, elapsedTime);
-    
-    model.rootBone.updateMatrixRecursive();
+    this.updateMotion(dhObject, elapsedTime)
 
-    model.ikArray.each( function(ik){
-      ik.update();
-    });
-  },
+    model.rootBone.updateMatrixRecursive()
 
-  updateMotion: function(dhObject, elapsedTime) {
-  },
-});
+    model.ikArray.forEach( (ik) => {
+      ik.update()
+    })
+  }
+
+  /**
+   * set object's bones position/angle at specified animation time
+   * @param {DH3DObject} dhObject - object to set bones position/angle
+   * @param {float} elapsedTime - animation time
+   * @returns {void}
+   */
+  updateMotion(dhObject, elapsedTime) {
+  }
+}
+

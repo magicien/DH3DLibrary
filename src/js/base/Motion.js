@@ -1,35 +1,36 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary Motion.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var Motion = Class.create({
-  hashName: "",
-  loaded: false,
-  onload: null,
+'use strict'
 
-  // motion
-  motionArray: null,
+/**
+ * Motion class
+ * @access public
+ */
+export default class Motion {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    this.hashName = ''
+    this.loaded = false
+    this.onload = null
 
-  frameLength: 0,
-  defaultFPS: 0,
-  loop: false,
-  
-  initialize: function() {
-    this.motionArray = $H();
-  },
+    // motion
+    this.motionArray = new Map()
 
-  clone: function() {
-    return this;
-  },
+    this.frameLength = 0
+    this.defaultFPS = 0
+    this.loop = false
+  }
 
-  copy: function(motion) {
-    this.motionArray = motion.motionArray;
-    this.frameLength = motion.frameLength;
-    this.defaultFPS  = motion.defaultFPS;
-    this.loop        = motion.loop;
-  },
-});
+  clone() {
+    return this
+  }
+
+  copy(motion) {
+    this.motionArray = motion.motionArray
+    this.frameLength = motion.frameLength
+    this.defaultFPS  = motion.defaultFPS
+    this.loop        = motion.loop
+  }
+}

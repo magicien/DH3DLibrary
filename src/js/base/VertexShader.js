@@ -1,46 +1,73 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary VertexShader.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var VertexShader = Class.create({
-  _shader: null,
-  _gl: null,
-  _name: 'VertexShader',
-  _program: '',
+'use strict'
 
-  initialize: function(gl) {
+/**
+ * VertexShader class
+ * @access public
+ */
+export default class VertexShader {
+  /**
+   * constructor
+   * @access public
+   * @param {WebGLRenderingContext} gl -
+   * @constructor
+   */
+  constructor(gl) {
+    this._gl = null
+    this._shader = null
+
     if(!gl)
-      return;
+      return
 
-    this._shader = gl.createShader(gl.VERTEX_SHADER);
-    gl.shaderSource(this._shader, this._program);
-    gl.compileShader(this._shader);
+    this._shader = gl.createShader(gl.VERTEX_SHADER)
+    gl.shaderSource(this._shader, this._program)
+    gl.compileShader(this._shader)
     if(!gl.getShaderParameter(this._shader, gl.COMPILE_STATUS)){
-      alert(gl.getShaderInfoLog(this._shader)); // FIXME: DEBUG
-      throw("vertex shader compile error");
+      // alert(gl.getShaderInfoLog(this._shader)) // FIXME: DEBUG
+      const info = gl.getShaderInfoLog(this._shader)
+      console.log(info)
+      throw new Error('vertex shader compile error: ' + info)
     }
-    this._gl = gl;
-  },
+    this._gl = gl
+  }
 
-  getName: function() {
-    return this._name;
-  },
+  get _name() {
+    return 'VertexShader'
+  }
 
-  getShader: function() {
-    return this._shader;
-  },
+  getName() {
+    return this._name
+  }
 
-  bindAttribute:   function(programObject) {},
-  bindAttribute2:  function(programObject) {},
-  bufferDynamicVertexData: function(dhObject) {},
-  setAttribPointer:function() {},
-  setLightData:    function(light) {},
-  setMaterialData: function(material) {},
-  getVertexData:   function(dhObject) {},
-  getDynamicVertexData: function(dhObject) {},
-});
+  get _program() {
+    return null
+  }
+
+  getShader() {
+    return this._shader
+  }
+
+  bindAttribute(programObject) {
+  }
+
+  bindAttribute2(programObject) {
+  }
+
+  bufferDynamicVertexData(dhObject) {
+  }
+
+  setAttribPointer() {
+  }
+
+  setLightData(light) {
+  }
+
+  setMaterialData(material) {
+  }
+
+  getVertexData(dhObject) {
+  }
+
+  getDynamicVertexData(dhObject) {
+  }
+}
 

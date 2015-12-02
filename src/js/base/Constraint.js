@@ -1,27 +1,27 @@
-/*--------------------------------------------------------------------------------
- * DH3DLibrary Constraint.js v0.2.0
- * Copyright (c) 2010-2012 DarkHorse
- *
- * DH3DLibrary is freely distributable under the terms of an MIT-style license.
- * For details, see the DH3DLibrary web site: http://darkhorse2.0spec.jp/dh3d/
- *
- *------------------------------------------------------------------------------*/
-var Constraint = Class.create({
-  // FIXME: field name
-  name: '',
-  bodyA: 0,
-  bodyB: 0,
-  position: [],
-  rotate: [],
-  constraintPos1: [],
-  constraintPos2: [],
-  constraintRot1: [],
-  constraintRot2: [],
-  springPos: [],
-  springRot: [],
+'use strict'
 
-  initialize: function() {
-
-  },
-});
+/**
+ * Constraint class
+ * @access public
+ */
+export default class Constraint {
+  /**
+   * constructor
+   * @access public
+   * @constructor
+   */
+  constructor() {
+    this.name = ''
+    this.bodyA = 0
+    this.bodyB = 0
+    this.position = []
+    this.rotate = []
+    this.constraintPos1 = []
+    this.constraintPos2 = []
+    this.constraintRot1 = []
+    this.constraintRot2 = []
+    this.springPos = []
+    this.springRot = []
+  }
+}
 
