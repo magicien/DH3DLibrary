@@ -76,7 +76,7 @@ export default class IK {
   }
 
   update() {
-    const zeroThreshold = 0.00000001
+    const zeroThreshold = 0.0001
     const targetMat = this.targetBone.localMatrix
     const orgTargetPos = this._orgTargetPos
     orgTargetPos.setValue(targetMat.m41, targetMat.m42, targetMat.m43)
@@ -103,13 +103,13 @@ export default class IK {
         effectPos.transform(effectPos, inverseMat)
         targetPos.transform(orgTargetPos, inverseMat)
 
+        effectPos.normalize()
+        targetPos.normalize()
+
         diff.sub(effectPos, targetPos)
         if(diff.length() < zeroThreshold){
           return
         }
-
-        effectPos.normalize()
-        targetPos.normalize()
 
         let eDotT = effectPos.dot(targetPos)
         if(eDotT >  1.0) eDotT =  1.0
@@ -125,11 +125,16 @@ export default class IK {
           break
         }
         rotAxis.normalize()
+
+        // limit angle
+        
         rotQuat.createAxis(rotAxis, rotAngle)
         rotQuat.normalize()
+        /*
         if(this.minAngleList[linkIndex]){
           this.limitAngle(this.minAngleList[linkIndex], this.maxAngleList[linkIndex], rotQuat)
         }
+        */
 
         linkedBone.rotate.cross(linkedBone.rotate, rotQuat)
         linkedBone.rotate.normalize()

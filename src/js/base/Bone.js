@@ -81,6 +81,8 @@ export default class Bone {
 
     /** @type {Vector4} */
     this.blendRotation = new Vector4()
+
+    this.isKnee = false
   }
 
   /**
