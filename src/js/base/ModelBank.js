@@ -123,7 +123,7 @@ export class ModelBank {
 
         this._models.set(id, loadedModel)
 
-        let newModel = loadedModel.clone()
+        const newModel = loadedModel.clone()
 
         return newModel
       })

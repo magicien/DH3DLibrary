@@ -8,16 +8,6 @@ import FragmentShader from '../../base/FragmentShader'
  * @access public
  */
 export default class SimpleFragmentShader extends FragmentShader {
-  /**
-   * constructor
-   * @access public
-   * @param {WebGLRenderingContext} gl -
-   * @constructor
-   */
-  constructor(gl) {
-    super(gl)
-  }
-
   get _name() {
     return 'SimpleFragmentShader'
   }

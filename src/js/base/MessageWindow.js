@@ -78,7 +78,7 @@ export default class MessageWindow extends DH2DObject {
   }
 
   render() {
-    const c = this._bindedCanvas._2DContext
+    //const c = this._bindedCanvas._2DContext
     const padding = this._padding
     const iconPadding = this._iconPadding
     const vHeight = 10
@@ -416,7 +416,7 @@ export default class MessageWindow extends DH2DObject {
       iconWidth  = this._icon.width  + this._iconPadding
       iconHeight = this._icon.height + this._iconPadding
     }
-    if(this._message == null){
+    if(this._message === null){
       this._messageNumChars = 0
       this._messageWidth  = iconWidth
       this._messageHeight = iconHeight

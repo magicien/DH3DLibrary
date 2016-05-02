@@ -104,7 +104,7 @@ export default class DHAudio {
   }
 
   setListener(listener) {
-    if(listener instanceof Camera || listener == null){
+    if(listener instanceof Camera || listener === null){
       this._listener = listener
       return true
     }
@@ -112,7 +112,7 @@ export default class DHAudio {
   }
 
   setSoundSource(sndSrc) {
-    if(sndSrc instanceof DH3DObject || sndSrc == null) {
+    if(sndSrc instanceof DH3DObject || sndSrc === null) {
       this._sndSrc = sndSrc
       return true
     }
@@ -137,6 +137,7 @@ export default class DHAudio {
       this._leftSnd.currentTime = 0
       this._leftSnd.play()
     }
+    return true
   }
 
   // direction: left:0, right:1
@@ -194,7 +195,7 @@ export default class DHAudio {
       if(args[0] instanceof Camera && args[1] instanceof DH3DObject){
         const camera = args[0]
         const sndObj = args[1]
-        const mat = new Matrix(camera.viewMat)
+        //const mat = new Matrix(camera.viewMat)
 
         const cameraPos = camera.position
         const sndPos = sndObj._position
@@ -230,6 +231,8 @@ export default class DHAudio {
     if(this._rightSnd){
       this._rightSnd.pause()
     }
+
+    return true
   }
 }
 

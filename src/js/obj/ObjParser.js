@@ -104,10 +104,7 @@ export default class ObjParser {
     //let f_count = 0
     let mtllib_name = ''
 
-    const dummy_normal = new Vector3()
-    const dummy_uv = new TextureUV()
-
-    while(!this._breakFlag && (line = this.readLine()) != null){
+    while(!this._breakFlag && (line = this.readLine()) !== null){
       const tokens = this.getTokens(line)
 
       if(tokens.length === 0){
@@ -115,10 +112,11 @@ export default class ObjParser {
       }
 
       switch(tokens[0]){
-        case '#': // comment
+        case '#': { // comment
           continue
+        }
 
-        case 'v': // geometric vertices
+        case 'v': { // geometric vertices
           const skin = new Skin()
           const pos = new Vector3()
 
@@ -137,9 +135,6 @@ export default class ObjParser {
           skin.skinWeight[2] = 0
           skin.skinWeight[3] = 0
 
-          // FIXME: delete following 2 lines
-          //skin.normal = dummy_normal
-          //skin.textureUV = dummy_uv
           skin.normal = null
           skin.textureUV = null
 
@@ -148,37 +143,47 @@ export default class ObjParser {
           this._skinArray.push(skin)
           //v_count++
           break
+        }
 
-        case 'vt': // texture vertices
+        case 'vt': { // texture vertices
           const uv = new TextureUV()
           uv.u = parseFloat(tokens[1])
           uv.v = parseFloat(tokens[2])
           this._textureUVArray.push(uv)
           break
+        }
 
-        case 'vn': // vertex normals
+        case 'vn': { // vertex normals
           const n = new Vector3()
           n.x = parseFloat(tokens[1])
           n.y = parseFloat(tokens[2])
           n.z = parseFloat(tokens[3])
           this._normalArray.push(n)
           break
+        }
 
-        case 'vp': // parameter space vertices
+        case 'vp': { // parameter space vertices
           break
-        case 'deg': // degree
+        }
+        case 'deg': { // degree
           break
-        case 'bmat': // basis matrix
+        }
+        case 'bmat': { // basis matrix
           break
-        case 'step': // step size
+        }
+        case 'step': { // step size
           break
-        case 'cstype': // curve or surface type
+        }
+        case 'cstype': { // curve or surface type
           break
-        case 'p': // point
+        }
+        case 'p': { // point
           break
-        case 'l': // line
+        }
+        case 'l': { // line
           break
-        case 'f': // face
+        }
+        case 'f': { // face
           const num_faces = tokens.length - 4
           for(let i=0; i<num_faces; i++){
             const data1 = tokens[i+0].split('/') 
@@ -254,36 +259,48 @@ export default class ObjParser {
 
           }
           break
+        }
 
-        case 'curv': // curve
+        case 'curv': { // curve
           break
-        case 'curv2': // 2D curve
+        }
+        case 'curv2': { // 2D curve
           break
-        case 'surf': // surface
+        }
+        case 'surf': { // surface
           break
-        case 'parm': // parameter values
+        }
+        case 'parm': { // parameter values
           break
-        case 'trim': // outer trimming loop
+        }
+        case 'trim': { // outer trimming loop
           break
-        case 'hole': // inner trimming loop
+        }
+        case 'hole': { // inner trimming loop
           break
-        case 'scrv': // special curve
+        }
+        case 'scrv': { // special curve
           break
-        case 'sp': // special point
+        }
+        case 'sp': { // special point
           break
-        case 'end': // end statement
+        }
+        case 'end': { // end statement
           break
-        case 'con': // connect
+        }
+        case 'con': { // connect
           break
-        case 'g': // group name
+        }
+        case 'g': { // group name
           if(tokens[1] === ''){
             this._groupName = this._defaultGroupName
           }else{
             this._groupName = tokens[1]
           }
           break
+        }
 
-        case 's': // smoothing group
+        case 's': { // smoothing group
           if(tokens[1] === 'off' || tokens[1] <= 0){
             this._smoothingGroup = 0
             this._smoothingVertices = null
@@ -296,22 +313,30 @@ export default class ObjParser {
             }
           }
           break
+        }
 
-        case 'mg': // merging group
+        case 'mg': { // merging group
           break
-        case 'o': // object name
+        }
+        case 'o': { // object name
           break
-        case 'bevel': // bevel interpolation
+        }
+        case 'bevel': { // bevel interpolation
           break
-        case 'c_interp': // color interpolation
+        }
+        case 'c_interp': { // color interpolation
           break
-        case 'd_interp': // dissolve interpolation
+        }
+        case 'd_interp': { // dissolve interpolation
           break
-        case 'lod': // level of detail
+        }
+        case 'lod': { // level of detail
           break
-        case 'usemtl': // material name
+        }
+        case 'usemtl': { // material name
           break
-        case 'mtllib': // material library
+        }
+        case 'mtllib': { // material library
           mtllib_name = tokens[1]
           console.log('mtllib: ' + mtllib_name)
 
@@ -342,16 +367,22 @@ export default class ObjParser {
           this._obj.renderGroupArray[0].material = material
 
           break
-        case 'shadow_obj': // shadow casting
+        }
+        case 'shadow_obj': { // shadow casting
           break
-        case 'trace_obj': // ray tracing
+        }
+        case 'trace_obj': { // ray tracing
           break
-        case 'ctech': // curve approximation technique
+        }
+        case 'ctech': { // curve approximation technique
           break
-        case 'stech': // surface approximation technique
+        }
+        case 'stech': { // surface approximation technique
           break
-        default: // unknown type
+        }
+        default: { // unknown type
           break
+        }
       }
     }
 

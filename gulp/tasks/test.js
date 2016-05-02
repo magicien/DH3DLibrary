@@ -1,4 +1,4 @@
-require('babel/register');
+//require('babel/register');
 
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');

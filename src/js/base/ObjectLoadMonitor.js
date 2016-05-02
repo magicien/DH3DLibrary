@@ -21,7 +21,7 @@ export default class ObjectLoadMonitor {
     if(objs){
       this._objs = objs
       this._objs.forEach( (obj) => {
-        if(obj != null){
+        if(obj !== null){
           obj.onload = () => {
             //obj.loaded = true
             monitor.check()
@@ -55,7 +55,7 @@ export default class ObjectLoadMonitor {
         if(!obj.complete){
           loaded = false
         }
-      }else if(obj == null || !obj.loaded){
+      }else if(obj === null || !obj.loaded){
         loaded = false
       }
     })

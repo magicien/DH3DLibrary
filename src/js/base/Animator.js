@@ -6,14 +6,6 @@
  */
 export default class Animator {
   /**
-   * constructor
-   * @access public
-   * @constructor
-   */
-  constructor() {
-  }
-
-  /**
    * set object's bones position/angle at specified animation time
    * and recalc bone/ik recursively.
    * @access public

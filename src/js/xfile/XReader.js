@@ -90,7 +90,7 @@ export default class XReader extends ModelReader {
     parser.setModel(this._model)
     const model = parser.parse(this._textReader.getText())
 
-    if(model == null){
+    if(model === null){
       this._error = 1
     }else{
       this._loaded = true

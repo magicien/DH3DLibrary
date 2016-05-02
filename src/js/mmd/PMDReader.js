@@ -336,7 +336,7 @@ export default class PMDReader extends ModelReader {
         
         //const boneName = new String(boneArray[linkNo].name)
         const boneName = boneArray[linkNo].name
-        if((boneArray[linkNo].name === this._leftKneeName) || (boneArray[linkNo].name === this._rightKneeName)){
+        if((boneName === this._leftKneeName) || (boneName === this._rightKneeName)){
           ikObj.minAngleList[j] = new Vector3(0.003, 0.0, 0.0)
           ikObj.maxAngleList[j] = new Vector3(Math.PI-0.003, 0.0, 0.0)
         }

@@ -72,7 +72,7 @@ export default class VMDCameraReader extends CameraMotionReader {
     }
   }
 
-  readMotionSub(url){
+  readMotionSub(){
     this._motion.frameLength = 0
 
     this.readHeader()

@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * DHVector4 class
+ * Vector4 class
  * @access public
  */
 export default class Vector4 {
@@ -23,7 +23,7 @@ export default class Vector4 {
   }
 
   setValue(x, y = 0.0, z = 0.0, w = 0.0) {
-    if((x instanceof Vector4) || (x instanceof Object && x.w != null)){
+    if((x instanceof Vector4) || (x instanceof Object && x.w !== null)){
       this.x = x.x
       this.y = x.y
       this.z = x.z

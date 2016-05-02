@@ -48,7 +48,7 @@ export default class KeyListener {
 
   keyDownCallback(event = window.event) {
     let keyChar = this._keyHash.get(event.keyCode)
-    if(keyChar == null)
+    if(keyChar === null)
       keyChar = String.fromCharCode(event.keyCode)
 
     if(!this._keyState[keyChar]){
@@ -64,7 +64,7 @@ export default class KeyListener {
 
   keyUpCallback(event = window.event) {
     let keyChar = this._keyHash.get(event.keyCode)
-    if(keyChar == null)
+    if(keyChar === null)
       keyChar = String.fromCharCode(event.keyCode)
 
     this._keyState[keyChar] = false

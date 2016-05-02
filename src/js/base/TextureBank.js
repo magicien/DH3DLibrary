@@ -49,7 +49,7 @@ export class TextureBank {
 
     let texture = this._textures.get(key)
 
-    if(texture == null){
+    if(texture === null){
       texture = this._gl.createTexture()
       const orgImage = new Image()
       let texImage = null

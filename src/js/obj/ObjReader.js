@@ -111,7 +111,7 @@ export default class ObjReader extends ModelReader {
     if(result){
       this._loaded = true
     }
-    if(this._model == null){
+    if(this._model === null){
       this._error = 1
     }
   }

@@ -5,14 +5,7 @@
  * @access public
  */
 export default class DH2DObject {
-  /**
-   * constructor
-   * @access public
-   * @constructor
-   */
-  constructor() {
-  }
-
+  /*
   move(elapsedTime) {
   }
 
@@ -21,4 +14,5 @@ export default class DH2DObject {
 
   render() {
   }
+  */
 }

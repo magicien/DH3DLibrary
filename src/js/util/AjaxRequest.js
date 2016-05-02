@@ -71,7 +71,9 @@ export class AjaxRequest {
         })
         */
         for(const key in header){
-          if({}.hasOwnProperty.call(header, key)){ 
+          // Reflect is not yet implemented...
+          //if(Reflect.apply({}.hasOwnProperty, header, [key])){
+          if({}.hasOwnProperty.call(header, key)){
             xhr.setRequestHeader(key, header[key])
           }
         }

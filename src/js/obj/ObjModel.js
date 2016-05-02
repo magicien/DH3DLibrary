@@ -7,12 +7,4 @@ import Model from '../base/Model'
  * @access public
  */
 export default class ObjModel extends Model {
-  /**
-   * constructor
-   * @access public
-   * @constructor
-   */
-  constructor() {
-    super()
-  }
 }

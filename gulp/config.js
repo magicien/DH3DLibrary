@@ -23,8 +23,7 @@ module.exports = {
     src: [
       src + '/js/**',
       './test/**/*.js',
-      '!' + src + '/js/**/BinaryParser.js',
-      '!' + src + '/js/**/ecl.js',
+      '!' + src + '/js/third_party/*.js',
       '!' + src + '/js/etc/*.js'
     ],
     opts: {

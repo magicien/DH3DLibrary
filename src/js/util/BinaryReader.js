@@ -1,9 +1,9 @@
 'use strict'
 
 import BinaryRequest from './BinaryRequest'
-import BinaryParser from './BinaryParser'
+import BinaryParser from '../third_party/BinaryParser'
 import {UnescapeSJIS, UnescapeEUCJP, UnescapeJIS7, UnescapeJIS8, 
-        UnescapeUnicode, UnescapeUTF7, UnescapeUTF8, UnescapeUTF16LE} from './ecl'
+        UnescapeUnicode, UnescapeUTF7, UnescapeUTF8, UnescapeUTF16LE} from '../third_party/ecl'
 
 /**
  * BinaryReader class
@@ -17,6 +17,7 @@ export default class BinaryReader {
    * @param {boolean} bigEndian -
    * @param {string} encoding -
    * @param {function} onload -
+   * @param {function} onerror -
    * @constructor
    */
   constructor(url, bigEndian = false, encoding = '', onload = null, onerror = null) {
@@ -208,6 +209,8 @@ export default class BinaryReader {
     if(this.position >= this.data.length){
       this.eof = true
     }
+
+    return this.position
   }
 }
  

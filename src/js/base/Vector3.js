@@ -41,7 +41,7 @@ export default class Vector3 {
    * // v2 is {x:1.0, y:2.0, z:3.0}
    */
   setValue(x, y = 0.0, z = 0.0) {
-    if((x instanceof Vector3) || (x instanceof Object && x.z != null)){
+    if((x instanceof Vector3) || (x instanceof Object && x.z !== null)){
       this.x = x.x
       this.y = x.y
       this.z = x.z

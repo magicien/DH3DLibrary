@@ -7,17 +7,6 @@ import Renderer from '../../base/Renderer'
  * @access public
  */
 export default class ToonRenderer extends Renderer {
-  /**
-   * constructor
-   * @access public
-   * @param {WebglContextRenderer} gl -
-   * @param {Camera} camera -
-   * @constructor
-   */
-  constructor(gl, camera) {
-    super(gl, camera)
-  }
-
   get _vertexShaderName() {
     return 'ToonVertexShader'
   }

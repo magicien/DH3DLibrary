@@ -57,7 +57,6 @@ export default class CanvasField {
 
     this._canvas = canvasElement
 
-    /*
     const opt = {}
     opt.alpha = options.alpha || true
     opt.depth = options.depth || true
@@ -67,10 +66,9 @@ export default class CanvasField {
     opt.preserveDrawingBuffer = options.preserveDrawingBuffer || false
     opt.preferLowPowerToHighPerformance = options.preferLowPowerToHighPerformance || false
     opt.failIfMajorPerformanceCaveat = options.failIfMajorPerformanceCaveat || false
-    */
 
     // DEBUG:
-    const opt = { stencil: true }
+    // const opt = { stencil: true }
 
     try{
       this._gl = this._canvas.getContext('webgl', opt)
@@ -173,7 +171,7 @@ export default class CanvasField {
     let x = 0
     let y = 0
 
-    for(let e = element; e != null; e = e.offsetParent) {
+    for(let e = element; e !== null; e = e.offsetParent) {
       x += e.offsetLeft || 0
       y += e.offsetTop  || 0
       if(e.offsetParent === document.body &&
@@ -181,7 +179,7 @@ export default class CanvasField {
         break
     }
 
-    for(let e = element; e != null; e = e.offsetParent) {
+    for(let e = element; e !== null; e = e.offsetParent) {
       x -= e.scrollLeft || 0
       y -= e.scrollTop  || 0
     }
@@ -242,12 +240,9 @@ export default class CanvasField {
   }
 
   removeObject(obj) {
-    //this._objs = this._objs.without(obj)
-    this._objs = this._objs.filter((o) => { return o !== obj })
-    //this._alphaObjs = this._alphaObjs.without(obj)
-    this._alphaObjs = this._alphaObjs.filter((o) => { return o !== obj })
-    //this._refObjs = this._refObjs.without(obj)
-    this._refObjs = this._refObjs.filter((o) => { return o !== obj })
+    this._objs = this._objs.filter((o) => (o !== obj))
+    this._alphaObjs = this._alphaObjs.filter((o) => (o !== obj))
+    this._refObjs = this._refObjs.filter((o) => (o !== obj))
   }
 
   start() {
@@ -279,7 +274,7 @@ export default class CanvasField {
     let elapsedTime = 0
     const nowTime = (new Date()).getTime()
 
-    if(this._prevTime == null){
+    if(this._prevTime === null){
       elapsedTime = 0.0
     }else{
       elapsedTime = (nowTime - this._prevTime) * 0.001
@@ -435,9 +430,9 @@ export default class CanvasField {
   }
 
   setDropEvent(func) {
-    this._2DCanvas.observe('dragenter', function(e){ e.preventDefault() })
-    this._2DCanvas.observe('dragover',  function(e){ e.preventDefault() })
-    this._2DCanvas.observe('drop', function(e){
+    this._2DCanvas.observe('dragenter', (e) => { e.preventDefault() })
+    this._2DCanvas.observe('dragover',  (e) => { e.preventDefault() })
+    this._2DCanvas.observe('drop', (e) => {
       e.preventDefault()
       func(e)
     })

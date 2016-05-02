@@ -6,14 +6,6 @@
  */
 export default class ModelReader {
   /**
-   * constructor
-   * @access public
-   * @constructor
-   */
-  constructor() {
-  }
-
-  /**
    * read model file from url
    * @access public
    * @param {String} url - url of model file

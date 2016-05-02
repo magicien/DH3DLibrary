@@ -440,12 +440,12 @@ export default class Camera {
     // モデルビュー行列の左上3x3の逆転置行列
     const m = this.viewMat
     let buf = 0
-    let m11 = m.m11; let m12 = m.m12; let m13 = m.m13
-    let m21 = m.m21; let m22 = m.m22; let m23 = m.m23
-    let m31 = m.m31; let m32 = m.m32; let m33 = m.m33
-    let r11 = 1.0;   let r12 = 0.0;   let r13 = 0.0
-    let r21 = 0.0;   let r22 = 1.0;   let r23 = 0.0
-    let r31 = 0.0;   let r32 = 0.0;   let r33 = 1.0
+    const m11 = m.m11; let m12 = m.m12; let m13 = m.m13
+    let m21 = m.m21;   let m22 = m.m22; let m23 = m.m23
+    let m31 = m.m31;   let m32 = m.m32; let m33 = m.m33
+    let r11 = 1.0;     let r12 = 0.0;   let r13 = 0.0
+    let r21 = 0.0;     let r22 = 1.0;   let r23 = 0.0
+    let r31 = 0.0;     let r32 = 0.0;   let r33 = 1.0
 
     let w1 = Math.abs(m11)
     let w2 = Math.abs(m21)

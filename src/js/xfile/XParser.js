@@ -16,7 +16,7 @@ import ObjectAssign from '../etc/ObjectAssign'
 // patterns
 const _integerPattern = new RegExp(/^(-|\+)?\d+;?/)
 const _floatPattern = new RegExp(/^(-|\+)?(\d)*\.(\d)*;?/)
-const _commaOrSemicolonPattern = new RegExp(/^,|;/)
+//const _commaOrSemicolonPattern = new RegExp(/^,|;/)
 const _wordPattern = new RegExp(/^\w+/)
 const _uuidPattern = new RegExp(/^<[\w-]+>/)
 const _leftBracePattern = new RegExp(/^{/)
@@ -143,7 +143,7 @@ export default class XParser {
       str = this._partialText.match(pattern)
     }
     */
-    if(str == null)
+    if(str === null)
       return null
 
     this.moveIndex(str[0].length)
@@ -297,7 +297,8 @@ export default class XParser {
    * @returns {string} - 
    */
   getFilename() {
-    const str = this.getString(_filenamePattern)
+    //const str = this.getString(_filenamePattern)
+    this.getString(_filenamePattern)
     return RegExp.$1
   }
 
@@ -375,14 +376,14 @@ export default class XParser {
     const vertexCount = skins.length
 
     // textureCoordsの設定
-    if(skins[0].textureUV == null){
+    if(skins[0].textureUV === null){
       for(let i=0; i<vertexCount; i++){
         skins[i].textureUV = new TextureUV()
       }
     }
 
     // 法線の設定
-    if(this._faceNormalArray == null){
+    if(this._faceNormalArray === null){
       // 法線が指定されていない場合、自分で計算する。
       const ins = this._indices
       const numIns = ins.length
@@ -526,7 +527,7 @@ export default class XParser {
             // 登録済み
           }else{
             let newNo = vnMap[ii[j]].get(vi[j])
-            if(newNo == null){
+            if(newNo === null){
               // 未登録
               newNo = vnMap.length
               vnMap[ii[j]].set(vi[j], newNo)
@@ -551,10 +552,9 @@ export default class XParser {
   /**
    * check header format
    * @access private
-   * @param {Object} parent - parent object
    * @returns {bool} - true if right header format
    */
-  XFileHeader(parent) {
+  XFileHeader() {
     const text = this._partialText
     if(!text.match(/^xof (\d\d\d\d)([ \w][ \w][ \w][ \w])(\d\d\d\d)/)){
       return false
@@ -571,29 +571,28 @@ export default class XParser {
   /**
    * read Object value
    * @access private
-   * @param {Object} parent - parent object
    * @returns {Object} - XObject
    */
-  XObjectLong(parent){
+  XObjectLong(){
     const id = this.getWord()
-    if(id == null){
+    if(id === null){
       return null
     }
     switch(id){
       case 'template':
-        return this.Template(parent)
+        return this.Template()
       case 'Header':
-        return this.Header(parent)
+        return this.Header()
       case 'Mesh':
-        return this.Mesh(parent)
+        return this.Mesh()
       case 'MeshMaterialList':
-        return this.MeshMaterialList(parent)
+        return this.MeshMaterialList()
       case 'MeshNormals':
-        return this.MeshNormals(parent)
+        return this.MeshNormals()
       case 'MeshTextureCoords':
-        return this.MeshTextureCoords(parent)
+        return this.MeshTextureCoords()
       case 'MeshVertexColors':
-        return this.MeshVertexColors(parent)
+        return this.MeshVertexColors()
 
       default:
         console.error('unknown type:' + id)
@@ -605,10 +604,9 @@ export default class XParser {
   /**
    * read ColorRGB value
    * @access private
-   * @param {Object} parent - parent object
    * @returns {Vector4} - ColorRGB object
    */
-  ColorRGB(parent) {
+  ColorRGB() {
     const color = new Vector4()
     color.x = this.getFloat()
     color.y = this.getFloat()
@@ -622,10 +620,9 @@ export default class XParser {
   /**
    * read ColorRGBA value
    * @access private
-   * @param {Object} parent - parent object
    * @returns {Vector4} - ColorRGBA object
    */
-  ColorRGBA(parent) {
+  ColorRGBA() {
     const color = new Vector4()
     color.x = this.getFloat()
     color.y = this.getFloat()
@@ -639,10 +636,9 @@ export default class XParser {
   /**
    * read Coords2d object
    * @access private
-   * @param {Object} parent - parent object
    * @returns {TextureUV} - Coords2d object
    */
-  Coords2d(parent) {
+  Coords2d() {
     const v = new TextureUV()
     v.u = this.getFloat()
     v.v = this.getFloat()
@@ -654,17 +650,16 @@ export default class XParser {
   /**
    * read Template object
    * @access private
-   * @param {Object} parent - parent object
    * @returns {bool} - true if right template format
    */
-  Template(parent) {
-    const name = this.getWord()
+  Template() {
+    this.getWord() // name
     this.getLeftBrace()
-    const uuid = this.getUUID()
+    this.getUUID() // UUID
     let member = null
     do{
       member = this.getMember()
-    }while(member != null)
+    }while(member !== null)
     this.getRightBrace()
 
     return true
@@ -673,14 +668,13 @@ export default class XParser {
   /**
    * read Header object
    * @access private
-   * @param {Object} parent - parent object
    * @returns {bool} - true if right header format
    */
-  Header(parent) {
+  Header() {
     this.getLeftBrace()
-    const major = this.getInteger()
-    const minor = this.getInteger()
-    const flags = this.getInteger()
+    this.getInteger() // major
+    this.getInteger() // minor
+    this.getInteger() // flags
     this.getRightBrace()
     return true
   }
@@ -688,10 +682,9 @@ export default class XParser {
   /**
    * read IndexedColor object
    * @access private
-   * @param {Object} parent - parent object
    * @returns {Vector4} - ColorRGBA object
    */
-  IndexedColor(parent) {
+  IndexedColor() {
     const index = this.getInteger()
     const color = this.ColorRGBA()
     color.index = index
@@ -702,10 +695,9 @@ export default class XParser {
   /**
    * read Material object
    * @access private
-   * @param {Object} parent - parent object
    * @returns {Material} - Material object
    */
-  Material(parent) {
+  Material() {
     this.getLeftBrace()
     const material = new Material()
 
@@ -720,7 +712,7 @@ export default class XParser {
     const name = this.getWord()
     if(name === 'TextureFilename'){
       const texture = this.TextureFilename()
-      if(texture != null){
+      if(texture !== null){
         material.texture = texture
         //material.textureFileName = texture.fileName
       }
@@ -734,10 +726,9 @@ export default class XParser {
   /**
    * read Mesh object
    * @access private
-   * @param {Object} parent - parent object
    * @returns {bool} - 
    */
-  Mesh(parent) {
+  Mesh() {
     this.getLeftBrace()
 
     // vertices
@@ -784,10 +775,9 @@ export default class XParser {
   /**
    * read MeshMaterial[] object
    * @access private
-   * @param {Object} parent - parent object
    * @returns {bool} - 
    */
-  MeshMaterialList(parent) {
+  MeshMaterialList() {
     this.getLeftBrace()
 
     // materials
@@ -837,7 +827,7 @@ export default class XParser {
     let material = null
     let name = this.getWord()
     while(name === 'Material'){
-      material = this.Material(parent)
+      material = this.Material()
 
       this._obj.materialArray.push(material)
       this._obj.renderGroupArray[this._materialIndex].material = material
@@ -854,10 +844,9 @@ export default class XParser {
   /**
    * read MeshNormals object
    * @access private
-   * @param {Object} parent - parent object
    * @returns {bool} - 
    */
-  MeshNormals(parent) {
+  MeshNormals() {
     this.getLeftBrace()
     const nNormals = this.getInteger()
     
@@ -883,10 +872,9 @@ export default class XParser {
   /**
    * read MeshTextureCoords object
    * @access private
-   * @param {Object} parent - parent object
    * @returns {bool} - 
    */
-  MeshTextureCoords(parent) {
+  MeshTextureCoords() {
     this.getLeftBrace()
 
     const skins = this._obj.skinArray
@@ -903,10 +891,9 @@ export default class XParser {
   /**
    * read MeshVertexColors object
    * @access private
-   * @param {Object} parent - parent object
    * @returns {bool} - 
    */
-  MeshVertexColors(parent) {
+  MeshVertexColors() {
     this.getLeftBrace()
 
     const nVertexColors = this.getInteger()
@@ -923,10 +910,9 @@ export default class XParser {
   /**
    * read TextureFilename object
    * @access private
-   * @param {Object} parent - parent object
    * @returns {String} - texture file name
    */
-  TextureFilename(parent) {
+  TextureFilename() {
     this.getLeftBrace()
     let name = this.getFilename()
     name = name.replace('\\\\', '/')

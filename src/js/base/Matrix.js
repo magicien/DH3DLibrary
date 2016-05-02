@@ -502,7 +502,7 @@ export default class Matrix {
     const r = new Matrix()
     r.identity()
 
-    if(!(mat instanceof Object) && z == null){
+    if(!(mat instanceof Object) && z === null){
       r.m11 = mat
       r.m22 = x
       r.m33 = y

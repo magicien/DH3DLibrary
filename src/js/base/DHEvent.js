@@ -15,6 +15,7 @@ export default class DHEvent {
   }
 
   delete() {
+    // FIXME: implement
   }
 
   start() {

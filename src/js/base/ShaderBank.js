@@ -23,7 +23,7 @@ export class ShaderBank {
 
   getShader(name) {
     const shader = this._shaderClasses.get(name)
-    if(shader == null){
+    if(shader === null){
       return null
     }
     return shader
@@ -31,7 +31,7 @@ export class ShaderBank {
 
   getShaderOfContext(name, context) {
     const shader = this._shaders.get(name)
-    if(shader == null){
+    if(shader === null){
       return null
     }
     let instance = shader.get(context)

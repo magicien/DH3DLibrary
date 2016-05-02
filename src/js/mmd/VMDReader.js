@@ -90,7 +90,7 @@ export default class VMDReader extends MotionReader {
     return Promise.resolve(this._motion)
   }
 
-  readMotionSub(url){
+  readMotionSub(){
     this._motion.frameLength = 0
 
     this.readHeader()

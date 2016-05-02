@@ -84,7 +84,7 @@ export default class DH3DObject {
 
   move(elapsedTime) {
     // FIXME: params
-    const gravity = new Vector3(0, -9.8, 0)
+    //const gravity = new Vector3(0, -9.8, 0)
     const friction = 10.0 * elapsedTime
 
     if(friction < 1.0){
@@ -257,7 +257,7 @@ export default class DH3DObject {
 
   setScale(x, y, z) {
     const scale = this._model.rootBone.scale
-    if(y == null && z == null){
+    if(y === null && z === null){
       scale.x = x
       scale.y = x
       scale.z = x
@@ -382,8 +382,7 @@ export default class DH3DObject {
       }
     })
     if(target){
-      //this._motionEventArray = arr.without(target)
-      this._motionEventArray = arr.filter((ev) => { return ev !== target })
+      this._motionEventArray = arr.filter((ev) => (ev !== target))
     }
   }
 

@@ -8,16 +8,6 @@ import ShaderBank from '../../base/ShaderBank'
  * @access public
  */
 export default class ToonFragmentShader extends FragmentShader {
-  /**
-   * constructor
-   * @access public
-   * @param {WebGLRenderingContext} gl -
-   * @constructor
-   */
-  constructor(gl) {
-    super(gl)
-  }
-
   get _name() {
     return 'ToonFragmentShader'
   }
