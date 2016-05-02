@@ -1,5 +1,3 @@
-//require('babel/register');
-
 var gulp = require('gulp');
 var mocha = require('gulp-mocha');
 var util = require('gulp-util');

@@ -1,4 +1,3 @@
-/*global exports */
 import Animator from './base/Animator'
 import Bone from './base/Bone'
 import Camera from './base/Camera'
@@ -19,7 +18,7 @@ import IK from './base/IK'
 import KeyFrame from './base/KeyFrame'
 import KeyListener from './base/KeyListener'
 import Light from './base/Light'
-//import LightKeyFrame from './base/LightKeyFrame'
+import LightKeyFrame from './base/LightKeyFrame'
 import Material from './base/Material'
 import Matrix from './base/Matrix'
 import MessageWindow from './base/MessageWindow'
@@ -41,7 +40,11 @@ import TextureUV from './base/TextureUV'
 import Vector3 from './base/Vector3'
 import Vector4 from './base/Vector4'
 import VertexShader from './base/VertexShader'
+import ArrayFrom from './etc/ArrayFrom'
+import ObjectAssign from './etc/ObjectAssign'
 import Face from './mmd/Face'
+import FaceMotion from './mmd/FaceMotion'
+import FaceVertex from './mmd/FaceVertex'
 import IKFrame from './mmd/IKFrame'
 import MMDAnimator from './mmd/MMDAnimator'
 import MMDCameraAnimator from './mmd/MMDCameraAnimator'
@@ -62,11 +65,12 @@ import SimpleVertexShader from './renderer/simple/SimpleVertexShader'
 import ToonFragmentShader from './renderer/toon/ToonFragmentShader'
 import ToonRenderer from './renderer/toon/ToonRenderer'
 import ToonVertexShader from './renderer/toon/ToonVertexShader'
+import BinaryParser from './third_party/BinaryParser'
+import ecl from './third_party/ecl'
+import gin from './third_party/gin'
 import AjaxRequest from './util/AjaxRequest'
-import BinaryParser from './util/BinaryParser'
 import BinaryReader from './util/BinaryReader'
 import BinaryRequest from './util/BinaryRequest'
-import * as ecl from './util/ecl'
 import TextReader from './util/TextReader'
 import TextRequest from './util/TextRequest'
 import XModel from './xfile/XModel'
@@ -93,6 +97,7 @@ exports.IK = IK
 exports.KeyFrame = KeyFrame
 exports.KeyListener = KeyListener
 exports.Light = Light
+exports.LightKeyFrame = LightKeyFrame
 exports.Material = Material
 exports.Matrix = Matrix
 exports.MessageWindow = MessageWindow
@@ -114,7 +119,11 @@ exports.TextureUV = TextureUV
 exports.Vector3 = Vector3
 exports.Vector4 = Vector4
 exports.VertexShader = VertexShader
+exports.ArrayFrom = ArrayFrom
+exports.ObjectAssign = ObjectAssign
 exports.Face = Face
+exports.FaceMotion = FaceMotion
+exports.FaceVertex = FaceVertex
 exports.IKFrame = IKFrame
 exports.MMDAnimator = MMDAnimator
 exports.MMDCameraAnimator = MMDCameraAnimator
@@ -135,35 +144,14 @@ exports.SimpleVertexShader = SimpleVertexShader
 exports.ToonFragmentShader = ToonFragmentShader
 exports.ToonRenderer = ToonRenderer
 exports.ToonVertexShader = ToonVertexShader
-exports.AjaxRequest = AjaxRequest
 exports.BinaryParser = BinaryParser
+exports.ecl = ecl
+exports.gin = gin
+exports.AjaxRequest = AjaxRequest
 exports.BinaryReader = BinaryReader
 exports.BinaryRequest = BinaryRequest
-exports.ecl = ecl
 exports.TextReader = TextReader
 exports.TextRequest = TextRequest
 exports.XModel = XModel
 exports.XParser = XParser
 exports.XReader = XReader
-
-if(!Array.from) {
-  Array.from = function(iterable) {
-    if (!iterable) return []
-    if ('toArray' in Object(iterable)) return iterable.toArray()
-    if (iterable.constructor && iterable.constructor.name === 'Set') {
-      const arr = []
-      for(const v of iterable){ 
-        arr.push(v)
-      }
-      return arr
-    }
-
-    let length = iterable.length || 0
-    const results = new Array(length)
-    while (length--)
-      results[length] = iterable[length]
-
-    return results
-  }
-}
-

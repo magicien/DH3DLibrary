@@ -1,4 +1,5 @@
 var path = require('path');
+var babel = require('babel-core/register');
 
 var src = './src';
 var dest = './build';
@@ -46,7 +47,10 @@ module.exports = {
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          query: {
+            presets: ['es2015']
+          }
         }
       ]
     }
@@ -54,9 +58,12 @@ module.exports = {
 
   mocha: {
     src: ['test/**/*.js', 'src/**/*.js'],
+    compilers: {
+      js: babel
+    },
     opts: {
       ui: 'bdd',
-      reporter: 'nyan',
+      reporter: 'spec', // or nyan
       globals: [],
       require: ['chai']
     }
