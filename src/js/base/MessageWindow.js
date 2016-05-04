@@ -342,11 +342,10 @@ export default class MessageWindow extends DH2DObject {
     return this._bindedCanvas._2DContext
   }
 
-/*
   setContext(context) {
-    this._bindedContext = context
+    // duplicated
+    //this._bindedContext = context
   }
-*/
 
   getCanvas() {
     return this._bindedCanvas

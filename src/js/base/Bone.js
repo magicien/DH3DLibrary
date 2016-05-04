@@ -61,10 +61,6 @@ export default class Bone {
     /** @type {Vector3} */
     this.bonePosition = new Vector3()
 
-
-    /** @type {Vector3} */
-    this.bonePosition = new Vector3()
-
     /** @type {Vector3} */
     this.offset = new Vector3()
 

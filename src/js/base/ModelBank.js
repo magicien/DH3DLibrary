@@ -66,35 +66,6 @@ export class ModelBank {
     return promise.then((loadedModel) => {
       return loadedModel.clone()
     })
-    /*
-    const model = this._models.get(modelFile)
-    if(model){
-      const m = model.clone()
-      return Promise.resolve(m)
-    }
-
-    let promise = null
-    this._modelReaders.some((readerClass) => {
-      if(readerClass.canRead(modelFile)){
-        const reader = new readerClass()
-        promise = reader.readModel(modelFile)
-        return true
-      }
-      return false
-    })
-
-    if(promise){
-      return promise.then((loadedModel) => {
-        // FIXME: don't use model.hashName
-        loadedModel.hashName = modelFile
-
-        this._models.set(modelFile, loadedModel)
-        return loadedModel.clone()   
-      })
-    }
-
-    return Promise.reject(`can't read file: ${modelFile}`)
-    */
   }
 
   getModelFromFile(modelFile, options) {

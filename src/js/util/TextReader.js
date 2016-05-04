@@ -70,12 +70,12 @@ export default class TextReader {
   }
 
   // FIXME: implementation
-/*
   hasBytesAvailable() {
     return !this.eof
   }
 
   readData(length) {
+    /*
     if(this.eof){
       return null
     }
@@ -87,9 +87,11 @@ export default class TextReader {
     }
 
     return dataStr
+    */
   }
 
   readInteger(length, signed) {
+    /*
     if(this.eof){
       return null
     }
@@ -97,33 +99,41 @@ export default class TextReader {
     const value = this.parser.decodeInt(this.readData(length), length * 8, signed)
 
     return value
+    */
   }
     
   readByte() {
+    /*
     return this.readInteger(1, true)
+    */
   }
       
   readUnsignedByte() {
+    /*
     return this.readInteger(1, false)
+    */
   }
 
   readShort() {
+    /*
     return this.readInteger(2, true)
+    */
   }
 
   readUnsignedShort() {
-    return this.readInteger(2, false)
+    //return this.readInteger(2, false)
   }
 
   readInt() {
-    return this.readInteger(4, true)
+    //return this.readInteger(4, true)
   }
 
   readUnsignedInt() {
-    return this.readInteger(4, false)
+    //return this.readInteger(4, false)
   }
 
   readFloat() {
+    /*
     if(this.eof){
       return null
     }
@@ -131,9 +141,11 @@ export default class TextReader {
     const value = this.parser.toFloat(this.readData(floatSize))
 
     return value
+    */
   }
 
   readDouble() {
+    /*
     if(this.eof){
       return null
     }
@@ -141,9 +153,11 @@ export default class TextReader {
     const value = this.parser.toDouble(this.readData(doubleSize))
 
     return value
+    */
   }
 
   readString(length) {
+    /*
     if(this.eof){
       return null
     }
@@ -185,8 +199,8 @@ export default class TextReader {
     }
 
     return value
+    */
   }
-  */
 }
 
 
