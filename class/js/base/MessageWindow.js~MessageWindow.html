@@ -9,15 +9,17 @@
   <script src="script/prettify/prettify.js"></script>
   
   
+  <script src="script/manual.js"></script>
 </head>
-<body class="layout-container">
+<body class="layout-container" data-ice="rootContainer">
 
 <header>
   <a href="./">Home</a>
-  <a href="identifiers.html">Identifier</a>
+  
+  <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
-  <a data-ice="repoURL" href="git+https://github.com/magicien/DH3DLibrary.git">Repository</a>
+  <a data-ice="repoURL" href="https://github.com/magicien/DH3DLibrary" class="repo-url-github">Repository</a>
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -27,126 +29,104 @@
   </div>
 </header>
 
-<nav class="navigation" data-ice="nav"><div data-ice="classWrap">
-  <h2>Class</h2>
+<nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="classDoc"><span><a href="class/js/util/AjaxRequest.js~AjaxRequest.html">AjaxRequest</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/util/BinaryReader.js~BinaryReader.html">BinaryReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/util/BinaryRequest.js~BinaryRequest.html">BinaryRequest</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Bone.js~Bone.html">Bone</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Camera.js~Camera.html">Camera</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CameraAnimator.js~CameraAnimator.html">CameraAnimator</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CameraKeyFrame.js~CameraKeyFrame.html">CameraKeyFrame</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CameraMotion.js~CameraMotion.html">CameraMotion</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionBank.js~CameraMotionBank.html">CameraMotionBank</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionReader.js~CameraMotionReader.html">CameraMotionReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CanvasField.js~CanvasField.html">CanvasField</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Constraint.js~Constraint.html">Constraint</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/DH2DObject.js~DH2DObject.html">DH2DObject</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html">DH3DObject</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/DHAudio.js~DHAudio.html">DHAudio</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/DHEvent.js~DHEvent.html">DHEvent</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/Face.js~Face.html">Face</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/FaceMotion.js~FaceMotion.html">FaceMotion</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/FaceVertex.js~FaceVertex.html">FaceVertex</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/FragmentShader.js~FragmentShader.html">FragmentShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/FrameBuffer.js~FrameBuffer.html">FrameBuffer</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/IK.js~IK.html">IK</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/IKFrame.js~IKFrame.html">IKFrame</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/KeyFrame.js~KeyFrame.html">KeyFrame</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/KeyListener.js~KeyListener.html">KeyListener</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Light.js~Light.html">Light</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/LightKeyFrame.js~LightKeyFrame.html">LightKeyFrame</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/MMDAnimator.js~MMDAnimator.html">MMDAnimator</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/MMDCameraAnimator.js~MMDCameraAnimator.html">MMDCameraAnimator</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Material.js~Material.html">Material</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Matrix.js~Matrix.html">Matrix</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html">MessageWindow</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Model.js~Model.html">Model</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/ModelBank.js~ModelBank.html">ModelBank</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/ModelReader.js~ModelReader.html">ModelReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/MotionBank.js~MotionBank.html">MotionBank</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/MotionReader.js~MotionReader.html">MotionReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/obj/MtlParser.js~MtlParser.html">MtlParser</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/obj/ObjMaterial.js~ObjMaterial.html">ObjMaterial</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/obj/ObjModel.js~ObjModel.html">ObjModel</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/obj/ObjParser.js~ObjParser.html">ObjParser</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/obj/ObjReader.js~ObjReader.html">ObjReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/ObjectLoadMonitor.js~ObjectLoadMonitor.html">ObjectLoadMonitor</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/PMDModel.js~PMDModel.html">PMDModel</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/PMDReader.js~PMDReader.html">PMDReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/RenderGroup.js~RenderGroup.html">RenderGroup</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/RigidBody.js~RigidBody.html">RigidBody</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/ShaderBank.js~ShaderBank.html">ShaderBank</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/ShadowKeyFrame.js~ShadowKeyFrame.html">ShadowKeyFrame</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleFragmentShader.js~SimpleFragmentShader.html">SimpleFragmentShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleRenderer.js~SimpleRenderer.html">SimpleRenderer</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleVertexShader.js~SimpleVertexShader.html">SimpleVertexShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Skin.js~Skin.html">Skin</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/util/TextReader.js~TextReader.html">TextReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/util/TextRequest.js~TextRequest.html">TextRequest</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/TextureBank.js~TextureBank.html">TextureBank</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/TextureUV.js~TextureUV.html">TextureUV</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonFragmentShader.js~ToonFragmentShader.html">ToonFragmentShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonRenderer.js~ToonRenderer.html">ToonRenderer</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonVertexShader.js~ToonVertexShader.html">ToonVertexShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraMotion.js~VMDCameraMotion.html">VMDCameraMotion</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraReader.js~VMDCameraReader.html">VMDCameraReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/VMDMotion.js~VMDMotion.html">VMDMotion</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/VMDReader.js~VMDReader.html">VMDReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/VertexShader.js~VertexShader.html">VertexShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/xfile/XModel.js~XModel.html">XModel</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/xfile/XParser.js~XParser.html">XParser</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/xfile/XReader.js~XReader.html">XReader</a></span></li>
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">base</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Bone.js~Bone.html">Bone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Camera.js~Camera.html">Camera</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CameraAnimator.js~CameraAnimator.html">CameraAnimator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CameraKeyFrame.js~CameraKeyFrame.html">CameraKeyFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CameraMotion.js~CameraMotion.html">CameraMotion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CameraMotionBank.js~CameraMotionBank.html">CameraMotionBank</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CameraMotionReader.js~CameraMotionReader.html">CameraMotionReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CanvasField.js~CanvasField.html">CanvasField</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Constraint.js~Constraint.html">Constraint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/DH2DObject.js~DH2DObject.html">DH2DObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html">DH3DObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/DHAudio.js~DHAudio.html">DHAudio</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/DHEvent.js~DHEvent.html">DHEvent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/FragmentShader.js~FragmentShader.html">FragmentShader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/IK.js~IK.html">IK</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/KeyFrame.js~KeyFrame.html">KeyFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/KeyListener.js~KeyListener.html">KeyListener</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Light.js~Light.html">Light</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/LightKeyFrame.js~LightKeyFrame.html">LightKeyFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Material.js~Material.html">Material</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Matrix.js~Matrix.html">Matrix</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html">MessageWindow</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/ModelBank.js~ModelBank.html">ModelBank</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/ModelReader.js~ModelReader.html">ModelReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/MotionBank.js~MotionBank.html">MotionBank</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/MotionReader.js~MotionReader.html">MotionReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/ObjectLoadMonitor.js~ObjectLoadMonitor.html">ObjectLoadMonitor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/RenderGroup.js~RenderGroup.html">RenderGroup</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/RigidBody.js~RigidBody.html">RigidBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/ShaderBank.js~ShaderBank.html">ShaderBank</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/ShadowKeyFrame.js~ShadowKeyFrame.html">ShadowKeyFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Skin.js~Skin.html">Skin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/TextureBank.js~TextureBank.html">TextureBank</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/TextureUV.js~TextureUV.html">TextureUV</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/VertexShader.js~VertexShader.html">VertexShader</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">etc</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ObjectAssign">ObjectAssign</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">mmd</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/Face.js~Face.html">Face</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/FaceMotion.js~FaceMotion.html">FaceMotion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/FaceVertex.js~FaceVertex.html">FaceVertex</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/IKFrame.js~IKFrame.html">IKFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/MMDAnimator.js~MMDAnimator.html">MMDAnimator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/MMDCameraAnimator.js~MMDCameraAnimator.html">MMDCameraAnimator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/PMDModel.js~PMDModel.html">PMDModel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/PMDReader.js~PMDReader.html">PMDReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/VMDCameraMotion.js~VMDCameraMotion.html">VMDCameraMotion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/VMDCameraReader.js~VMDCameraReader.html">VMDCameraReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/VMDMotion.js~VMDMotion.html">VMDMotion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/VMDReader.js~VMDReader.html">VMDReader</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">obj</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/obj/MtlParser.js~MtlParser.html">MtlParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/obj/ObjMaterial.js~ObjMaterial.html">ObjMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/obj/ObjModel.js~ObjModel.html">ObjModel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/obj/ObjParser.js~ObjParser.html">ObjParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/obj/ObjReader.js~ObjReader.html">ObjReader</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">renderer/simple</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/simple/SimpleFragmentShader.js~SimpleFragmentShader.html">SimpleFragmentShader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/simple/SimpleRenderer.js~SimpleRenderer.html">SimpleRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/simple/SimpleVertexShader.js~SimpleVertexShader.html">SimpleVertexShader</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">renderer/toon</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/toon/ToonFragmentShader.js~ToonFragmentShader.html">ToonFragmentShader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/toon/ToonRenderer.js~ToonRenderer.html">ToonRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/toon/ToonVertexShader.js~ToonVertexShader.html">ToonVertexShader</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">third_party</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-BinaryParser">BinaryParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeEUCJP">EscapeEUCJP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeJIS7">EscapeJIS7</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeJIS8">EscapeJIS8</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeSJIS">EscapeSJIS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeUTF16LE">EscapeUTF16LE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeUTF7">EscapeUTF7</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeUTF8">EscapeUTF8</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeUnicode">EscapeUnicode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-GetEscapeCodeType">GetEscapeCodeType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeEUCJP">UnescapeEUCJP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeJIS7">UnescapeJIS7</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeJIS8">UnescapeJIS8</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeSJIS">UnescapeSJIS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeUTF16LE">UnescapeUTF16LE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeUTF7">UnescapeUTF7</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeUTF8">UnescapeUTF8</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeUnicode">UnescapeUnicode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-JCT11280">JCT11280</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-JCT8836">JCT8836</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/util/AjaxRequest.js~AjaxRequest.html">AjaxRequest</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/util/BinaryReader.js~BinaryReader.html">BinaryReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/util/BinaryRequest.js~BinaryRequest.html">BinaryRequest</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/util/TextReader.js~TextReader.html">TextReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/util/TextRequest.js~TextRequest.html">TextRequest</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">xfile</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/xfile/XModel.js~XModel.html">XModel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/xfile/XParser.js~XParser.html">XParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/xfile/XReader.js~XReader.html">XReader</a></span></span></li>
 </ul>
 </div>
-
-
-
-<div data-ice="functionWrap">
-  <h2><a href="function/">Function</a></h2>
-  <ul>
-    
-  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-BinaryParser">BinaryParser</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeEUCJP">EscapeEUCJP</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS7">EscapeJIS7</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS8">EscapeJIS8</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeSJIS">EscapeSJIS</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF16LE">EscapeUTF16LE</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF7">EscapeUTF7</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF8">EscapeUTF8</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUnicode">EscapeUnicode</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-GetEscapeCodeType">GetEscapeCodeType</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-ObjectAssign">ObjectAssign</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeEUCJP">UnescapeEUCJP</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS7">UnescapeJIS7</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS8">UnescapeJIS8</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeSJIS">UnescapeSJIS</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF16LE">UnescapeUTF16LE</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF7">UnescapeUTF7</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF8">UnescapeUTF8</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUnicode">UnescapeUnicode</a></span></li>
-</ul>
-</div>
-
-<div data-ice="variableWrap">
-  <h2><a href="variable/">Variable</a></h2>
-  <ul>
-    
-  <li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT11280">JCT11280</a></span></li>
-<li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT8836">JCT8836</a></span></li>
-</ul>
-</div>
-
-
-
-
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
@@ -166,7 +146,7 @@
 
   
   
-  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span>js/base/DH2DObject~DH2DObject</span> &#x2192; MessageWindow</div></div>
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span><a href="class/js/base/DH2DObject.js~DH2DObject.html">DH2DObject</a></span> &#x2192; MessageWindow</div></div>
   
   
   
@@ -239,13 +219,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-animate">animate</a></span></span><span data-ice="signature">(elapsedTime: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-animate">animate</a></span></span><span data-ice="signature">(elapsedTime: <span>float</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>animate message window</p>
+</div>
       </div>
     </td>
     <td>
@@ -264,13 +245,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-close">close</a></span></span><span data-ice="signature">()</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-close">close</a></span></span><span data-ice="signature">(): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>close message window (start animation)</p>
+</div>
       </div>
     </td>
     <td>
@@ -289,13 +271,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-drawBalloon">drawBalloon</a></span></span><span data-ice="signature">(speakerX: <span>*</span>, speakerY: <span>*</span>, left: <span>*</span>, top: <span>*</span>, width: <span>*</span>, height: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-drawBalloon">drawBalloon</a></span></span><span data-ice="signature">(speakerX: <span>float</span>, speakerY: <span>float</span>, left: <span>float</span>, top: <span>float</span>, width: <span>float</span>, height: <span>float</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>draw balloon to given position</p>
+</div>
       </div>
     </td>
     <td>
@@ -314,13 +297,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getCanvas">getCanvas</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getCanvas">getCanvas</a></span></span><span data-ice="signature">(): <span>HTMLCanvasElement</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>get Canvas object</p>
+</div>
       </div>
     </td>
     <td>
@@ -339,13 +323,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getContext">getContext</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getContext">getContext</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D">CanvasRenderingContext2D</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>get context</p>
+</div>
       </div>
     </td>
     <td>
@@ -364,13 +349,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getIcon">getIcon</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getIcon">getIcon</a></span></span><span data-ice="signature">(): <span>HTMLImageElement</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>get icon image</p>
+</div>
       </div>
     </td>
     <td>
@@ -389,13 +375,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getMaxWidth">getMaxWidth</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getMaxWidth">getMaxWidth</a></span></span><span data-ice="signature">(): <span>int</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>get max width</p>
+</div>
       </div>
     </td>
     <td>
@@ -414,13 +401,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getMessage">getMessage</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getMessage">getMessage</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>get message text</p>
+</div>
       </div>
     </td>
     <td>
@@ -439,13 +427,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getOffset">getOffset</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getOffset">getOffset</a></span></span><span data-ice="signature">(): <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>get position offset</p>
+</div>
       </div>
     </td>
     <td>
@@ -464,13 +453,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getScreenOffset">getScreenOffset</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getScreenOffset">getScreenOffset</a></span></span><span data-ice="signature">(): <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>get screen offset</p>
+</div>
       </div>
     </td>
     <td>
@@ -489,13 +479,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getState">getState</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-getState">getState</a></span></span><span data-ice="signature">(): <span>int</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>get state of message window</p>
+</div>
       </div>
     </td>
     <td>
@@ -514,13 +505,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-open">open</a></span></span><span data-ice="signature">()</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-open">open</a></span></span><span data-ice="signature">(): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>open message window (start animation)</p>
+</div>
       </div>
     </td>
     <td>
@@ -539,13 +531,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-render">render</a></span></span><span data-ice="signature">()</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-render">render</a></span></span><span data-ice="signature">(): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>render message window</p>
+</div>
       </div>
     </td>
     <td>
@@ -564,13 +557,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setCanvas">setCanvas</a></span></span><span data-ice="signature">(canvas: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setCanvas">setCanvas</a></span></span><span data-ice="signature">(canvas: <span>HTMLCanvasElement</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set Canvas object</p>
+</div>
       </div>
     </td>
     <td>
@@ -589,13 +583,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setIcon">setIcon</a></span></span><span data-ice="signature">(icon: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setContext">setContext</a></span></span><span data-ice="signature">(context: <span><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D">CanvasRenderingContext2D</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set context</p>
+</div>
       </div>
     </td>
     <td>
@@ -614,13 +609,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setMaxWidth">setMaxWidth</a></span></span><span data-ice="signature">(maxWidth: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setIcon">setIcon</a></span></span><span data-ice="signature">(): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set icon image</p>
+</div>
       </div>
     </td>
     <td>
@@ -639,13 +635,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setMessage">setMessage</a></span></span><span data-ice="signature">(message: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setMaxWidth">setMaxWidth</a></span></span><span data-ice="signature">(maxWidth: <span>int</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set max width</p>
+</div>
       </div>
     </td>
     <td>
@@ -664,13 +661,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setOffset">setOffset</a></span></span><span data-ice="signature">(x: <span>*</span>, y: <span>*</span>, z: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setMessage">setMessage</a></span></span><span data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set message text</p>
+</div>
       </div>
     </td>
     <td>
@@ -689,13 +687,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setScreenOffset">setScreenOffset</a></span></span><span data-ice="signature">(x: <span>*</span>, y: <span>*</span>, z: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setOffset">setOffset</a></span></span><span data-ice="signature">(x: <span>float</span>, y: <span>float</span>, z: <span>float</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set position offset</p>
+</div>
       </div>
     </td>
     <td>
@@ -714,13 +713,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setupBalloonContext">setupBalloonContext</a></span></span><span data-ice="signature">()</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setScreenOffset">setScreenOffset</a></span></span><span data-ice="signature">(x: <span>float</span>, y: <span>float</span>, z: <span>float</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set screen offset</p>
+</div>
       </div>
     </td>
     <td>
@@ -739,13 +739,40 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setupTextContext">setupTextContext</a></span></span><span data-ice="signature">()</span>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setupBalloonContext">setupBalloonContext</a></span></span><span data-ice="signature">(): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
+        <div data-ice="description"><p>set up balloon context</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setupTextContext">setupTextContext</a></span></span><span data-ice="signature">(): <span>void</span></span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>set up text context</p>
+</div>
       </div>
     </td>
     <td>
@@ -757,7 +784,91 @@
 </table>
 </div>
 
-
+<div class="inherited-summary" data-ice="inheritedSummary"><h2>Inherited Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3"><span class="toggle closed"></span> From class <span><a href="class/js/base/DH2DObject.js~DH2DObject.html">DH2DObject</a></span></td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/DH2DObject.js~DH2DObject.html#instance-method-animate">animate</a></span></span><span data-ice="signature">(elapsedTime: <span>float</span>): <span>void</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>animate object</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/DH2DObject.js~DH2DObject.html#instance-method-move">move</a></span></span><span data-ice="signature">(elapsedTime: <span>float</span>): <span>void</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>move object</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/DH2DObject.js~DH2DObject.html#instance-method-render">render</a></span></span><span data-ice="signature">(): <span>void</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>render object</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
 
 
 
@@ -815,20 +926,21 @@
     
     
     
-    <span data-ice="name">animate</span><span data-ice="signature">(elapsedTime: <span>*</span>)</span>
+    <span data-ice="name">animate</span><span data-ice="signature">(elapsedTime: <span>float</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber72">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber78">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>animate message window</p>
+</div>
 
-  
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/js/base/DH2DObject.js~DH2DObject.html#instance-method-animate">DH2DObject#animate</a></span></div>
 
   <div data-ice="properties"><div data-ice="properties">
   <h4 data-ice="title">Params:</h4>
@@ -840,16 +952,27 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">elapsedTime</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>elapsed time (seconds) from previous frame</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -871,25 +994,36 @@
     
     
     
-    <span data-ice="name">close</span><span data-ice="signature">()</span>
+    <span data-ice="name">close</span><span data-ice="signature">(): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber336">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber384">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>close message window (start animation)</p>
+</div>
 
   
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -911,18 +1045,19 @@
     
     
     
-    <span data-ice="name">drawBalloon</span><span data-ice="signature">(speakerX: <span>*</span>, speakerY: <span>*</span>, left: <span>*</span>, top: <span>*</span>, width: <span>*</span>, height: <span>*</span>)</span>
+    <span data-ice="name">drawBalloon</span><span data-ice="signature">(speakerX: <span>float</span>, speakerY: <span>float</span>, left: <span>float</span>, top: <span>float</span>, width: <span>float</span>, height: <span>float</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber278">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber316">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>draw balloon to given position</p>
+</div>
 
   
 
@@ -936,37 +1071,37 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">speakerX</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">speakerY</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">left</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">top</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">width</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">height</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -975,7 +1110,17 @@
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -997,18 +1142,19 @@
     
     
     
-    <span data-ice="name">getCanvas</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getCanvas</span><span data-ice="signature">(): <span>HTMLCanvasElement</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber351">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber414">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get Canvas object</p>
+</div>
 
   
 
@@ -1019,7 +1165,7 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span>HTMLCanvasElement</span></td>
         
       </tr>
     </table>
@@ -1047,18 +1193,19 @@
     
     
     
-    <span data-ice="name">getContext</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getContext</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D">CanvasRenderingContext2D</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber341">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber394">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get context</p>
+</div>
 
   
 
@@ -1069,7 +1216,7 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D">CanvasRenderingContext2D</a></span></td>
         
       </tr>
     </table>
@@ -1097,18 +1244,19 @@
     
     
     
-    <span data-ice="name">getIcon</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getIcon</span><span data-ice="signature">(): <span>HTMLImageElement</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber360">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber434">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get icon image</p>
+</div>
 
   
 
@@ -1119,7 +1267,7 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span>HTMLImageElement</span></td>
         
       </tr>
     </table>
@@ -1147,18 +1295,19 @@
     
     
     
-    <span data-ice="name">getMaxWidth</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getMaxWidth</span><span data-ice="signature">(): <span>int</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber402">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber524">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get max width</p>
+</div>
 
   
 
@@ -1169,7 +1318,7 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span>int</span></td>
         
       </tr>
     </table>
@@ -1197,18 +1346,19 @@
     
     
     
-    <span data-ice="name">getMessage</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getMessage</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber393">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber504">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get message text</p>
+</div>
 
   
 
@@ -1219,8 +1369,9 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>message text</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">
@@ -1247,18 +1398,19 @@
     
     
     
-    <span data-ice="name">getOffset</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getOffset</span><span data-ice="signature">(): <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber369">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber454">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get position offset</p>
+</div>
 
   
 
@@ -1269,7 +1421,7 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></td>
         
       </tr>
     </table>
@@ -1297,18 +1449,19 @@
     
     
     
-    <span data-ice="name">getScreenOffset</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getScreenOffset</span><span data-ice="signature">(): <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber381">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber479">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get screen offset</p>
+</div>
 
   
 
@@ -1319,7 +1472,7 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        <td class="return-type" data-ice="returnType"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></td>
         
       </tr>
     </table>
@@ -1347,18 +1500,19 @@
     
     
     
-    <span data-ice="name">getState</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getState</span><span data-ice="signature">(): <span>int</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber502">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber646">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get state of message window</p>
+</div>
 
   
 
@@ -1369,8 +1523,9 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
+        <td class="return-type" data-ice="returnType"><span>int</span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>0: ready, 1: opening, 2: show string, 3: waiting, 4: closing</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">
@@ -1397,25 +1552,36 @@
     
     
     
-    <span data-ice="name">open</span><span data-ice="signature">()</span>
+    <span data-ice="name">open</span><span data-ice="signature">(): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber330">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber373">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>open message window (start animation)</p>
+</div>
 
   
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1437,25 +1603,36 @@
     
     
     
-    <span data-ice="name">render</span><span data-ice="signature">()</span>
+    <span data-ice="name">render</span><span data-ice="signature">(): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber80">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber91">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>render message window</p>
+</div>
 
-  
+  <div data-ice="override"><h4>Override:</h4><span><a href="class/js/base/DH2DObject.js~DH2DObject.html#instance-method-render">DH2DObject#render</a></span></div>
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1477,18 +1654,19 @@
     
     
     
-    <span data-ice="name">setCanvas</span><span data-ice="signature">(canvas: <span>*</span>)</span>
+    <span data-ice="name">setCanvas</span><span data-ice="signature">(canvas: <span>HTMLCanvasElement</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber355">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber424">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set Canvas object</p>
+</div>
 
   
 
@@ -1502,7 +1680,75 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">canvas</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>HTMLCanvasElement</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>canvas object</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-setContext">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">setContext</span><span data-ice="signature">(context: <span><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D">CanvasRenderingContext2D</a></span>): <span>void</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber404">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>set context</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">context</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D">CanvasRenderingContext2D</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1511,7 +1757,17 @@
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1533,41 +1789,36 @@
     
     
     
-    <span data-ice="name">setIcon</span><span data-ice="signature">(icon: <span>*</span>)</span>
+    <span data-ice="name">setIcon</span><span data-ice="signature">(): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber364">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber444">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">icon</td>
-      <td data-ice="type"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
+  <div data-ice="description"><p>set icon image</p>
 </div>
 
   
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1589,18 +1840,19 @@
     
     
     
-    <span data-ice="name">setMaxWidth</span><span data-ice="signature">(maxWidth: <span>*</span>)</span>
+    <span data-ice="name">setMaxWidth</span><span data-ice="signature">(maxWidth: <span>int</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber406">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber534">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set max width</p>
+</div>
 
   
 
@@ -1614,7 +1866,7 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">maxWidth</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>int</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1623,7 +1875,17 @@
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1645,18 +1907,19 @@
     
     
     
-    <span data-ice="name">setMessage</span><span data-ice="signature">(message: <span>*</span>)</span>
+    <span data-ice="name">setMessage</span><span data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber397">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber514">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set message text</p>
+</div>
 
   
 
@@ -1670,16 +1933,27 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">message</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>text to show</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1701,18 +1975,19 @@
     
     
     
-    <span data-ice="name">setOffset</span><span data-ice="signature">(x: <span>*</span>, y: <span>*</span>, z: <span>*</span>)</span>
+    <span data-ice="name">setOffset</span><span data-ice="signature">(x: <span>float</span>, y: <span>float</span>, z: <span>float</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber373">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber466">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set position offset</p>
+</div>
 
   
 
@@ -1726,28 +2001,41 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">x</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>X value</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">y</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Y value</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">z</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Z value</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1769,18 +2057,19 @@
     
     
     
-    <span data-ice="name">setScreenOffset</span><span data-ice="signature">(x: <span>*</span>, y: <span>*</span>, z: <span>*</span>)</span>
+    <span data-ice="name">setScreenOffset</span><span data-ice="signature">(x: <span>float</span>, y: <span>float</span>, z: <span>float</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber385">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber491">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set screen offset</p>
+</div>
 
   
 
@@ -1794,28 +2083,41 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">x</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>X value</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">y</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Y value</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">z</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Z value</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1837,25 +2139,36 @@
     
     
     
-    <span data-ice="name">setupBalloonContext</span><span data-ice="signature">()</span>
+    <span data-ice="name">setupBalloonContext</span><span data-ice="signature">(): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber258">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber285">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set up balloon context</p>
+</div>
 
   
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1877,25 +2190,36 @@
     
     
     
-    <span data-ice="name">setupTextContext</span><span data-ice="signature">()</span>
+    <span data-ice="name">setupTextContext</span><span data-ice="signature">(): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber244">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/MessageWindow.js.html#lineNumber266">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set up text context</p>
+</div>
 
   
 
   <div data-ice="properties">
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -1914,7 +2238,7 @@
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.2.1)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.7)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>
