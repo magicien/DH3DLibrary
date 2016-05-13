@@ -1,0 +1,4 @@
+[submodule "docs"]
+	path = docs
+	url = github:magicien/DH3DLibrary.git
+	branch = gh-pages
