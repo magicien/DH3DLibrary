@@ -142,8 +142,8 @@ export default class Material {
   /**
    * constructor
    * @access public
-   * @param {Material} m - 
    * @constructor
+   * @param {Material} m - 
    */
   constructor(m) {
     this.ambient = null
@@ -189,7 +189,7 @@ export default class Material {
   /**
    * get ambient value
    * @access public
-   * @returns {Float32Array}
+   * @returns {Float32Array} - ambient value
    */
   getAmbient() {
     if(!this._ambientCache){
@@ -206,7 +206,7 @@ export default class Material {
   /**
    * get diffuse value
    * @access public
-   * @returns {Float32Array}
+   * @returns {Float32Array} - diffuse value
    */
   getDiffuse() {
     if(!this._diffuseCache){
@@ -223,7 +223,7 @@ export default class Material {
   /**
    * get specular value
    * @access public
-   * @returns {Float32Array}
+   * @returns {Float32Array} - specular value
    */
   getSpecular() {
     if(!this._specularCache){
@@ -240,7 +240,7 @@ export default class Material {
   /**
    * get shininess value
    * @access public
-   * @returns {float}
+   * @returns {float} - shininess value
    */
   getShininess() {
     return this.shininess
@@ -249,7 +249,7 @@ export default class Material {
   /**
    * get emission value
    * @access public
-   * @returns {Float32Array}
+   * @returns {Float32Array} - emission value
    */
   getEmission() {
     if(!this._emissionCache){
@@ -266,7 +266,7 @@ export default class Material {
   /**
    * get alpha value
    * @access public
-   * @returns {float}
+   * @returns {float} - alpha value
    */
   getAlpha() {
     return this.alpha

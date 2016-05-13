@@ -142,12 +142,13 @@ export default class TextReader {
   /**
    * constructor
    * @access public
+   * @constructor
    * @param {string} url -
    * @param {string} encoding -
    * @param {function} onload -
-   * @constructor
+   * @param {function} onerror -
    */
-  constructor(url, encoding = &apos;utf-8&apos;, onload = null) {
+  constructor(url, encoding = &apos;utf-8&apos;, onload = null, onerror = null) {
     this.url = &apos;&apos;
     this.position = 0
     this.eof = true
@@ -155,6 +156,7 @@ export default class TextReader {
 
     this.encoding = encoding
     this.onloadFunc = onload
+    this.onerrorFunc = onerror
 
     if(encoding === &apos;sjis&apos;){
       this.encoding = &apos;shift_jis&apos;
@@ -171,18 +173,9 @@ export default class TextReader {
     }else{
       this.url = url
 
-      /*
-      new TextRequest(url, this._encoding, {
-        method: &apos;GET&apos;,
-        onComplete(response) {
-          obj._onload(response.responseText)
-        },
-      })
-      */
-
       TextRequest.getWithCharset(url, this.encoding)
         .then((value) =&gt; { obj._onload(value) })
-        .catch((e) =&gt; { throw e })
+        .catch((e) =&gt; { obj._onerror(e) })
     }
   }
 
@@ -193,7 +186,13 @@ export default class TextReader {
     this.eof = false
     
     if(this.onloadFunc){
-      this.onloadFunc()
+      this.onloadFunc(this)
+    }
+  }
+
+  _onerror(error) {
+    if(this.onerrorFunc){
+      this.onerrorFunc(error)
     }
   }
 
@@ -335,8 +334,12 @@ export default class TextReader {
   }
 }
 
+TextReader.open = (url, encoding) =&gt; {
+  return new Promise((resolve, reject) =&gt; {
+    return new TextReader(url, encoding, resolve, reject)
+  })
+}
 
-  
 </code></pre>
 
 </div>

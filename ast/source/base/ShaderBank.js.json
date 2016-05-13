@@ -1052,10 +1052,10 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * get registered shader of given name\n   * @access public\n   * @param {string} name - name of shader\n   * @returns {WebGLShader}\n   ",
+                  "value": "*\n   * get registered shader of given name\n   * @access public\n   * @param {string} name - name of shader\n   * @returns {WebGLShader} - shader object\n   ",
                   "range": [
                     529,
-                    670
+                    686
                   ],
                   "loc": {
                     "start": {
@@ -1077,8 +1077,8 @@
                 "type": "Identifier",
                 "name": "getShader",
                 "range": [
-                  673,
-                  682
+                  689,
+                  698
                 ],
                 "loc": {
                   "start": {
@@ -1099,8 +1099,8 @@
                     "type": "Identifier",
                     "name": "name",
                     "range": [
-                      683,
-                      687
+                      699,
+                      703
                     ],
                     "loc": {
                       "start": {
@@ -1126,8 +1126,8 @@
                             "type": "Identifier",
                             "name": "shader",
                             "range": [
-                              701,
-                              707
+                              717,
+                              723
                             ],
                             "loc": {
                               "start": {
@@ -1151,8 +1151,8 @@
                                 "object": {
                                   "type": "ThisExpression",
                                   "range": [
-                                    710,
-                                    714
+                                    726,
+                                    730
                                   ],
                                   "loc": {
                                     "start": {
@@ -1169,8 +1169,8 @@
                                   "type": "Identifier",
                                   "name": "_shaderClasses",
                                   "range": [
-                                    715,
-                                    729
+                                    731,
+                                    745
                                   ],
                                   "loc": {
                                     "start": {
@@ -1184,8 +1184,8 @@
                                   }
                                 },
                                 "range": [
-                                  710,
-                                  729
+                                  726,
+                                  745
                                 ],
                                 "loc": {
                                   "start": {
@@ -1202,8 +1202,8 @@
                                 "type": "Identifier",
                                 "name": "get",
                                 "range": [
-                                  730,
-                                  733
+                                  746,
+                                  749
                                 ],
                                 "loc": {
                                   "start": {
@@ -1217,8 +1217,8 @@
                                 }
                               },
                               "range": [
-                                710,
-                                733
+                                726,
+                                749
                               ],
                               "loc": {
                                 "start": {
@@ -1236,8 +1236,8 @@
                                 "type": "Identifier",
                                 "name": "name",
                                 "range": [
-                                  734,
-                                  738
+                                  750,
+                                  754
                                 ],
                                 "loc": {
                                   "start": {
@@ -1252,8 +1252,8 @@
                               }
                             ],
                             "range": [
-                              710,
-                              739
+                              726,
+                              755
                             ],
                             "loc": {
                               "start": {
@@ -1267,8 +1267,8 @@
                             }
                           },
                           "range": [
-                            701,
-                            739
+                            717,
+                            755
                           ],
                           "loc": {
                             "start": {
@@ -1284,8 +1284,8 @@
                       ],
                       "kind": "const",
                       "range": [
-                        695,
-                        744
+                        711,
+                        760
                       ],
                       "loc": {
                         "start": {
@@ -1307,8 +1307,8 @@
                           "type": "Identifier",
                           "name": "shader",
                           "range": [
-                            747,
-                            753
+                            763,
+                            769
                           ],
                           "loc": {
                             "start": {
@@ -1325,8 +1325,8 @@
                           "type": "Identifier",
                           "name": "undefined",
                           "range": [
-                            758,
-                            767
+                            774,
+                            783
                           ],
                           "loc": {
                             "start": {
@@ -1340,8 +1340,8 @@
                           }
                         },
                         "range": [
-                          747,
-                          767
+                          763,
+                          783
                         ],
                         "loc": {
                           "start": {
@@ -1364,8 +1364,8 @@
                               "value": null,
                               "raw": "null",
                               "range": [
-                                783,
-                                787
+                                799,
+                                803
                               ],
                               "loc": {
                                 "start": {
@@ -1379,8 +1379,8 @@
                               }
                             },
                             "range": [
-                              776,
-                              792
+                              792,
+                              808
                             ],
                             "loc": {
                               "start": {
@@ -1395,8 +1395,8 @@
                           }
                         ],
                         "range": [
-                          768,
-                          793
+                          784,
+                          809
                         ],
                         "loc": {
                           "start": {
@@ -1411,8 +1411,8 @@
                       },
                       "alternate": null,
                       "range": [
-                        744,
-                        793
+                        760,
+                        809
                       ],
                       "loc": {
                         "start": {
@@ -1431,8 +1431,8 @@
                         "type": "Identifier",
                         "name": "shader",
                         "range": [
-                          805,
-                          811
+                          821,
+                          827
                         ],
                         "loc": {
                           "start": {
@@ -1446,8 +1446,8 @@
                         }
                       },
                       "range": [
-                        798,
-                        814
+                        814,
+                        830
                       ],
                       "loc": {
                         "start": {
@@ -1462,8 +1462,8 @@
                     }
                   ],
                   "range": [
-                    689,
-                    815
+                    705,
+                    831
                   ],
                   "loc": {
                     "start": {
@@ -1479,8 +1479,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  682,
-                  815
+                  698,
+                  831
                 ],
                 "loc": {
                   "start": {
@@ -1496,8 +1496,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                673,
-                815
+                689,
+                831
               ],
               "loc": {
                 "start": {
@@ -1512,10 +1512,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * get registered shader of given name\n   * @access public\n   * @param {string} name - name of shader\n   * @returns {WebGLShader}\n   ",
+                  "value": "*\n   * get registered shader of given name\n   * @access public\n   * @param {string} name - name of shader\n   * @returns {WebGLShader} - shader object\n   ",
                   "range": [
                     529,
-                    670
+                    686
                   ],
                   "loc": {
                     "start": {
@@ -1532,10 +1532,10 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * get registered shader of given name and context\n   * @access public\n   * @param {string} name - name of shader\n   * @param {WebGLContext} context - context of shader\n   * @returns {WebGLShader}\n   ",
+                  "value": "*\n   * get registered shader of given name and context\n   * @access public\n   * @param {string} name - name of shader\n   * @param {WebGLContext} context - context of shader\n   * @returns {WebGLShader} - shader object\n   ",
                   "range": [
-                    819,
-                    1027
+                    835,
+                    1059
                   ],
                   "loc": {
                     "start": {
@@ -1557,8 +1557,8 @@
                 "type": "Identifier",
                 "name": "getShaderOfContext",
                 "range": [
-                  1030,
-                  1048
+                  1062,
+                  1080
                 ],
                 "loc": {
                   "start": {
@@ -1579,8 +1579,8 @@
                     "type": "Identifier",
                     "name": "name",
                     "range": [
-                      1049,
-                      1053
+                      1081,
+                      1085
                     ],
                     "loc": {
                       "start": {
@@ -1597,8 +1597,8 @@
                     "type": "Identifier",
                     "name": "context",
                     "range": [
-                      1055,
-                      1062
+                      1087,
+                      1094
                     ],
                     "loc": {
                       "start": {
@@ -1624,8 +1624,8 @@
                             "type": "Identifier",
                             "name": "shader",
                             "range": [
-                              1076,
-                              1082
+                              1108,
+                              1114
                             ],
                             "loc": {
                               "start": {
@@ -1649,8 +1649,8 @@
                                 "object": {
                                   "type": "ThisExpression",
                                   "range": [
-                                    1085,
-                                    1089
+                                    1117,
+                                    1121
                                   ],
                                   "loc": {
                                     "start": {
@@ -1667,8 +1667,8 @@
                                   "type": "Identifier",
                                   "name": "_shaders",
                                   "range": [
-                                    1090,
-                                    1098
+                                    1122,
+                                    1130
                                   ],
                                   "loc": {
                                     "start": {
@@ -1682,8 +1682,8 @@
                                   }
                                 },
                                 "range": [
-                                  1085,
-                                  1098
+                                  1117,
+                                  1130
                                 ],
                                 "loc": {
                                   "start": {
@@ -1700,8 +1700,8 @@
                                 "type": "Identifier",
                                 "name": "get",
                                 "range": [
-                                  1099,
-                                  1102
+                                  1131,
+                                  1134
                                 ],
                                 "loc": {
                                   "start": {
@@ -1715,8 +1715,8 @@
                                 }
                               },
                               "range": [
-                                1085,
-                                1102
+                                1117,
+                                1134
                               ],
                               "loc": {
                                 "start": {
@@ -1734,8 +1734,8 @@
                                 "type": "Identifier",
                                 "name": "name",
                                 "range": [
-                                  1103,
-                                  1107
+                                  1135,
+                                  1139
                                 ],
                                 "loc": {
                                   "start": {
@@ -1750,8 +1750,8 @@
                               }
                             ],
                             "range": [
-                              1085,
-                              1108
+                              1117,
+                              1140
                             ],
                             "loc": {
                               "start": {
@@ -1765,8 +1765,8 @@
                             }
                           },
                           "range": [
-                            1076,
-                            1108
+                            1108,
+                            1140
                           ],
                           "loc": {
                             "start": {
@@ -1782,8 +1782,8 @@
                       ],
                       "kind": "const",
                       "range": [
-                        1070,
-                        1113
+                        1102,
+                        1145
                       ],
                       "loc": {
                         "start": {
@@ -1805,8 +1805,8 @@
                           "type": "Identifier",
                           "name": "shader",
                           "range": [
-                            1116,
-                            1122
+                            1148,
+                            1154
                           ],
                           "loc": {
                             "start": {
@@ -1823,8 +1823,8 @@
                           "type": "Identifier",
                           "name": "undefined",
                           "range": [
-                            1127,
-                            1136
+                            1159,
+                            1168
                           ],
                           "loc": {
                             "start": {
@@ -1838,8 +1838,8 @@
                           }
                         },
                         "range": [
-                          1116,
-                          1136
+                          1148,
+                          1168
                         ],
                         "loc": {
                           "start": {
@@ -1862,8 +1862,8 @@
                               "value": null,
                               "raw": "null",
                               "range": [
-                                1152,
-                                1156
+                                1184,
+                                1188
                               ],
                               "loc": {
                                 "start": {
@@ -1877,8 +1877,8 @@
                               }
                             },
                             "range": [
-                              1145,
-                              1161
+                              1177,
+                              1193
                             ],
                             "loc": {
                               "start": {
@@ -1893,8 +1893,8 @@
                           }
                         ],
                         "range": [
-                          1137,
-                          1162
+                          1169,
+                          1194
                         ],
                         "loc": {
                           "start": {
@@ -1909,8 +1909,8 @@
                       },
                       "alternate": null,
                       "range": [
-                        1113,
-                        1162
+                        1145,
+                        1194
                       ],
                       "loc": {
                         "start": {
@@ -1932,8 +1932,8 @@
                             "type": "Identifier",
                             "name": "instance",
                             "range": [
-                              1171,
-                              1179
+                              1203,
+                              1211
                             ],
                             "loc": {
                               "start": {
@@ -1955,8 +1955,8 @@
                                 "type": "Identifier",
                                 "name": "shader",
                                 "range": [
-                                  1182,
-                                  1188
+                                  1214,
+                                  1220
                                 ],
                                 "loc": {
                                   "start": {
@@ -1973,8 +1973,8 @@
                                 "type": "Identifier",
                                 "name": "get",
                                 "range": [
-                                  1189,
-                                  1192
+                                  1221,
+                                  1224
                                 ],
                                 "loc": {
                                   "start": {
@@ -1988,8 +1988,8 @@
                                 }
                               },
                               "range": [
-                                1182,
-                                1192
+                                1214,
+                                1224
                               ],
                               "loc": {
                                 "start": {
@@ -2007,8 +2007,8 @@
                                 "type": "Identifier",
                                 "name": "context",
                                 "range": [
-                                  1193,
-                                  1200
+                                  1225,
+                                  1232
                                 ],
                                 "loc": {
                                   "start": {
@@ -2023,8 +2023,8 @@
                               }
                             ],
                             "range": [
-                              1182,
-                              1201
+                              1214,
+                              1233
                             ],
                             "loc": {
                               "start": {
@@ -2038,8 +2038,8 @@
                             }
                           },
                           "range": [
-                            1171,
-                            1201
+                            1203,
+                            1233
                           ],
                           "loc": {
                             "start": {
@@ -2055,8 +2055,8 @@
                       ],
                       "kind": "let",
                       "range": [
-                        1167,
-                        1206
+                        1199,
+                        1238
                       ],
                       "loc": {
                         "start": {
@@ -2075,8 +2075,8 @@
                         "type": "Identifier",
                         "name": "instance",
                         "range": [
-                          1209,
-                          1217
+                          1241,
+                          1249
                         ],
                         "loc": {
                           "start": {
@@ -2098,8 +2098,8 @@
                               "type": "Identifier",
                               "name": "instance",
                               "range": [
-                                1233,
-                                1241
+                                1265,
+                                1273
                               ],
                               "loc": {
                                 "start": {
@@ -2113,8 +2113,8 @@
                               }
                             },
                             "range": [
-                              1226,
-                              1246
+                              1258,
+                              1278
                             ],
                             "loc": {
                               "start": {
@@ -2129,8 +2129,8 @@
                           }
                         ],
                         "range": [
-                          1218,
-                          1247
+                          1250,
+                          1279
                         ],
                         "loc": {
                           "start": {
@@ -2145,8 +2145,8 @@
                       },
                       "alternate": null,
                       "range": [
-                        1206,
-                        1247
+                        1238,
+                        1279
                       ],
                       "loc": {
                         "start": {
@@ -2168,8 +2168,8 @@
                             "type": "Identifier",
                             "name": "shaderClass",
                             "range": [
-                              1258,
-                              1269
+                              1290,
+                              1301
                             ],
                             "loc": {
                               "start": {
@@ -2193,8 +2193,8 @@
                                 "object": {
                                   "type": "ThisExpression",
                                   "range": [
-                                    1272,
-                                    1276
+                                    1304,
+                                    1308
                                   ],
                                   "loc": {
                                     "start": {
@@ -2211,8 +2211,8 @@
                                   "type": "Identifier",
                                   "name": "_shaderClasses",
                                   "range": [
-                                    1277,
-                                    1291
+                                    1309,
+                                    1323
                                   ],
                                   "loc": {
                                     "start": {
@@ -2226,8 +2226,8 @@
                                   }
                                 },
                                 "range": [
-                                  1272,
-                                  1291
+                                  1304,
+                                  1323
                                 ],
                                 "loc": {
                                   "start": {
@@ -2244,8 +2244,8 @@
                                 "type": "Identifier",
                                 "name": "get",
                                 "range": [
-                                  1292,
-                                  1295
+                                  1324,
+                                  1327
                                 ],
                                 "loc": {
                                   "start": {
@@ -2259,8 +2259,8 @@
                                 }
                               },
                               "range": [
-                                1272,
-                                1295
+                                1304,
+                                1327
                               ],
                               "loc": {
                                 "start": {
@@ -2278,8 +2278,8 @@
                                 "type": "Identifier",
                                 "name": "name",
                                 "range": [
-                                  1296,
-                                  1300
+                                  1328,
+                                  1332
                                 ],
                                 "loc": {
                                   "start": {
@@ -2294,8 +2294,8 @@
                               }
                             ],
                             "range": [
-                              1272,
-                              1301
+                              1304,
+                              1333
                             ],
                             "loc": {
                               "start": {
@@ -2309,8 +2309,8 @@
                             }
                           },
                           "range": [
-                            1258,
-                            1301
+                            1290,
+                            1333
                           ],
                           "loc": {
                             "start": {
@@ -2326,8 +2326,8 @@
                       ],
                       "kind": "const",
                       "range": [
-                        1252,
-                        1306
+                        1284,
+                        1338
                       ],
                       "loc": {
                         "start": {
@@ -2349,8 +2349,8 @@
                           "type": "Identifier",
                           "name": "instance",
                           "range": [
-                            1306,
-                            1314
+                            1338,
+                            1346
                           ],
                           "loc": {
                             "start": {
@@ -2369,8 +2369,8 @@
                             "type": "Identifier",
                             "name": "shaderClass",
                             "range": [
-                              1321,
-                              1332
+                              1353,
+                              1364
                             ],
                             "loc": {
                               "start": {
@@ -2388,8 +2388,8 @@
                               "type": "Identifier",
                               "name": "context",
                               "range": [
-                                1333,
-                                1340
+                                1365,
+                                1372
                               ],
                               "loc": {
                                 "start": {
@@ -2404,8 +2404,8 @@
                             }
                           ],
                           "range": [
-                            1317,
-                            1341
+                            1349,
+                            1373
                           ],
                           "loc": {
                             "start": {
@@ -2419,8 +2419,8 @@
                           }
                         },
                         "range": [
-                          1306,
-                          1341
+                          1338,
+                          1373
                         ],
                         "loc": {
                           "start": {
@@ -2434,8 +2434,8 @@
                         }
                       },
                       "range": [
-                        1306,
-                        1346
+                        1338,
+                        1378
                       ],
                       "loc": {
                         "start": {
@@ -2459,8 +2459,8 @@
                             "type": "Identifier",
                             "name": "shader",
                             "range": [
-                              1346,
-                              1352
+                              1378,
+                              1384
                             ],
                             "loc": {
                               "start": {
@@ -2477,8 +2477,8 @@
                             "type": "Identifier",
                             "name": "set",
                             "range": [
-                              1353,
-                              1356
+                              1385,
+                              1388
                             ],
                             "loc": {
                               "start": {
@@ -2492,8 +2492,8 @@
                             }
                           },
                           "range": [
-                            1346,
-                            1356
+                            1378,
+                            1388
                           ],
                           "loc": {
                             "start": {
@@ -2511,8 +2511,8 @@
                             "type": "Identifier",
                             "name": "context",
                             "range": [
-                              1357,
-                              1364
+                              1389,
+                              1396
                             ],
                             "loc": {
                               "start": {
@@ -2529,8 +2529,8 @@
                             "type": "Identifier",
                             "name": "instance",
                             "range": [
-                              1366,
-                              1374
+                              1398,
+                              1406
                             ],
                             "loc": {
                               "start": {
@@ -2545,8 +2545,8 @@
                           }
                         ],
                         "range": [
-                          1346,
-                          1375
+                          1378,
+                          1407
                         ],
                         "loc": {
                           "start": {
@@ -2560,8 +2560,8 @@
                         }
                       },
                       "range": [
-                        1346,
-                        1381
+                        1378,
+                        1413
                       ],
                       "loc": {
                         "start": {
@@ -2580,8 +2580,8 @@
                         "type": "Identifier",
                         "name": "instance",
                         "range": [
-                          1388,
-                          1396
+                          1420,
+                          1428
                         ],
                         "loc": {
                           "start": {
@@ -2595,8 +2595,8 @@
                         }
                       },
                       "range": [
-                        1381,
-                        1399
+                        1413,
+                        1431
                       ],
                       "loc": {
                         "start": {
@@ -2611,8 +2611,8 @@
                     }
                   ],
                   "range": [
-                    1064,
-                    1400
+                    1096,
+                    1432
                   ],
                   "loc": {
                     "start": {
@@ -2628,8 +2628,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  1048,
-                  1400
+                  1080,
+                  1432
                 ],
                 "loc": {
                   "start": {
@@ -2645,8 +2645,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                1030,
-                1400
+                1062,
+                1432
               ],
               "loc": {
                 "start": {
@@ -2661,10 +2661,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * get registered shader of given name and context\n   * @access public\n   * @param {string} name - name of shader\n   * @param {WebGLContext} context - context of shader\n   * @returns {WebGLShader}\n   ",
+                  "value": "*\n   * get registered shader of given name and context\n   * @access public\n   * @param {string} name - name of shader\n   * @param {WebGLContext} context - context of shader\n   * @returns {WebGLShader} - shader object\n   ",
                   "range": [
-                    819,
-                    1027
+                    835,
+                    1059
                   ],
                   "loc": {
                     "start": {
@@ -2683,7 +2683,7 @@
           ],
           "range": [
             84,
-            1402
+            1434
           ],
           "loc": {
             "start": {
@@ -2698,7 +2698,7 @@
         },
         "range": [
           67,
-          1402
+          1434
         ],
         "loc": {
           "start": {
@@ -2735,8 +2735,8 @@
             "type": "Line",
             "value": " Singleton",
             "range": [
-              1404,
-              1416
+              1436,
+              1448
             ],
             "loc": {
               "start": {
@@ -2755,7 +2755,7 @@
       "source": null,
       "range": [
         60,
-        1402
+        1434
       ],
       "loc": {
         "start": {
@@ -2792,8 +2792,8 @@
           "type": "Line",
           "value": " Singleton",
           "range": [
-            1404,
-            1416
+            1436,
+            1448
           ],
           "loc": {
             "start": {
@@ -2816,8 +2816,8 @@
           "type": "Identifier",
           "name": "ShaderBank",
           "range": [
-            1436,
-            1446
+            1468,
+            1478
           ],
           "loc": {
             "start": {
@@ -2832,8 +2832,8 @@
         },
         "arguments": [],
         "range": [
-          1432,
-          1448
+          1464,
+          1480
         ],
         "loc": {
           "start": {
@@ -2850,8 +2850,8 @@
             "type": "Line",
             "value": " Singleton",
             "range": [
-              1404,
-              1416
+              1436,
+              1448
             ],
             "loc": {
               "start": {
@@ -2868,8 +2868,8 @@
         "trailingComments": []
       },
       "range": [
-        1417,
-        1450
+        1449,
+        1482
       ],
       "loc": {
         "start": {
@@ -2886,8 +2886,8 @@
           "type": "Line",
           "value": " Singleton",
           "range": [
-            1404,
-            1416
+            1436,
+            1448
           ],
           "loc": {
             "start": {
@@ -2906,7 +2906,7 @@
   "sourceType": "module",
   "range": [
     0,
-    1450
+    1482
   ],
   "loc": {
     "start": {
@@ -2975,10 +2975,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n   * get registered shader of given name\n   * @access public\n   * @param {string} name - name of shader\n   * @returns {WebGLShader}\n   ",
+      "value": "*\n   * get registered shader of given name\n   * @access public\n   * @param {string} name - name of shader\n   * @returns {WebGLShader} - shader object\n   ",
       "range": [
         529,
-        670
+        686
       ],
       "loc": {
         "start": {
@@ -2993,10 +2993,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n   * get registered shader of given name and context\n   * @access public\n   * @param {string} name - name of shader\n   * @param {WebGLContext} context - context of shader\n   * @returns {WebGLShader}\n   ",
+      "value": "*\n   * get registered shader of given name and context\n   * @access public\n   * @param {string} name - name of shader\n   * @param {WebGLContext} context - context of shader\n   * @returns {WebGLShader} - shader object\n   ",
       "range": [
-        819,
-        1027
+        835,
+        1059
       ],
       "loc": {
         "start": {
@@ -3013,8 +3013,8 @@
       "type": "Line",
       "value": " Singleton",
       "range": [
-        1404,
-        1416
+        1436,
+        1448
       ],
       "loc": {
         "start": {

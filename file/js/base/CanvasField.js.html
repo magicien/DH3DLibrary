@@ -227,7 +227,7 @@ export default class CanvasField {
     this._mirrorOn = false
 
     if(typeof canvasElement === &quot;string&quot;){
-      canvasElement = document.getElementById(canvasElement);
+      canvasElement = document.getElementById(canvasElement)
     }
     this._canvas = canvasElement
 
@@ -339,7 +339,7 @@ export default class CanvasField {
    * get viewport offset of element
    * @access private
    * @param {Element} element - HTML element
-   * @returns {Object} viewport offset {x, y}
+   * @returns {Object} - viewport offset {x, y}
    */
   _viewportOffset(element) {
     let x = 0
@@ -406,7 +406,7 @@ export default class CanvasField {
   /**
    * get WebGL context
    * @access public
-   * @returns {WebGLRenderingContext}
+   * @returns {WebGLRenderingContext} - WebGL context
    */
   getContext() {
     return this._gl
@@ -415,7 +415,7 @@ export default class CanvasField {
   /**
    * get 2D canvas context
    * @access public
-   * @returns {CanvasRenderingContext2D}
+   * @returns {CanvasRenderingContext2D} - 2D canvas context
    */
   get2DContext() {
     return this._2DContext
@@ -427,6 +427,7 @@ export default class CanvasField {
    * @param {DH3DObject|DH2DObject} obj - object to draw
    * @param {boolean} alpha - true if it has alpha channel (it needs z-sort before drawing)
    * @param {boolean} notReflection - true if it has reflection (like mirror)
+   * @returns {void}
    */
   addObject(obj, alpha, notReflection) {
     // FIXME: auto detection of alpha object
@@ -599,7 +600,7 @@ export default class CanvasField {
   /**
    * set callback function which is called after each frame
    * @access public
-   * @param {Function(int)} func - callback function which takes an int parameter (timestamp)
+   * @param {Function} func - callback function which takes an int parameter (timestamp)
    * @returns {void}
    */
   setFrameCallback(func) {
@@ -631,9 +632,9 @@ export default class CanvasField {
   }
 
   /**
-   * get WebGLProgram
+   * get WebGL program
    * @access public
-   * @returns {WebGLProgram}
+   * @returns {WebGLProgram} - WebGL program object
    */
   getProgram() {
     return this._program
@@ -737,13 +738,13 @@ export default class CanvasField {
   /**
    * set callback function for Drag&amp;Drop event
    * @access public
-   * @param {Function(event)} func - callback function
+   * @param {Function} func - callback function
    * @returns {void}
    */
   setDropEvent(func) {
-    this._2DCanvas.observe(&apos;dragenter&apos;, (e) =&gt; { e.preventDefault() })
-    this._2DCanvas.observe(&apos;dragover&apos;,  (e) =&gt; { e.preventDefault() })
-    this._2DCanvas.observe(&apos;drop&apos;, (e) =&gt; {
+    this._2DCanvas.addEventListener(&apos;dragenter&apos;, (e) =&gt; { e.preventDefault() })
+    this._2DCanvas.addEventListener(&apos;dragover&apos;,  (e) =&gt; { e.preventDefault() })
+    this._2DCanvas.addEventListener(&apos;drop&apos;, (e) =&gt; {
       e.preventDefault()
       func(e)
     })
