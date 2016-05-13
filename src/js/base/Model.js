@@ -72,6 +72,12 @@ export default class Model {
   destroy() {
   }
 
+  /**
+   * copy given model data to this model
+   * @access public
+   * @param {Model} model - source model
+   * @returns {void}
+   */
   copy(model) {
     this.renderer          = model.renderer
     this.hashName          = model.hashName
