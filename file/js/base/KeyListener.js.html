@@ -169,12 +169,6 @@ export default class KeyListener {
     }else{
       this._enable = true
       const obj = this
-      /*
-      Event.observe(window.document, &apos;keydown&apos;,
-                     (event) =&gt; {obj.keyDownCallback(event)}, false)
-      Event.observe(window.document, &apos;keyup&apos;,
-                     (event) =&gt; {obj.keyUpCallback(event)}, false)
-      */
       document.addEventListener(&apos;keydown&apos;, (event) =&gt; { obj.keyDownCallback(event) }, false)
       document.addEventListener(&apos;keyup&apos;,   (event) =&gt; { obj.keyUpCallback(event)   }, false)
     }

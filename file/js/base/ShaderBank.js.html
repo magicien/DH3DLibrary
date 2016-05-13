@@ -163,7 +163,7 @@ export class ShaderBank {
    * get registered shader of given name
    * @access public
    * @param {string} name - name of shader
-   * @returns {WebGLShader}
+   * @returns {WebGLShader} - shader object
    */
   getShader(name) {
     const shader = this._shaderClasses.get(name)
@@ -178,7 +178,7 @@ export class ShaderBank {
    * @access public
    * @param {string} name - name of shader
    * @param {WebGLContext} context - context of shader
-   * @returns {WebGLShader}
+   * @returns {WebGLShader} - shader object
    */
   getShaderOfContext(name, context) {
     const shader = this._shaders.get(name)

@@ -175,14 +175,6 @@ export default class BinaryReader {
     }else{
       this.url = url
 
-      /*
-      new BinaryRequest(url, {
-        method: &apos;GET&apos;,
-        onComplete(response) {
-          obj._onload(response.responseText)
-        },
-      })
-      */
       BinaryRequest.get(url)
         .then((value) =&gt; { obj._onload(value) })
         .catch((e) =&gt; { obj._onerror(e) })

@@ -521,7 +521,7 @@ export default class MessageWindow extends DH2DObject {
   /**
    * get context
    * @access public
-   * @returns {CanvasRenderingContext2D}
+   * @returns {CanvasRenderingContext2D} - context
    */
   getContext() {
     return this._bindedCanvas._2DContext
@@ -541,7 +541,7 @@ export default class MessageWindow extends DH2DObject {
   /**
    * get Canvas object
    * @access public
-   * @returns {HTMLCanvasElement}
+   * @returns {HTMLCanvasElement} - Canvas object
    */
   getCanvas() {
     return this._bindedCanvas
@@ -561,7 +561,7 @@ export default class MessageWindow extends DH2DObject {
   /**
    * get icon image
    * @access public
-   * @returns {HTMLImageElement}
+   * @returns {HTMLImageElement} - icon image
    */
   getIcon() {
     return this._icon
@@ -570,7 +570,7 @@ export default class MessageWindow extends DH2DObject {
   /**
    * set icon image
    * @access public
-   * @param {HTMLImageElement}
+   * @param {HTMLImageElement} icon - icon image
    * @returns {void}
    */
   setIcon(icon) {
@@ -581,7 +581,7 @@ export default class MessageWindow extends DH2DObject {
   /**
    * get position offset
    * @access public
-   * @returns {Vector3}
+   * @returns {Vector3} - position
    */
   getOffset() {
     return this._offset
@@ -606,7 +606,7 @@ export default class MessageWindow extends DH2DObject {
   /**
    * get screen offset
    * @access public
-   * @returns {Vector3}
+   * @returns {Vector3} - screen offset
    */
   getScreenOffset() {
     return this._screenOffset
@@ -651,7 +651,7 @@ export default class MessageWindow extends DH2DObject {
   /**
    * get max width
    * @access public
-   * @returns {int}
+   * @returns {int} - max width of message window
    */
   getMaxWidth() {
     return this._maxWidth
@@ -739,6 +739,7 @@ export default class MessageWindow extends DH2DObject {
    * @access private
    * @param {string} str -
    * @param {int} maxWidth -
+   * @returns {int} - string length
    */
   _getLineChars(str, maxWidth) {
     const c = this._bindedCanvas._2DContext

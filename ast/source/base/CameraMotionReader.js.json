@@ -181,10 +181,10 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * read motion data from given URL\n   * @access public\n   * @param {string|File} url - URL of motion data or File object\n   * @returns {CameraMotion|null}\n   ",
+                  "value": "*\n   * read motion data from given URL\n   * @access public\n   * @param {string|File} url - URL of motion data or File object\n   * @returns {CameraMotion|null} - motion data\n   ",
                   "range": [
                     202,
-                    368
+                    382
                   ],
                   "loc": {
                     "start": {
@@ -206,8 +206,8 @@
                 "type": "Identifier",
                 "name": "readMotion",
                 "range": [
-                  371,
-                  381
+                  385,
+                  395
                 ],
                 "loc": {
                   "start": {
@@ -228,8 +228,8 @@
                     "type": "Identifier",
                     "name": "url",
                     "range": [
-                      382,
-                      385
+                      396,
+                      399
                     ],
                     "loc": {
                       "start": {
@@ -253,8 +253,8 @@
                         "value": null,
                         "raw": "null",
                         "range": [
-                          400,
-                          404
+                          414,
+                          418
                         ],
                         "loc": {
                           "start": {
@@ -268,8 +268,8 @@
                         }
                       },
                       "range": [
-                        393,
-                        407
+                        407,
+                        421
                       ],
                       "loc": {
                         "start": {
@@ -284,8 +284,8 @@
                     }
                   ],
                   "range": [
-                    387,
-                    408
+                    401,
+                    422
                   ],
                   "loc": {
                     "start": {
@@ -301,8 +301,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  381,
-                  408
+                  395,
+                  422
                 ],
                 "loc": {
                   "start": {
@@ -318,8 +318,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                371,
-                408
+                385,
+                422
               ],
               "loc": {
                 "start": {
@@ -334,10 +334,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * read motion data from given URL\n   * @access public\n   * @param {string|File} url - URL of motion data or File object\n   * @returns {CameraMotion|null}\n   ",
+                  "value": "*\n   * read motion data from given URL\n   * @access public\n   * @param {string|File} url - URL of motion data or File object\n   * @returns {CameraMotion|null} - motion data\n   ",
                   "range": [
                     202,
-                    368
+                    382
                   ],
                   "loc": {
                     "start": {
@@ -354,10 +354,10 @@
               "trailingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * read motion data from given File object\n   * @access public\n   * @param {File} file - File object of motion data\n   * @returns {CameraMotion|null}\n   ",
+                  "value": "*\n   * read motion data from given File object\n   * @access public\n   * @param {File} file - File object of motion data\n   * @returns {CameraMotion|null} - motion data\n   ",
                   "range": [
-                    412,
-                    573
+                    426,
+                    601
                   ],
                   "loc": {
                     "start": {
@@ -379,8 +379,8 @@
                 "type": "Identifier",
                 "name": "readMotionFromFile",
                 "range": [
-                  576,
-                  594
+                  604,
+                  622
                 ],
                 "loc": {
                   "start": {
@@ -401,8 +401,8 @@
                     "type": "Identifier",
                     "name": "file",
                     "range": [
-                      595,
-                      599
+                      623,
+                      627
                     ],
                     "loc": {
                       "start": {
@@ -426,8 +426,8 @@
                         "value": null,
                         "raw": "null",
                         "range": [
-                          614,
-                          618
+                          642,
+                          646
                         ],
                         "loc": {
                           "start": {
@@ -441,8 +441,8 @@
                         }
                       },
                       "range": [
-                        607,
-                        621
+                        635,
+                        649
                       ],
                       "loc": {
                         "start": {
@@ -457,8 +457,8 @@
                     }
                   ],
                   "range": [
-                    601,
-                    622
+                    629,
+                    650
                   ],
                   "loc": {
                     "start": {
@@ -474,8 +474,8 @@
                 "generator": false,
                 "expression": false,
                 "range": [
-                  594,
-                  622
+                  622,
+                  650
                 ],
                 "loc": {
                   "start": {
@@ -491,8 +491,8 @@
               "kind": "method",
               "computed": false,
               "range": [
-                576,
-                622
+                604,
+                650
               ],
               "loc": {
                 "start": {
@@ -507,10 +507,10 @@
               "leadingComments": [
                 {
                   "type": "Block",
-                  "value": "*\n   * read motion data from given File object\n   * @access public\n   * @param {File} file - File object of motion data\n   * @returns {CameraMotion|null}\n   ",
+                  "value": "*\n   * read motion data from given File object\n   * @access public\n   * @param {File} file - File object of motion data\n   * @returns {CameraMotion|null} - motion data\n   ",
                   "range": [
-                    412,
-                    573
+                    426,
+                    601
                   ],
                   "loc": {
                     "start": {
@@ -529,7 +529,7 @@
           ],
           "range": [
             108,
-            624
+            652
           ],
           "loc": {
             "start": {
@@ -544,7 +544,7 @@
         },
         "range": [
           83,
-          624
+          652
         ],
         "loc": {
           "start": {
@@ -580,7 +580,7 @@
       },
       "range": [
         68,
-        624
+        652
       ],
       "loc": {
         "start": {
@@ -617,7 +617,7 @@
   "sourceType": "module",
   "range": [
     0,
-    624
+    652
   ],
   "loc": {
     "start": {
@@ -668,10 +668,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n   * read motion data from given URL\n   * @access public\n   * @param {string|File} url - URL of motion data or File object\n   * @returns {CameraMotion|null}\n   ",
+      "value": "*\n   * read motion data from given URL\n   * @access public\n   * @param {string|File} url - URL of motion data or File object\n   * @returns {CameraMotion|null} - motion data\n   ",
       "range": [
         202,
-        368
+        382
       ],
       "loc": {
         "start": {
@@ -686,10 +686,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n   * read motion data from given File object\n   * @access public\n   * @param {File} file - File object of motion data\n   * @returns {CameraMotion|null}\n   ",
+      "value": "*\n   * read motion data from given File object\n   * @access public\n   * @param {File} file - File object of motion data\n   * @returns {CameraMotion|null} - motion data\n   ",
       "range": [
-        412,
-        573
+        426,
+        601
       ],
       "loc": {
         "start": {

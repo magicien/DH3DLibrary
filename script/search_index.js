@@ -5514,6 +5514,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/util/textreader.js~textreader#onerrorfunc",
+    "class/js/util/TextReader.js~TextReader.html#instance-member-onerrorFunc",
+    "js/util/TextReader.js~TextReader#onerrorFunc",
+    "member"
+  ],
+  [
     "js/util/textreader.js~textreader#onloadfunc",
     "class/js/util/TextReader.js~TextReader.html#instance-member-onloadFunc",
     "js/util/TextReader.js~TextReader#onloadFunc",
