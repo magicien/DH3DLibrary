@@ -52,9 +52,9 @@ export default class PMDReader extends ModelReader {
   }
 
   /**
-   *
+   * read PMD file data from given URL
    * @access public
-   * @param {String} url - model file url
+   * @param {string} url - model file url
    * @returns {Promise} - resolved when loading model is completed
    */
   readModel(url){
@@ -75,6 +75,12 @@ export default class PMDReader extends ModelReader {
     return promise
   }
 
+  /**
+   * read PMD file data from File object
+   * @access public
+   * @param {File} file - model file
+   * @returns {Promise} - resolved when loading model is completed
+   */
   readModelFromFile(file) {
     if(!PMDReader.canRead(file))
       return false

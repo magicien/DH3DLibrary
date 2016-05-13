@@ -19,45 +19,81 @@ export default class XReader extends ModelReader {
   constructor() {
     super()
 
+    /* @type {XModel} */
     this._model = null
+    
+    /* @type {string} */
     this._parentDirName = null
 
+    /* @type {int} */
     this._error = 0
+
+    /* @type {boolean} */
     this._loaded = false
   }
 
+  /**
+   * read X file data from given URL
+   * @access public
+   * @param {string} url - URL of X file
+   * @returns {Promise} - resolved when loading model is completed
+   */
   readModel(url) {
-    if(url.substr(-2) !== '.x'){
+    if(!XReader.canRead(url))
       return false
-    }
 
     const obj = this
     const onload = () => { obj.readModelProcess(url) }
 
     this._model = new XModel()
-    this._textReader = new TextReader(url, 'sjis', onload)
+    //this._textReader = new TextReader(url, 'sjis', onload)
 
-    return this._model
+    const promise = TextReader.open(url, 'sjis')
+      .then((reader) => {
+        this._textReader = reader
+        return this.readModelProcess(url)
+      })
+      .catch((err) => {
+        console.error(`file (${url}) open error: ${err}`)
+      })
+
+    //return this._model
+    return promise
   }
 
+  /**
+   * read X file data from File object
+   * @access public
+   * @param {File} file - X file
+   * @returns {boolean} - true: success, false: failure
+   */
   readModelFromFile(file) {
-    if(file.name.substr(-2) !== '.x'){
-      console.log('filename_error: ' + file.name)
+    if(!XReader.canRead(file))
       return false
-    }
-
-    const obj = this
-    const onload = () => { obj.readModelProcess(null) }
+    
+    //const obj = this
+    //const onload = () => { obj.readModelProcess(null) }
 
     this._model = new XModel()
-    this._textReader = new TextReader(file, 'sjis', onload)
+    //this._textReader = new TextReader(file, 'sjis', onload)
 
-    return this._model
+    const promise = TextReader.open(file, 'sjis')
+      .then((reader) => {
+        this._textReader = reader
+        return this.readModelProcess(null)
+      })
+      .catch((err) => {
+        console.error(`file (${file.name}) open error: ${err}`)
+      })
+
+    //return this._model
+    return promise
   }
 
   readModelProcess(url) {
-    this.readModelSub(url)
+    const result = this.readModelSub(url)
 
+    /*
     if(this._error){
       if(this._model.onerror){
         this._model.onerror()
@@ -76,6 +112,23 @@ export default class XReader extends ModelReader {
         this._model.onloadend()
       }
     }
+    */
+    if(!result){
+      if(this._model.onerror){
+        this._model.onerror()
+      }
+      return Promise.reject('read model error')
+    }
+
+    this._model.loaded = true
+    if(this._model.onload){
+      this._model.onload()
+    }
+
+    if(this._model.onloadend){
+      this._model.onloadend()
+    }
+    return Promise.resolve(this._model)
   }
 
   readModelSub(url){
@@ -95,7 +148,25 @@ export default class XReader extends ModelReader {
     }else{
       this._loaded = true
     }
+
+    return model
   }
 }
 
+XReader.canRead = (file) => {
+  let ext = ''
+  if(file instanceof File){
+    ext = file.name.substr(-2)
+  }else if(typeof file === 'string' || file instanceof String){
+    ext = file.substr(-2)
+  }
+
+  if(ext === '.x'){
+    return true
+  }
+
+  return false
+}
+
 ModelBank.addModelReader(XReader)
+

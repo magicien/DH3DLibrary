@@ -27,6 +27,9 @@ export default class Motion {
     return this
   }
 
+  destroy() {
+  }
+
   copy(motion) {
     this.motionArray = motion.motionArray
     this.frameLength = motion.frameLength

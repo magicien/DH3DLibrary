@@ -32,18 +32,41 @@ export default class DHAudio {
     this._sndSrc = null
   }
 
+  /**
+   * check if browser can play the given type of sound file
+   * @access public
+   * @param {string} type - String of type
+   * @returns {boolean} - true: can play, false: can't play
+   */
   canPlayType(type) {
     return this._work.canPlayType(type)
   }
 
+  /**
+   * check if it can play MP3 file
+   * @access public
+   * @returns {boolean} - true: can play MP3 file, false: can't play MP3 file
+   */
   canPlayMP3() {
     return this.canPlayType('audio/mpeg')
   }
 
+  /**
+   * check if it can play OGG file
+   * @access public
+   * @returns {boolean} - true: can play OGG file, false: can't play OGG file
+   */
   canPlayOGG() {
     return this.canPlayType('audio/ogg')
   }
 
+  /**
+   * set sound file to play
+   * @access public
+   * @param {HTMLAudioElement} leftSnd - Sound file for left side
+   * @param {HTMLAudioElement} rightSnd - Sound file for right side
+   * @returns {boolean} - true: success, false: failure (likely can't play given files)
+   */
   setSound(leftSnd, rightSnd) {
     this._loaded = false
     if(!leftSnd){
@@ -86,6 +109,11 @@ export default class DHAudio {
     return true
   }
 
+  /**
+   * check if sound file is loaded
+   * @access private
+   * @returns {boolean} - true: already loaded, false: not yet
+   */
   _checkLoaded() {
     if(this._loaded){
       return true
@@ -103,6 +131,12 @@ export default class DHAudio {
     return this._loaded
   }
 
+  /**
+   * set listener object
+   * @access public
+   * @param {Camera} listener - listener object
+   * @returns {boolean} - true: success, false: failure
+   */
   setListener(listener) {
     if(listener instanceof Camera || listener === null){
       this._listener = listener
@@ -111,6 +145,12 @@ export default class DHAudio {
     return false
   }
 
+  /**
+   * set sound source
+   * @access public
+   * @param {DH3DObject} sndSrc - sound source
+   * @returns {boolean} - true: success, false: failure
+   */
   setSoundSource(sndSrc) {
     if(sndSrc instanceof DH3DObject || sndSrc === null) {
       this._sndSrc = sndSrc
@@ -119,6 +159,11 @@ export default class DHAudio {
     return false
   }
 
+  /**
+   * play sound
+   * @access public
+   * @returns {boolean} - true: success, false: failure
+   */
   play() {
     if(!this._loaded){
       return false
@@ -140,7 +185,13 @@ export default class DHAudio {
     return true
   }
 
-  // direction: left:0, right:1
+  /**
+   * play sound from given distance and direction
+   * @access public
+   * @param {float} distance - distance from sound source
+   * @param {float} direction - 0: left, 1: right
+   * @returns {float} - true: success, false: failure
+   */
   playDistanceDirection(distance, direction) {
     if(!this._loaded){
       return false
@@ -174,6 +225,11 @@ export default class DHAudio {
     return true
   }
 
+  /**
+   * play sound
+   * @access public
+   * @returns {boolean} - true: success, false: failure
+   */
   playAt() {
     if(!this._loaded){
       return false
@@ -220,6 +276,11 @@ export default class DHAudio {
     return this.playDistanceDirection(distance, direction)
   }
 
+  /**
+   * pause sound
+   * @access public
+   * @returns {boolean} - true: success, false: failure
+   */
   pause() {
     if(!this._loaded){
       return false

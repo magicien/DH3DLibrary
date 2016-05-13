@@ -21,6 +21,12 @@ describe('Motion class', () => {
     })
   })
 
+  describe('destroy function', () => {
+    it('should work', () => {
+      expect(Motion).to.respondTo('destroy')
+    })
+  })
+
   describe('copy function', () => {
     it('should work', () => {
       expect(Motion).to.respondTo('copy')

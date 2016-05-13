@@ -37,7 +37,7 @@ export default class MMDAnimator extends Animator {
     const animator = this
     motion.motionArray.forEach( (boneMotion, key) => {
       const bone = model.boneHash.get(key)
-      if(bone === null){
+      if(!bone){
         return
       }
 
@@ -48,7 +48,7 @@ export default class MMDAnimator extends Animator {
       model.faceArray[0].setFace(model)
       motion.faceMotionArray.forEach( (faceMotion, key) => {
         const face = model.faceHash.get(key)
-        if(face === null)
+        if(!face)
           return
 
         animator.setFace(dhObject, faceMotion, face)

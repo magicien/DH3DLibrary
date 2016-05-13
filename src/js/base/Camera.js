@@ -112,9 +112,9 @@ export default class Camera {
   }
 
   /**
-   * 
+   * get animation state
    * @access public
-   * @returns {bool} -
+   * @returns {bool} - true if it's animating
    */
   getAnimating() {
     return this._animating
@@ -135,9 +135,9 @@ export default class Camera {
   }
 
   /**
-   * 
+   * get loop state
    * @access public
-   * @returns {bool} -
+   * @returns {bool} - true if loop is enabled
    */
   getLoop() {
     return this._loop
@@ -238,7 +238,7 @@ export default class Camera {
   }
 
   /**
-   * look at 
+   * change camera matrix to look at the given point
    * @access public
    * @param {float} eyeX - 
    * @param {float} eyeY -

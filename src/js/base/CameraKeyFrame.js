@@ -11,12 +11,25 @@ export default class CameraKeyFrame {
    * @constructor
    */
   constructor() {
+    /** @type {int} */
     this.frameNo = -1
+
+    /** @type {Vector3} */
     this.position = null
+
+    /** @type {Vector4} */
     this.rotate = null
+
+    /** @type {float} */
     this.distance = null
+
+    /** @type {Array<float>} */
     this.interpolation = null
+
+    /** @type {float} */
     this.angle = null
-    this.parspective = false
+
+    /** @type {boolean} */
+    this.perspective = false
   }
 }

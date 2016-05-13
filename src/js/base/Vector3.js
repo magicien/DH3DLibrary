@@ -5,18 +5,13 @@
  * @access public
  */
 export default class Vector3 {
-  // public properties without accessor
-  // float x
-  // float y
-  // float z
-
   /**
    * constructor
    * @access public
    * @constructor
-   * @params {float} x - x value, default is 0.0
-   * @params {float} y - y value, default is 0.0
-   * @params {float} z - z value, default is 0.0
+   * @param {float} x - X value, default is 0.0
+   * @param {float} y - Y value, default is 0.0
+   * @param {float} z - Z value, default is 0.0
    */
   constructor(x = 0.0, y = 0.0, z = 0.0) {
     this.setValue(x, y, z)
@@ -240,9 +235,8 @@ export default class Vector3 {
   }
 
   /**
-   *
+   * calc a length of vector
    * @access public
-   * @param {Vector4} quat -
    * @returns {float} length of vector
    */
   length() {

@@ -25,30 +25,41 @@ export default class KeyListener {
     this.setEnable()
   }
 
+  /**
+   * enable/disable key listener
+   * @access public
+   * @param {boolean} flag - true: enable, false: disable
+   * @returns {void}
+   */
   setEnable(flag = true) {
     if(!flag){
       this._enable = false
     }else{
       this._enable = true
       const obj = this
-      /*
-      Event.observe(window.document, 'keydown',
-                     (event) => {obj.keyDownCallback(event)}, false)
-      Event.observe(window.document, 'keyup',
-                     (event) => {obj.keyUpCallback(event)}, false)
-      */
       document.addEventListener('keydown', (event) => { obj.keyDownCallback(event) }, false)
       document.addEventListener('keyup',   (event) => { obj.keyUpCallback(event)   }, false)
     }
   }
 
+  /**
+   * disable key listener
+   * @access public
+   * @returns {void}
+   */
   setDisable() {
     this.setEnable(false)
   }
 
+  /**
+   * callback for keyDown event
+   * @access public
+   * @param {Event} event -
+   * @returns {void}
+   */
   keyDownCallback(event = window.event) {
     let keyChar = this._keyHash.get(event.keyCode)
-    if(keyChar === null)
+    if(keyChar === undefined)
       keyChar = String.fromCharCode(event.keyCode)
 
     if(!this._keyState[keyChar]){
@@ -62,9 +73,15 @@ export default class KeyListener {
     }
   }
 
+  /**
+   * callback for keyUp event
+   * @access public
+   * @param {Event} event -
+   * @returns {void}
+   */
   keyUpCallback(event = window.event) {
     let keyChar = this._keyHash.get(event.keyCode)
-    if(keyChar === null)
+    if(keyChar === undefined)
       keyChar = String.fromCharCode(event.keyCode)
 
     this._keyState[keyChar] = false
@@ -74,14 +91,31 @@ export default class KeyListener {
     }
   }
 
+  /**
+   * set keyDown callback function
+   * @access public
+   * @param {Function} func - callback function
+   * @returns {void}
+   */
   setKeyDownCallback(func) {
     this._userKeyDownCallback = func
   }
 
+  /**
+   * set keyUp callback function
+   * @access public
+   * @param {Function} func - callback function
+   * @returns {void}
+   */
   setKeyUpCallback(func) {
     this._userKeyUpCallback = func
   }
 
+  /**
+   * reset key new state
+   * @access public
+   * @returns {void}
+   */
   resetKeyNewState() {
     const obj = this
     Object.keys(this._keyState).forEach( (k) => {
@@ -90,6 +124,11 @@ export default class KeyListener {
     this._anyKey = false
   }
 
+  /**
+   * reset key state
+   * @access public
+   * @returns {void}
+   */
   resetKeyState() {
     const obj = this
     Object.keys(this._keyState).forEach( (k) => {
@@ -98,14 +137,31 @@ export default class KeyListener {
     this.resetKeyNewState()
   }
 
+  /**
+   * get key state of given key code
+   * @access public
+   * @param {int} keyCode - key code
+   * @returns {boolean} - true: key down, false: key up
+   */
   getKeyState(keyCode) {
     return this._keyState[keyCode]
   }
 
+  /**
+   * get key new state of given key code
+   * @access public
+   * @param {int} keyCode - key code
+   * @returns {boolean} - true: key down, false: key up
+   */
   getKeyNewState(keyCode) {
     return this._keyNewState[keyCode]
   }
 
+  /**
+   * check if any key is pushed
+   * @access public
+   * @returns {boolean} - true: pushed, false: not pushed
+   */
   getAnyKeyState() {
     return this._anyKey
   }

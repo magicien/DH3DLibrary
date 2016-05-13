@@ -28,7 +28,7 @@ module.exports = {
       '!' + src + '/js/etc/*.js'
     ],
     opts: {
-      useEslintrc: true
+      useEslintrc: true,
     }
   },
 

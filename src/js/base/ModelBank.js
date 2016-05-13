@@ -19,7 +19,7 @@ export class ModelBank {
     this._promises = new Map()
     /** @type {Map} */
     this._modelsOfContext = new Map()
-    /** @type {Array} */
+    /** @type {Array<ModelReader>} */
     this._modelReaders = []
   }
 
@@ -31,7 +31,6 @@ export class ModelBank {
     if(!(file instanceof File)){
       return ''
     }
-    //return 'FILE:' + file.name + '_' + file.size + '_' + file.lastModifiedDate
     return `FILE:${file.name}_${file.size}_${file.lastModifiedDate}`
   }
 
@@ -43,6 +42,7 @@ export class ModelBank {
     let promise = this._promises.get(modelFile)
     if(promise){
       return promise.then((loadedModel) => {
+        loadedModel.hashName = modelFile
         return loadedModel.clone()
       })
     }
@@ -64,6 +64,7 @@ export class ModelBank {
     this._promises.set(modelFile, promise)
 
     return promise.then((loadedModel) => {
+      loadedModel.hashName = modelFile
       return loadedModel.clone()
     })
   }

@@ -11,8 +11,13 @@ export default class LightKeyFrame {
    * @constructor
    */
   constructor() {
+    /** @type {int} */
     this.frameNo = -1
+
+    /** @type {Vector4} */
     this.color = null
+
+    /** @type {Vector3} */
     this.position = null
   }
 }

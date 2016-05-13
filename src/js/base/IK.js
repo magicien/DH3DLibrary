@@ -36,6 +36,11 @@ export default class IK {
     this._targetPos = new Vector3()
   }
 
+  /**
+   * clone IK object
+   * @access public
+   * @returns {IK} - copied object
+   */
   clone() {
     //const newIK = Object.assign(new IK(), this)
     const newIK = ObjectAssign(new IK(), this)
@@ -52,6 +57,14 @@ export default class IK {
     return newIK
   }
 
+  /**
+   * limit angle of joint
+   * @access public
+   * @param {float} limitMinAngle - minimum angle of joint
+   * @param {float} limitMaxAngle - maximum angle of joint
+   * @param {Vector4} quat - Quaternion
+   * @returns {void}
+   */
   limitAngle(limitMinAngle, limitMaxAngle, quat) {
     const angle = this._angle
 
@@ -75,6 +88,11 @@ export default class IK {
     quat.eulerToQuaternion(angle)
   }
 
+  /**
+   * update
+   * @access public
+   * @returns {void}
+   */
   update() {
     const zeroThreshold = 0.0001
     const targetMat = this.targetBone.localMatrix

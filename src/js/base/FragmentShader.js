@@ -30,28 +30,66 @@ export default class FragmentShader {
     this._context = gl
   }
 
+  /**
+   * get shader name
+   * @access public
+   * @returns {string} - shader name
+   */
   get _name() {
     return 'FragmentShader'
   }
 
+  /**
+   * get shader name
+   * @access public
+   * @returns {string} - shader name
+   */
   getName() {
     return this._name
   }
 
+  /**
+   * get shader program
+   * @access public
+   * @returns {string} - shader program
+   */
   get _program() {
     return ''
   }
 
+  /**
+   * get shader object
+   * @access public
+   * @returns {WebGLShader} - shader
+   */
   getShader() {
     return this._shader
   }
 
+  /**
+   * bind attributes to given program
+   * @access public
+   * @param {WebGLProgram} programObject - program to bind attributes
+   * @returns {void}
+   */
   bindAttribute(programObject) {
   }
 
+  /**
+   * set light object
+   * @access public
+   * @param {Light} light - Light object
+   * @returns {void}
+   */
   setLightData(light) {
   }
 
+  /**
+   * set material data
+   * @access public
+   * @param {Material} material - Material object
+   * @returns {void}
+   */
   setMaterialData(material) {
   }
 }

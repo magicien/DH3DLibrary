@@ -18,6 +18,7 @@ for FILE in ${FILES}; do
 done
 
 echo "" >> ${MAIN_JS}
+echo "/*global exports*/" >> ${MAIN_JS}
 
 for FILE in ${FILES}; do
   CLASS=${FILE##*/}

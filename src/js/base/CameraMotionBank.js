@@ -11,8 +11,13 @@ export class CameraMotionBank {
    * @constructor
    */
   constructor() {
+    /** @type {Map} */
     this._motions = new Map()
+
+    /** @type {Map} */
     this._loadingMotions = new Map()
+
+    /** @type {Array} */
     this._motionReaders = []
   }
 

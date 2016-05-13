@@ -28,10 +28,33 @@ export default class Light {
     this._specularCache = new Float32Array([0, 0, 0, 0])
   }
 
+  /**
+   * get type of light
+   * @access public
+   * @returns {int} - type of light
+   */
+  getType() {
+    return this.type
+  }
+
+  /**
+   * set type of light
+   * @access public
+   * @param {int} type - type of light
+   * @returns {void}
+   */
   setType(type) {
     this.type = type
   }
 
+  /**
+   * set position of Light
+   * @access public
+   * @param {float} x - X value
+   * @param {float} y - Y value
+   * @param {float} z - Z value
+   * @returns {void}
+   */
   setPosition(x, y, z) {
     this.position.x = x
     this.position.y = y
@@ -40,6 +63,15 @@ export default class Light {
     this._positionCache = new Float32Array([x, y, z])
   }
 
+  /**
+   * set ambient value
+   * @access public
+   * @param {float} r - red value (0.0 - 1.0)
+   * @param {float} g - green value (0.0 - 1.0)
+   * @param {float} b - blue value (0.0 - 1.0)
+   * @param {float} a - alpha value (0.0 - 1.0)
+   * @returns {void}
+   */
   setAmbient(r, g, b, a) {
     this.ambient.x = r
     this.ambient.y = g
@@ -49,6 +81,15 @@ export default class Light {
     this._ambientCache = new Float32Array([r, g, b, a])
   }
 
+  /**
+   * set diffuse value
+   * @access public
+   * @param {float} r - red value (0.0 - 1.0)
+   * @param {float} g - green value (0.0 - 1.0)
+   * @param {float} b - blue value (0.0 - 1.0)
+   * @param {float} a - alpha value (0.0 - 1.0)
+   * @returns {void}
+   */
   setDiffuse(r, g, b, a) {
     this.diffuse.x = r
     this.diffuse.y = g
@@ -58,6 +99,15 @@ export default class Light {
     this._diffuseCache = new Float32Array([r, g, b, a])
   }
 
+  /**
+   * set specular value
+   * @access public
+   * @param {float} r - red value (0.0 - 1.0)
+   * @param {float} g - green value (0.0 - 1.0)
+   * @param {float} b - blue value (0.0 - 1.0)
+   * @param {float} a - alpha value (0.0 - 1.0)
+   * @returns {void}
+   */
   setSpecular(r, g, b, a) {
     this.specular.x = r
     this.specular.y = g
@@ -67,22 +117,38 @@ export default class Light {
     this._specularCache = new Float32Array([r, g, b, a])
   }
 
-  getType() {
-    return this.type
-  }
-
+  /**
+   * get position of light
+   * @access public
+   * @returns {Float32Array} - position of light
+   */
   getPosition() {
     return this._positionCache
   }
 
+  /**
+   * get ambient value
+   * @access public
+   * @returns {Float32Array} - ambient value
+   */
   getAmbient() {
     return this._ambientCache
   }
 
+  /**
+   * get diffuse value
+   * @access public
+   * @returns {Float32Array} - diffuse value
+   */
   getDiffuse() {
     return this._diffuseCache
   }
 
+  /**
+   * get specular value
+   * @access public
+   * @returns {Float32Array} - specular value
+   */
   getSpecular() {
     return this._specularCache
   }

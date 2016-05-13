@@ -10,7 +10,7 @@ const server = sinon.fakeServer.create()
 describe('BinaryRequest class', () => {
   before(() => {
     sinon.FakeXMLHttpRequest.prototype.overrideMimeType = () => null
-    global.XMLHttpRequest = sinon.useFakeXMLHttpRequest();
+    global.XMLHttpRequest = sinon.useFakeXMLHttpRequest()
   })
 
   describe('constructor function', () => {

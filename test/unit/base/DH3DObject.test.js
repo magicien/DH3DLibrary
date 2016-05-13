@@ -39,6 +39,12 @@ describe('DH3DObject class', () => {
     })
   })
 
+  describe('getMotion function', () => {
+    it('should work', () => {
+      expect(DH3DObject).to.respondTo('getMotion')
+    })
+  })
+
   describe('setMotion function', () => {
     it('should work', () => {
       expect(DH3DObject).to.respondTo('setMotion')

@@ -7,7 +7,7 @@ import MessageWindow from './MessageWindow'
 import DH3DObject from './DH3DObject'
 
 /**
- * 2D canvas 
+ * Canvas class for 2D/3D Context
  * @access public
  */
 export default class CanvasField {
@@ -16,45 +16,87 @@ export default class CanvasField {
    * @access public
    * @constructor
    * @param {HTMLCanvasElement} canvasElement -
-   * @param {Object} options -
+   * @param {Map} options -
    */
   constructor(canvasElement, options = {}) {
-    /* @type {Canvas} */
+    /* @type {HTMLCamvasElement} */
     this._canvas = null
+
+    /* @type {HTMLCanvasElement} */
     this._2DCanvas = null
 
+    /* @type {WebGLRenderingContext} */
     this._gl = null
+
+    /* @type {WebGLProgram} */
     this._program = null
+
+    /* @type {CanvasReneringContext2D} */
     this._2DContext = null
 
+    /* @type {ModelBank} */
     this._modelBank = null
+
+    /* @type {MotionBank} */
     this._motionBank = null
+
+    /* @type {TextureBank} */
     this._textureBank = null
 
+
+    /* @type {Array<Camera>} */
     this._cameras = null
+
+    /* @type {Light} */
     this._lights = null
 
+    /* @type {float} */
     this._fps = null
 
+    /* @type {int} */
     this._canvasWidth = 0
+
+    /* @type {int} */
     this._canvasHeight = 0
+
+    /* @type {float} */
     this._widthPerX = 100.0
 
-    //this._timer = null
+    this._timer = null
+
+    /* @type {float} */
     this._prevTime = null
+
+    /* @type {float} */
     this._spf = 0
+
+    /* @type {float} */
     this._fps = 0
+
+    /* @type {boolean} */
     this._animating = false
 
+    /* @type {Function(Function(int))} */
     this._requestAnimationFrame = null
+
+    /* @type {Function(int)} */
     this._frameCallback = null
 
+    /* @type {Array<DH2DObject|DH3DObject>} */
     this._objs = null
+
+    /* @type {Array<DH2DObject|DH3DObject>} */
     this._alphaObjs = null
+
+    /* @type {Array<DH2DObject|DH3DObject>} */
     this._refObjs = null
+
+    /* @type {boolean} */
     this._mirrorOn = false
 
-
+    if(typeof canvasElement === "string"){
+      canvasElement = document.getElementById(canvasElement)
+    }
     this._canvas = canvasElement
 
     const opt = {}
@@ -164,8 +206,8 @@ export default class CanvasField {
   /**
    * get viewport offset of element
    * @access private
-   * @param {Element} element - 
-   * @returns {Object} viewport offset {x, y}
+   * @param {Element} element - HTML element
+   * @returns {Object} - viewport offset {x, y}
    */
   _viewportOffset(element) {
     let x = 0
@@ -187,6 +229,12 @@ export default class CanvasField {
     return { x, y }
   }
 
+  /**
+   * get parent element of offset
+   * @access private
+   * @param {Element} element - HTML element
+   * @returns {Element} - parent element
+   */
   _getOffsetParent(element) {
     //if(!Element.descendantOf(element, document.body)){
     if((element.compareDocumentPosition(document.body) & 8) !== 8){
@@ -210,6 +258,11 @@ export default class CanvasField {
     return document.body
   }
 
+  /**
+   * callback to draw next frame
+   * @access private
+   * @returns {void}
+   */
   _callNextFrame() {
     const obj = this
 
@@ -218,14 +271,32 @@ export default class CanvasField {
     //Reflect.apply(this._requestAnimationFrame, window, () => { obj.drawPicture() } )
   }
 
+  /**
+   * get WebGL context
+   * @access public
+   * @returns {WebGLRenderingContext} - WebGL context
+   */
   getContext() {
     return this._gl
   }
 
+  /**
+   * get 2D canvas context
+   * @access public
+   * @returns {CanvasRenderingContext2D} - 2D canvas context
+   */
   get2DContext() {
     return this._2DContext
   }
 
+  /**
+   * add object to draw
+   * @access public
+   * @param {DH3DObject|DH2DObject} obj - object to draw
+   * @param {boolean} alpha - true if it has alpha channel (it needs z-sort before drawing)
+   * @param {boolean} notReflection - true if it has reflection (like mirror)
+   * @returns {void}
+   */
   addObject(obj, alpha, notReflection) {
     // FIXME: auto detection of alpha object
     if(alpha){
@@ -239,12 +310,23 @@ export default class CanvasField {
     }
   }
 
+  /**
+   * remove object to draw
+   * @access public
+   * @param {DH2DObject|DH3DObject} obj - object to remove
+   * @returns {void}
+   */
   removeObject(obj) {
     this._objs = this._objs.filter((o) => (o !== obj))
     this._alphaObjs = this._alphaObjs.filter((o) => (o !== obj))
     this._refObjs = this._refObjs.filter((o) => (o !== obj))
   }
 
+  /**
+   * start animation
+   * @access public
+   * @returns {void}
+   */
   start() {
     if(!this._animating){
       this._animating = true
@@ -253,10 +335,21 @@ export default class CanvasField {
     }
   }
 
+  /**
+   * pause animation
+   * @access public
+   * @returns {void}
+   */
   pause() {
     this._animating = false
   }
 
+  /**
+   * reshape canvas field
+   * @access public
+   * @param {boolean} force -
+   * @returns {void}
+   */
   reshape(force) {
     if (!force && this._canvas.clientWidth === this._canvasWidth && this._canvas.clientHeight === this._canvasHeight)
       return
@@ -270,6 +363,11 @@ export default class CanvasField {
     this._gl.viewport(0, 0, this._canvasWidth, this._canvasHeight)
   }
 
+  /**
+   * draw one frame
+   * @access public
+   * @returns {void}
+   */
   drawPicture() {
     let elapsedTime = 0
     const nowTime = (new Date()).getTime()
@@ -357,19 +455,41 @@ export default class CanvasField {
     }
   }
 
+  /**
+   * draw one frame without animation
+   * @access public
+   * @returns {void}
+   */
   drawOneFrame() {
     this._prevTime = null
     this.drawPicture()
   }
 
+  /**
+   * set callback function which is called after each frame
+   * @access public
+   * @param {Function} func - callback function which takes an int parameter (timestamp)
+   * @returns {void}
+   */
   setFrameCallback(func) {
     this._frameCallback = func
   }
 
+  /**
+   * get FPS
+   * @access public
+   * @returns {float} - FPS
+   */
   getFPS() {
     return this._fps
   }
 
+  /**
+   * set FPS to limit the max FPS
+   * @access public
+   * @param {float} fps - max FPS
+   * @returns {void}
+   */
   setFPS(fps) {
     this._fps = fps
     this._spf = 1.0 / fps
@@ -379,14 +499,31 @@ export default class CanvasField {
     }
   }
 
+  /**
+   * get WebGL program
+   * @access public
+   * @returns {WebGLProgram} - WebGL program object
+   */
   getProgram() {
     return this._program
   }
 
+  /**
+   * set WebGLProgram
+   * @access public
+   * @param {WebGLProgram} program - WebGLProgram object
+   * @returns {void}
+   */
   setProgram(program) {
     this._program = program
   }
 
+  /**
+   * output WebGL errors to console
+   * @access public
+   * @param {string} message - extra message to add to error log
+   * @returns {void}
+   */
   checkGLError(message) {
     const err = this._gl.getError()
 
@@ -395,32 +532,69 @@ export default class CanvasField {
     }
   }
 
+  /**
+   * get camera objects
+   * @access public
+   * @returns {Array<Camera>} - Camera objects
+   */
   getCameras() {
     return this._cameras
   }
 
+  /**
+   * add Camera object
+   * @access public
+   * @param {Camera} camera - Camera object to add
+   * @returns {void}
+   */
   setCamera(camera) {
     this._cameras.length = 0
     this._cameras.push(camera)
   }
 
+  /**
+   * get Light objects
+   * @access public
+   * @returns {Array<Light>} - Light objects
+   */
   getLights() {
     return this.lights
   }
 
+  /**
+   * add Light object
+   * @access public
+   * @param {Light} light - Light object to add
+   * @returns {void}
+   */
   setLights(light) {
     this._lights.length = 0
     this._lights.push(light)
   }
 
+  /**
+   * enable mirror
+   * @access public
+   * @returns {void}
+   */
   enableMirror() {
     this._mirrorOn = true
   }
 
+  /**
+   * disable mirror
+   * @access public
+   * @returns {void}
+   */
   disableMirror() {
     this._mirrorOn = false
   }
 
+  /**
+   * create message window
+   * @access public
+   * @returns {MessageWindow} - MessageWindow object
+   */
   createMessageWindow() {
     const mw = new MessageWindow()
     mw.setCanvas(this)
@@ -429,15 +603,26 @@ export default class CanvasField {
     return mw
   }
 
+  /**
+   * set callback function for Drag&Drop event
+   * @access public
+   * @param {Function} func - callback function
+   * @returns {void}
+   */
   setDropEvent(func) {
-    this._2DCanvas.observe('dragenter', (e) => { e.preventDefault() })
-    this._2DCanvas.observe('dragover',  (e) => { e.preventDefault() })
-    this._2DCanvas.observe('drop', (e) => {
+    this._2DCanvas.addEventListener('dragenter', (e) => { e.preventDefault() })
+    this._2DCanvas.addEventListener('dragover',  (e) => { e.preventDefault() })
+    this._2DCanvas.addEventListener('drop', (e) => {
       e.preventDefault()
       func(e)
     })
   }
 
+  /**
+   * disable Drag&Drop event: not implemented
+   * @access public
+   * @returns {void}
+   */
   disableDropEvent() {
     // FIXME
   }

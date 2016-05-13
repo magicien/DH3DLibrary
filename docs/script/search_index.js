@@ -12,9 +12,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "dh3dlib/js/util/binaryparser.js~binaryparser",
+    "dh3dlib/js/third_party/binaryparser.js~binaryparser",
     "function/index.html#static-function-BinaryParser",
-    "<span>BinaryParser</span> <span class=\"search-result-import-path\">dh3dlib/js/util/BinaryParser.js</span>",
+    "<span>BinaryParser</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/BinaryParser.js</span>",
     "function"
   ],
   [
@@ -108,51 +108,51 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "dh3dlib/js/util/ecl.js~escapeeucjp",
+    "dh3dlib/js/third_party/ecl.js~escapeeucjp",
     "function/index.html#static-function-EscapeEUCJP",
-    "<span>EscapeEUCJP</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>EscapeEUCJP</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~escapejis7",
+    "dh3dlib/js/third_party/ecl.js~escapejis7",
     "function/index.html#static-function-EscapeJIS7",
-    "<span>EscapeJIS7</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>EscapeJIS7</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~escapejis8",
+    "dh3dlib/js/third_party/ecl.js~escapejis8",
     "function/index.html#static-function-EscapeJIS8",
-    "<span>EscapeJIS8</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>EscapeJIS8</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~escapesjis",
+    "dh3dlib/js/third_party/ecl.js~escapesjis",
     "function/index.html#static-function-EscapeSJIS",
-    "<span>EscapeSJIS</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>EscapeSJIS</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~escapeutf16le",
+    "dh3dlib/js/third_party/ecl.js~escapeutf16le",
     "function/index.html#static-function-EscapeUTF16LE",
-    "<span>EscapeUTF16LE</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>EscapeUTF16LE</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~escapeutf7",
+    "dh3dlib/js/third_party/ecl.js~escapeutf7",
     "function/index.html#static-function-EscapeUTF7",
-    "<span>EscapeUTF7</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>EscapeUTF7</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~escapeutf8",
+    "dh3dlib/js/third_party/ecl.js~escapeutf8",
     "function/index.html#static-function-EscapeUTF8",
-    "<span>EscapeUTF8</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>EscapeUTF8</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~escapeunicode",
+    "dh3dlib/js/third_party/ecl.js~escapeunicode",
     "function/index.html#static-function-EscapeUnicode",
-    "<span>EscapeUnicode</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>EscapeUnicode</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
@@ -180,15 +180,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "dh3dlib/js/base/framebuffer.js~framebuffer",
-    "class/js/base/FrameBuffer.js~FrameBuffer.html",
-    "<span>FrameBuffer</span> <span class=\"search-result-import-path\">dh3dlib/js/base/FrameBuffer.js</span>",
-    "class"
-  ],
-  [
-    "dh3dlib/js/util/ecl.js~getescapecodetype",
+    "dh3dlib/js/third_party/ecl.js~getescapecodetype",
     "function/index.html#static-function-GetEscapeCodeType",
-    "<span>GetEscapeCodeType</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>GetEscapeCodeType</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
@@ -204,15 +198,15 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "dh3dlib/js/util/ecl.js~jct11280",
+    "dh3dlib/js/third_party/ecl.js~jct11280",
     "variable/index.html#static-variable-JCT11280",
-    "<span>JCT11280</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>JCT11280</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "variable"
   ],
   [
-    "dh3dlib/js/util/ecl.js~jct8836",
+    "dh3dlib/js/third_party/ecl.js~jct8836",
     "variable/index.html#static-variable-JCT8836",
-    "<span>JCT8836</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>JCT8836</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "variable"
   ],
   [
@@ -456,51 +450,51 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "dh3dlib/js/util/ecl.js~unescapeeucjp",
+    "dh3dlib/js/third_party/ecl.js~unescapeeucjp",
     "function/index.html#static-function-UnescapeEUCJP",
-    "<span>UnescapeEUCJP</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>UnescapeEUCJP</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~unescapejis7",
+    "dh3dlib/js/third_party/ecl.js~unescapejis7",
     "function/index.html#static-function-UnescapeJIS7",
-    "<span>UnescapeJIS7</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>UnescapeJIS7</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~unescapejis8",
+    "dh3dlib/js/third_party/ecl.js~unescapejis8",
     "function/index.html#static-function-UnescapeJIS8",
-    "<span>UnescapeJIS8</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>UnescapeJIS8</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~unescapesjis",
+    "dh3dlib/js/third_party/ecl.js~unescapesjis",
     "function/index.html#static-function-UnescapeSJIS",
-    "<span>UnescapeSJIS</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>UnescapeSJIS</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~unescapeutf16le",
+    "dh3dlib/js/third_party/ecl.js~unescapeutf16le",
     "function/index.html#static-function-UnescapeUTF16LE",
-    "<span>UnescapeUTF16LE</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>UnescapeUTF16LE</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~unescapeutf7",
+    "dh3dlib/js/third_party/ecl.js~unescapeutf7",
     "function/index.html#static-function-UnescapeUTF7",
-    "<span>UnescapeUTF7</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>UnescapeUTF7</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~unescapeutf8",
+    "dh3dlib/js/third_party/ecl.js~unescapeutf8",
     "function/index.html#static-function-UnescapeUTF8",
-    "<span>UnescapeUTF8</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>UnescapeUTF8</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
-    "dh3dlib/js/util/ecl.js~unescapeunicode",
+    "dh3dlib/js/third_party/ecl.js~unescapeunicode",
     "function/index.html#static-function-UnescapeUnicode",
-    "<span>UnescapeUnicode</span> <span class=\"search-result-import-path\">dh3dlib/js/util/ecl.js</span>",
+    "<span>UnescapeUnicode</span> <span class=\"search-result-import-path\">dh3dlib/js/third_party/ecl.js</span>",
     "function"
   ],
   [
@@ -846,6 +840,12 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "builtinexternal/webapiexternal.js~audiocontext",
+    "external/index.html",
+    "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "external"
+  ],
+  [
     "builtinexternal/webapiexternal.js~canvasrenderingcontext2d",
     "external/index.html",
     "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
@@ -897,12 +897,6 @@ window.esdocSearchIndex = [
     "js/base/animator.js~animator#animate",
     "class/js/base/Animator.js~Animator.html#instance-method-animate",
     "js/base/Animator.js~Animator#animate",
-    "method"
-  ],
-  [
-    "js/base/animator.js~animator#constructor",
-    "class/js/base/Animator.js~Animator.html#instance-constructor-constructor",
-    "js/base/Animator.js~Animator#constructor",
     "method"
   ],
   [
@@ -988,6 +982,12 @@ window.esdocSearchIndex = [
     "class/js/base/Bone.js~Bone.html#instance-method-initBoneData",
     "js/base/Bone.js~Bone#initBoneData",
     "method"
+  ],
+  [
+    "js/base/bone.js~bone#isknee",
+    "class/js/base/Bone.js~Bone.html#instance-member-isKnee",
+    "js/base/Bone.js~Bone#isKnee",
+    "member"
   ],
   [
     "js/base/bone.js~bone#localmatrix",
@@ -1404,9 +1404,9 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "js/base/camerakeyframe.js~camerakeyframe#parspective",
-    "class/js/base/CameraKeyFrame.js~CameraKeyFrame.html#instance-member-parspective",
-    "js/base/CameraKeyFrame.js~CameraKeyFrame#parspective",
+    "js/base/camerakeyframe.js~camerakeyframe#perspective",
+    "class/js/base/CameraKeyFrame.js~CameraKeyFrame.html#instance-member-perspective",
+    "js/base/CameraKeyFrame.js~CameraKeyFrame#perspective",
     "member"
   ],
   [
@@ -1800,12 +1800,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "js/base/dh2dobject.js~dh2dobject#constructor",
-    "class/js/base/DH2DObject.js~DH2DObject.html#instance-constructor-constructor",
-    "js/base/DH2DObject.js~DH2DObject#constructor",
-    "method"
-  ],
-  [
     "js/base/dh2dobject.js~dh2dobject#move",
     "class/js/base/DH2DObject.js~DH2DObject.html#instance-method-move",
     "js/base/DH2DObject.js~DH2DObject#move",
@@ -1872,6 +1866,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/base/dh3dobject.js~dh3dobject#getanimator",
+    "class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getAnimator",
+    "js/base/DH3DObject.js~DH3DObject#getAnimator",
+    "method"
+  ],
+  [
     "js/base/dh3dobject.js~dh3dobject#getautodirection",
     "class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getAutoDirection",
     "js/base/DH3DObject.js~DH3DObject#getAutoDirection",
@@ -1914,9 +1914,21 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/base/dh3dobject.js~dh3dobject#getmotion",
+    "class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getMotion",
+    "js/base/DH3DObject.js~DH3DObject#getMotion",
+    "method"
+  ],
+  [
     "js/base/dh3dobject.js~dh3dobject#getnumelements",
     "class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getNumElements",
     "js/base/DH3DObject.js~DH3DObject#getNumElements",
+    "method"
+  ],
+  [
+    "js/base/dh3dobject.js~dh3dobject#getposition",
+    "class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getPosition",
+    "js/base/DH3DObject.js~DH3DObject#getPosition",
     "method"
   ],
   [
@@ -1926,9 +1938,27 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/base/dh3dobject.js~dh3dobject#getrenderer",
+    "class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getRenderer",
+    "js/base/DH3DObject.js~DH3DObject#getRenderer",
+    "method"
+  ],
+  [
+    "js/base/dh3dobject.js~dh3dobject#getrotate",
+    "class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getRotate",
+    "js/base/DH3DObject.js~DH3DObject#getRotate",
+    "method"
+  ],
+  [
     "js/base/dh3dobject.js~dh3dobject#getskinarray",
     "class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getSkinArray",
     "js/base/DH3DObject.js~DH3DObject#getSkinArray",
+    "method"
+  ],
+  [
+    "js/base/dh3dobject.js~dh3dobject#getspeed",
+    "class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getSpeed",
+    "js/base/DH3DObject.js~DH3DObject#getSpeed",
     "method"
   ],
   [
@@ -2214,6 +2244,18 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "js/base/fragmentshader.js~fragmentshader#_name",
+    "class/js/base/FragmentShader.js~FragmentShader.html#instance-get-_name",
+    "js/base/FragmentShader.js~FragmentShader#_name",
+    "member"
+  ],
+  [
+    "js/base/fragmentshader.js~fragmentshader#_program",
+    "class/js/base/FragmentShader.js~FragmentShader.html#instance-get-_program",
+    "js/base/FragmentShader.js~FragmentShader#_program",
+    "member"
+  ],
+  [
     "js/base/fragmentshader.js~fragmentshader#bindattribute",
     "class/js/base/FragmentShader.js~FragmentShader.html#instance-method-bindAttribute",
     "js/base/FragmentShader.js~FragmentShader#bindAttribute",
@@ -2247,30 +2289,6 @@ window.esdocSearchIndex = [
     "js/base/fragmentshader.js~fragmentshader#setmaterialdata",
     "class/js/base/FragmentShader.js~FragmentShader.html#instance-method-setMaterialData",
     "js/base/FragmentShader.js~FragmentShader#setMaterialData",
-    "method"
-  ],
-  [
-    "js/base/framebuffer.js",
-    "file/js/base/FrameBuffer.js.html",
-    "js/base/FrameBuffer.js",
-    "file"
-  ],
-  [
-    "js/base/framebuffer.js~framebuffer#begin",
-    "class/js/base/FrameBuffer.js~FrameBuffer.html#instance-method-begin",
-    "js/base/FrameBuffer.js~FrameBuffer#begin",
-    "method"
-  ],
-  [
-    "js/base/framebuffer.js~framebuffer#constructor",
-    "class/js/base/FrameBuffer.js~FrameBuffer.html#instance-constructor-constructor",
-    "js/base/FrameBuffer.js~FrameBuffer#constructor",
-    "method"
-  ],
-  [
-    "js/base/framebuffer.js~framebuffer#end",
-    "class/js/base/FrameBuffer.js~FrameBuffer.html#instance-method-end",
-    "js/base/FrameBuffer.js~FrameBuffer#end",
     "method"
   ],
   [
@@ -3042,6 +3060,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/base/messagewindow.js~messagewindow#setcontext",
+    "class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setContext",
+    "js/base/MessageWindow.js~MessageWindow#setContext",
+    "method"
+  ],
+  [
     "js/base/messagewindow.js~messagewindow#seticon",
     "class/js/base/MessageWindow.js~MessageWindow.html#instance-method-setIcon",
     "js/base/MessageWindow.js~MessageWindow#setIcon",
@@ -3288,22 +3312,10 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "js/base/modelbank.js~modelbank#onloadmodel",
-    "class/js/base/ModelBank.js~ModelBank.html#instance-method-onloadModel",
-    "js/base/ModelBank.js~ModelBank#onloadModel",
-    "method"
-  ],
-  [
     "js/base/modelreader.js",
     "file/js/base/ModelReader.js.html",
     "js/base/ModelReader.js",
     "file"
-  ],
-  [
-    "js/base/modelreader.js~modelreader#constructor",
-    "class/js/base/ModelReader.js~ModelReader.html#instance-constructor-constructor",
-    "js/base/ModelReader.js~ModelReader#constructor",
-    "method"
   ],
   [
     "js/base/modelreader.js~modelreader#readmodel",
@@ -3346,6 +3358,12 @@ window.esdocSearchIndex = [
     "class/js/base/Motion.js~Motion.html#instance-member-defaultFPS",
     "js/base/Motion.js~Motion#defaultFPS",
     "member"
+  ],
+  [
+    "js/base/motion.js~motion#destroy",
+    "class/js/base/Motion.js~Motion.html#instance-method-destroy",
+    "js/base/Motion.js~Motion#destroy",
+    "method"
   ],
   [
     "js/base/motion.js~motion#framelength",
@@ -3417,12 +3435,6 @@ window.esdocSearchIndex = [
     "js/base/motionbank.js~motionbank#getmotionfromfile",
     "class/js/base/MotionBank.js~MotionBank.html#instance-method-getMotionFromFile",
     "js/base/MotionBank.js~MotionBank#getMotionFromFile",
-    "method"
-  ],
-  [
-    "js/base/motionbank.js~motionbank#onloadmotion",
-    "class/js/base/MotionBank.js~MotionBank.html#instance-method-onloadMotion",
-    "js/base/MotionBank.js~MotionBank#onloadMotion",
     "method"
   ],
   [
@@ -3556,12 +3568,6 @@ window.esdocSearchIndex = [
     "file/js/base/Renderer.js.html",
     "js/base/Renderer.js",
     "file"
-  ],
-  [
-    "js/base/renderer.js~renderer#camera",
-    "class/js/base/Renderer.js~Renderer.html#instance-member-camera",
-    "js/base/Renderer.js~Renderer#camera",
-    "member"
   ],
   [
     "js/base/renderer.js~renderer#constructor",
@@ -4422,12 +4428,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/mmd/mmdanimator.js~mmdanimator#constructor",
-    "class/js/mmd/MMDAnimator.js~MMDAnimator.html#instance-constructor-constructor",
-    "js/mmd/MMDAnimator.js~MMDAnimator#constructor",
-    "method"
-  ],
-  [
     "js/mmd/mmdanimator.js~mmdanimator#getbeziervalue",
     "class/js/mmd/MMDAnimator.js~MMDAnimator.html#instance-method-getBezierValue",
     "js/mmd/MMDAnimator.js~MMDAnimator#getBezierValue",
@@ -4998,22 +4998,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/obj/objmaterial.js~objmaterial#constructor",
-    "class/js/obj/ObjMaterial.js~ObjMaterial.html#instance-constructor-constructor",
-    "js/obj/ObjMaterial.js~ObjMaterial#constructor",
-    "method"
-  ],
-  [
     "js/obj/objmodel.js",
     "file/js/obj/ObjModel.js.html",
     "js/obj/ObjModel.js",
     "file"
-  ],
-  [
-    "js/obj/objmodel.js~objmodel#constructor",
-    "class/js/obj/ObjModel.js~ObjModel.html#instance-constructor-constructor",
-    "js/obj/ObjModel.js~ObjModel#constructor",
-    "method"
   ],
   [
     "js/obj/objparser.js",
@@ -5124,22 +5112,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/renderer/simple/simplefragmentshader.js~simplefragmentshader#constructor",
-    "class/js/renderer/simple/SimpleFragmentShader.js~SimpleFragmentShader.html#instance-constructor-constructor",
-    "js/renderer/simple/SimpleFragmentShader.js~SimpleFragmentShader#constructor",
-    "method"
-  ],
-  [
     "js/renderer/simple/simplerenderer.js",
     "file/js/renderer/simple/SimpleRenderer.js.html",
     "js/renderer/simple/SimpleRenderer.js",
     "file"
-  ],
-  [
-    "js/renderer/simple/simplerenderer.js~simplerenderer#constructor",
-    "class/js/renderer/simple/SimpleRenderer.js~SimpleRenderer.html#instance-constructor-constructor",
-    "js/renderer/simple/SimpleRenderer.js~SimpleRenderer#constructor",
-    "method"
   ],
   [
     "js/renderer/simple/simplevertexshader.js",
@@ -5214,22 +5190,10 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "js/renderer/toon/toonfragmentshader.js~toonfragmentshader#constructor",
-    "class/js/renderer/toon/ToonFragmentShader.js~ToonFragmentShader.html#instance-constructor-constructor",
-    "js/renderer/toon/ToonFragmentShader.js~ToonFragmentShader#constructor",
-    "method"
-  ],
-  [
     "js/renderer/toon/toonrenderer.js",
     "file/js/renderer/toon/ToonRenderer.js.html",
     "js/renderer/toon/ToonRenderer.js",
     "file"
-  ],
-  [
-    "js/renderer/toon/toonrenderer.js~toonrenderer#constructor",
-    "class/js/renderer/toon/ToonRenderer.js~ToonRenderer.html#instance-constructor-constructor",
-    "js/renderer/toon/ToonRenderer.js~ToonRenderer#constructor",
-    "method"
   ],
   [
     "js/renderer/toon/toonvertexshader.js",
@@ -5298,6 +5262,24 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/third_party/binaryparser.js",
+    "file/js/third_party/BinaryParser.js.html",
+    "js/third_party/BinaryParser.js",
+    "file"
+  ],
+  [
+    "js/third_party/ecl.js",
+    "file/js/third_party/ecl.js.html",
+    "js/third_party/ecl.js",
+    "file"
+  ],
+  [
+    "js/third_party/gin.js",
+    "file/js/third_party/gin.js.html",
+    "js/third_party/gin.js",
+    "file"
+  ],
+  [
     "js/util/ajaxrequest.js",
     "file/js/util/AjaxRequest.js.html",
     "js/util/AjaxRequest.js",
@@ -5332,12 +5314,6 @@ window.esdocSearchIndex = [
     "class/js/util/AjaxRequest.js~AjaxRequest.html#instance-method-request",
     "js/util/AjaxRequest.js~AjaxRequest#request",
     "method"
-  ],
-  [
-    "js/util/binaryparser.js",
-    "file/js/util/BinaryParser.js.html",
-    "js/util/BinaryParser.js",
-    "file"
   ],
   [
     "js/util/binaryreader.js",
@@ -5380,6 +5356,12 @@ window.esdocSearchIndex = [
     "class/js/util/BinaryReader.js~BinaryReader.html#instance-method-hasBytesAvailable",
     "js/util/BinaryReader.js~BinaryReader#hasBytesAvailable",
     "method"
+  ],
+  [
+    "js/util/binaryreader.js~binaryreader#onerrorfunc",
+    "class/js/util/BinaryReader.js~BinaryReader.html#instance-member-onerrorFunc",
+    "js/util/BinaryReader.js~BinaryReader#onerrorFunc",
+    "member"
   ],
   [
     "js/util/binaryreader.js~binaryreader#onloadfunc",
@@ -5526,6 +5508,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "js/util/textreader.js~textreader#hasbytesavailable",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-hasBytesAvailable",
+    "js/util/TextReader.js~TextReader#hasBytesAvailable",
+    "method"
+  ],
+  [
     "js/util/textreader.js~textreader#onloadfunc",
     "class/js/util/TextReader.js~TextReader.html#instance-member-onloadFunc",
     "js/util/TextReader.js~TextReader#onloadFunc",
@@ -5536,6 +5524,72 @@ window.esdocSearchIndex = [
     "class/js/util/TextReader.js~TextReader.html#instance-member-position",
     "js/util/TextReader.js~TextReader#position",
     "member"
+  ],
+  [
+    "js/util/textreader.js~textreader#readbyte",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-readByte",
+    "js/util/TextReader.js~TextReader#readByte",
+    "method"
+  ],
+  [
+    "js/util/textreader.js~textreader#readdata",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-readData",
+    "js/util/TextReader.js~TextReader#readData",
+    "method"
+  ],
+  [
+    "js/util/textreader.js~textreader#readdouble",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-readDouble",
+    "js/util/TextReader.js~TextReader#readDouble",
+    "method"
+  ],
+  [
+    "js/util/textreader.js~textreader#readfloat",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-readFloat",
+    "js/util/TextReader.js~TextReader#readFloat",
+    "method"
+  ],
+  [
+    "js/util/textreader.js~textreader#readint",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-readInt",
+    "js/util/TextReader.js~TextReader#readInt",
+    "method"
+  ],
+  [
+    "js/util/textreader.js~textreader#readinteger",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-readInteger",
+    "js/util/TextReader.js~TextReader#readInteger",
+    "method"
+  ],
+  [
+    "js/util/textreader.js~textreader#readshort",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-readShort",
+    "js/util/TextReader.js~TextReader#readShort",
+    "method"
+  ],
+  [
+    "js/util/textreader.js~textreader#readstring",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-readString",
+    "js/util/TextReader.js~TextReader#readString",
+    "method"
+  ],
+  [
+    "js/util/textreader.js~textreader#readunsignedbyte",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-readUnsignedByte",
+    "js/util/TextReader.js~TextReader#readUnsignedByte",
+    "method"
+  ],
+  [
+    "js/util/textreader.js~textreader#readunsignedint",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-readUnsignedInt",
+    "js/util/TextReader.js~TextReader#readUnsignedInt",
+    "method"
+  ],
+  [
+    "js/util/textreader.js~textreader#readunsignedshort",
+    "class/js/util/TextReader.js~TextReader.html#instance-method-readUnsignedShort",
+    "js/util/TextReader.js~TextReader#readUnsignedShort",
+    "method"
   ],
   [
     "js/util/textreader.js~textreader#url",
@@ -5568,22 +5622,10 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "js/util/ecl.js",
-    "file/js/util/ecl.js.html",
-    "js/util/ecl.js",
-    "file"
-  ],
-  [
     "js/xfile/xmodel.js",
     "file/js/xfile/XModel.js.html",
     "js/xfile/XModel.js",
     "file"
-  ],
-  [
-    "js/xfile/xmodel.js~xmodel#constructor",
-    "class/js/xfile/XModel.js~XModel.html#instance-constructor-constructor",
-    "js/xfile/XModel.js~XModel#constructor",
-    "method"
   ],
   [
     "js/xfile/xparser.js",

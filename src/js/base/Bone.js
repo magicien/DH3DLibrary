@@ -42,7 +42,7 @@ export default class Bone {
     /** @type {Bone} */
     this.parentBone = null
 
-    /** @type {Array} */
+    /** @type {Array<Bone>} */
     this.childBoneArray = []
 
 
@@ -78,11 +78,12 @@ export default class Bone {
     /** @type {Vector4} */
     this.blendRotation = new Vector4()
 
+    /** @type {boolean} */
     this.isKnee = false
   }
 
   /**
-   * 
+   * initialize bone data
    * @access public
    * @returns {void}
    */
@@ -107,7 +108,7 @@ export default class Bone {
   }
 
   /**
-   * 
+   * copy bone data
    * @access public
    * @returns {Bone} new Bone object
    */
@@ -129,7 +130,7 @@ export default class Bone {
   }
 
   /**
-   * 
+   * add child bone
    * @access public
    * @param {Bone} childBone - 
    * @returns {void}
@@ -143,7 +144,7 @@ export default class Bone {
   }
 
   /**
-   * 
+   * remove child bone
    * @access public
    * @param {Bone} childBone - 
    * @returns {void}
@@ -157,7 +158,7 @@ export default class Bone {
   }
 
   /**
-   * 
+   * reset bone position
    * @access public
    * @returns {void}
    */

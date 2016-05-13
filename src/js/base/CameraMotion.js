@@ -11,18 +11,28 @@ export default class CameraMotion {
    * @constructor
    */
   constructor() {
+    /** @type {string} */
     this.hashName = ''
+
+    /** @type {boolean} */
     this.loaded = false
+
+    /** @type {function} */
     this.onload = null
 
     // motion
-    this.motionArray = null
 
-    this.frameLength = 0
-    this.defaultFPS = 0
-    this.loop = false
-  
+    /** @type {Array<Motion>} */
     this.motionArray = []
+
+    /** @type {int} */
+    this.frameLength = 0
+
+    /** @type {float} */
+    this.defaultFPS = 0
+
+    /** @type {boolean} */
+    this.loop = false
   }
 
   /**

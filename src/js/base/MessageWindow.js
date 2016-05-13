@@ -69,6 +69,12 @@ export default class MessageWindow extends DH2DObject {
     this._textShadowOffsetY = 0
   }
 
+  /**
+   * animate message window
+   * @access public
+   * @param {float} elapsedTime - elapsed time (seconds) from previous frame
+   * @returns {void}
+   */
   animate(elapsedTime) {
     if(  this._mode === this.MODE_OPEN
       || this._mode === this.MODE_STRING
@@ -77,6 +83,11 @@ export default class MessageWindow extends DH2DObject {
     }
   }
 
+  /**
+   * render message window
+   * @access public
+   * @returns {void}
+   */
   render() {
     //const c = this._bindedCanvas._2DContext
     const padding = this._padding
@@ -186,6 +197,12 @@ export default class MessageWindow extends DH2DObject {
     }
   }
 
+  /**
+   * draw icon image and text
+   * @access private
+   * @param {int} len - length of text (for animation)
+   * @returns {void}
+   */
   _drawIconAndText(len) {
     const c = this._bindedCanvas._2DContext
 
@@ -241,6 +258,11 @@ export default class MessageWindow extends DH2DObject {
     }
   }
 
+  /**
+   * set up text context
+   * @access public
+   * @returns {void}
+   */
   setupTextContext() {
     const c = this._bindedCanvas._2DContext
 
@@ -255,6 +277,11 @@ export default class MessageWindow extends DH2DObject {
     c.shadowOffsetY = this._textShadowOffsetY
   }
 
+  /**
+   * set up balloon context
+   * @access public
+   * @returns {void}
+   */
   setupBalloonContext() {
     const c = this._bindedCanvas._2DContext
 
@@ -275,6 +302,17 @@ export default class MessageWindow extends DH2DObject {
     c.shadowOffsetY = this._balloonShadowOffsetY
   }
 
+  /**
+   * draw balloon to given position
+   * @access public
+   * @param {float} speakerX -
+   * @param {float} speakerY -
+   * @param {float} left -
+   * @param {float} top -
+   * @param {float} width -
+   * @param {float} height -
+   * @returns {void}
+   */
   drawBalloon(speakerX, speakerY, left, top, width, height) {
     const c = this._bindedCanvas._2DContext
     const vWidth = 5
@@ -327,48 +365,104 @@ export default class MessageWindow extends DH2DObject {
     c.stroke()
   }
 
+  /**
+   * open message window (start animation)
+   * @access public
+   * @returns {void}
+   */
   open() {
     this._updateMessageSize()
     this._mode = this.MODE_OPEN
     this._time = 0.0
   }
 
+  /**
+   * close message window (start animation)
+   * @access public
+   * @returns {void}
+   */
   close() {
     this._mode = this.MODE_CLOSE
     this._time = 0.0
   }
 
+  /**
+   * get context
+   * @access public
+   * @returns {CanvasRenderingContext2D} - context
+   */
   getContext() {
     return this._bindedCanvas._2DContext
   }
 
+  /**
+   * set context
+   * @access public
+   * @param {CanvasRenderingContext2D} context - 
+   * @returns {void}
+   */
   setContext(context) {
     // duplicated
     //this._bindedContext = context
   }
 
+  /**
+   * get Canvas object
+   * @access public
+   * @returns {HTMLCanvasElement} - Canvas object
+   */
   getCanvas() {
     return this._bindedCanvas
   }
 
+  /**
+   * set Canvas object
+   * @access public
+   * @param {HTMLCanvasElement} canvas - canvas object
+   * @returns {void}
+   */
   setCanvas(canvas) {
     this._bindedCanvas = canvas
     this._updateMessageSize()
   }
 
+  /**
+   * get icon image
+   * @access public
+   * @returns {HTMLImageElement} - icon image
+   */
   getIcon() {
     return this._icon
   }
 
+  /**
+   * set icon image
+   * @access public
+   * @param {HTMLImageElement} icon - icon image
+   * @returns {void}
+   */
   setIcon(icon) {
     this._icon = icon
     this._updateMessageSize()
   }
 
+  /**
+   * get position offset
+   * @access public
+   * @returns {Vector3} - position
+   */
   getOffset() {
     return this._offset
   }
 
+  /**
+   * set position offset
+   * @access public
+   * @param {float} x - X value
+   * @param {float} y - Y value
+   * @param {float} z - Z value
+   * @returns {void}
+   */
   setOffset(x, y, z) {
     if(x instanceof Vector3){
       this._offset = x
@@ -377,10 +471,23 @@ export default class MessageWindow extends DH2DObject {
     }
   }
 
+  /**
+   * get screen offset
+   * @access public
+   * @returns {Vector3} - screen offset
+   */
   getScreenOffset() {
     return this._screenOffset
   }
 
+  /**
+   * set screen offset
+   * @access public
+   * @param {float} x - X value
+   * @param {float} y - Y value
+   * @param {float} z - Z value
+   * @returns {void}
+   */
   setScreenOffset(x, y, z) {
     if(x instanceof Vector3){
       this._screenOffset = x
@@ -389,24 +496,51 @@ export default class MessageWindow extends DH2DObject {
     }
   }
 
+  /**
+   * get message text
+   * @access public
+   * @returns {string} - message text
+   */
   getMessage() {
     return this._message
   }
 
-  setMessage(message) {
+  /**
+   * set message text
+   * @access public
+   * @param {string} message - text to show
+   * @returns {void}
+   */
+  setMessage(message = null) {
     this._message = message
     this._updateMessageSize()
   }
 
+  /**
+   * get max width
+   * @access public
+   * @returns {int} - max width of message window
+   */
   getMaxWidth() {
     return this._maxWidth
   }
 
+  /**
+   * set max width
+   * @access public
+   * @param {int} maxWidth -
+   * @returns {void}
+   */
   setMaxWidth(maxWidth) {
     this._maxWidth = maxWidth
     this._updateMessageSize()
   }
 
+  /**
+   * update message size
+   * @access private
+   * @returns {void}
+   */
   _updateMessageSize() {
     let iconWidth = 0
     let iconHeight = 0
@@ -468,6 +602,13 @@ export default class MessageWindow extends DH2DObject {
     }
   }
 
+  /**
+   * get text for one line
+   * @access private
+   * @param {string} str -
+   * @param {int} maxWidth -
+   * @returns {int} - string length
+   */
   _getLineChars(str, maxWidth) {
     const c = this._bindedCanvas._2DContext
     const met = c.measureText(str)
@@ -498,6 +639,11 @@ export default class MessageWindow extends DH2DObject {
     return newLen
   }
 
+  /**
+   * get state of message window
+   * @access public
+   * @returns {int} - 0: ready, 1: opening, 2: show string, 3: waiting, 4: closing
+   */
   getState() {
     return this._mode
   }

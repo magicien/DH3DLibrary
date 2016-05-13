@@ -13,7 +13,6 @@ import DH3DObject from './base/DH3DObject'
 import DHAudio from './base/DHAudio'
 import DHEvent from './base/DHEvent'
 import FragmentShader from './base/FragmentShader'
-import FrameBuffer from './base/FrameBuffer'
 import IK from './base/IK'
 import KeyFrame from './base/KeyFrame'
 import KeyListener from './base/KeyListener'
@@ -77,6 +76,7 @@ import XModel from './xfile/XModel'
 import XParser from './xfile/XParser'
 import XReader from './xfile/XReader'
 
+/*global exports*/
 exports.Animator = Animator
 exports.Bone = Bone
 exports.Camera = Camera
@@ -92,7 +92,6 @@ exports.DH3DObject = DH3DObject
 exports.DHAudio = DHAudio
 exports.DHEvent = DHEvent
 exports.FragmentShader = FragmentShader
-exports.FrameBuffer = FrameBuffer
 exports.IK = IK
 exports.KeyFrame = KeyFrame
 exports.KeyListener = KeyListener

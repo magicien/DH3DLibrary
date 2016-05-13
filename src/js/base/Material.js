@@ -10,8 +10,8 @@ export default class Material {
   /**
    * constructor
    * @access public
-   * @param {Material} m - 
    * @constructor
+   * @param {Material} m - 
    */
   constructor(m) {
     this.ambient = null
@@ -54,6 +54,11 @@ export default class Material {
     }
   }
 
+  /**
+   * get ambient value
+   * @access public
+   * @returns {Float32Array} - ambient value
+   */
   getAmbient() {
     if(!this._ambientCache){
       this._ambientCache = new Float32Array([
@@ -66,6 +71,11 @@ export default class Material {
     return this._ambientCache
   }
 
+  /**
+   * get diffuse value
+   * @access public
+   * @returns {Float32Array} - diffuse value
+   */
   getDiffuse() {
     if(!this._diffuseCache){
       this._diffuseCache = new Float32Array([
@@ -78,6 +88,11 @@ export default class Material {
     return this._diffuseCache
   }
 
+  /**
+   * get specular value
+   * @access public
+   * @returns {Float32Array} - specular value
+   */
   getSpecular() {
     if(!this._specularCache){
       this._specularCache = new Float32Array([
@@ -90,10 +105,20 @@ export default class Material {
     return this._specularCache
   }
 
+  /**
+   * get shininess value
+   * @access public
+   * @returns {float} - shininess value
+   */
   getShininess() {
     return this.shininess
   }
 
+  /**
+   * get emission value
+   * @access public
+   * @returns {Float32Array} - emission value
+   */
   getEmission() {
     if(!this._emissionCache){
       this._emissionCache = new Float32Array([
@@ -106,10 +131,20 @@ export default class Material {
     return this._emissionCache
   }
 
+  /**
+   * get alpha value
+   * @access public
+   * @returns {float} - alpha value
+   */
   getAlpha() {
     return this.alpha
   }
 
+  /**
+   * clear cache
+   * @access public
+   * @returns {void}
+   */
   clearCache() {
     // FIXME
     this._ambientCache = null

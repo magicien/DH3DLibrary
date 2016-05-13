@@ -15,7 +15,7 @@ export default class MotionBank {
     this._motions = new Map()
     /** @type {Map} */
     this._loadingMotions = new Map()
-    /** @type {Array} */
+    /** @type {Array<MotionReader>} */
     this._motionReaders = []
   }
 

@@ -3,7 +3,10 @@
 import Vector3 from './Vector3'
 import Vector4 from './Vector4'
 import DHEvent from './DHEvent'
+import Model from './Model'
 import ModelBank from './ModelBank'
+import Motion from './Motion'
+import MotionBank from './MotionBank'
 
 /**
  * DH3DObject basic class
@@ -54,7 +57,7 @@ export default class DH3DObject {
   /**
    * set callback function for each move
    * @access public
-   * @param {function} func - callback which is called each frame
+   * @param {Function} func - callback which is called each frame
    * @return {number} 0: success, -1: failure (func is not function)
    */
   addMoveCallback(func) {
@@ -69,7 +72,7 @@ export default class DH3DObject {
   /**
    * remove callback function for each move
    * @access public
-   * @param {function} func - callback which is called each frame
+   * @param {Function} func - callback which is called each frame
    * @return {number} 0: success, -1: failure (func is not registered)
    */
   removeMoveCallback(func){
@@ -82,9 +85,14 @@ export default class DH3DObject {
     return 0
   }
 
+  /**
+   * move object
+   * @access public
+   * @param {float} elapsedTime - elapsed time (seconds) from previous frame
+   * @returns {void}
+   */
   move(elapsedTime) {
     // FIXME: params
-    //const gravity = new Vector3(0, -9.8, 0)
     const friction = 10.0 * elapsedTime
 
     if(friction < 1.0){
@@ -124,30 +132,83 @@ export default class DH3DObject {
     }
   }
 
+  /**
+   * get Model object
+   * @access public
+   * @returns {Model} - model object
+   */
   getModel() {
     return this._model
   }
 
-  setModel(model) {
+  /**
+   * set Model object
+   * @access public
+   * @param {Model} model - Model object. Set null to delete object
+   * @returns {void}
+   */
+  setModel(model = null) {
     if(this._model){
       this._model.destroy()
     }
 
-    // FIXME: setModel function must be synchronous function
-    if(this._renderer && model.renderer !== this._renderer){
-      //this._model = ModelBank.getModelForRenderer(model.hashName, this._renderer)
-      ModelBank.getModelForRenderer(model.hashName, this._renderer)
-        .then((m) => { this._model = m })
-        .catch((error) => { console.error(`model load error: ${error}`) })
-    }else{
-      this._model = model
+    if(model === null){
+      return false
     }
+
+    if(model instanceof Model){
+      if(this._renderer && model.renderer !== this._renderer){
+        return ModelBank.getModelForRenderer(model.hashName, this._renderer)
+          .then((m) => { this._model = m })
+          .catch((error) => { console.error(`model load error: ${error}`) })
+      }
+
+      this._model = model
+      return true
+    }
+
+    return ModelBank.getModel(model).then((m) => this.setModel(m))
   }
 
-  setMotion(motion) {
-    this._motion = motion
+  /**
+   * get Motion object
+   * @access public
+   * @returns {Motion} - Motion object
+   */
+  getMotion() {
+    return this._motion
   }
 
+  /**
+   * set Motion object
+   * @access public
+   * @param {Motion} motion - Motion object. Set null to delete object
+   * @returns {void}
+   */
+  setMotion(motion = null) {
+    if(this._motion){
+      this._motion.destroy()
+    }
+
+    if(motion === null){
+      return false
+    }
+
+    if(motion instanceof Motion){
+      this._motion = motion
+      return true
+    }
+
+    return MotionBank.getMotion(motion).then((m) => this.setMotion(m))
+  }
+
+  /**
+   * set Motion object to blend with current motion
+   * @access public
+   * @param {Motion} motion - Motion object to blend
+   * @param {float} blendCount - number of frames to complete transition
+   * @returns {void}
+   */
   setMotionWithBlending(motion, blendCount) {
     this._motion = motion
     this._motionBlendCount = 1.0
@@ -155,17 +216,48 @@ export default class DH3DObject {
     this._model.rootBone.setBlendValueRecursive()
   }
 
+  /**
+   * get Renderer object
+   * @access public
+   * @returns {Renderer} - Renderer object
+   */
+  getRenderer() {
+    return this._renderer
+  }
+
+  /**
+   * set Renderer object
+   * @access public
+   * @param {Renderer} renderer - Renderer object
+   * @returns {void}
+   */
   setRenderer(renderer) {
-    // FIXME: setModel function must be synchronous function
+    this._renderer = renderer
+
     if(this._model && this._model.renderer !== renderer){
-      //this._model = ModelBank.getModelForRenderer(this._model.hashName, renderer)
-      ModelBank.getModelForRenderer(this._model.hashName, renderer)
+      return ModelBank.getModelForRenderer(this._model.hashName, renderer)
         .then((m) => { this._model = m })
         .catch((error) => { console.error(`model load error: ${error}`) })
     }
-    this._renderer = renderer
+
+    return true
   }
 
+  /**
+   * get animating state
+   * @access public
+   * @returns {boolean} - true: enable animation, false: disable animation
+   */
+  getAnimating() {
+    return this._animating
+  }
+
+  /**
+   * set animating state
+   * @access public
+   * @param {boolean} animating - true: enable animation, false: disable animation
+   * @returns {void}
+   */
   setAnimating(animating = true) {
     if(animating){
       this._animating = true
@@ -174,10 +266,21 @@ export default class DH3DObject {
     }
   }
 
-  getAnimating() {
-    return this._animating
+  /**
+   * get loop state
+   * @access public
+   * @returns {boolean} - true: enable loop, false: disable loop
+   */
+  getLoop() {
+    return this._loop
   }
 
+  /**
+   * set loop state
+   * @access public
+   * @param {boolean} loop - true: enable loop, false: disable loop
+   * @returns {void}
+   */
   setLoop(loop = true) {
     if(loop){
       this._loop = true
@@ -186,30 +289,80 @@ export default class DH3DObject {
     }
   }
 
-  getLoop() {
-    return this._loop
+  /**
+   * get Animator object
+   * @access public
+   * @returns {Animator} - Animator object
+   */
+  getAnimator() {
+    return this._animator
   }
 
+  /**
+   * set Animator object
+   * @access public
+   * @param {Animator} animator - Animator object
+   * @returns {void}
+   */
   setAnimator(animator) {
     this._animator = animator
   }
 
-  setAnimationTime(time) {
-    this._animationTime = time
-  }
-
+  /**
+   * get animation time
+   * @access public
+   * @returns {float} - animation time (seconds)
+   */
   getAnimationTime() {
     return this._animationTime
   }
 
-  setAnimationSpeed(speed) {
-    this._animationSpeed = speed
+  /**
+   * set animation time
+   * @access public
+   * @param {float} time - animation time (seconds)
+   * @returns {void}
+   */
+  setAnimationTime(time) {
+    this._animationTime = time
   }
 
+  /**
+   * get animation speed
+   * @access public
+   * @returns {float} - animation speed: normal speed is 1.0
+   */
   getAnimationSpeed() {
     return this._animationSpeed
   }
 
+  /**
+   * set animation speed
+   * @access public
+   * @param {float} speed - animation speed: normal speed is 1.0
+   * @returns {void}
+   */
+  setAnimationSpeed(speed) {
+    this._animationSpeed = speed
+  }
+
+  /**
+   * get object position
+   * @access public
+   * @returns {Vector3} - object position
+   */
+  getPosition() {
+    return this._position
+  }
+
+  /**
+   * set object position
+   * @access public
+   * @param {Vector3|float} x - object position (Vector3 object or X value)
+   * @param {float} y - Y value
+   * @param {float} z - Z value
+   * @returns {void}
+   */
   setPosition(x, y, z) {
     if(x instanceof Vector3){
       this._position.x = x.x
@@ -222,6 +375,23 @@ export default class DH3DObject {
     }
   }
 
+  /**
+   * get object speed
+   * @access public
+   * @returns {Vector3} - object speed
+   */
+  getSpeed() {
+    return this._speed
+  }
+
+  /**
+   * set object speed
+   * @access public
+   * @param {Vector3|float} x - object speed (Vector3 object or X value)
+   * @param {float} y - Y value of speed
+   * @param {float} z - Z value of speed
+   * @returns {void}
+   */
   setSpeed(x, y, z) {
     if(x instanceof Vector3){
       this._speed.x = x.x
@@ -234,6 +404,24 @@ export default class DH3DObject {
     }
   }
 
+  /**
+   * get quaternion for rotation
+   * @access public
+   * @returns {Vector4} - quaternion
+   */
+  getRotate() {
+    return this._model.rootBone.rotate
+  }
+
+  /**
+   * set quaternion for rotation
+   * @access public
+   * @param {Vector4|float} x - quaternion (Vector4 or X value)
+   * @param {float} y - Y value
+   * @param {float} z - Z value
+   * @param {float} w - W value
+   * @returns {void}
+   */
   setRotate(x, y, z, w) {
     const rot = this._model.rootBone.rotate
     if(x instanceof Vector4){
@@ -257,7 +445,7 @@ export default class DH3DObject {
 
   setScale(x, y, z) {
     const scale = this._model.rootBone.scale
-    if(y === null && z === null){
+    if(y === undefined && z === undefined){
       scale.x = x
       scale.y = x
       scale.z = x
@@ -268,6 +456,10 @@ export default class DH3DObject {
     }
   }
 
+  getAutoDirection() {
+    return this._autoDirection
+  }
+
   setAutoDirection(autoDirection = true) {
     if(autoDirection){
       this._autoDirection = true
@@ -276,24 +468,20 @@ export default class DH3DObject {
     }
   }
 
-  getAutoDirection() {
-    return this._autoDirection
+  getMirror() {
+    return this._mirror
   }
 
   setMirror(flag) {
     this._mirror = flag
   }
 
-  getMirror() {
-    return this._mirror
+  getReflectionMode() {
+    return this._reflectionMode
   }
 
   setReflectionMode(flag) {
     this._reflectionMode = flag
-  }
-
-  getReflectionMode() {
-    return this._reflectionMode
   }
 
   updateMaterial() {
@@ -394,27 +582,27 @@ export default class DH3DObject {
     arr.length = 0
   }
 
-  setDirection(direction) {
-    this._direction = direction
-  }
-
   getDirection() {
     return this._direction
   }
 
-  setMaxSpeed(maxSpeed) {
-    this._maxSpeed = maxSpeed
+  setDirection(direction) {
+    this._direction = direction
   }
 
   getMaxSpeed() {
     return this._maxSpeed
   }
 
-  setState(state) {
-    this._state = state
+  setMaxSpeed(maxSpeed) {
+    this._maxSpeed = maxSpeed
   }
 
   getState() {
     return this._state
+  }
+
+  setState(state) {
+    this._state = state
   }
 }

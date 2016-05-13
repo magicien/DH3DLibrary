@@ -9,15 +9,17 @@
   <script src="script/prettify/prettify.js"></script>
   
   
+  <script src="script/manual.js"></script>
 </head>
-<body class="layout-container">
+<body class="layout-container" data-ice="rootContainer">
 
 <header>
   <a href="./">Home</a>
-  <a href="identifiers.html">Identifier</a>
+  
+  <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
-  <a data-ice="repoURL" href="git+https://github.com/magicien/DH3DLibrary.git">Repository</a>
+  <a data-ice="repoURL" href="https://github.com/magicien/DH3DLibrary" class="repo-url-github">Repository</a>
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -27,136 +29,114 @@
   </div>
 </header>
 
-<nav class="navigation" data-ice="nav"><div data-ice="classWrap">
-  <h2>Class</h2>
+<nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="classDoc"><span><a href="class/js/util/AjaxRequest.js~AjaxRequest.html">AjaxRequest</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/util/BinaryReader.js~BinaryReader.html">BinaryReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/util/BinaryRequest.js~BinaryRequest.html">BinaryRequest</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Bone.js~Bone.html">Bone</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Camera.js~Camera.html">Camera</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CameraAnimator.js~CameraAnimator.html">CameraAnimator</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CameraKeyFrame.js~CameraKeyFrame.html">CameraKeyFrame</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CameraMotion.js~CameraMotion.html">CameraMotion</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionBank.js~CameraMotionBank.html">CameraMotionBank</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CameraMotionReader.js~CameraMotionReader.html">CameraMotionReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/CanvasField.js~CanvasField.html">CanvasField</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Constraint.js~Constraint.html">Constraint</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/DH2DObject.js~DH2DObject.html">DH2DObject</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html">DH3DObject</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/DHAudio.js~DHAudio.html">DHAudio</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/DHEvent.js~DHEvent.html">DHEvent</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/Face.js~Face.html">Face</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/FaceMotion.js~FaceMotion.html">FaceMotion</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/FaceVertex.js~FaceVertex.html">FaceVertex</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/FragmentShader.js~FragmentShader.html">FragmentShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/FrameBuffer.js~FrameBuffer.html">FrameBuffer</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/IK.js~IK.html">IK</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/IKFrame.js~IKFrame.html">IKFrame</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/KeyFrame.js~KeyFrame.html">KeyFrame</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/KeyListener.js~KeyListener.html">KeyListener</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Light.js~Light.html">Light</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/LightKeyFrame.js~LightKeyFrame.html">LightKeyFrame</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/MMDAnimator.js~MMDAnimator.html">MMDAnimator</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/MMDCameraAnimator.js~MMDCameraAnimator.html">MMDCameraAnimator</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Material.js~Material.html">Material</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Matrix.js~Matrix.html">Matrix</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html">MessageWindow</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Model.js~Model.html">Model</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/ModelBank.js~ModelBank.html">ModelBank</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/ModelReader.js~ModelReader.html">ModelReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/MotionBank.js~MotionBank.html">MotionBank</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/MotionReader.js~MotionReader.html">MotionReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/obj/MtlParser.js~MtlParser.html">MtlParser</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/obj/ObjMaterial.js~ObjMaterial.html">ObjMaterial</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/obj/ObjModel.js~ObjModel.html">ObjModel</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/obj/ObjParser.js~ObjParser.html">ObjParser</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/obj/ObjReader.js~ObjReader.html">ObjReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/ObjectLoadMonitor.js~ObjectLoadMonitor.html">ObjectLoadMonitor</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/PMDModel.js~PMDModel.html">PMDModel</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/PMDReader.js~PMDReader.html">PMDReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/RenderGroup.js~RenderGroup.html">RenderGroup</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/RigidBody.js~RigidBody.html">RigidBody</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/ShaderBank.js~ShaderBank.html">ShaderBank</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/ShadowKeyFrame.js~ShadowKeyFrame.html">ShadowKeyFrame</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleFragmentShader.js~SimpleFragmentShader.html">SimpleFragmentShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleRenderer.js~SimpleRenderer.html">SimpleRenderer</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/simple/SimpleVertexShader.js~SimpleVertexShader.html">SimpleVertexShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Skin.js~Skin.html">Skin</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/util/TextReader.js~TextReader.html">TextReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/util/TextRequest.js~TextRequest.html">TextRequest</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/TextureBank.js~TextureBank.html">TextureBank</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/TextureUV.js~TextureUV.html">TextureUV</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonFragmentShader.js~ToonFragmentShader.html">ToonFragmentShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonRenderer.js~ToonRenderer.html">ToonRenderer</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/renderer/toon/ToonVertexShader.js~ToonVertexShader.html">ToonVertexShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraMotion.js~VMDCameraMotion.html">VMDCameraMotion</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/VMDCameraReader.js~VMDCameraReader.html">VMDCameraReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/VMDMotion.js~VMDMotion.html">VMDMotion</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/mmd/VMDReader.js~VMDReader.html">VMDReader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/base/VertexShader.js~VertexShader.html">VertexShader</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/xfile/XModel.js~XModel.html">XModel</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/xfile/XParser.js~XParser.html">XParser</a></span></li>
-<li data-ice="classDoc"><span><a href="class/js/xfile/XReader.js~XReader.html">XReader</a></span></li>
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">base</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Bone.js~Bone.html">Bone</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Camera.js~Camera.html">Camera</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CameraAnimator.js~CameraAnimator.html">CameraAnimator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CameraKeyFrame.js~CameraKeyFrame.html">CameraKeyFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CameraMotion.js~CameraMotion.html">CameraMotion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CameraMotionBank.js~CameraMotionBank.html">CameraMotionBank</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CameraMotionReader.js~CameraMotionReader.html">CameraMotionReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/CanvasField.js~CanvasField.html">CanvasField</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Constraint.js~Constraint.html">Constraint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/DH2DObject.js~DH2DObject.html">DH2DObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html">DH3DObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/DHAudio.js~DHAudio.html">DHAudio</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/DHEvent.js~DHEvent.html">DHEvent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/FragmentShader.js~FragmentShader.html">FragmentShader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/IK.js~IK.html">IK</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/KeyFrame.js~KeyFrame.html">KeyFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/KeyListener.js~KeyListener.html">KeyListener</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Light.js~Light.html">Light</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/LightKeyFrame.js~LightKeyFrame.html">LightKeyFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Material.js~Material.html">Material</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Matrix.js~Matrix.html">Matrix</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/MessageWindow.js~MessageWindow.html">MessageWindow</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Model.js~Model.html">Model</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/ModelBank.js~ModelBank.html">ModelBank</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/ModelReader.js~ModelReader.html">ModelReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/MotionBank.js~MotionBank.html">MotionBank</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/MotionReader.js~MotionReader.html">MotionReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/ObjectLoadMonitor.js~ObjectLoadMonitor.html">ObjectLoadMonitor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/RenderGroup.js~RenderGroup.html">RenderGroup</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/RigidBody.js~RigidBody.html">RigidBody</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/ShaderBank.js~ShaderBank.html">ShaderBank</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/ShadowKeyFrame.js~ShadowKeyFrame.html">ShadowKeyFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Skin.js~Skin.html">Skin</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/TextureBank.js~TextureBank.html">TextureBank</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/TextureUV.js~TextureUV.html">TextureUV</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/base/VertexShader.js~VertexShader.html">VertexShader</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">etc</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ObjectAssign">ObjectAssign</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">mmd</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/Face.js~Face.html">Face</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/FaceMotion.js~FaceMotion.html">FaceMotion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/FaceVertex.js~FaceVertex.html">FaceVertex</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/IKFrame.js~IKFrame.html">IKFrame</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/MMDAnimator.js~MMDAnimator.html">MMDAnimator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/MMDCameraAnimator.js~MMDCameraAnimator.html">MMDCameraAnimator</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/PMDModel.js~PMDModel.html">PMDModel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/PMDReader.js~PMDReader.html">PMDReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/VMDCameraMotion.js~VMDCameraMotion.html">VMDCameraMotion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/VMDCameraReader.js~VMDCameraReader.html">VMDCameraReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/VMDMotion.js~VMDMotion.html">VMDMotion</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/mmd/VMDReader.js~VMDReader.html">VMDReader</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">obj</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/obj/MtlParser.js~MtlParser.html">MtlParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/obj/ObjMaterial.js~ObjMaterial.html">ObjMaterial</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/obj/ObjModel.js~ObjModel.html">ObjModel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/obj/ObjParser.js~ObjParser.html">ObjParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/obj/ObjReader.js~ObjReader.html">ObjReader</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">renderer/simple</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/simple/SimpleFragmentShader.js~SimpleFragmentShader.html">SimpleFragmentShader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/simple/SimpleRenderer.js~SimpleRenderer.html">SimpleRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/simple/SimpleVertexShader.js~SimpleVertexShader.html">SimpleVertexShader</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">renderer/toon</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/toon/ToonFragmentShader.js~ToonFragmentShader.html">ToonFragmentShader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/toon/ToonRenderer.js~ToonRenderer.html">ToonRenderer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/renderer/toon/ToonVertexShader.js~ToonVertexShader.html">ToonVertexShader</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">third_party</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-BinaryParser">BinaryParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeEUCJP">EscapeEUCJP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeJIS7">EscapeJIS7</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeJIS8">EscapeJIS8</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeSJIS">EscapeSJIS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeUTF16LE">EscapeUTF16LE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeUTF7">EscapeUTF7</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeUTF8">EscapeUTF8</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-EscapeUnicode">EscapeUnicode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-GetEscapeCodeType">GetEscapeCodeType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeEUCJP">UnescapeEUCJP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeJIS7">UnescapeJIS7</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeJIS8">UnescapeJIS8</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeSJIS">UnescapeSJIS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeUTF16LE">UnescapeUTF16LE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeUTF7">UnescapeUTF7</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeUTF8">UnescapeUTF8</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-UnescapeUnicode">UnescapeUnicode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-JCT11280">JCT11280</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-JCT8836">JCT8836</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">util</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/util/AjaxRequest.js~AjaxRequest.html">AjaxRequest</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/util/BinaryReader.js~BinaryReader.html">BinaryReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/util/BinaryRequest.js~BinaryRequest.html">BinaryRequest</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/util/TextReader.js~TextReader.html">TextReader</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/util/TextRequest.js~TextRequest.html">TextRequest</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">xfile</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/xfile/XModel.js~XModel.html">XModel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/xfile/XParser.js~XParser.html">XParser</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/xfile/XReader.js~XReader.html">XReader</a></span></span></li>
 </ul>
 </div>
-
-
-
-<div data-ice="functionWrap">
-  <h2><a href="function/">Function</a></h2>
-  <ul>
-    
-  <li data-ice="functionDoc"><span><a href="function/index.html#static-function-BinaryParser">BinaryParser</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeEUCJP">EscapeEUCJP</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS7">EscapeJIS7</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeJIS8">EscapeJIS8</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeSJIS">EscapeSJIS</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF16LE">EscapeUTF16LE</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF7">EscapeUTF7</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUTF8">EscapeUTF8</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-EscapeUnicode">EscapeUnicode</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-GetEscapeCodeType">GetEscapeCodeType</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-ObjectAssign">ObjectAssign</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeEUCJP">UnescapeEUCJP</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS7">UnescapeJIS7</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeJIS8">UnescapeJIS8</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeSJIS">UnescapeSJIS</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF16LE">UnescapeUTF16LE</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF7">UnescapeUTF7</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUTF8">UnescapeUTF8</a></span></li>
-<li data-ice="functionDoc"><span><a href="function/index.html#static-function-UnescapeUnicode">UnescapeUnicode</a></span></li>
-</ul>
-</div>
-
-<div data-ice="variableWrap">
-  <h2><a href="variable/">Variable</a></h2>
-  <ul>
-    
-  <li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT11280">JCT11280</a></span></li>
-<li data-ice="variableDoc"><span><a href="variable/index.html#static-variable-JCT8836">JCT8836</a></span></li>
-</ul>
-</div>
-
-
-
-
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import DH3DObject from &apos;<span><a href="file/js/base/DH3DObject.js.html#lineNumber12">dh3dlib/js/base/DH3DObject.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import DH3DObject from &apos;<span><a href="file/js/base/DH3DObject.js.html#lineNumber15">dh3dlib/js/base/DH3DObject.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/js/base/DH3DObject.js.html#lineNumber12">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/js/base/DH3DObject.js.html#lineNumber15">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -264,7 +244,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-addMoveCallback">addMoveCallback</a></span></span><span data-ice="signature">(func: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-addMoveCallback">addMoveCallback</a></span></span><span data-ice="signature">(func: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
@@ -340,13 +320,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getAnimating">getAnimating</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getAnimating">getAnimating</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>get animating state</p>
+</div>
       </div>
     </td>
     <td>
@@ -365,13 +346,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getAnimationSpeed">getAnimationSpeed</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getAnimationSpeed">getAnimationSpeed</a></span></span><span data-ice="signature">(): <span>float</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>get animation speed</p>
+</div>
       </div>
     </td>
     <td>
@@ -390,13 +372,40 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getAnimationTime">getAnimationTime</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getAnimationTime">getAnimationTime</a></span></span><span data-ice="signature">(): <span>float</span></span>
         </p>
       </div>
       <div>
         
         
+        <div data-ice="description"><p>get animation time</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getAnimator">getAnimator</a></span></span><span data-ice="signature">(): <span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>get Animator object</p>
+</div>
       </div>
     </td>
     <td>
@@ -490,13 +499,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getLoop">getLoop</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getLoop">getLoop</a></span></span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>get loop state</p>
+</div>
       </div>
     </td>
     <td>
@@ -565,13 +575,40 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getModel">getModel</a></span></span><span data-ice="signature">(): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getModel">getModel</a></span></span><span data-ice="signature">(): <span><a href="class/js/base/Model.js~Model.html">Model</a></span></span>
         </p>
       </div>
       <div>
         
         
+        <div data-ice="description"><p>get Model object</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getMotion">getMotion</a></span></span><span data-ice="signature">(): <span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>get Motion object</p>
+</div>
       </div>
     </td>
     <td>
@@ -615,6 +652,32 @@
     <td>
       <div>
         <p>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getPosition">getPosition</a></span></span><span data-ice="signature">(): <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>get object position</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
            <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getReflectionMode">getReflectionMode</a></span></span><span data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
@@ -640,6 +703,58 @@
     <td>
       <div>
         <p>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getRenderer">getRenderer</a></span></span><span data-ice="signature">(): <span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>get Renderer object</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getRotate">getRotate</a></span></span><span data-ice="signature">(): <span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>get quaternion for rotation</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
            <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getSkinArray">getSkinArray</a></span></span><span data-ice="signature">(): <span>*</span></span>
         </p>
       </div>
@@ -647,6 +762,32 @@
         
         
         
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-getSpeed">getSpeed</a></span></span><span data-ice="signature">(): <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>get object speed</p>
+</div>
       </div>
     </td>
     <td>
@@ -715,13 +856,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-move">move</a></span></span><span data-ice="signature">(elapsedTime: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-move">move</a></span></span><span data-ice="signature">(elapsedTime: <span>float</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>move object</p>
+</div>
       </div>
     </td>
     <td>
@@ -765,7 +907,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-removeMoveCallback">removeMoveCallback</a></span></span><span data-ice="signature">(func: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-removeMoveCallback">removeMoveCallback</a></span></span><span data-ice="signature">(func: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
@@ -841,13 +983,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setAnimating">setAnimating</a></span></span><span data-ice="signature">(animating: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setAnimating">setAnimating</a></span></span><span data-ice="signature">(animating: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set animating state</p>
+</div>
       </div>
     </td>
     <td>
@@ -866,13 +1009,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setAnimationSpeed">setAnimationSpeed</a></span></span><span data-ice="signature">(speed: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setAnimationSpeed">setAnimationSpeed</a></span></span><span data-ice="signature">(speed: <span>float</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set animation speed</p>
+</div>
       </div>
     </td>
     <td>
@@ -891,13 +1035,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setAnimationTime">setAnimationTime</a></span></span><span data-ice="signature">(time: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setAnimationTime">setAnimationTime</a></span></span><span data-ice="signature">(time: <span>float</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set animation time</p>
+</div>
       </div>
     </td>
     <td>
@@ -916,13 +1061,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setAnimator">setAnimator</a></span></span><span data-ice="signature">(animator: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setAnimator">setAnimator</a></span></span><span data-ice="signature">(animator: <span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set Animator object</p>
+</div>
       </div>
     </td>
     <td>
@@ -991,13 +1137,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setLoop">setLoop</a></span></span><span data-ice="signature">(loop: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setLoop">setLoop</a></span></span><span data-ice="signature">(loop: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set loop state</p>
+</div>
       </div>
     </td>
     <td>
@@ -1066,13 +1213,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setModel">setModel</a></span></span><span data-ice="signature">(model: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setModel">setModel</a></span></span><span data-ice="signature">(model: <span><a href="class/js/base/Model.js~Model.html">Model</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set Model object</p>
+</div>
       </div>
     </td>
     <td>
@@ -1091,13 +1239,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setMotion">setMotion</a></span></span><span data-ice="signature">(motion: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setMotion">setMotion</a></span></span><span data-ice="signature">(motion: <span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set Motion object</p>
+</div>
       </div>
     </td>
     <td>
@@ -1116,13 +1265,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setMotionWithBlending">setMotionWithBlending</a></span></span><span data-ice="signature">(motion: <span>*</span>, blendCount: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setMotionWithBlending">setMotionWithBlending</a></span></span><span data-ice="signature">(motion: <span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span>, blendCount: <span>float</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set Motion object to blend with current motion</p>
+</div>
       </div>
     </td>
     <td>
@@ -1141,13 +1291,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setPosition">setPosition</a></span></span><span data-ice="signature">(x: <span>*</span>, y: <span>*</span>, z: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setPosition">setPosition</a></span></span><span data-ice="signature">(x: <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span> | <span>float</span>, y: <span>float</span>, z: <span>float</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set object position</p>
+</div>
       </div>
     </td>
     <td>
@@ -1191,13 +1342,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setRenderer">setRenderer</a></span></span><span data-ice="signature">(renderer: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setRenderer">setRenderer</a></span></span><span data-ice="signature">(renderer: <span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set Renderer object</p>
+</div>
       </div>
     </td>
     <td>
@@ -1216,13 +1368,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setRotate">setRotate</a></span></span><span data-ice="signature">(x: <span>*</span>, y: <span>*</span>, z: <span>*</span>, w: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setRotate">setRotate</a></span></span><span data-ice="signature">(x: <span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span> | <span>float</span>, y: <span>float</span>, z: <span>float</span>, w: <span>float</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set quaternion for rotation</p>
+</div>
       </div>
     </td>
     <td>
@@ -1291,13 +1444,14 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setSpeed">setSpeed</a></span></span><span data-ice="signature">(x: <span>*</span>, y: <span>*</span>, z: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/js/base/DH3DObject.js~DH3DObject.html#instance-method-setSpeed">setSpeed</a></span></span><span data-ice="signature">(x: <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span> | <span>float</span>, y: <span>float</span>, z: <span>float</span>): <span>void</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>set object speed</p>
+</div>
       </div>
     </td>
     <td>
@@ -1376,7 +1530,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber18">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber21">source</a></span></span>
     </span>
   </h3>
 
@@ -1421,7 +1575,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber357">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber553">source</a></span></span>
     </span>
   </h3>
 
@@ -1485,11 +1639,11 @@
     
     
     
-    <span data-ice="name">addMoveCallback</span><span data-ice="signature">(func: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span data-ice="name">addMoveCallback</span><span data-ice="signature">(func: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber60">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber63">source</a></span></span>
     </span>
   </h3>
 
@@ -1511,7 +1665,7 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">func</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>callback which is called each frame</p>
 </td>
@@ -1558,7 +1712,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber326">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber522">source</a></span></span>
     </span>
   </h3>
 
@@ -1614,7 +1768,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber382">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber577">source</a></span></span>
     </span>
   </h3>
 
@@ -1650,18 +1804,19 @@
     
     
     
-    <span data-ice="name">getAnimating</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getAnimating</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber169">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber251">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get animating state</p>
+</div>
 
   
 
@@ -1672,8 +1827,9 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>true: enable animation, false: disable animation</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">
@@ -1700,18 +1856,19 @@
     
     
     
-    <span data-ice="name">getAnimationSpeed</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getAnimationSpeed</span><span data-ice="signature">(): <span>float</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber201">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber335">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get animation speed</p>
+</div>
 
   
 
@@ -1722,8 +1879,9 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
+        <td class="return-type" data-ice="returnType"><span>float</span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>animation speed: normal speed is 1.0</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">
@@ -1750,18 +1908,19 @@
     
     
     
-    <span data-ice="name">getAnimationTime</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getAnimationTime</span><span data-ice="signature">(): <span>float</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber193">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber316">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get animation time</p>
+</div>
 
   
 
@@ -1772,8 +1931,61 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
+        <td class="return-type" data-ice="returnType"><span>float</span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>animation time (seconds)</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getAnimator">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">getAnimator</span><span data-ice="signature">(): <span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber297">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>get Animator object</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>Animator object</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">
@@ -1804,7 +2016,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber271">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber459">source</a></span></span>
     </span>
   </h3>
 
@@ -1854,7 +2066,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber394">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber585">source</a></span></span>
     </span>
   </h3>
 
@@ -1904,7 +2116,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber304">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber500">source</a></span></span>
     </span>
   </h3>
 
@@ -1950,18 +2162,19 @@
     
     
     
-    <span data-ice="name">getLoop</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getLoop</span><span data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber181">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber274">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get loop state</p>
+</div>
 
   
 
@@ -1972,8 +2185,9 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
+        <td class="return-type" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>true: enable loop, false: disable loop</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">
@@ -2004,7 +2218,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber402">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber593">source</a></span></span>
     </span>
   </h3>
 
@@ -2054,7 +2268,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber279">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber471">source</a></span></span>
     </span>
   </h3>
 
@@ -2100,18 +2314,19 @@
     
     
     
-    <span data-ice="name">getModel</span><span data-ice="signature">(): <span>*</span></span>
+    <span data-ice="name">getModel</span><span data-ice="signature">(): <span><a href="class/js/base/Model.js~Model.html">Model</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber127">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber140">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>get Model object</p>
+</div>
 
   
 
@@ -2122,8 +2337,61 @@
     <h4>Return:</h4>
     <table>
       <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
+        <td class="return-type" data-ice="returnType"><span><a href="class/js/base/Model.js~Model.html">Model</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>model object</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getMotion">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">getMotion</span><span data-ice="signature">(): <span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber178">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>get Motion object</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>Motion object</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">
@@ -2154,7 +2422,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber311">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber507">source</a></span></span>
     </span>
   </h3>
 
@@ -2194,6 +2462,58 @@
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getPosition">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">getPosition</span><span data-ice="signature">(): <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber354">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>get object position</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>object position</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-getReflectionMode">
     <span class="access" data-ice="access">public</span>
     
@@ -2204,7 +2524,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber287">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber479">source</a></span></span>
     </span>
   </h3>
 
@@ -2224,6 +2544,110 @@
       <tr>
         <td class="return-type" data-ice="returnType"><span>*</span></td>
         
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getRenderer">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">getRenderer</span><span data-ice="signature">(): <span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber224">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>get Renderer object</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>Renderer object</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getRotate">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">getRotate</span><span data-ice="signature">(): <span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber412">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>get quaternion for rotation</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>quaternion</p>
+</td>
       </tr>
     </table>
     <div data-ice="returnProperties">
@@ -2254,7 +2678,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber297">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber493">source</a></span></span>
     </span>
   </h3>
 
@@ -2294,6 +2718,58 @@
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getSpeed">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">getSpeed</span><span data-ice="signature">(): <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber383">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>get object speed</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span></td>
+        <td class="return-desc" data-ice="returnDescription"><p>object speed</p>
+</td>
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-getState">
     <span class="access" data-ice="access">public</span>
     
@@ -2304,7 +2780,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber410">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber601">source</a></span></span>
     </span>
   </h3>
 
@@ -2354,7 +2830,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber319">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber515">source</a></span></span>
     </span>
   </h3>
 
@@ -2400,18 +2876,19 @@
     
     
     
-    <span data-ice="name">move</span><span data-ice="signature">(elapsedTime: <span>*</span>)</span>
+    <span data-ice="name">move</span><span data-ice="signature">(elapsedTime: <span>float</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber85">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber94">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>move object</p>
+</div>
 
   
 
@@ -2425,16 +2902,27 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">elapsedTime</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>elapsed time (seconds) from previous frame</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -2460,7 +2948,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber366">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber562">source</a></span></span>
     </span>
   </h3>
 
@@ -2524,11 +3012,11 @@
     
     
     
-    <span data-ice="name">removeMoveCallback</span><span data-ice="signature">(func: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span data-ice="name">removeMoveCallback</span><span data-ice="signature">(func: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber78">source</a></span></span>
     </span>
   </h3>
 
@@ -2550,7 +3038,7 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">func</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">function</a></span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>callback which is called each frame</p>
 </td>
@@ -2597,7 +3085,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber346">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber542">source</a></span></span>
     </span>
   </h3>
 
@@ -2637,7 +3125,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber351">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber547">source</a></span></span>
     </span>
   </h3>
 
@@ -2689,18 +3177,19 @@
     
     
     
-    <span data-ice="name">setAnimating</span><span data-ice="signature">(animating: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>)</span>
+    <span data-ice="name">setAnimating</span><span data-ice="signature">(animating: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber161">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber261">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set animating state</p>
+</div>
 
   
 
@@ -2715,16 +3204,26 @@
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">animating</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
-      <td data-ice="appendix"><ul><li>optional</li>
-<li>default: true</li></ul></td>
-      <td data-ice="description"></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>true: enable animation, false: disable animation</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -2746,18 +3245,19 @@
     
     
     
-    <span data-ice="name">setAnimationSpeed</span><span data-ice="signature">(speed: <span>*</span>)</span>
+    <span data-ice="name">setAnimationSpeed</span><span data-ice="signature">(speed: <span>float</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber197">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber345">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set animation speed</p>
+</div>
 
   
 
@@ -2771,16 +3271,27 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">speed</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>animation speed: normal speed is 1.0</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -2802,18 +3313,19 @@
     
     
     
-    <span data-ice="name">setAnimationTime</span><span data-ice="signature">(time: <span>*</span>)</span>
+    <span data-ice="name">setAnimationTime</span><span data-ice="signature">(time: <span>float</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber189">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber326">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set animation time</p>
+</div>
 
   
 
@@ -2827,16 +3339,27 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">time</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>animation time (seconds)</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -2858,18 +3381,19 @@
     
     
     
-    <span data-ice="name">setAnimator</span><span data-ice="signature">(animator: <span>*</span>)</span>
+    <span data-ice="name">setAnimator</span><span data-ice="signature">(animator: <span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber185">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber307">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set Animator object</p>
+</div>
 
   
 
@@ -2883,16 +3407,27 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">animator</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="class/js/base/Animator.js~Animator.html">Animator</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Animator object</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -2918,7 +3453,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber263">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber463">source</a></span></span>
     </span>
   </h3>
 
@@ -2975,7 +3510,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber390">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber589">source</a></span></span>
     </span>
   </h3>
 
@@ -3027,18 +3562,19 @@
     
     
     
-    <span data-ice="name">setLoop</span><span data-ice="signature">(loop: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>)</span>
+    <span data-ice="name">setLoop</span><span data-ice="signature">(loop: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber173">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber284">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set loop state</p>
+</div>
 
   
 
@@ -3053,16 +3589,26 @@
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">loop</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
-      <td data-ice="appendix"><ul><li>optional</li>
-<li>default: true</li></ul></td>
-      <td data-ice="description"></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>true: enable loop, false: disable loop</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -3088,7 +3634,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber398">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber597">source</a></span></span>
     </span>
   </h3>
 
@@ -3144,7 +3690,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber275">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber475">source</a></span></span>
     </span>
   </h3>
 
@@ -3196,18 +3742,19 @@
     
     
     
-    <span data-ice="name">setModel</span><span data-ice="signature">(model: <span>*</span>)</span>
+    <span data-ice="name">setModel</span><span data-ice="signature">(model: <span><a href="class/js/base/Model.js~Model.html">Model</a></span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber131">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber150">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set Model object</p>
+</div>
 
   
 
@@ -3221,16 +3768,27 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">model</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="class/js/base/Model.js~Model.html">Model</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Model object. Set null to delete object</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -3252,18 +3810,19 @@
     
     
     
-    <span data-ice="name">setMotion</span><span data-ice="signature">(motion: <span>*</span>)</span>
+    <span data-ice="name">setMotion</span><span data-ice="signature">(motion: <span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber143">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber188">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set Motion object</p>
+</div>
 
   
 
@@ -3277,16 +3836,27 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">motion</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Motion object. Set null to delete object</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -3308,18 +3878,19 @@
     
     
     
-    <span data-ice="name">setMotionWithBlending</span><span data-ice="signature">(motion: <span>*</span>, blendCount: <span>*</span>)</span>
+    <span data-ice="name">setMotionWithBlending</span><span data-ice="signature">(motion: <span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span>, blendCount: <span>float</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber147">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber212">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set Motion object to blend with current motion</p>
+</div>
 
   
 
@@ -3333,22 +3904,34 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">motion</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="class/js/base/Motion.js~Motion.html">Motion</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Motion object to blend</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">blendCount</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>number of frames to complete transition</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -3370,18 +3953,19 @@
     
     
     
-    <span data-ice="name">setPosition</span><span data-ice="signature">(x: <span>*</span>, y: <span>*</span>, z: <span>*</span>)</span>
+    <span data-ice="name">setPosition</span><span data-ice="signature">(x: <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span> | <span>float</span>, y: <span>float</span>, z: <span>float</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber205">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber366">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set object position</p>
+</div>
 
   
 
@@ -3395,28 +3979,41 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">x</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span> | <span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>object position (Vector3 object or X value)</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">y</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Y value</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">z</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Z value</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -3442,7 +4039,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber283">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber483">source</a></span></span>
     </span>
   </h3>
 
@@ -3494,18 +4091,19 @@
     
     
     
-    <span data-ice="name">setRenderer</span><span data-ice="signature">(renderer: <span>*</span>)</span>
+    <span data-ice="name">setRenderer</span><span data-ice="signature">(renderer: <span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber154">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber234">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set Renderer object</p>
+</div>
 
   
 
@@ -3519,16 +4117,27 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">renderer</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="class/js/base/Renderer.js~Renderer.html">Renderer</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Renderer object</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -3550,18 +4159,19 @@
     
     
     
-    <span data-ice="name">setRotate</span><span data-ice="signature">(x: <span>*</span>, y: <span>*</span>, z: <span>*</span>, w: <span>*</span>)</span>
+    <span data-ice="name">setRotate</span><span data-ice="signature">(x: <span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span> | <span>float</span>, y: <span>float</span>, z: <span>float</span>, w: <span>float</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber229">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber425">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set quaternion for rotation</p>
+</div>
 
   
 
@@ -3575,34 +4185,48 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">x</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="class/js/base/Vector4.js~Vector4.html">Vector4</a></span> | <span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>quaternion (Vector4 or X value)</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">y</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Y value</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">z</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Z value</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">w</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>W value</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -3628,7 +4252,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber246">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber442">source</a></span></span>
     </span>
   </h3>
 
@@ -3690,7 +4314,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber250">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber446">source</a></span></span>
     </span>
   </h3>
 
@@ -3754,18 +4378,19 @@
     
     
     
-    <span data-ice="name">setSpeed</span><span data-ice="signature">(x: <span>*</span>, y: <span>*</span>, z: <span>*</span>)</span>
+    <span data-ice="name">setSpeed</span><span data-ice="signature">(x: <span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span> | <span>float</span>, y: <span>float</span>, z: <span>float</span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber217">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber395">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>set object speed</p>
+</div>
 
   
 
@@ -3779,28 +4404,41 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">x</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="class/js/base/Vector3.js~Vector3.html">Vector3</a></span> | <span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>object speed (Vector3 object or X value)</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">y</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Y value of speed</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">z</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span>float</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Z value of speed</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
 </div>
 
-  
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>void</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 
@@ -3826,7 +4464,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber406">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber605">source</a></span></span>
     </span>
   </h3>
 
@@ -3882,7 +4520,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber291">source</a></span></span>
+      <span data-ice="source"><span><a href="file/js/base/DH3DObject.js.html#lineNumber487">source</a></span></span>
     </span>
   </h3>
 
@@ -3915,7 +4553,7 @@
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.2.1)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.7)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>
