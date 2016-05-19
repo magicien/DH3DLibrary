@@ -1,6 +1,8 @@
 'use strict'
 
 import Renderer from '../../base/Renderer'
+import ToonVertexShader from './ToonVertexShader'
+import ToonFragmentShader from './ToonFragmentShader'
 
 /**
  * ToonRenderer class

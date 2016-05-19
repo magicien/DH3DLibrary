@@ -1,6 +1,8 @@
 'use strict'
 
 import Renderer from '../../base/Renderer'
+import SimpleVertexShader from './SimpleVertexShader'
+import SimpleFragmentShader from './SimpleFragmentShader'
 
 /**
  * SimpleRenderer class

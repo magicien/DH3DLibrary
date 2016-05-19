@@ -189,7 +189,7 @@ export default class CanvasField {
    */
   _copyPosition(src, dst) {
     const offset = this._viewportOffset(src)
-    let delta = [0, 0]
+    let delta = { x: 0, y: 0 }
 
     if(src.style.position === 'absolute') {
       const parent = this._getOffsetParent(src)

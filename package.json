@@ -2,7 +2,7 @@
   "name": "dh3dlib",
   "version": "0.3.0",
   "description": "JavaScript Library for WebGL, MMD",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "lint": "gulp lint",
     "test": "gulp test",

@@ -24,6 +24,11 @@ export default class RenderGroup {
   getBoneData() {
   }
 
+  /**
+   * get index data for rendering
+   * @access public
+   * @returns {Uint16Array} - index data array
+   */
   getIndexData() {
     if(!this._indexDataCache){
       this._indexDataCache = new Uint16Array(this.indices)
