@@ -155,13 +155,37 @@ export default class Vector3 {
   }
 
   /**
+   * multiply inverse matrix to this vector
+   * @access public
+   * @param {Vector3} vec - Vector3 object to cross
+   * @param {Matrix} mat - Matrix object to cross
+   * @param {boolean} includeTranslate - if it's true, it includes translation factors (m14, m24, m34)
+   * @returns {void}
+   */
+  inverseCross(vec, mat, includeTranslate = false) {
+    let x = vec.x * mat.m11 + vec.y * mat.m12 + vec.z * mat.m13
+    let y = vec.x * mat.m21 + vec.y * mat.m22 + vec.z * mat.m23
+    let z = vec.x * mat.m31 + vec.y * mat.m32 + vec.z * mat.m33
+
+    if(includeTranslate){
+      x += mat.m14
+      y += mat.m24
+      z += mat.m34
+    }
+
+    this.x = x
+    this.y = y
+    this.z = z
+  }
+
+  /**
    *
    * @access public
    * @param {Vector3} vec -
    * @param {Matrix} matrix -
    * @returns {void} 
    */
-  transform(vec, matrix){
+  transform(vec, matrix) {
     const rx = vec.x * matrix.m11 + vec.y * matrix.m21 + vec.z * matrix.m31 + matrix.m41
     const ry = vec.x * matrix.m12 + vec.y * matrix.m22 + vec.z * matrix.m32 + matrix.m42
     const rz = vec.x * matrix.m13 + vec.y * matrix.m23 + vec.z * matrix.m33 + matrix.m43

@@ -1,7 +1,7 @@
 'use strict'
 
 import Vector3 from './Vector3'
-// import Vector4 from './Vector4'
+import Vector4 from './Vector4'
 
 /**
  * matrix class
@@ -175,6 +175,63 @@ export default class Matrix {
     this.m42 = 0.0
     this.m43 = 0.0
     this.m44 = 1.0
+  }
+
+  /**
+   * get Euler angle (X-Y-Z rotation) Vector3 object from this matrix
+   * @accesss public
+   * @returns {Vector3} - rotation vector
+   */
+  get eulerAngles() {
+    const almostZero = 0.001
+    const v = new Vector3() 
+    v.y = Math.asin(-this.m13)
+
+    const cosY = Math.cos(v.y)
+
+    if(cosY < almostZero){
+      v.x = 0
+      v.y = cosY
+      v.z = Math.atan2(-this.m21, this.m22)
+    }else{
+      v.x = Math.asin(this.m23 / cosY)
+      if(this.m33 < 0){
+        v.x = 180 - v.x
+      }
+      v.z = Math.atan2(this.m12, this.m11)
+    }
+
+    return v
+  }
+
+  get rotation() {
+    const rot = new Vector4()
+    rot.x = this.m32 - this.m23
+    rot.y = this.m13 - this.m31
+    rot.z = this.m21 - this.m12
+    rot.w = Math.acos((this.m11 + this.m22 + this.m33 - 1)*0.5)
+
+    return rot
+  }
+
+  set rotation(rot) {
+    const len = 1.0 / Math.sqrt(rot.x * rot.x + rot.y * rot.y + rot.z * rot.z)
+    const x = rot.x * len
+    const y = rot.y * len
+    const z = rot.z * len
+    const cos = Math.cos(rot.w)
+    const sin = Math.sin(rot.w)
+    const ccos = 1 - cos
+
+    this.m11 = x * x * ccos + cos
+    this.m12 = x * y * ccos - z * sin
+    this.m13 = x * z * ccos + y * sin
+    this.m21 = y * x * ccos + z * sin
+    this.m22 = y * y * ccos + cos
+    this.m23 = y * z * ccos - x * sin
+    this.m31 = z * x * ccos - y * sin
+    this.m32 = z * y * ccos + x * sin
+    this.m33 = z * z * ccos + cos
   }
 
   /**
@@ -575,6 +632,15 @@ export default class Matrix {
     r.m44 = 1.0
 
     this.multiplyMatrix(mat, r)
+  }
+
+  /**
+   * get position vector from this matrix.
+   * @access public
+   * @returns {Vector3} - Vector3 object: (m41, m42, 43)
+   */
+  getPosition() {
+    return new Vector3(this.m41, this.m42, this.m43)
   }
 
   /**

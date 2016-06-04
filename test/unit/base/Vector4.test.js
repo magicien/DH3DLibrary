@@ -75,6 +75,48 @@ describe('Vector4 class', () => {
     })
   })
 
+  describe('rotationToQuaternion function', () => {
+    it('should work', () => {
+      expect(Vector4).to.respondTo('rotationToQuaternion')
+    })
+
+    it('should be able to convert rotation => quaternion => rotation', () => {
+      const src = new Vector4(0.8, 0.4, 0.4, 0.5)
+      const quat = new Vector4()
+      const dst = new Vector4()
+
+      quat.rotationToQuaternion(src)
+      dst.quaternionToRotation(quat)
+
+      const epsilon = 0.001
+      expect(src.x).to.be.closeTo(dst.x, epsilon)
+      expect(src.y).to.be.closeTo(dst.y, epsilon)
+      expect(src.z).to.be.closeTo(dst.z, epsilon)
+      expect(src.w).to.be.closeTo(dst.w, epsilon)
+    })
+  })
+
+  describe('quaternionToRotation function', () => {
+    it('should work', () => {
+      expect(Vector4).to.respondTo('quaternionToRotation')
+    })
+
+    it('should be able to convert quaternion => rotation => quaternion', () => {
+      const src = new Vector4(0.8, 0.4, 0.4, 0.5)
+      const rot = new Vector4()
+      const dst = new Vector4()
+
+      rot.quaternionToRotation(src)
+      dst.rotationToQuaternion(rot)
+
+      const epsilon = 0.001
+      expect(src.x).to.be.closeTo(dst.x, epsilon)
+      expect(src.y).to.be.closeTo(dst.y, epsilon)
+      expect(src.z).to.be.closeTo(dst.z, epsilon)
+      expect(src.w).to.be.closeTo(dst.w, epsilon)
+    })
+  })
+
   describe('quaternionFromMatrix function', () => {
     it('should work', () => {
       expect(Vector4).to.respondTo('quaternionFromMatrix')

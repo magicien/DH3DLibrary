@@ -152,6 +152,50 @@ export default class Vector4 {
     this.w = cosX * cosY * cosZ + sinX * sinY * sinZ
   }
 
+  rotationToQuaternion(rot){
+    if(rot.x == 0 && rot.y == 0 && rot.z == 0){
+      this.x = 0
+      this.y = 0
+      this.z = 0
+      this.w = 1
+    }else{
+      const r = 1.0 / Math.sqrt(rot.x * rot.x + rot.y * rot.y + rot.z * rot.z)
+      const cosW = Math.cos(rot.w)
+      const sinW = Math.sin(rot.w) * r
+      this.x = rot.x * sinW
+      this.y = rot.y * sinW
+      this.z = rot.z * sinW
+      this.w = cosW
+    }
+  }
+
+  quaternionToRotation(quat){
+    if(quat.x == 0 && quat.y == 0 && quat.z == 0){
+      this.x = 0
+      this.y = 0
+      this.z = 0
+      this.w = 0
+    }else{
+      this.x = quat.x
+      this.y = quat.y
+      this.z = quat.z
+
+      if(quat.w > 1){
+        quat.w = 1.0
+      }else if(quat.w < -1){
+        quat.w = -1.0
+      }
+
+      const w = Math.acos(quat.w)
+
+      if(isNaN(w)){
+        this.w = 0
+      }else{
+        this.w = w
+      }
+    }
+  }
+
   transform(vec, matrix){
     const rx = vec.x * matrix.m11 + vec.y * matrix.m21 + vec.z * matrix.m31 + vec.w * matrix.m41
     const ry = vec.x * matrix.m12 + vec.y * matrix.m22 + vec.z * matrix.m32 + vec.w * matrix.m42

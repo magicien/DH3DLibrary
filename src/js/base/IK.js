@@ -94,7 +94,7 @@ export default class IK {
    * @returns {void}
    */
   update() {
-    const zeroThreshold = 0.0001
+    const zeroThreshold = 0.0000001
     const targetMat = this.targetBone.localMatrix
     const orgTargetPos = this._orgTargetPos
     orgTargetPos.setValue(targetMat.m41, targetMat.m42, targetMat.m43)
@@ -148,11 +148,6 @@ export default class IK {
         
         rotQuat.createAxis(rotAxis, rotAngle)
         rotQuat.normalize()
-        /*
-        if(this.minAngleList[linkIndex]){
-          this.limitAngle(this.minAngleList[linkIndex], this.maxAngleList[linkIndex], rotQuat)
-        }
-        */
 
         linkedBone.rotate.cross(linkedBone.rotate, rotQuat)
         linkedBone.rotate.normalize()
@@ -163,6 +158,105 @@ export default class IK {
         this.effectBone.updateMatrix()
       }
     }
+
+    /* new IK update
+    const zeroThreshold = 0.0000001
+    const ikBone = this.targetBone
+    const targetBone = this.effectBone
+    const numBones = this.boneList.length
+
+    const v = new Vector3()
+    const v1 = new Vector3()
+    const v2 = new Vector3()
+    const diff = new Vector3()
+
+    for(let i=this.boneList.length-1; i>=0; i--){
+      this.boneList[i].updateMatrix()
+    }
+    this.effectBone.updateMatrix()
+
+    for(let it=0; it<this.iteration; it++){
+      for(let index=0; index<numBones; index++){
+        const bone = this.boneList[index]
+        const bonePosition = bone.localMatrix.getPosition()
+        const targetPosition = targetBone.localMatrix.getPosition()
+        const ikPosition = ikBone.localMatrix.getPosition()
+
+        v1.sub(bonePosition, targetPosition)
+        v2.sub(bonePosition, ikPosition)
+
+        v1.normalize()
+        v2.normalize()
+
+        diff.sub(v1, v2)
+        const x2 = diff.x * diff.x
+        const y2 = diff.y * diff.y
+        const z2 = diff.z * diff.z
+        if(x2 + y2 + z2 < zeroThreshold){
+          break
+        }
+
+        v.cross(v1, v2)
+        v.inverseCross(v, bone.parentBone.localMatrix)
+        v.normalize()
+
+        if(bone.isKnee){
+          if(v.x > 0){
+            v.x = 1.0
+          }else{
+            v.x = -1.0
+          }
+          v.y = 0
+          v.z = 0
+        }
+
+        let innerProduct = v1.dot(v2)
+        if(innerProduct > 1){
+          innerProduct = 1
+        }else if(innerProduct < -1){
+          innerProduct = -1
+        }
+
+        let ikRot = 0.5 * Math.acos(innerProduct)
+
+        const maxRot = this.weight * (index + 1) * 2
+        if(ikRot > maxRot){
+          ikRot = maxRot
+        }
+
+        const ikSin = Math.sin(ikRot)
+        const ikCos = Math.cos(ikRot)
+        let quat = new Vector4()
+
+        quat.x = v.x * ikSin
+        quat.y = v.y * ikSin
+        quat.z = v.z * ikSin
+        quat.w = ikCos
+
+        const orgQuat = new Vector4()
+        orgQuat.rotationToQuaternion(bone.localMatrix.rotation)
+
+        quat.cross(quat, orgQuat)
+        
+        const q = new Vector4()
+        q.quaternionToRotation(quat)
+        bone.localMatrix.rotation = q
+
+        if(bone.isKnee){
+          if(bone.localMatrix.eulerAngles.x < 0){
+            quat.x = -quat.x
+            q.quaternionToRotation(quat)
+            bone.localMatrix.rotation = q
+          }
+        }
+
+        for(let i=index; i>=0; i--){
+          this.boneList[i].updateMatrix()
+        }
+        this.effectBone.updateMatrix()
+      }
+    }
+    */
   }
 }
 

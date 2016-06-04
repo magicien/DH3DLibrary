@@ -121,7 +121,7 @@ export default class VMDReader extends MotionReader {
   readHeader() {
     const header = this._binaryReader.readString(30)
     if(header !== 'Vocaloid Motion Data 0002'){
-      console.log(`VMD Format Error: ${header}`)
+      console.warn(`VMD Format Error: ${header}`)
       //myAlert('VMD Format Error')
     }
     this._motion.name = this._binaryReader.readString(20)
@@ -146,7 +146,7 @@ export default class VMDReader extends MotionReader {
       return
 
     if(this._type !== 'model'){
-      console.log('error: not model motion data has bone motion data')
+      console.warn('error: not model motion data has bone motion data')
 
       // skip data
       this._binaryReader.skipBytes(bytesPerFrame * frames)
@@ -203,7 +203,7 @@ export default class VMDReader extends MotionReader {
       return
 
     if(this._type !== 'model'){
-      console.log('error: not model motion data has face motion data')
+      console.warn('error: not model motion data has face motion data')
 
       // skip data
       this._binaryReader.skipBytes(bytesPerFrame * frames)
@@ -243,7 +243,7 @@ export default class VMDReader extends MotionReader {
       return
 
     if(this._type !== 'camera/light'){
-      console.error('error: not camera motion has camera motion data')
+      console.warn('error: not camera motion has camera motion data')
       // skip data
       this._binaryReader.skipBytes(bytesPerFrame * frames)
       return
@@ -303,7 +303,7 @@ export default class VMDReader extends MotionReader {
       return
 
     if(this._type !== 'camera/light'){
-      console.error('error: not light motion has light motion data')
+      console.warn('error: not light motion has light motion data')
 
       // skip data
       this._binaryReader.skipBytes(bytesPerFrame * frames)
@@ -350,7 +350,7 @@ export default class VMDReader extends MotionReader {
       return
 
     if(this._type !== 'model'){
-      console.error('error: not model motion has shadow data')
+      console.warn('error: not model motion has shadow data')
 
       // skip data
       this._binaryReader.skipBytes(bytesPerFrame * frames)
@@ -389,7 +389,7 @@ export default class VMDReader extends MotionReader {
       return
 
     if(this._type !== 'model'){
-      console.error('error: not model motion has ik data')
+      console.warn('error: not model motion has ik data')
       return
     }
 
