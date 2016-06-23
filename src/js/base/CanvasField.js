@@ -300,13 +300,19 @@ export default class CanvasField {
   addObject(obj, alpha, notReflection) {
     // FIXME: auto detection of alpha object
     if(alpha){
-      this._alphaObjs.push(obj)
+      if(this._alphaObjs.indexOf(obj) === -1){
+        this._alphaObjs.push(obj)
+      }
     }else{
-      this._objs.push(obj)
+      if(this._objs.indexOf(obj) === -1){
+        this._objs.push(obj)
+      }
     }
 
     if(!notReflection && obj instanceof DH3DObject){
-      this._refObjs.push(obj)
+      if(this._refObjs.indexOf(obj) === -1){
+        this._refObjs.push(obj)
+      }
     }
   }
 
