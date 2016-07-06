@@ -97,15 +97,27 @@ export class AjaxRequest {
     }
 
     if(options.data){
-      if(method === 'POST'){
-        data = options.data
-      }else{
-        let separator = '?'
+      const dataArray = []
+      if(options.data instanceof Map){
         options.data.forEach((key, value) => {
-          requestURL += separator + key + '=' + value
-          separator = '&'
+          dataArray.push(encodeURIComponent(key) + '=' + encodeURIComponent(value))
+        })
+      }else{
+        Object.keys(options.data).forEach((key) => {
+          const value = options.data[key]
+          dataArray.push(encodeURIComponent(key) + '=' + encodeURIComponent(value))
         })
       }
+
+      if(method === 'POST'){
+        data = dataArray.join('&').replace(/%20/g, '+')
+      }else{
+        requestURL += '?' + dataArray.join('&').replace(/%20/g, '+')
+      }
+    }
+
+    if(method === 'POST' && typeof header['Content-Type'] === 'undefined'){
+      header['Content-Type'] = 'application/x-www-form-urlencoded'
     }
 
     return new Promise((resolve, reject) => {
@@ -113,6 +125,12 @@ export class AjaxRequest {
 
       if(mimeType){
         xhr.overrideMimeType(mimeType)
+      }
+
+      if(user) {
+        xhr.open(method, url, async, user, password)
+      }else{
+        xhr.open(method, url, async)
       }
 
       if(header){
@@ -123,12 +141,6 @@ export class AjaxRequest {
             xhr.setRequestHeader(key, header[key])
           }
         }
-      }
-
-      if(user) {
-        xhr.open(method, url, async, user, password)
-      }else{
-        xhr.open(method, url, async)
       }
 
       xhr.onload = () => {
