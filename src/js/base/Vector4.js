@@ -176,9 +176,10 @@ export default class Vector4 {
       this.z = 0
       this.w = 0
     }else{
-      this.x = quat.x
-      this.y = quat.y
-      this.z = quat.z
+      const r = 1.0 / Math.sqrt(quat.x * quat.x + quat.y * quat.y + quat.z * quat.z)
+      this.x = quat.x * r
+      this.y = quat.y * r
+      this.z = quat.z * r
 
       if(quat.w > 1){
         quat.w = 1.0

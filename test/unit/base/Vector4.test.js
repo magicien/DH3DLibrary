@@ -85,6 +85,11 @@ describe('Vector4 class', () => {
       const quat = new Vector4()
       const dst = new Vector4()
 
+      const srcR = 1.0 / Math.sqrt(src.x * src.x + src.y * src.y + src.z * src.z)
+      src.x *= srcR
+      src.y *= srcR
+      src.z *= srcR
+
       quat.rotationToQuaternion(src)
       dst.quaternionToRotation(quat)
 
@@ -105,6 +110,12 @@ describe('Vector4 class', () => {
       const src = new Vector4(0.8, 0.4, 0.4, 0.5)
       const rot = new Vector4()
       const dst = new Vector4()
+
+      const srcR = 1.0 / Math.sqrt(src.x * src.x + src.y * src.y + src.z * src.z + src.w * src.w)
+      src.x *= srcR
+      src.y *= srcR
+      src.z *= srcR
+      src.w *= srcR
 
       rot.quaternionToRotation(src)
       dst.rotationToQuaternion(rot)
