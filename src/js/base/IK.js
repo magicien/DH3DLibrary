@@ -20,8 +20,8 @@ export default class IK {
     this.boneList = []
     this.minAngleList = []
     this.maxAngleList = []
+    this.ikBone = null
     this.targetBone = null
-    this.effectBone = null
     this.iteration = 0
     this.weight = 0.0
     this.linkNo = null
@@ -95,7 +95,7 @@ export default class IK {
    */
   update() {
     const zeroThreshold = 0.0000001
-    const targetMat = this.targetBone.localMatrix
+    const targetMat = this.ikBone.localMatrix
     const orgTargetPos = this._orgTargetPos
     orgTargetPos.setValue(targetMat.m41, targetMat.m42, targetMat.m43)
     const rotAxis = this._rotAxis
@@ -108,13 +108,13 @@ export default class IK {
     for(let i=this.boneList.length-1; i>=0; i--){
       this.boneList[i].updateMatrix()
     }
-    this.effectBone.updateMatrix()
+    this.targetBone.updateMatrix()
 
     // FIXME: 要再考
     for(let calcCount=0; calcCount<this.iteration; calcCount++){
       for(let linkIndex=0; linkIndex<this.boneList.length; linkIndex++){
         const linkedBone = this.boneList[linkIndex]
-        const effectMat = this.effectBone.localMatrix
+        const effectMat = this.targetBone.localMatrix
         effectPos.setValue(effectMat.m41, effectMat.m42, effectMat.m43)
 
         inverseMat.inverseMatrix(linkedBone.localMatrix)
@@ -155,14 +155,14 @@ export default class IK {
         for(let i=linkIndex; i>=0; i--){
           this.boneList[i].updateMatrix()
         }
-        this.effectBone.updateMatrix()
+        this.targetBone.updateMatrix()
       }
     }
 
     /* new IK update
     const zeroThreshold = 0.0000001
-    const ikBone = this.targetBone
-    const targetBone = this.effectBone
+    const ikBone = this.ikBone
+    const targetBone = this.targetBone
     const numBones = this.boneList.length
 
     const v = new Vector3()
@@ -173,7 +173,7 @@ export default class IK {
     for(let i=this.boneList.length-1; i>=0; i--){
       this.boneList[i].updateMatrix()
     }
-    this.effectBone.updateMatrix()
+    this.targetBone.updateMatrix()
 
     for(let it=0; it<this.iteration; it++){
       for(let index=0; index<numBones; index++){
@@ -253,7 +253,7 @@ export default class IK {
         for(let i=index; i>=0; i--){
           this.boneList[i].updateMatrix()
         }
-        this.effectBone.updateMatrix()
+        this.targetBone.updateMatrix()
       }
     }
     */

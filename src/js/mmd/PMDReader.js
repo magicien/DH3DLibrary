@@ -324,11 +324,11 @@ export default class PMDReader extends ModelReader {
 
     for(let i=0; i<ikCount; i++){
       const ikObj = new IK()
+      const ikBoneNo = this._binaryReader.readUnsignedShort()
       const targetBoneNo = this._binaryReader.readUnsignedShort()
-      const effectBoneNo = this._binaryReader.readUnsignedShort()
 
+      ikObj.ikBone = boneArray[ikBoneNo]
       ikObj.targetBone = boneArray[targetBoneNo]
-      ikObj.effectBone = boneArray[effectBoneNo]
       const numLink = this._binaryReader.readUnsignedByte()
       ikObj.iteration = this._binaryReader.readUnsignedShort()
       ikObj.weight = this._binaryReader.readFloat() * Math.PI

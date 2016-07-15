@@ -146,8 +146,8 @@ export default class Model {
     newModel.ikArray = []
     this.ikArray.forEach( (ik) => {
       const newIK = ik.clone()
+      newIK.ikBone = newModel.boneHash.get(ik.ikBone.name)
       newIK.targetBone = newModel.boneHash.get(ik.targetBone.name)
-      newIK.effectBone = newModel.boneHash.get(ik.effectBone.name)
 
       newIK.boneList = []
       ik.boneList.forEach( (ikBone) => {
