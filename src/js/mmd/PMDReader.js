@@ -289,6 +289,11 @@ export default class PMDReader extends ModelReader {
       const boneObj = new Bone()
       
       boneObj.name = this._binaryReader.readString(20)
+      if(boneObj.name.indexOf('ひざ') >= 0){
+        boneObj.isKnee = true
+      }else{
+        boneObj.isKnee = false
+      }
       boneObj.parentNo = this._binaryReader.readUnsignedShort()
       boneObj.childNo = this._binaryReader.readUnsignedShort()
       boneObj.type = this._binaryReader.readUnsignedByte()

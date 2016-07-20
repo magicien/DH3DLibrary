@@ -122,7 +122,6 @@ export default class VMDReader extends MotionReader {
     const header = this._binaryReader.readString(30)
     if(header !== 'Vocaloid Motion Data 0002'){
       console.warn(`VMD Format Error: ${header}`)
-      //myAlert('VMD Format Error')
     }
     this._motion.name = this._binaryReader.readString(20)
 

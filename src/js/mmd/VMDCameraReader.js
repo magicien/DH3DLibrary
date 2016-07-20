@@ -26,32 +26,45 @@ export default class VMDCameraReader extends CameraMotionReader {
   }
 
   readMotion(url) {
-    if(url.substr(-4) !== '.vmd'){
+    if(!VMDCameraReader.canRead(url))
       return false
-    }
 
     const obj = this
     const onload = () => { obj.readMotionProcess(url) }
 
     this._motion = new VMDCameraMotion()
-    this._binaryReader = new BinaryReader(url, false, 'sjis', onload)
 
-    return this._motion
+    const promise = new BinaryReader.open(url, false, 'sjis')
+      .then((reader) => {
+        this._binaryReader = reader
+        return this.readMotionProcess(url)
+      })
+      .catch((err) => {
+        console.error(`file (${url}) open error: ${err}`)
+      })
+
+    return promise
   }
 
   readMotionFromFile(file) {
-    if(file.name.substr(-4) !== '.vmd'){
-      console.log('filename_error: ' + file.name)
+    if(!VMDCameraReader.canRead(url))
       return false
-    }
 
     const obj = this
     const onload = () => { obj.readMotionProcess(file) }
 
     this._motion = new VMDMotion()
-    this._binaryReader = new BinaryReader(file, false, 'sjis', onload)
 
-    return this._motion
+    const promise = new BinaryReader.open(file, false, 'sjis')
+      .then((reader) => {
+        this._binaryReader = reader
+        return this.readMotionProcess(null)
+      })
+      .catch((err) => {
+        console.error(`file (${file.name}) open error: ${err}`)
+      })
+
+    return promise
   }
 
   readMotionProcess(url) {
@@ -70,6 +83,7 @@ export default class VMDCameraReader extends CameraMotionReader {
     if(this._motion.onloadend){
       this._motion.onloadend()
     }
+    return Promise.resolve(this._motion)
   }
 
   readMotionSub(){
@@ -85,7 +99,7 @@ export default class VMDCameraReader extends CameraMotionReader {
   readHeader() {
     const header = this._binaryReader.readString(30)
     if(header !== 'Vocaloid Motion Data 0002'){
-      //myAlert('VMD Format Error')
+      console.warn(`VMD Format Error: ${header}`)
     }
     // 'カメラ・照明'
     this._motion.name = this._binaryReader.readString(20)
@@ -105,8 +119,7 @@ export default class VMDCameraReader extends CameraMotionReader {
 
   readFrames() {
     const frames = this._binaryReader.readUnsignedInt()
-    //var motionArray = this._motion.motionArray
-    const motionArray = []
+    var motionArray = this._motion.motionArray
 
     for(let i=0; i<frames; i++){
       const frame = new CameraKeyFrame()
@@ -135,7 +148,6 @@ export default class VMDCameraReader extends CameraMotionReader {
       }
 
       const angleDegree = this._binaryReader.readInt()
-      //frame.angle = Math.PI * angleDegree / 180.0
       frame.angle = angleDegree
 
       const perspective = this._binaryReader.readByte()
@@ -149,6 +161,21 @@ export default class VMDCameraReader extends CameraMotionReader {
       return a.frameNo - b.frameNo
     })
   }
+}
+
+VMDCameraReader.canRead = (file) => {
+  let ext = ''
+  if(file instanceof File){
+    ext = file.name.substr(-4)
+  }else if(typeof file === 'string' || file instanceof String){
+    ext = file.substr(-4)
+  }
+
+  if(ext === '.vmd'){
+    return true
+  }
+
+  return false
 }
 
 CameraMotionBank.addMotionReader(VMDCameraReader)

@@ -37,11 +37,6 @@ export default class MMDCameraAnimator extends CameraAnimator {
   updateMotion(camera, elapsedTime) {
     const motion = camera._motion
 
-    // FIXME
-    //if(!camera._animating)
-    //  return
-
-    //if(camera._animating){
     camera._animationTime += elapsedTime
     const frameNo = camera._animationTime * motion.defaultFPS
     if(frameNo > motion.frameLength){
@@ -59,7 +54,6 @@ export default class MMDCameraAnimator extends CameraAnimator {
         camera._motionBlendStep = 0
       }
     }
-    //}
     camera._animationFrame = camera._animationTime * motion.defaultFPS
 
     // update camera parameters 

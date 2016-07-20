@@ -1,7 +1,9 @@
 'use strict'
 
-import Vector3 from './Vector3'
+import CameraMotion from './CameraMotion'
+import CameraMotionBank from './CameraMotionBank'
 import Matrix from './Matrix'
+import Vector3 from './Vector3'
 
 /**
  * Camera class
@@ -85,7 +87,20 @@ export default class Camera {
    * @returns {void}
    */
   setMotion(motion) {
-    this._motion = motion
+    if(this._motion){
+      this._motion.destroy()
+    }
+
+    if(motion === null){
+      return false
+    }
+
+    if(motion instanceof CameraMotion){
+      this._motion = motion
+      return true
+    }
+
+    return CameraMotionBank.getMotion(motion).then((m) => this.setMotion(m))
   }
 
   /**
