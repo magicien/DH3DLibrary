@@ -4,7 +4,7 @@
  * MotionBank class
  * @access public
  */
-export default class MotionBank {
+export class MotionBank {
   /**
    * constructor
    * @access public
